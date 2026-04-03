@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://plano.gd" id="4_r3fl7"]
 [ext_resource type="Script" uid="uid://ba6du2a6ih045" path="res://enemy.gd" id="5_i5arm"]
 [ext_resource type="Texture2D" uid="uid://df400b81x1pix" path="res://enemy.png" id="6_wc5p8"]
+[ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://walldungeon.png" id="8_jsk3o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
 radius = 0.30566406
@@ -67,7 +68,8 @@ texture_filter = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5arm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
-albedo_color = Color(0.37254903, 0.54901963, 0.37254903, 1)
+albedo_texture = ExtResource("8_jsk3o")
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
 transparency = 1
