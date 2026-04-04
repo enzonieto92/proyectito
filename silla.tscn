@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://daphq6mgow8wf"]
+
+[ext_resource type="PackedScene" uid="uid://crxl553vluqcw" path="res://SILLA.glb" id="1_3xb2j"]
+
+[node name="SILLA" unique_id=1219736006 instance=ExtResource("1_3xb2j")]

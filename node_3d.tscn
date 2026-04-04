@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://lqyq8ki31dlw" path="res://node_3d.gd" id="1_a202f"]
 [ext_resource type="Script" uid="uid://babstx0yl570n" path="res://escena.gd" id="1_noarx"]
-[ext_resource type="Texture2D" uid="uid://b36u2ril2ky5j" path="res://Sprite-0001.png" id="3_a0tk4"]
 [ext_resource type="Shader" uid="uid://juo5y5p88moq" path="res://node_3d.gdshader" id="3_imku0"]
 [ext_resource type="Texture2D" uid="uid://clmhaexa0k3ma" path="res://image 3.png" id="3_wc5p8"]
 [ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://plano.gd" id="4_r3fl7"]
@@ -17,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://cjxlxobyflnn8" path="res://deuslower-atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215.mp3" id="14_wlxy5"]
 [ext_resource type="Script" uid="uid://bvb8sse7w0hly" path="res://door_2.gd" id="15_tcnuu"]
 [ext_resource type="AudioStream" uid="uid://bjv8fc54lh6f4" path="res://ellvdr-rechinar-de-puerta-squeaking-door-6-337111.mp3" id="16_tuemg"]
+[ext_resource type="PackedScene" uid="uid://daphq6mgow8wf" path="res://silla.tscn" id="18_i0g27"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
 size = Vector2(1.325, 0.765)
@@ -24,6 +24,13 @@ size = Vector2(1.325, 0.765)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3v7ru"]
 render_priority = 0
 shader = ExtResource("3_imku0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0g27"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ealrb"]
+material = SubResource("StandardMaterial3D_i0g27")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
 radius = 0.30566406
@@ -44,6 +51,7 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsk3o"]
 albedo_color = Color(0.27752772, 0.27752772, 0.27752772, 1)
+texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
 size = Vector2(1, 1)
@@ -75,22 +83,15 @@ texture_repeat = false
 [sub_resource type="BoxShape3D" id="BoxShape3D_tereu"]
 size = Vector3(0.5706177, 0.1430664, 0.6245117)
 
-[sub_resource type="BoxMesh" id="BoxMesh_i5arm"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
-albedo_texture = ExtResource("3_a0tk4")
-uv1_offset = Vector3(-0.5, -0.5, -0.5)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_i5arm"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("8_jsk3o")
 metallic_specular = 0.0
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_offset = Vector3(0, -0.445, 0)
+uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
@@ -98,6 +99,9 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("9_4arys")
+uv1_scale = Vector3(0.255, 0.255, 0.255)
+uv1_offset = Vector3(0.53, 0.39, 0)
+uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlxy5"]
@@ -105,14 +109,16 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("9_4arys")
-uv1_scale = Vector3(0.63, 0.65, 1)
-uv1_offset = Vector3(-0.995, 0.09, 0)
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_offset = Vector3(0.495, -0.705, -0.05)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcnuu"]
 albedo_texture = ExtResource("14_3v7ru")
 uv1_scale = Vector3(0.35, 0.35, 0.35)
-uv1_offset = Vector3(0, -0.365, 0)
+uv1_offset = Vector3(0, -0.59, 0)
 uv1_triplanar = true
 texture_filter = 0
 
@@ -131,14 +137,18 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 script = ExtResource("1_a202f")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=695826514]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.124701e-09, 0.7945397, -0.22744977)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0016097933, 0.7945398, -0.2249713)
 fov = 85.0
 near = 0.039
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player/Camera3D" unique_id=1273584263]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2547266e-09, -0.108243346, -0.04009098)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028768292, -0.108243346, -0.04009098)
 mesh = SubResource("QuadMesh_wlxy5")
 surface_material_override/0 = SubResource("ShaderMaterial_3v7ru")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="player/Camera3D" unique_id=965587687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0745363e-09, 0, -0.04649222)
+mesh = SubResource("QuadMesh_ealrb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=463963635]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0016951561, 0)
@@ -147,6 +157,11 @@ shape = SubResource("CapsuleShape3D_noarx")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=1394122778]
 mesh = SubResource("CapsuleMesh_a0tk4")
 surface_material_override/0 = SubResource("StandardMaterial3D_noarx")
+
+[node name="footstep" type="AudioStreamPlayer3D" parent="player" unique_id=2137245353]
+transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 8.401282, 0.09828448, -0.36483642)
+volume_db = -4.752
+pitch_scale = 0.65
 
 [node name="ground" type="StaticBody3D" parent="." unique_id=650407111]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
@@ -177,19 +192,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6iypd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=907686772]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008331299, 0.010986328, 0.18774414)
 shape = SubResource("BoxShape3D_tereu")
-
-[node name="footstep" type="AudioStreamPlayer3D" parent="CharacterBody3D" unique_id=2137245353]
-
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=113860177]
-
-[node name="CSGMesh3D2" type="MeshInstance3D" parent="RigidBody3D" unique_id=1767901822]
-transform = Transform3D(0.9999928, -0.0033659495, 0.0017482078, 0.0033667793, 0.99999416, -0.00047016016, -0.0017466091, 0.00047606393, 0.99999833, -5.3185577, -5.4841666, -0.00986311)
-mesh = SubResource("BoxMesh_i5arm")
-surface_material_override/0 = SubResource("StandardMaterial3D_wc5p8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1823096065]
-transform = Transform3D(0.9999928, -0.0033659495, 0.0017482078, 0.0033667793, 0.99999416, -0.00047016016, -0.0017466091, 0.00047606393, 0.99999833, -5.3185577, -5.4841666, -0.00986311)
-shape = SubResource("BoxShape3D_i5arm")
 
 [node name="dungeon" type="Node3D" parent="." unique_id=265276385]
 
@@ -282,14 +284,18 @@ material = SubResource("StandardMaterial3D_tereu")
 script = ExtResource("10_tereu")
 
 [node name="puerta" type="CSGBox3D" parent="dungeon/doors/CSGCombiner3D" unique_id=1899698257]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25791448, -0.33135986, 1.9994273)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12013978, -0.48112988, 1.9994273)
 operation = 2
-size = Vector3(1.6387329, 2.574585, 0.14453125)
+size = Vector3(1.273323, 2.275045, 0.14453125)
 material = SubResource("StandardMaterial3D_wlxy5")
 
-[node name="puerta2" type="CSGBox3D" parent="dungeon/doors/CSGCombiner3D" unique_id=2139789043]
-transform = Transform3D(0.8045104, 0, 0.5939385, 0, 1, 0, -0.5939385, 0, 0.8045104, 0.41609687, -0.33135986, 2.4920938)
-size = Vector3(1.6387329, 2.574585, 0.14453125)
+[node name="Node3D" type="Node3D" parent="dungeon/doors/CSGCombiner3D" unique_id=1591519802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0058823153, -0.407135, 2.4073675)
+
+[node name="puerta2" type="CSGBox3D" parent="dungeon/doors/CSGCombiner3D/Node3D" unique_id=2139789043]
+transform = Transform3D(0.8045105, 0, 0.59393847, 0, 1, 0, -0.59393847, 0, 0.8045105, 0.0068400013, 0, -0.0050497055)
+use_collision = true
+size = Vector3(1.1675663, 2.0082793, 0.038146973)
 material = SubResource("StandardMaterial3D_wlxy5")
 
 [node name="door3" type="CSGBox3D" parent="dungeon/doors" unique_id=1778695581]
@@ -298,6 +304,7 @@ size = Vector3(4, 4, 0.1)
 material = SubResource("StandardMaterial3D_tereu")
 
 [node name="antorcha" type="Node3D" parent="dungeon" unique_id=302214959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1828547, 0, 0)
 
 [node name="antorcha2" parent="dungeon/antorcha" unique_id=461749512 instance=ExtResource("10_6iypd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3840775, -0.2825513, 5.892174)
@@ -318,6 +325,28 @@ shadow_opacity = 0.3
 shadow_blur = 0.0
 omni_range = 3.2508268
 
+[node name="antorcha2" type="Node3D" parent="dungeon" unique_id=1313875630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.45473, -0.38179922, 5.831769)
+
+[node name="antorcha2" parent="dungeon/antorcha2" unique_id=1178666872 instance=ExtResource("10_6iypd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041048586, 0)
+
+[node name="empty" type="Node3D" parent="dungeon/antorcha2" unique_id=965155039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0103208, 0)
+script = ExtResource("11_cdqbm")
+
+[node name="SpotLight3D" type="OmniLight3D" parent="dungeon/antorcha2/empty" unique_id=253204488]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.01, 0.03, 0)
+light_color = Color(1, 0.6745098, 0.3254902, 1)
+light_energy = 0.45
+light_size = 0.194
+light_specular = 3.826
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_opacity = 0.3
+shadow_blur = 0.0
+omni_range = 3.2508268
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="dungeon" unique_id=1959869228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0041760206, 0)
 use_collision = true
@@ -328,9 +357,9 @@ size = Vector3(0.01, 3, 4)
 material = SubResource("StandardMaterial3D_cdqbm")
 
 [node name="door" type="CSGBox3D" parent="dungeon/CSGCombiner3D" unique_id=641686305]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.010011, -0.53302, 3.5136058)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.017865, -0.53302, 3.5136058)
 operation = 2
-size = Vector3(0.043029785, 2.6468506, 1.421875)
+size = Vector3(0.10486603, 2.6468506, 1.421875)
 
 [node name="pivote" type="Node3D" parent="dungeon/CSGCombiner3D" unique_id=1315741626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.017559, 4.8428774e-07, 4.1924458)
@@ -352,28 +381,6 @@ shape = SubResource("BoxShape3D_tuemg")
 stream = ExtResource("16_tuemg")
 volume_db = 7.0
 
-[node name="antorcha2" type="Node3D" parent="dungeon" unique_id=1313875630]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.637585, -0.38179922, 5.831769)
-
-[node name="antorcha2" parent="dungeon/antorcha2" unique_id=1178666872 instance=ExtResource("10_6iypd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041048586, 0)
-
-[node name="empty" type="Node3D" parent="dungeon/antorcha2" unique_id=965155039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0103208, 0)
-script = ExtResource("11_cdqbm")
-
-[node name="SpotLight3D" type="OmniLight3D" parent="dungeon/antorcha2/empty" unique_id=253204488]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.01, 0.03, 0)
-light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.45
-light_size = 0.194
-light_specular = 3.826
-shadow_enabled = true
-shadow_bias = 0.04
-shadow_opacity = 0.3
-shadow_blur = 0.0
-omni_range = 3.2508268
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1532199677]
 environment = SubResource("Environment_cdqbm")
 
@@ -381,6 +388,9 @@ environment = SubResource("Environment_cdqbm")
 stream = ExtResource("14_wlxy5")
 autoplay = true
 parameters/looping = true
+
+[node name="SILLA2" parent="." unique_id=1739196894 instance=ExtResource("18_i0g27")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.3113675, -1.4206414, 5.548144)
 
 [connection signal="body_entered" from="dungeon/CSGCombiner3D/pivote/door2/Area3D" to="dungeon/CSGCombiner3D/pivote/door2" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="dungeon/CSGCombiner3D/pivote/door2/Area3D" to="dungeon/CSGCombiner3D/pivote/door2" method="_on_area_3d_body_exited"]

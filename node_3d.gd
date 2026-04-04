@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
 @onready var camera: Camera3D = $Camera3D
-@onready var footstep = $"../CharacterBody3D/footstep"
+@onready var footstep = $footstep
 var steps = [
 	preload("res://paso1.mp3"),
 	preload("res://paso2.mp3"),
 	preload("res://paso3.mp3"),
 ]
-const SPEED = 5.0
+const SPEED = 2.5
 const JUMP_VELOCITY = 4.5
 const mouse_sensitivity = 0.00002
 var moving = false
