@@ -7,7 +7,9 @@ var attack_range := 2.0
 
 func _physics_process(delta: float) -> void:
 	var dist = global_position.distance_to(player.global_position)
-
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	if dist < attack_range:
 		attack_behavior()
 	else:
