@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode unshaded;
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D screen_tex : hint_screen_texture;
 
 const int pixel_size = 8;
 
@@ -12,5 +12,9 @@ void fragment() {
 	x = FRAGCOORD.x + floor(float(pixel_size) / 2.0) - x;
 	y = FRAGCOORD.y + floor(float(pixel_size) / 2.0) - y;
 
-	ALBEDO = texture(SCREEN_TEXTURE, vec2(x, y) / VIEWPORT_SIZE).xyz;
+	vec2 uv = vec2(x, y) / VIEWPORT_SIZE;
+
+	vec3 color = texture(screen_tex, uv).rgb;
+
+	ALBEDO = color;
 }

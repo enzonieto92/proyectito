@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dr0lkmm011sx5"]
+
+[ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://walldungeon.png" id="1_tgnhd"]
+[ext_resource type="Texture2D" uid="uid://pnuwva5mtyr0" path="res://antorcha_madera.png" id="2_5a2c0"]
+[ext_resource type="Script" uid="uid://bvb8sse7w0hly" path="res://door_2.gd" id="3_e8xjx"]
+[ext_resource type="AudioStream" uid="uid://bjv8fc54lh6f4" path="res://ellvdr-rechinar-de-puerta-squeaking-door-6-337111.mp3" id="4_lyiyx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_tgnhd")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.335, 0.335, 0.335)
+uv1_offset = Vector3(0, 0.5, 0)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcnuu"]
+albedo_texture = ExtResource("2_5a2c0")
+uv1_scale = Vector3(0.35, 0.35, 0.35)
+uv1_offset = Vector3(0, -0.59, 0)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tgnhd"]
+radius = 1.5
+height = 3.0
+
+[node name="pared con puerta" type="CSGCombiner3D" unique_id=486144690]
+use_collision = true
+
+[node name="wall13" type="CSGBox3D" parent="." unique_id=260686562]
+size = Vector3(0.01, 3, 4)
+material = SubResource("StandardMaterial3D_cdqbm")
+
+[node name="door" type="CSGBox3D" parent="." unique_id=1524181270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+operation = 2
+size = Vector3(0.105, 2.4, 1.4)
+
+[node name="pivote" type="Node3D" parent="." unique_id=873776519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+
+[node name="door2" type="CSGBox3D" parent="pivote" unique_id=1145431399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.7)
+use_collision = true
+size = Vector3(0.043, 2.4, 1.4)
+material = SubResource("StandardMaterial3D_tcnuu")
+script = ExtResource("3_e8xjx")
+
+[node name="Area3D" type="Area3D" parent="pivote/door2" unique_id=143838820]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pivote/door2/Area3D" unique_id=1565421257]
+shape = SubResource("CapsuleShape3D_tgnhd")
+
+[node name="EllvdrRechinarDePuertaSqueakingDoor6337111" type="AudioStreamPlayer" parent="pivote/door2" unique_id=1860534472]
+stream = ExtResource("4_lyiyx")
+volume_db = 7.0
+
+[connection signal="body_entered" from="pivote/door2/Area3D" to="pivote/door2" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="pivote/door2/Area3D" to="pivote/door2" method="_on_area_3d_body_exited"]

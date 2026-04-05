@@ -13,7 +13,7 @@ const mouse_sensitivity = 0.00002
 var moving = false
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _input(event): 
 	if event is InputEventMouseMotion:
 		rotate_y(-rad_to_deg(event.relative.x * mouse_sensitivity))
