@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cfdnbil71vpl6"]
+
+[ext_resource type="Texture2D" uid="uid://sx2d7fuv5wpy" path="res://hoja_textura_papel.png" id="1_iibpk"]
+
+[resource]
+resource_name = "papel"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_iibpk")
+texture_filter = 2
+texture_repeat = false

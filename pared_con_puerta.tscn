@@ -29,6 +29,7 @@ height = 3.0
 
 [node name="pared con puerta" type="CSGCombiner3D" unique_id=486144690]
 use_collision = true
+collision_mask = 0
 
 [node name="wall13" type="CSGBox3D" parent="." unique_id=260686562]
 size = Vector3(0.01, 3, 4)
@@ -42,21 +43,24 @@ size = Vector3(0.105, 2.4, 1.4)
 [node name="pivote" type="Node3D" parent="." unique_id=873776519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
 
-[node name="door2" type="CSGBox3D" parent="pivote" unique_id=1145431399]
+[node name="door" type="CSGBox3D" parent="pivote" unique_id=1145431399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.7)
 use_collision = true
+collision_layer = 3
+collision_mask = 0
 size = Vector3(0.043, 2.4, 1.4)
 material = SubResource("StandardMaterial3D_tcnuu")
 script = ExtResource("3_e8xjx")
 
-[node name="Area3D" type="Area3D" parent="pivote/door2" unique_id=143838820]
+[node name="Area3D" type="Area3D" parent="pivote/door" unique_id=143838820]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pivote/door2/Area3D" unique_id=1565421257]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pivote/door/Area3D" unique_id=1565421257]
 shape = SubResource("CapsuleShape3D_tgnhd")
+debug_color = Color(0, 0.60038817, 0.70000815, 1)
 
-[node name="EllvdrRechinarDePuertaSqueakingDoor6337111" type="AudioStreamPlayer" parent="pivote/door2" unique_id=1860534472]
+[node name="EllvdrRechinarDePuertaSqueakingDoor6337111" type="AudioStreamPlayer" parent="pivote/door" unique_id=1860534472]
 stream = ExtResource("4_lyiyx")
 volume_db = 7.0
 
-[connection signal="body_entered" from="pivote/door2/Area3D" to="pivote/door2" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="pivote/door2/Area3D" to="pivote/door2" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="pivote/door/Area3D" to="pivote/door" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="pivote/door/Area3D" to="pivote/door" method="_on_area_3d_body_exited"]
