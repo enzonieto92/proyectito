@@ -25,7 +25,8 @@ func _ready():
 
 func _unhandled_input(event):
 
-	# Toggle inventario
+
+		
 	if event.is_action_pressed("Inventario"):
 		inventario_abierto = !inventario_abierto
 		inventario_controller.visible = inventario_abierto
@@ -44,7 +45,11 @@ func _unhandled_input(event):
 
 func _physics_process(delta: float) -> void:
 
-	# Salto
+	if Input.is_action_pressed("agacharse"):
+		var tween = create_tween()
+		tween.tween_property(camera, "position:y", -0.7, 0.2)
+	else:
+		camera.position= Vector3.ZERO
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not inventario_abierto:
 		velocity.y = JUMP_VELOCITY
 
