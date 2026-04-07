@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://c5wskn8jbhye3"]
+
+[ext_resource type="Script" uid="uid://b7g4a4lid375j" path="res://inventario_slot.gd" id="1_gv4be"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60o7t"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.46, 0.46, 0.46, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gv4be"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.8156863)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvgv6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.156, 0.20886667, 0.4, 0.78039217)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="InventarioSlot" type="Button" unique_id=1580521291]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_60o7t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gv4be")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hvgv6")
+script = ExtResource("1_gv4be")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=17780213]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1

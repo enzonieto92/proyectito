@@ -1,0 +1,2 @@
+extends Control
+class_name inventario_slot

@@ -1,25 +1,87 @@
 [gd_scene format=3 uid="uid://bf2k7mpqtk5jb"]
 
 [ext_resource type="PackedScene" uid="uid://r1ih7dv6eqdi" path="res://antorcha.glb" id="1_3yimf"]
+[ext_resource type="Script" uid="uid://bh78p66exvnwc" path="res://gpu_particles_3d.gd" id="1_5sr84"]
 [ext_resource type="Script" uid="uid://dnnpg7wv7fkaj" path="res://empty.gd" id="2_5sr84"]
 
+[sub_resource type="Gradient" id="Gradient_sfos5"]
+offsets = PackedFloat32Array(0.20245399, 1)
+colors = PackedColorArray(0.9333266, 3.272891e-06, 9.62615e-07, 1, 1, 0.75, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e7bbs"]
+gradient = SubResource("Gradient_sfos5")
+
+[sub_resource type="Curve" id="Curve_5sr84"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.3595506), -0.6404494, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wxyjw"]
+curve = SubResource("Curve_5sr84")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sfos5"]
+emission_shape_scale = Vector3(0.11, 0.105, 0.12)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angular_velocity_min = -720.0
+angular_velocity_max = -720.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = -2.2351742e-06
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_wxyjw")
+color = Color(0.5890956, 0.5890956, 0.5890956, 1)
+color_ramp = SubResource("GradientTexture1D_e7bbs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfos5"]
+cull_mode = 2
+shading_mode = 0
+diffuse_mode = 1
+vertex_color_use_as_albedo = true
+texture_filter = 0
+texture_repeat = false
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e7bbs"]
+material = SubResource("StandardMaterial3D_sfos5")
+size = Vector2(0.05, 0.05)
+orientation = 2
+
 [node name="antorcha" type="Node3D" unique_id=1834885261]
+
+[node name="GPUParticlesAttractorVectorField3D" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=936238620]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.011707783, 1.9102455, 0.0040066615)
+directionality = 1.0
+size = Vector3(0.21613282, 0.133125, 0.7390479)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=446602208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5452161, 0)
+layers = 8
+amount = 10
+lifetime = 0.5
+speed_scale = 2.0
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_sfos5")
+draw_pass_1 = SubResource("PlaneMesh_e7bbs")
+script = ExtResource("1_5sr84")
 
 [node name="antorcha2" parent="." unique_id=461749512 instance=ExtResource("1_3yimf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68790334, 0)
 
 [node name="empty" type="Node3D" parent="." unique_id=1206172199]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.565251, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.565251, -0.09707132)
 script = ExtResource("2_5sr84")
 
 [node name="SpotLight3D" type="OmniLight3D" parent="empty" unique_id=808685622]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.00999999, -0.022464275, 0.061766624)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.45
-light_size = 0.194
-light_specular = 3.826
+light_energy = 4.38
+light_size = 0.173
 shadow_enabled = true
-shadow_bias = 0.04
 shadow_opacity = 0.3
 shadow_blur = 0.0
+shadow_caster_mask = 4294967287
 omni_range = 3.2508268

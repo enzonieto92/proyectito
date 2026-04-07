@@ -1,7 +1,7 @@
 extends Area3D
 @onready var dialogo = $"../../CanvasLayer/dialogo"
 @onready var area_in = $"../../CanvasLayer/area_in"
-@onready var raycast = $"../../player/Camera3D/RayCast3D"
+@onready var raycast = $"../../player/Camera3D/raycast"
 var player_entered = false
 
 func _on_body_entered(body: Node3D) -> void:
@@ -19,7 +19,6 @@ func _on_body_exited(body: Node3D) -> void:
 func _process(_delta: float) -> void:
 	if not player_entered:
 		return
-
 	var mirando = false
 	if raycast.is_colliding():
 		var golpeado = raycast.get_collider()

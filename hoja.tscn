@@ -38,8 +38,8 @@ cull_mode = 2
 albedo_texture = ExtResource("1_fwtn7")
 texture_filter = 0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fwtn7"]
-size = Vector3(0.4391327, 0.24930573, 0.5261574)
+[sub_resource type="SphereShape3D" id="SphereShape3D_fwtn7"]
+radius = 0.31680745
 
 [node name="hoja" type="Node3D" unique_id=690816751]
 
@@ -52,4 +52,4 @@ collision_layer = 3
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="coll_hoja" unique_id=1287897170]
-shape = SubResource("BoxShape3D_fwtn7")
+shape = SubResource("SphereShape3D_fwtn7")
