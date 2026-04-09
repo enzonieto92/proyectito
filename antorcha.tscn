@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bf2k7mpqtk5jb"]
 
-[ext_resource type="PackedScene" uid="uid://r1ih7dv6eqdi" path="res://antorcha.glb" id="1_3yimf"]
 [ext_resource type="Script" uid="uid://bh78p66exvnwc" path="res://gpu_particles_3d.gd" id="1_5sr84"]
 [ext_resource type="Script" uid="uid://dnnpg7wv7fkaj" path="res://empty.gd" id="2_5sr84"]
+[ext_resource type="PackedScene" uid="uid://b0j77cn0f2wp2" path="res://antorcha_palo.tscn" id="2_wxyjw"]
 
 [sub_resource type="Gradient" id="Gradient_sfos5"]
 offsets = PackedFloat32Array(0.20245399, 1)
@@ -53,12 +53,12 @@ orientation = 2
 [node name="antorcha" type="Node3D" unique_id=1834885261]
 
 [node name="GPUParticlesAttractorVectorField3D" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=936238620]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.011707783, 1.9102455, 0.0040066615)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.048659295, 0.5934671, 0.0040066615)
 directionality = 1.0
 size = Vector3(0.21613282, 0.133125, 0.7390479)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=446602208]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5452161, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036951512, 0.22843769, 0)
 layers = 8
 amount = 10
 lifetime = 0.5
@@ -68,20 +68,18 @@ process_material = SubResource("ParticleProcessMaterial_sfos5")
 draw_pass_1 = SubResource("PlaneMesh_e7bbs")
 script = ExtResource("1_5sr84")
 
-[node name="antorcha2" parent="." unique_id=461749512 instance=ExtResource("1_3yimf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68790334, 0)
+[node name="antorcha" parent="." unique_id=461749512 instance=ExtResource("2_wxyjw")]
 
 [node name="empty" type="Node3D" parent="." unique_id=1206172199]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.565251, -0.09707132)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.048576176, 0.4333223, 0)
 script = ExtResource("2_5sr84")
 
 [node name="SpotLight3D" type="OmniLight3D" parent="empty" unique_id=808685622]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.00999999, -0.022464275, 0.061766624)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.011, 0, 0.011)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 4.38
-light_size = 0.173
+light_energy = 1.942
 shadow_enabled = true
-shadow_opacity = 0.3
-shadow_blur = 0.0
+shadow_bias = 0.001
+shadow_reverse_cull_face = true
 shadow_caster_mask = 4294967287
-omni_range = 3.2508268
+omni_attenuation = 2.157

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ceyurw2moikg2"]
 
 [ext_resource type="Script" uid="uid://dbo5nmce1ly58" path="res://InventarioController.gd" id="1_b1372"]
-[ext_resource type="PackedScene" uid="uid://c5wskn8jbhye3" path="res://InventarioSlot.tscn" id="2_xk0uu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikmkx"]
 content_margin_left = 0.0
@@ -26,6 +25,7 @@ corner_detail = 5
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1875799421]
 
 [node name="Inventario_UI" type="Control" parent="CanvasLayer" unique_id=5108280]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,62 +64,3 @@ offset_bottom = 122.88599
 size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 4
-
-[node name="InventarioSlot" parent="CanvasLayer/Inventario_UI/Panel" unique_id=1580521291 instance=ExtResource("2_xk0uu")]
-layout_mode = 0
-offset_left = 169.0
-offset_top = 110.0
-offset_right = 259.0
-offset_bottom = 200.0
-
-[node name="InventarioSlot2" parent="CanvasLayer/Inventario_UI/Panel" unique_id=532389035 instance=ExtResource("2_xk0uu")]
-layout_mode = 0
-offset_left = 82.0
-offset_top = 227.0
-offset_right = 146.0
-offset_bottom = 358.0
-
-[node name="InventarioSlot4" parent="CanvasLayer/Inventario_UI/Panel" unique_id=457325076 instance=ExtResource("2_xk0uu")]
-layout_mode = 0
-offset_left = 169.0
-offset_top = 227.0
-offset_right = 259.0
-offset_bottom = 376.0
-
-[node name="InventarioSlot5" parent="CanvasLayer/Inventario_UI/Panel" unique_id=1981217330 instance=ExtResource("2_xk0uu")]
-layout_mode = 0
-offset_left = 182.0
-offset_top = 393.0
-offset_right = 246.0
-offset_bottom = 457.0
-
-[node name="InventarioSlot6" parent="CanvasLayer/Inventario_UI/Panel" unique_id=1982082603 instance=ExtResource("2_xk0uu")]
-layout_mode = 0
-offset_left = 281.00003
-offset_top = 227.00002
-offset_right = 345.00003
-offset_bottom = 358.0
-rotation = 0.0039275344
-
-[node name="InventarioSlot3" parent="CanvasLayer/Inventario_UI/Panel" unique_id=1473068048 instance=ExtResource("2_xk0uu")]
-layout_mode = 0
-offset_left = 169.0
-offset_top = 480.0
-offset_right = 259.0
-offset_bottom = 544.0
-
-[node name="InventarioSlot7" parent="CanvasLayer/Inventario_UI/Panel" unique_id=1126536985 instance=ExtResource("2_xk0uu")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = 286.0
-offset_top = 164.0
-offset_right = 318.0
-offset_bottom = 196.0
-
-[node name="InventarioSlot8" parent="CanvasLayer/Inventario_UI/Panel" unique_id=1663173881 instance=ExtResource("2_xk0uu")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = 286.0
-offset_top = 393.0
-offset_right = 318.0
-offset_bottom = 425.0

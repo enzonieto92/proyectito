@@ -1,6 +1,6 @@
 extends Area3D
-@onready var dialogo = $"../../CanvasLayer/dialogo"
-@onready var area_in = $"../../CanvasLayer/area_in"
+@onready var dialogo = $"../../UI/dialogo"
+@onready var area_in = $"../../UI/area_in"
 @onready var raycast = $"../../player/Camera3D/raycast"
 var player_entered = false
 
@@ -31,7 +31,11 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("interactuar"):
 			area_in.visible = false
 			dialogo.visible = true
-			dialogo.show_text("-Y de su silla se levanto, y exclamo con fervor: 'Papel papel! el que se lo encuentra es para el!' y me como los mocos")
+			dialogo.show_text("
+El hombre será torturado cuando despierte para saber quién lo envió. 
+La mujer no habla. 
+Evitar contacto directo con ella.
+— M.”")
 
 	elif not mirando and dialogo.visible:
 		dialogo.visible = false

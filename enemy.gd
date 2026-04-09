@@ -10,7 +10,7 @@ var attack_range := 2.0
 func _physics_process(delta: float) -> void:
 	var dist = global_position.distance_to(player.global_position)
 	# Add the gravity.W
-
+	velocity += get_gravity() * delta
 	if dist < attack_range:
 		attack_behavior()
 	else:
@@ -28,4 +28,3 @@ func chase_behavior():
 
 func attack_behavior():
 	velocity = Vector3.ZERO
-	# acá después le metés daño, animación, cooldown, etc.

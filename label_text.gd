@@ -1,9 +1,11 @@
 extends RichTextLabel
 
 @export var chars_per_second: float = 15.0
-@onready var door = $"../../dungeon/pared con puerta/pivote/door"
-@onready var door2 = $"../../dungeon/pared con puerta2/pivote/door"
+@onready var dungeon: Node3D = $"../../dungeon"
+@onready var door = dungeon.get_node("pared con puerta/pivote/door")
+@onready var door2 = dungeon.get_node("pared con puerta2/pivote/door")
 @onready var raycast = $"../../player/Camera3D/raycast"
+
 
 var puerta_actual = null
 

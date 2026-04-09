@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://dbopc3u2pgmxo"]
+
+[ext_resource type="Script" uid="uid://lqyq8ki31dlw" path="res://player.gd" id="1_hqtel"]
+[ext_resource type="PackedScene" uid="uid://ceyurw2moikg2" path="res://inventario_controller.tscn" id="2_sweqy"]
+[ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://pixel_camera.gdshader" id="3_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://cjxlxobyflnn8" path="res://deuslower-atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215.mp3" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://d0ntgd10py0bj" path="res://espadalarga.png" id="5_sweqy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
+size = Vector2(1.325, 0.765)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3v7ru"]
+render_priority = 0
+shader = ExtResource("3_2hs0m")
+
+[sub_resource type="Animation" id="Animation_2hs0m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_arma:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.30517638, -0.04699993, -0.6795585)]
+}
+
+[sub_resource type="Animation" id="Animation_1jxqw"]
+resource_name = "idel"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_arma:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.48, 0.84),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.30517638, -0.04699993, -0.6795585), Vector3(0.305, -0.002, -0.68), Vector3(0.305, -0.067, -0.68)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw050"]
+_data = {
+&"RESET": SubResource("Animation_2hs0m"),
+&"idel": SubResource("Animation_1jxqw")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a0tk4"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+albedo_color = Color(0.8745098, 0, 0.83137256, 1)
+
+[sub_resource type="Animation" id="Animation_sweqy"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hs0m"]
+_data = {
+&"idle": SubResource("Animation_sweqy")
+}
+
+[node name="player" type="CharacterBody3D" unique_id=349492156]
+script = ExtResource("1_hqtel")
+
+[node name="Inventario_Controller" parent="." unique_id=822035638 instance=ExtResource("2_sweqy")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=219131178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=399597848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07)
+mesh = SubResource("QuadMesh_wlxy5")
+surface_material_override/0 = SubResource("ShaderMaterial_3v7ru")
+
+[node name="raycast" type="RayCast3D" parent="Camera3D" unique_id=310805274]
+target_position = Vector3(0, 0, -2)
+collision_mask = 2
+
+[node name="posicion_sprite" type="Node3D" parent="Camera3D" unique_id=336127434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.084230155)
+
+[node name="sprite_arma" type="Sprite3D" parent="Camera3D/posicion_sprite" unique_id=605076613]
+transform = Transform3D(0.5540323, -0.14845249, -0.81915206, 0.25881904, 0.9659258, 1.4910118e-08, 0.7912401, -0.21201217, 0.57357645, 0.30517638, -0.04699993, -0.6795585)
+shaded = true
+no_depth_test = true
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("5_sweqy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/posicion_sprite" unique_id=602970200]
+libraries/ = SubResource("AnimationLibrary_dw050")
+autoplay = &"idel"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88149154, 0)
+shape = SubResource("CapsuleShape3D_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1331905896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9013792, 0)
+mesh = SubResource("CapsuleMesh_a0tk4")
+surface_material_override/0 = SubResource("StandardMaterial3D_noarx")
+
+[node name="footstep" type="AudioStreamPlayer3D" parent="." unique_id=1255816085]
+transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
+volume_db = -4.752
+pitch_scale = 0.65
+
+[node name="Musica" type="AudioStreamPlayer" parent="." unique_id=1621554514]
+stream = ExtResource("4_1jxqw")
+mix_target = 1
+parameters/looping = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=435434970]
+libraries/ = SubResource("AnimationLibrary_2hs0m")

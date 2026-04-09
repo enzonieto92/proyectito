@@ -3,7 +3,7 @@ render_mode unshaded;
 
 uniform sampler2D screen_tex : hint_screen_texture;
 
-const int pixel_size = 8;
+const int pixel_size = 4;
 
 void fragment() {
 	float x = float(int(FRAGCOORD.x) % pixel_size);

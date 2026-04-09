@@ -1,6 +1,6 @@
 extends Area3D
-@onready var dialogo = $"../../CanvasLayer/dialogo"
-@onready var area_in = $"../../CanvasLayer/area_in"
+@onready var dialogo = $"../../UI/dialogo"
+@onready var area_in = $"../../UI/area_in"
 @onready var raycast = $"../../player/Camera3D/raycast"
 var player_entered = false
 

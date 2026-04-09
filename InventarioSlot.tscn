@@ -50,7 +50,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gv4be")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hvgv6")
 script = ExtResource("1_gv4be")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=17780213]
+[node name="Icon" type="TextureRect" parent="." unique_id=17780213]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 8

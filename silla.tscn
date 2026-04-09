@@ -60,7 +60,7 @@ size = Vector3(0.4391327, 0.73013306, 0.3604889)
 [node name="silla" type="Node3D" unique_id=1219736006]
 
 [node name="malla" type="MeshInstance3D" parent="." unique_id=966743141]
-transform = Transform3D(1.8862873, 0, 0, 0, 1.8862873, 0, 0, 0, 1.8862873, 0, 0, 0)
+transform = Transform3D(-1.13683804e-07, -1.8483933, -0.37619424, -1.8862873, 8.245225e-08, 1.6490449e-07, -1.4514774e-07, 0.37619424, -1.8483933, 0, 0, -0.13731647)
 mesh = SubResource("ArrayMesh_cmcqv")
 
 [node name="silla_coll" type="StaticBody3D" parent="malla" unique_id=1962081221]

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dikevgscd8vxt"]
+
+[ext_resource type="PackedScene" uid="uid://cvrx66lsyxqf2" path="res://silla-off.tscn" id="1_vol8w"]
+[ext_resource type="PackedScene" uid="uid://dtq1o64cy8dy3" path="res://mesa.tscn" id="4_kun6q"]
+[ext_resource type="MeshLibrary" uid="uid://rdkc1r3hj0r8" path="res://paredes_dungeon.tres" id="4_my81p"]
+[ext_resource type="PackedScene" uid="uid://bf2k7mpqtk5jb" path="res://antorcha.tscn" id="5_7wc3a"]
+[ext_resource type="PackedScene" uid="uid://dwg0pdptif5pi" path="res://rejas_celda_1.tscn" id="6_uag5o"]
+[ext_resource type="PackedScene" uid="uid://dr0lkmm011sx5" path="res://pared_con_puerta.tscn" id="7_jqckn"]
+
+[node name="dungeon" type="Node3D" unique_id=1761309701]
+
+[node name="decoracion" type="Node3D" parent="." unique_id=1009839208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
+
+[node name="silla" parent="decoracion" unique_id=1009823206 instance=ExtResource("1_vol8w")]
+transform = Transform3D(0.45633423, 0, 1.8302567, 0, 1.8862873, 0, -1.8302567, 0, 0.45633423, -0.49911308, -1.4987023, -0.5389631)
+
+[node name="silla2" parent="decoracion" unique_id=1283097794 instance=ExtResource("1_vol8w")]
+transform = Transform3D(-1.8791096, 0, -0.16440059, 0, 1.8862873, 0, 0.16440059, 0, -1.8791096, 0.5327921, -1.4987023, 0.67731)
+
+[node name="mesa" parent="decoracion" unique_id=509141992 instance=ExtResource("4_kun6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6575756, -1.5990243, -0.36206996)
+
+[node name="antorcha" parent="decoracion" unique_id=1834885261 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4020357, 0.07440674, -1.8021486)
+
+[node name="antorcha2" parent="decoracion" unique_id=1372566602 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.489754, 0.07440674, 0.17556193)
+
+[node name="antorcha3" parent="decoracion" unique_id=980023091 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.489754, 0.07440674, 3.8375409)
+
+[node name="antorcha4" parent="decoracion" unique_id=1393279378 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.808746, 0.07440674, 5.0783796)
+
+[node name="antorcha5" parent="decoracion" unique_id=317225984 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.823673, 0.07440674, -0.007171631)
+
+[node name="antorcha6" parent="decoracion" unique_id=729264104 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19.447912, 0.07440674, -3.8460293)
+
+[node name="antorcha7" parent="decoracion" unique_id=1891915364 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.447912, 0.07440674, 7.8280416)
+
+[node name="antorcha10" parent="decoracion" unique_id=1241256681 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.183874, 0.07440674, 5.827802)
+
+[node name="GridMap" type="GridMap" parent="." unique_id=2039006645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0041760206, 0)
+mesh_library = ExtResource("4_my81p")
+data = {
+"cells": PackedInt32Array(0, 65535, 0, 65535, 65535, 1048576, 0, 0, 1441793, 65535, 0, 1048577, 0, 1, 1441793, 65535, 2, 655361, 65534, 2, 655361, 65534, 1, 1, 0, 2, 1441792, 65535, 1, 655362, 65533, 2, 655361, 65532, 2, 655361, 65533, 1, 2, 65533, 0, 1441793, 65533, 65535, 0, 65532, 1, 2, 65530, 65535, 131072, 65529, 0, 1, 65529, 1, 655362, 65530, 1, 655362, 65530, 0, 1048578, 65531, 1, 1048578, 65528, 1, 655361, 65527, 1, 655361, 65528, 0, 1, 65527, 0, 1, 65526, 0, 1, 65525, 0, 1, 65526, 1, 655361, 65525, 1, 655361, 65524, 2, 1441793, 65524, 3, 1441792, 65524, 65535, 1441793, 65524, 65534, 0, 65524, 0, 655362, 65524, 1, 655362, 65523, 65534, 1, 65522, 65534, 1, 65521, 65534, 1, 65520, 65534, 1, 65523, 3, 524289, 65522, 3, 524289, 65521, 3, 524289, 65520, 3, 524289, 65520, 65535, 655362, 65520, 0, 655362, 65520, 1, 655362, 65520, 2, 655362, 65523, 65535, 655362, 65522, 65535, 655362, 65521, 65535, 655362, 65523, 0, 655362, 65522, 0, 655362, 65521, 0, 655362, 65523, 1, 655362, 65522, 1, 655362, 65521, 1, 655362, 65523, 2, 655362, 65522, 2, 655362, 65521, 2, 655362, 65519, 3, 655360, 65519, 2, 1310721, 65519, 1, 1310721, 65519, 0, 1310721, 65519, 65535, 1310721, 65519, 65534, 1048576, 65529, 2, 0, 65531, 2, 655361, 65530, 2, 655361, 65532, 0, 1048577, 65531, 0, 1048578, 65532, 65535, 1048576, 65531, 65535, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="rejas_celda1" parent="GridMap" unique_id=2142542560 instance=ExtResource("6_uag5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="rejas_celda2" parent="GridMap" unique_id=619107190 instance=ExtResource("6_uag5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0)
+
+[node name="pared con puerta" parent="." unique_id=486144690 instance=ExtResource("7_jqckn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 2)
+
+[node name="pared con puerta2" parent="." unique_id=1197986885 instance=ExtResource("7_jqckn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 4)
