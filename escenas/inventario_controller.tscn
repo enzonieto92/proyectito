@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ceyurw2moikg2"]
+
+[ext_resource type="Script" uid="uid://bestebfq4olpb" path="res://escenas/inventario_controller.gd" id="1_3wa74"]
+[ext_resource type="Script" uid="uid://cvwam2lkmlav6" path="res://scripts/grid_controller.gd" id="1_is5u2"]
+[ext_resource type="PackedScene" uid="uid://db1yfgpgf44do" path="res://escenas/inventario_slot.tscn" id="2_7flxi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikmkx"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.12955844, 0.1295585, 0.12955841, 0.7647059)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.2827793, 0.2827793, 0.2827793, 0)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 5
+
+[node name="Inventario_Controller" type="Node" unique_id=822035638]
+script = ExtResource("1_3wa74")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1875799421]
+
+[node name="Inventario_UI" type="Control" parent="CanvasLayer" unique_id=5108280]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Inventario_UI" unique_id=1693058056]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -425.0
+offset_top = -309.0
+offset_right = 425.0
+offset_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ikmkx")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventario_UI/Panel" unique_id=1816532351]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5035294
+anchor_top = 0.47279614
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.1880188
+offset_right = -47.0
+offset_bottom = -82.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+script = ExtResource("1_is5u2")
+slot_scene = ExtResource("2_7flxi")
+bg_items_color = Color(0.4584052, 0.45840496, 0.45840502, 0.7372549)
+metadata/_edit_use_anchors_ = true

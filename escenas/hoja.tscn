@@ -1,0 +1,72 @@
+[gd_scene format=4 uid="uid://cenpahd676ouq"]
+
+[ext_resource type="Texture2D" uid="uid://d3mt0ck4c64qt" path="res://texturas/textura_papel.png" id="1_fwtn7"]
+[ext_resource type="Script" uid="uid://bammjhdbd13m3" path="res://scripts/hoja.gd" id="2_x0dtc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x0dtc"]
+height = 1.5053711
+radius = 1.3081055
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_30hkp"]
+_surfaces = [{
+"aabb": AABB(-0.18921506, -0.017182883, -0.25199342, 0.36820936, 0.025144193, 0.51500654),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAEAAUABgAFAAcACAAGAAcACAAHAAkACgAIAAkACgAJAAsA"),
+"name": "papel",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("fwjj1TwWAADm8wf7AAAAAKv9nN8LFwAAox0H+wAAAAACBQAAeEwAAO/5kFalUwAAAAAeVGuhAADt9K6qmKgAANIKeJY85AAA///lnwTlAAD4Hv/7//8AAD/1//9x/gAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rigaf"]
+resource_name = "hoja_Plano"
+_surfaces = [{
+"aabb": AABB(-0.18921506, -0.017182883, -0.25199342, 0.36820936, 0.025144193, 0.51500654),
+"attribute_data": PackedByteArray("AACVCf//AAD//5UJAAAAAAAAVVX//1RVAACqqv//qaoAALT2//+09gAA////////"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAEAAUABgAFAAcACAAGAAcACAAHAAkACgAIAAkACgAJAAsA"),
+"name": "papel",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("fwjj1TwWMrvm8wf7AAAsvav9nN8LF3C7ox0H+wAALL0CBQAAeEwDvu/5kFalU/+9AAAeVGuhb8Ht9K6qmKhewdIKeJY85FrD///lnwTl3sP4Hv/7//9Lxz/1//9x/kzHCP90gXL/XoBj/eGB4v81gKD844Lt+rGD+/qeg8f8sYJC/fOBnf/1gJb/XICB/9Z+")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_30hkp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0dtc"]
+cull_mode = 2
+albedo_texture = ExtResource("1_fwtn7")
+texture_filter = 0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fwtn7"]
+radius = 0.31680745
+
+[node name="hoja" type="Node3D" unique_id=690816751 groups=["hoja_papel"]]
+script = ExtResource("2_x0dtc")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=446862915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20923936, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1820932674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16601563, 0)
+shape = SubResource("CylinderShape3D_x0dtc")
+debug_color = Color(0, 0.60038817, 0.70000815, 1)
+
+[node name="Plano" type="MeshInstance3D" parent="." unique_id=1207151533]
+mesh = SubResource("ArrayMesh_rigaf")
+surface_material_override/0 = SubResource("StandardMaterial3D_x0dtc")
+
+[node name="coll_hoja" type="StaticBody3D" parent="." unique_id=2033634473]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="coll_hoja" unique_id=1287897170]
+shape = SubResource("SphereShape3D_fwtn7")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

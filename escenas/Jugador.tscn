@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://dbopc3u2pgmxo"]
+
+[ext_resource type="Script" uid="uid://lqyq8ki31dlw" path="res://scripts/jugador.gd" id="1_hqtel"]
+[ext_resource type="Script" uid="uid://ckcuynwuawjok" path="res://scripts/animation_controller.gd" id="2_r4hsq"]
+[ext_resource type="PackedScene" uid="uid://ceyurw2moikg2" path="res://escenas/inventario_controller.tscn" id="2_sweqy"]
+[ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="3_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://cjxlxobyflnn8" path="res://sonido/deuslower-atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215.mp3" id="4_1jxqw"]
+[ext_resource type="AudioStream" uid="uid://bcy7vwpq2v668" path="res://sonido/paso1.mp3" id="5_ig1bj"]
+[ext_resource type="Script" uid="uid://dg5uvq1yj8ud0" path="res://scripts/posicion_arma.gd" id="6_p52f3"]
+[ext_resource type="Script" uid="uid://2w1wkxecn551" path="res://scripts/raycast_arma.gd" id="9_w7fad"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r4hsq"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_6h3nq"]
+sky_material = SubResource("ProceduralSkyMaterial_r4hsq")
+
+[sub_resource type="Environment" id="Environment_sacnx"]
+background_mode = 2
+sky = SubResource("Sky_6h3nq")
+ambient_light_color = Color(0.56, 0.37865332, 0.18479998, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.05
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.199285, 0.10392662, 1.2032687e-07, 1)
+fog_light_energy = 0.02
+fog_density = 0.2
+
+[sub_resource type="Animation" id="Animation_2hs0m"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_dw050"]
+resource_name = "atacar"
+length = 0.5033
+
+[sub_resource type="Animation" id="Animation_w7fad"]
+resource_name = "idle"
+length = 1.635
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_n2wyw"]
+resource_name = "run"
+length = 0.405
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_1jxqw"]
+resource_name = "walk"
+length = 0.6333333
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw050"]
+_data = {
+&"RESET": SubResource("Animation_2hs0m"),
+&"atacar": SubResource("Animation_dw050"),
+&"idle": SubResource("Animation_w7fad"),
+&"run": SubResource("Animation_n2wyw"),
+&"walk": SubResource("Animation_1jxqw")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
+size = Vector2(1.325, 0.765)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3v7ru"]
+render_priority = 0
+shader = ExtResource("3_2hs0m")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a0tk4"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+albedo_color = Color(0.8745098, 0, 0.83137256, 1)
+
+[node name="Jugador" type="CharacterBody3D" unique_id=349492156]
+script = ExtResource("1_hqtel")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1162736894]
+environment = SubResource("Environment_sacnx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=602970200]
+libraries/ = SubResource("AnimationLibrary_dw050")
+playback_default_blend_time = 0.3
+script = ExtResource("2_r4hsq")
+
+[node name="Inventario_Controller" parent="." unique_id=822035638 instance=ExtResource("2_sweqy")]
+
+[node name="Combate_Controller" type="Node" parent="." unique_id=38884829]
+
+[node name="camara_player" type="Camera3D" parent="." unique_id=219131178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="camara_player" unique_id=399597848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07)
+mesh = SubResource("QuadMesh_wlxy5")
+surface_material_override/0 = SubResource("ShaderMaterial_3v7ru")
+
+[node name="raycast" type="RayCast3D" parent="camara_player" unique_id=310805274]
+target_position = Vector3(0, 0, -2)
+collision_mask = 3
+hit_back_faces = false
+debug_shape_thickness = 1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="camara_player" unique_id=2060468858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022611976, 0.28595096)
+light_color = Color(1, 0.6745098, 0.3254902, 1)
+light_energy = 0.7
+light_volumetric_fog_energy = 9.065
+spot_range = 14.931965
+spot_angle = 55.64838
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881, 0)
+shape = SubResource("CapsuleShape3D_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1331905896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9013792, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_a0tk4")
+surface_material_override/0 = SubResource("StandardMaterial3D_noarx")
+
+[node name="footstep" type="AudioStreamPlayer3D" parent="." unique_id=1255816085]
+transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
+stream = ExtResource("5_ig1bj")
+volume_db = -22.116
+
+[node name="Musica" type="AudioStreamPlayer" parent="." unique_id=1621554514]
+stream = ExtResource("4_1jxqw")
+mix_target = 1
+parameters/looping = true
+
+[node name="pivote" type="Node3D" parent="." unique_id=991400812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
+script = ExtResource("6_p52f3")
+
+[node name="posicion_arma" type="Node3D" parent="pivote" unique_id=1760938995]
+transform = Transform3D(0.83997935, -0.0943524, -0.5343523, 0.3746896, 0.8131497, 0.44541565, 0.39248243, -0.5743562, 0.7183819, 0.2622436, -0.15999827, -0.80995387)
+
+[node name="sprite_arma" type="Sprite3D" parent="pivote/posicion_arma" unique_id=605076613]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -4.656613e-10, -0.01228652, -9.313227e-10)
+flip_h = true
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+render_priority = 1
+
+[node name="raycast_arma" type="RayCast3D" parent="pivote/posicion_arma/sprite_arma" unique_id=1054449448]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -1.1333798e-08, -0.31296882, 2.220446e-16)
+target_position = Vector3(0, -0.62, 0)
+script = ExtResource("9_w7fad")
+
+[node name="sonido_arma" type="AudioStreamPlayer" parent="pivote/posicion_arma/sprite_arma" unique_id=1901042069]

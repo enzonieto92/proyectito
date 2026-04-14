@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://db1yfgpgf44do"]
+
+[ext_resource type="Script" uid="uid://b4b0n5s8gbqvn" path="res://scripts/inventario_slot.gd" id="1_3nq2p"]
+[ext_resource type="Texture2D" uid="uid://d057e0n6fimuu" path="res://texturas/Cuadricula-inventario.png" id="2_kpqa2"]
+
+[node name="InventarioSlot" type="Control" unique_id=1256499274]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3nq2p")
+
+[node name="slot_background" type="TextureRect" parent="." unique_id=1295073857]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kpqa2")

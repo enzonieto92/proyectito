@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://gl2bvdbh4rho"]
+
+[ext_resource type="Script" uid="uid://babstx0yl570n" path="res://scripts/escena.gd" id="1_hvxa3"]
+[ext_resource type="FontFile" uid="uid://berjkm7dt2kx2" path="res://otros/PixelSymtext-eYmn.ttf" id="2_78vvm"]
+[ext_resource type="Script" uid="uid://dqrqprrqi2lc8" path="res://scripts/dialogo.gd" id="3_xejmm"]
+[ext_resource type="Script" uid="uid://xfxh6s2wuhij" path="res://scripts/texto_plano.gd" id="4_u4y7y"]
+[ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="5_4a01a"]
+[ext_resource type="PackedScene" uid="uid://daphq6mgow8wf" path="res://escenas/silla_tirada.tscn" id="6_8lvc2"]
+[ext_resource type="PackedScene" uid="uid://cenpahd676ouq" path="res://escenas/hoja.tscn" id="7_lgf0p"]
+[ext_resource type="PackedScene" uid="uid://du5leifwhuq6r" path="res://escenas/espada.tscn" id="8_bvwj0"]
+[ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
+[ext_resource type="PackedScene" uid="uid://cmmijprdnkysr" path="res://escenas/espada_corta.tscn" id="9_78vvm"]
+[ext_resource type="PackedScene" uid="uid://00i8tkohagvw" path="res://escenas/Enemigo.tscn" id="10_xqdpg"]
+[ext_resource type="PackedScene" uid="uid://ewbvkienff2i" path="res://escenas/maza.tscn" id="12_xejmm"]
+
+[sub_resource type="Theme" id="Theme_3v7ru"]
+default_font = ExtResource("2_78vvm")
+default_font_size = 30
+
+[node name="escena principal" type="Node3D" unique_id=1018523294]
+script = ExtResource("1_hvxa3")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1235935335]
+follow_viewport_enabled = true
+
+[node name="dialogo" type="RichTextLabel" parent="UI" unique_id=785342466]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -365.0
+offset_top = -197.0
+offset_right = 365.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_3v7ru")
+scroll_active = false
+scroll_following_visible_characters = true
+autowrap_mode = 1
+autowrap_trim_flags = 0
+script = ExtResource("3_xejmm")
+
+[node name="texto_plano" type="RichTextLabel" parent="UI" unique_id=361409940]
+visible = false
+z_index = 1
+offset_left = 112.0
+offset_top = 393.0
+offset_right = 1037.0
+offset_bottom = 620.0
+theme = SubResource("Theme_3v7ru")
+horizontal_alignment = 1
+script = ExtResource("4_u4y7y")
+
+[node name="player" parent="." unique_id=349492156 instance=ExtResource("5_4a01a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.91, 0, 2.444)
+floor_stop_on_slope = false
+
+[node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_bvwj0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.135345, 0, 0.19589567)
+
+[node name="silla" parent="." unique_id=30108936 instance=ExtResource("6_8lvc2")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -4.153, 0.31319487, 5.548)
+
+[node name="hoja" parent="." unique_id=690816751 instance=ExtResource("7_lgf0p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7874975, 0.9046548, 0.101058796)
+
+[node name="espada_corta" parent="." unique_id=667668280 instance=ExtResource("9_78vvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.94147, 0, 0.347)
+
+[node name="dungeon" parent="." unique_id=1761309701 instance=ExtResource("9_0lcy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
+
+[node name="enemy" parent="." unique_id=1587185498 instance=ExtResource("10_xqdpg")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -27.62, 0.82906055, 0.57)
+visible = false
+
+[node name="maza" parent="." unique_id=124967807 instance=ExtResource("12_xejmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.523201, 0.0088825375, 1.7072277)

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://du5leifwhuq6r"]
+
+[ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_740t4"]
+[ext_resource type="Resource" uid="uid://cgn2squmk4a6b" path="res://otros/espada.tres" id="2_4tc2h"]
+[ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="4_hrxb8"]
+[ext_resource type="Texture2D" uid="uid://by1ft8so5f5i2" path="res://texturas/Espada_Oxidada.png" id="4_xvmcj"]
+[ext_resource type="Texture2D" uid="uid://bu1c4c7krdhc0" path="res://texturas/Espada_Oxidada.-normal.png" id="5_4tc2h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
+height = 1.1035156
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tuemg"]
+height = 1.3969727
+radius = 1.1918945
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
+transparency = 2
+alpha_scissor_threshold = 0.951
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("4_xvmcj")
+roughness = 0.4
+emission_energy_multiplier = 5.63
+emission_on_uv2 = true
+normal_enabled = true
+normal_texture = ExtResource("5_4tc2h")
+texture_filter = 0
+
+[node name="objeto" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_740t4")
+item = ExtResource("2_4tc2h")
+
+[node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=330304897]
+shape = SubResource("CapsuleShape3D_tcnuu")
+
+[node name="area_interaccion" type="Area3D" parent="." unique_id=1519646548]
+collision_layer = 3
+
+[node name="colision_area" type="CollisionShape3D" parent="area_interaccion" unique_id=1641568912]
+shape = SubResource("CylinderShape3D_tuemg")
+
+[node name="sprite" type="MeshInstance3D" parent="." unique_id=170180650]
+mesh = SubResource("PlaneMesh_jsk3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_4arys")
+script = ExtResource("4_hrxb8")
+
+[connection signal="body_entered" from="area_interaccion" to="." method="_on_area_interaccion_body_entered"]
+[connection signal="body_exited" from="area_interaccion" to="." method="_on_area_interaccion_body_exited"]

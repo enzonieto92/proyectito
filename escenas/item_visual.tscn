@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cvaywbvw5vyhr"]
+
+[node name="ItemVisual" type="TextureRect" unique_id=1517836596]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ewbvkienff2i"]
+
+[ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_wgkan"]
+[ext_resource type="Resource" uid="uid://dwx1jm2fn5mwq" path="res://otros/maza.tres" id="2_ci7cf"]
+[ext_resource type="Texture2D" uid="uid://draa08qowfn0" path="res://texturas/Maza.png" id="3_b101k"]
+[ext_resource type="Texture2D" uid="uid://bu1c4c7krdhc0" path="res://texturas/Espada_Oxidada.-normal.png" id="4_b24gf"]
+[ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="5_x2sij"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
+height = 1.1035156
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tuemg"]
+height = 1.3969727
+radius = 1.1918945
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
+transparency = 2
+alpha_scissor_threshold = 0.951
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_b101k")
+roughness = 0.4
+emission_energy_multiplier = 5.63
+emission_on_uv2 = true
+normal_enabled = true
+normal_texture = ExtResource("4_b24gf")
+texture_filter = 0
+
+[node name="maza" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_wgkan")
+item = ExtResource("2_ci7cf")
+
+[node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=330304897]
+shape = SubResource("CapsuleShape3D_tcnuu")
+
+[node name="area_interaccion" type="Area3D" parent="." unique_id=1519646548]
+collision_layer = 3
+
+[node name="colision_area" type="CollisionShape3D" parent="area_interaccion" unique_id=1641568912]
+shape = SubResource("CylinderShape3D_tuemg")
+
+[node name="sprite" type="MeshInstance3D" parent="." unique_id=170180650]
+mesh = SubResource("PlaneMesh_jsk3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_4arys")
+script = ExtResource("5_x2sij")
+
+[connection signal="body_entered" from="area_interaccion" to="." method="_on_area_interaccion_body_entered"]
+[connection signal="body_exited" from="area_interaccion" to="." method="_on_area_interaccion_body_exited"]

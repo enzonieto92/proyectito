@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dwg0pdptif5pi"]
+
+[ext_resource type="Texture2D" uid="uid://bvaecubl4eib0" path="res://texturas/door-normales.png" id="1_c5j2b"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ealrb"]
+load_path = "res://.godot/imported/door.png-4ad4ab0c545155655bbef277d86eb152.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lggff"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_ealrb")
+normal_enabled = true
+normal_texture = ExtResource("1_c5j2b")
+uv1_scale = Vector3(0.255, 0.255, 0.255)
+uv1_offset = Vector3(0.53, 0.39, 0)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+texture_filter = 0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jsnrv"]
+load_path = "res://.godot/imported/door.png-4ad4ab0c545155655bbef277d86eb152.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0gvp"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_jsnrv")
+normal_enabled = true
+normal_texture = ExtResource("1_c5j2b")
+uv1_scale = Vector3(0.16, 0.16, 0.16)
+uv1_offset = Vector3(0.495, -0.35, -3.115)
+uv1_triplanar_sharpness = 150.0
+texture_filter = 0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i0g27"]
+load_path = "res://.godot/imported/door.png-4ad4ab0c545155655bbef277d86eb152.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsnrv"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_i0g27")
+normal_enabled = true
+normal_texture = ExtResource("1_c5j2b")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_offset = Vector3(0.495, -0.705, -0.05)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+texture_filter = 0
+
+[node name="rejas_celda1" type="CSGCombiner3D" unique_id=2142542560]
+use_collision = true
+
+[node name="rejas" type="CSGBox3D" parent="." unique_id=1044804473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+calculate_tangents = false
+size = Vector3(3.98, 3, 0.1)
+material = SubResource("StandardMaterial3D_lggff")
+
+[node name="puerta" type="CSGBox3D" parent="." unique_id=921625037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12013978, -0.48112988, 1.9994273)
+operation = 2
+size = Vector3(1.273323, 2.275045, 0.14453125)
+material = SubResource("StandardMaterial3D_s0gvp")
+
+[node name="pivote" type="Node3D" parent="." unique_id=689077736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0058823153, -0.407135, 2.4073675)
+
+[node name="puerta2" type="CSGBox3D" parent="pivote" unique_id=760799067]
+transform = Transform3D(0.8045105, 0, 0.59393847, 0, 1, 0, -0.59393847, 0, 0.8045105, -0.00228622, 0, -0.01741147)
+use_collision = true
+size = Vector3(1.1675663, 2.0082793, 0.068878174)
+material = SubResource("StandardMaterial3D_jsnrv")
