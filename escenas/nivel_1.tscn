@@ -55,7 +55,7 @@ horizontal_alignment = 1
 script = ExtResource("4_u4y7y")
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("5_4a01a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.91, 0, 2.444)
+transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -0.21210957, 0, 0.3686205)
 floor_stop_on_slope = false
 
 [node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_bvwj0")]
@@ -73,9 +73,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.94147, 0, 0.347)
 [node name="dungeon" parent="." unique_id=1761309701 instance=ExtResource("9_0lcy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
 
-[node name="enemy" parent="." unique_id=1587185498 instance=ExtResource("10_xqdpg")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -27.62, 0.82906055, 0.57)
-visible = false
-
 [node name="maza" parent="." unique_id=124967807 instance=ExtResource("12_xejmm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.523201, 0.0088825375, 1.7072277)
+
+[node name="Enemigo" parent="." unique_id=1587185498 instance=ExtResource("10_xqdpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.47764, 0.4006243, -0.21195507)

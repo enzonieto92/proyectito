@@ -4,6 +4,7 @@ class_name Item
 @export var id: String
 @export var nombre: String
 @export var icono: CompressedTexture2D
+@export var textura: CompressedTexture2D
 @export var descripcion: String = ""
 
 @export var damage: float
@@ -18,6 +19,7 @@ class_name Item
 
 enum Tipo {
 	CONSUMIBLE,
+	ARMA,
 	EQUIPO,
 	LLAVE,
 	MISC

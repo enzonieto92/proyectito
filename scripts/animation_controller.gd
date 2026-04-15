@@ -12,10 +12,10 @@ func _process(_delta: float) -> void:
 			animation_player.play("atacar")
 	elif player.moving:
 		if player.corriendo:
-			if animation_player.current_animation != "run":
-				animation_player.play("run")
+			if animation_player.current_animation != "correr":
+				animation_player.play("correr")
 		else:
-			animation_player.play("walk")
+			animation_player.play("caminar")
 		
 	else:
 		if animation_player.current_animation != "idle":

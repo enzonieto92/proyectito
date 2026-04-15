@@ -6,7 +6,7 @@ func puede_interactuar() -> bool:
 	return player_entered
 
 func interactuar(player):
-	if player.inventario_controller.agregar_item(item):
+	if await player.inventario_controller.agregar_item(item):
 		print ("agregando item")
 		queue_free()
 

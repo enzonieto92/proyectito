@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dd5mj7x4npmfd"]
+
+[ext_resource type="Script" uid="uid://42hkv6uyaqmu" path="res://scripts/slot_mano_izquierda.gd" id="1_4f3mb"]
+
+[node name="slot_arma" type="Control" unique_id=726035691]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 52.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4f3mb")

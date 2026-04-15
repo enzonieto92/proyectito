@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://cgn2squmk4a6b"]
 
 [ext_resource type="Script" uid="uid://swuyinalvgjo" path="res://scripts/Item.gd" id="1_fpck6"]
-[ext_resource type="Texture2D" uid="uid://by1ft8so5f5i2" path="res://texturas/Espada_Oxidada.png" id="1_wbodr"]
+[ext_resource type="Texture2D" uid="uid://cxetxi8uj6stg" path="res://texturas/Armas/Espada_Oxidada_item.png" id="1_muxhu"]
+[ext_resource type="Texture2D" uid="uid://bixjx7k6dckpf" path="res://texturas/Armas/Espada_Oxidada.png" id="3_23x4n"]
 
 [resource]
 script = ExtResource("1_fpck6")
 id = "1"
 nombre = "Espada Oxidada"
-icono = ExtResource("1_wbodr")
+icono = ExtResource("1_muxhu")
+textura = ExtResource("3_23x4n")
 descripcion = "Espada inicial para probar inventario"
 damage = 10.0
 size = Vector2i(1, 3)

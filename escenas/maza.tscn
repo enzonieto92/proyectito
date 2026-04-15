@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_wgkan"]
 [ext_resource type="Resource" uid="uid://dwx1jm2fn5mwq" path="res://otros/maza.tres" id="2_ci7cf"]
-[ext_resource type="Texture2D" uid="uid://draa08qowfn0" path="res://texturas/Maza.png" id="3_b101k"]
-[ext_resource type="Texture2D" uid="uid://bu1c4c7krdhc0" path="res://texturas/Espada_Oxidada.-normal.png" id="4_b24gf"]
+[ext_resource type="Texture2D" uid="uid://bx46fcqurj6s1" path="res://texturas/Armas/Maza.png" id="3_wgkan"]
 [ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="5_x2sij"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
@@ -21,12 +20,10 @@ transparency = 2
 alpha_scissor_threshold = 0.951
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("3_b101k")
+albedo_texture = ExtResource("3_wgkan")
 roughness = 0.4
 emission_energy_multiplier = 5.63
 emission_on_uv2 = true
-normal_enabled = true
-normal_texture = ExtResource("4_b24gf")
 texture_filter = 0
 
 [node name="maza" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]

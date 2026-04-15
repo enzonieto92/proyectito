@@ -30,6 +30,9 @@ silla=""
 enemigos=""
 puertas=""
 recogibles=""
+inventario=""
+sprite_arma=""
+jugador=""
 
 [importer_defaults]
 

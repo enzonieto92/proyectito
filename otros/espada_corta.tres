@@ -1,14 +1,17 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://cbr4jdhfx7qnr"]
 
 [ext_resource type="Script" uid="uid://swuyinalvgjo" path="res://scripts/Item.gd" id="1_5xgsj"]
-[ext_resource type="Texture2D" uid="uid://df4oejblnh25y" path="res://texturas/espada_corta.png" id="1_207lt"]
+[ext_resource type="Texture2D" uid="uid://c0e02dqy7t8j8" path="res://texturas/Armas/espada_corta_item.png" id="1_207lt"]
+[ext_resource type="Texture2D" uid="uid://bg23uqd8v4ac4" path="res://texturas/Armas/espada_corta.png" id="3_fj3ml"]
 
 [resource]
 script = ExtResource("1_5xgsj")
 nombre = "Espada Corta"
 icono = ExtResource("1_207lt")
+textura = ExtResource("3_fj3ml")
 descripcion = "esta espada te entra en la raja y no te moris"
 damage = 6.0
 weapon_size = 0.7
 size = Vector2i(1, 2)
+tipo = 1
 metadata/_custom_type_script = "uid://swuyinalvgjo"

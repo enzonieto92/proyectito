@@ -1,25 +1,45 @@
 [gd_scene format=3 uid="uid://ceyurw2moikg2"]
 
-[ext_resource type="Script" uid="uid://bestebfq4olpb" path="res://escenas/inventario_controller.gd" id="1_3wa74"]
+[ext_resource type="Script" uid="uid://bestebfq4olpb" path="res://scripts/inventario_controller.gd" id="1_3wa74"]
 [ext_resource type="Script" uid="uid://cvwam2lkmlav6" path="res://scripts/grid_controller.gd" id="1_is5u2"]
+[ext_resource type="Texture2D" uid="uid://d057e0n6fimuu" path="res://texturas/Cuadricula-inventario.png" id="2_0jk7v"]
 [ext_resource type="PackedScene" uid="uid://db1yfgpgf44do" path="res://escenas/inventario_slot.tscn" id="2_7flxi"]
+[ext_resource type="Script" uid="uid://42hkv6uyaqmu" path="res://scripts/slot_mano_izquierda.gd" id="2_loeo7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikmkx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7flxi"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.12955844, 0.1295585, 0.12955841, 0.7647059)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.2827793, 0.2827793, 0.2827793, 0)
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(0.2, 0.2, 0.2, 0.6392157)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loeo7"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jk7v"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 corner_detail = 5
 
 [node name="Inventario_Controller" type="Node" unique_id=822035638]
@@ -28,6 +48,7 @@ script = ExtResource("1_3wa74")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1875799421]
 
 [node name="Inventario_UI" type="Control" parent="CanvasLayer" unique_id=5108280]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,35 +56,247 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Inventario_UI" unique_id=1693058056]
+[node name="background_inventario" type="Panel" parent="CanvasLayer/Inventario_UI" unique_id=602594332]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7flxi")
+
+[node name="panel_equipo" type="Panel" parent="CanvasLayer/Inventario_UI" unique_id=1449357486]
+layout_mode = 0
+offset_left = 71.3
+offset_top = 55.0
+offset_right = 569.0
+offset_bottom = 612.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_loeo7")
+
+[node name="slot_mano_izquierda" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=701505931]
+anchors_preset = 0
+offset_left = 33.699997
+offset_top = 183.0
+offset_right = 161.7
+offset_bottom = 375.0
+script = ExtResource("2_loeo7")
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_mano_izquierda" unique_id=1970738710]
+visible = false
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_mano_izquierda" unique_id=471240500]
+visible = false
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_mano_izquierda" unique_id=1908624691]
+visible = false
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+texture = ExtResource("2_0jk7v")
+
+[node name="slot_pecho" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1203425133]
+anchors_preset = 0
+offset_left = 183.70001
+offset_top = 183.0
+offset_right = 311.7
+offset_bottom = 375.0
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_pecho" unique_id=242797496]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_pecho" unique_id=682034009]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_pecho" unique_id=615547611]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+texture = ExtResource("2_0jk7v")
+
+[node name="slot_mano_derecha" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1000698355]
+anchors_preset = 0
+offset_left = 334.7
+offset_top = 183.0
+offset_right = 462.7
+offset_bottom = 375.0
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_mano_derecha" unique_id=825906522]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_mano_derecha" unique_id=1733355595]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_mano_derecha" unique_id=1889966784]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+texture = ExtResource("2_0jk7v")
+
+[node name="slot_cabeza" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=653974450]
+anchors_preset = 0
+offset_left = 183.7
+offset_top = 40.0
+offset_right = 311.7
+offset_bottom = 168.0
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza" unique_id=1214594237]
+layout_mode = 0
+offset_right = 128.00002
+offset_bottom = 128.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza" unique_id=1068992180]
+layout_mode = 0
+offset_right = 128.00002
+offset_bottom = 128.0
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza" unique_id=356375087]
+layout_mode = 0
+offset_right = 128.00002
+offset_bottom = 128.0
+texture = ExtResource("2_0jk7v")
+
+[node name="slot_piernas" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1050473272]
+anchors_preset = 0
+offset_left = 183.7
+offset_top = 396.0
+offset_right = 311.7
+offset_bottom = 524.0
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_piernas" unique_id=663084407]
+layout_mode = 0
+offset_right = 128.00002
+offset_bottom = 128.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_piernas" unique_id=2036801165]
+layout_mode = 0
+offset_right = 128.00002
+offset_bottom = 128.0
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_piernas" unique_id=655128997]
+layout_mode = 0
+offset_right = 128.00002
+offset_bottom = 128.0
+texture = ExtResource("2_0jk7v")
+
+[node name="slot_collar" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1430094779]
+anchors_preset = 0
+offset_left = 338.7
+offset_top = 130.0
+offset_right = 370.7
+offset_bottom = 162.0
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_collar" unique_id=606021261]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_collar" unique_id=475373198]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_collar" unique_id=907619912]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_0jk7v")
+
+[node name="slot_cinto" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1541021345]
+anchors_preset = 0
+offset_left = 127.7
+offset_top = 404.0
+offset_right = 159.7
+offset_bottom = 436.0
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cinto" unique_id=1680975308]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cinto" unique_id=1647570677]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cinto" unique_id=1283093528]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_0jk7v")
+
+[node name="slot_manos" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1344380390]
+anchors_preset = 0
+offset_left = 342.7
+offset_top = 404.0
+offset_right = 374.7
+offset_bottom = 436.0
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_manos" unique_id=402002470]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_manos" unique_id=53688929]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_manos" unique_id=118061081]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_0jk7v")
+
+[node name="panel_mochila" type="Panel" parent="CanvasLayer/Inventario_UI" unique_id=1693058056]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -425.0
-offset_top = -309.0
-offset_right = 425.0
-offset_bottom = 309.0
+offset_left = 110.0
+offset_top = -163.0
+offset_right = 494.0
+offset_bottom = 221.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ikmkx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jk7v")
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventario_UI/Panel" unique_id=1816532351]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventario_UI/panel_mochila" unique_id=1816532351 groups=["inventario"]]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5035294
-anchor_top = 0.47279614
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.1880188
-offset_right = -47.0
-offset_bottom = -82.0
+offset_right = 192.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 6
 script = ExtResource("1_is5u2")
 slot_scene = ExtResource("2_7flxi")
-bg_items_color = Color(0.4584052, 0.45840496, 0.45840502, 0.7372549)
+bg_items_color = Color(0.21176471, 0.21176471, 0.21176471, 0.39215687)
 metadata/_edit_use_anchors_ = true

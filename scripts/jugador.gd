@@ -11,9 +11,12 @@ extends CharacterBody3D
 @onready var collision = $CollisionShape3D
 @onready var dialogo = $"../UI/dialogo"
 @onready var texto_plano = $"../UI/texto_plano"
+@onready var jugador_ui: CanvasLayer = $Jugador_UI
+
 
 @export var golpeando = false
 @export var JUMP_VELOCITY = 3.5
+@export var vida : float
 var inventario_abierto = false
 var moving = false
 var corriendo = false
@@ -22,7 +25,10 @@ var SPEED : float = 2.5
 const mouse_sensitivity = 0.00002
 var sobre_enemigo = false
 var debug_line: MeshInstance3D
-
+var arma : Item = null
+var damage : float = 0
+var damage_arma : float
+var total_damage : float
 var footstep_sounds = [
 	preload("uid://bcy7vwpq2v668"),
 	preload("uid://dugv4k8tmfje3"),
@@ -33,7 +39,17 @@ var footstep_sounds = [
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	total_damage = damage + damage_arma
+func recibir_damage(_damage):
+	vida -= _damage
+	print ("vida del jugador: ", vida)
+	var texture = jugador_ui.get_node("blood_splash")
+	texture.visible = true
+	texture.modulate = Color(1, 1, 1, 1)
+	var tween = create_tween()
+	tween.tween_interval(0.1)
+	tween.tween_property(texture, "modulate:a", 0.0, 0.5).set_delay(1.0)
+	tween.tween_callback(func(): texture.visible = false)
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
 		inventario_abierto = !inventario_abierto
@@ -47,7 +63,6 @@ func _unhandled_input(event):
 
 	if Input.is_action_just_pressed("atacar"):
 		animation_player.play("atacar")
-
 	if event.is_action_pressed("interactuar"):
 		if inventario_abierto:
 			return
@@ -152,7 +167,11 @@ func _process(_delta):
 
 		if dialogo.visible and objeto_actual == null:
 			dialogo.stop_text()
-
+	if vida <= 0:
+		var go_screen = jugador_ui.get_node("game_over_screen")
+		#tendra que frenar el mundo entero
+		go_screen.visible = true
+		return
 	#sonido pies
 	if moving:
 		if not footstep_player.is_playing():

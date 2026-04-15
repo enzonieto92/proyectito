@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0ntgd10py0bj"
-path.s3tc="res://.godot/imported/espadalarga.png-e768698a5a9d579fda1e2d0779c7eb2e.s3tc.ctex"
+uid="uid://bixjx7k6dckpf"
+path.s3tc="res://.godot/imported/Espada_Oxidada.png-6f9b0ce2293ee73c8da2a27ee0a54e29.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://texturas/espadalarga.png"
-dest_files=["res://.godot/imported/espadalarga.png-e768698a5a9d579fda1e2d0779c7eb2e.s3tc.ctex"]
+source_file="res://texturas/Armas/Espada_Oxidada.png"
+dest_files=["res://.godot/imported/Espada_Oxidada.png-6f9b0ce2293ee73c8da2a27ee0a54e29.s3tc.ctex"]
 
 [params]
 
