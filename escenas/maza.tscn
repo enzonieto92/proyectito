@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ewbvkienff2i"]
 
 [ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_wgkan"]
-[ext_resource type="Resource" uid="uid://dwx1jm2fn5mwq" path="res://otros/maza.tres" id="2_ci7cf"]
+[ext_resource type="Resource" uid="uid://dwx1jm2fn5mwq" path="res://armas/maza.tres" id="2_ci7cf"]
 [ext_resource type="Texture2D" uid="uid://bx46fcqurj6s1" path="res://texturas/Armas/Maza.png" id="3_wgkan"]
 [ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="5_x2sij"]
 

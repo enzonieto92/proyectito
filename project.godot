@@ -33,6 +33,7 @@ recogibles=""
 inventario=""
 sprite_arma=""
 jugador=""
+dialogo=""
 
 [importer_defaults]
 

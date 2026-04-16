@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://du5leifwhuq6r"]
 
 [ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_740t4"]
-[ext_resource type="Resource" uid="uid://cgn2squmk4a6b" path="res://otros/espada.tres" id="2_4tc2h"]
+[ext_resource type="Resource" uid="uid://cgn2squmk4a6b" path="res://armas/espada.tres" id="2_4tc2h"]
 [ext_resource type="Texture2D" uid="uid://bixjx7k6dckpf" path="res://texturas/Armas/Espada_Oxidada.png" id="3_hbf7s"]
 [ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="4_hrxb8"]
 

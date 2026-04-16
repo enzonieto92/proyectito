@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dmbla3n6n3v4f"]
 
 [ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_aodja"]
-[ext_resource type="Resource" uid="uid://cgn2squmk4a6b" path="res://otros/espada.tres" id="2_t32yo"]
-[ext_resource type="Texture2D" uid="uid://by1ft8so5f5i2" path="res://texturas/Espada_Oxidada.png" id="3_lnim0"]
-[ext_resource type="Texture2D" uid="uid://bu1c4c7krdhc0" path="res://texturas/Espada_Oxidada.-normal.png" id="4_ggr4q"]
+[ext_resource type="Resource" uid="uid://cgn2squmk4a6b" path="res://armas/espada.tres" id="2_t32yo"]
+[ext_resource type="Texture2D" path="res://texturas/Espada_Oxidada.png" id="3_lnim0"]
+[ext_resource type="Texture2D" path="res://texturas/Espada_Oxidada.-normal.png" id="4_ggr4q"]
 [ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="5_3f3ik"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]

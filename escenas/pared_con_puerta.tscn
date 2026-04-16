@@ -74,7 +74,6 @@ debug_color = Color(0, 0.60038817, 0.70000815, 1)
 
 [node name="sonido_puerta" type="AudioStreamPlayer" parent="." unique_id=1860534472]
 stream = ExtResource("4_lyiyx")
-volume_db = 7.0
 
 [connection signal="body_entered" from="pivote/door/Area3D" to="pivote/door" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="pivote/door/Area3D" to="pivote/door" method="_on_area_3d_body_exited"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dwx1jm2fn5mwq"]
+
+[ext_resource type="Texture2D" uid="uid://xkiyec67711j" path="res://texturas/Armas/Maza_item.png" id="1_lbv0y"]
+[ext_resource type="Script" uid="uid://swuyinalvgjo" path="res://scripts/Item.gd" id="2_qwh72"]
+[ext_resource type="Texture2D" uid="uid://bx46fcqurj6s1" path="res://texturas/Armas/Maza.png" id="3_2j6du"]
+
+[resource]
+script = ExtResource("2_qwh72")
+nombre = "Maza"
+icono = ExtResource("1_lbv0y")
+textura = ExtResource("3_2j6du")
+descripcion = "se usa para golpear y corregir comportamientos"
+damage = Vector2(19, 28)
+weapon_size = 1.0
+size = Vector2i(1, 3)
+tipo = 1
+metadata/_custom_type_script = "uid://swuyinalvgjo"

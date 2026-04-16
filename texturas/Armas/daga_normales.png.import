@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8e6osxb41ty5"
-path.s3tc="res://.godot/imported/daga_item.png-6e8c4eeb1feea07d4e7349c026d3717a.s3tc.ctex"
+uid="uid://mbuobsdhvxtp"
+path.s3tc="res://.godot/imported/daga_normales.png-ff46f5308b8eaaca2ae71a6b9faabada.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://texturas/Armas/daga_item.png"
-dest_files=["res://.godot/imported/daga_item.png-6e8c4eeb1feea07d4e7349c026d3717a.s3tc.ctex"]
+source_file="res://texturas/Armas/daga_normales.png"
+dest_files=["res://.godot/imported/daga_normales.png-ff46f5308b8eaaca2ae71a6b9faabada.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://texturas/Armas/daga_normales.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

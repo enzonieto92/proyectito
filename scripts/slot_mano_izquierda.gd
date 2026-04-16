@@ -81,8 +81,12 @@ func _drop_data(_at_position: Vector2, data):
 	inventario.remover_item(data["item"], data["item"].grid_pos)
 	item = data["item"]
 	var jugador = get_tree().get_first_node_in_group("jugador")
-	jugador.damage_arma = item.damage
-	jugador.total_damage = jugador.damage+ item.damage
+	jugador.damage_arma = Vector2(item.damage.x, item.damage.y)
+	jugador.total_damage.x = (jugador.damage.x + item.damage.x)
+	jugador.total_damage.y = (jugador.damage.y + item.damage.y)
+	print ("damage Arma: ", item.damage)
+	print ("damage Jugador: ", jugador.total_damage)
+	
 	ocupado = true
 	_mostrar_icono()
 	if sprite_arma:

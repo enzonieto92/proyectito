@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8e6osxb41ty5"
-path.s3tc="res://.godot/imported/daga_item.png-6e8c4eeb1feea07d4e7349c026d3717a.s3tc.ctex"
+uid="uid://sf7ukj23faar"
+path.s3tc="res://.godot/imported/mesa-altar_texturaaltar-normales.png-5bf463b0708072b54d44f1755e28d518.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "41b3cb6bd35047ec3156a86544d42fc4"
+}
 
 [deps]
 
-source_file="res://texturas/Armas/daga_item.png"
-dest_files=["res://.godot/imported/daga_item.png-6e8c4eeb1feea07d4e7349c026d3717a.s3tc.ctex"]
+source_file="res://objetos glb/mesa-altar_texturaaltar-normales.png"
+dest_files=["res://.godot/imported/mesa-altar_texturaaltar-normales.png-5bf463b0708072b54d44f1755e28d518.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://objetos glb/mesa-altar_texturaaltar-normales.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

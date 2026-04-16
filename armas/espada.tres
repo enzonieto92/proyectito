@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cgn2squmk4a6b"]
+
+[ext_resource type="Texture2D" uid="uid://cxetxi8uj6stg" path="res://texturas/Armas/Espada_Oxidada_item.png" id="1_rfoht"]
+[ext_resource type="Script" uid="uid://swuyinalvgjo" path="res://scripts/Item.gd" id="2_atsae"]
+[ext_resource type="Texture2D" uid="uid://bixjx7k6dckpf" path="res://texturas/Armas/Espada_Oxidada.png" id="3_f281o"]
+
+[resource]
+script = ExtResource("2_atsae")
+id = "1"
+nombre = "Espada Oxidada"
+icono = ExtResource("1_rfoht")
+textura = ExtResource("3_f281o")
+descripcion = "Espada inicial para probar inventario"
+damage = Vector2(6, 12)
+weapon_size = 1.6
+size = Vector2i(1, 3)
+stackable = true
+tipo = 1
+metadata/_custom_type_script = "uid://swuyinalvgjo"

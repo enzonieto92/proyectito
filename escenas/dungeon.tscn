@@ -10,6 +10,70 @@
 [ext_resource type="PackedScene" uid="uid://d3pr07lbm5fkp" path="res://escenas/cruz.tscn" id="7_6h3nq"]
 [ext_resource type="PackedScene" uid="uid://dr0lkmm011sx5" path="res://escenas/pared_con_puerta.tscn" id="7_jqckn"]
 [ext_resource type="PackedScene" uid="uid://bj7xp0y6hq2km" path="res://escenas/mesa_rodillo.tscn" id="7_k2dfv"]
+[ext_resource type="PackedScene" uid="uid://bd06igfxy3273" path="res://escenas/altar_secreto.tscn" id="13_hc4sh"]
+[ext_resource type="AudioStream" uid="uid://dqvbomqywusbp" path="res://sonido/compuerta_abierta.mp3" id="14_nnpnv"]
+[ext_resource type="PackedScene" uid="uid://c3aibayik4w7l" path="res://escenas/compuerta_secreta.tscn" id="15_81g75"]
+
+[sub_resource type="Animation" id="Animation_vvsm8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sonido_compuerta:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pared:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_33lb3"]
+resource_name = "desbloquear_puerta"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sonido_compuerta:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pared:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.94),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81g75"]
+_data = {
+&"RESET": SubResource("Animation_vvsm8"),
+&"desbloquear_puerta": SubResource("Animation_33lb3")
+}
 
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
 
@@ -91,3 +155,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0830342, -0.061281204)
 
 [node name="rejas_celda2" parent="." unique_id=619107190 instance=ExtResource("6_uag5o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -0.061281204)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1768049510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.87333, 0, 3.95)
+
+[node name="animacion_pared" type="AnimationPlayer" parent="Node3D" unique_id=237837693]
+libraries/ = SubResource("AnimationLibrary_81g75")
+
+[node name="sonido_compuerta" type="AudioStreamPlayer" parent="Node3D" unique_id=1986714570]
+stream = ExtResource("14_nnpnv")
+volume_db = -9.226
+pitch_scale = 0.6
+
+[node name="pared_compuerta" parent="." unique_id=1535462391 instance=ExtResource("15_81g75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, -1.495, 3.999)
+
+[node name="altar_secreto" parent="." unique_id=934175357 instance=ExtResource("13_hc4sh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.70513, -1.4950002, 4.0953503)

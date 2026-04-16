@@ -3,22 +3,23 @@ extends CharacterBody3D
 @onready var player: CharacterBody3D = $"../player"
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
 
-var speed := 4.5
+var speed := 2.5
 
 @export var atacando : bool = false
 @export var vida : float 
-@export var attack_range := 2.5
+@export var attack_range : float
 @export var animation_vector : Vector3
-@export var damage : float
 
-@onready var raycast_enemigo: RayCast3D = $raycast_enemigo
+@export var max_damage : float
+@export var min_damage : float
 
 @export var salto = false
 
 var _en_cooldown := false
 var _atacando_cooldown := false
-
+var damage : int
 var attack_dir := Vector3.ZERO   # 🔥 dirección fija del ataque
 
 func _physics_process(delta: float) -> void:
@@ -30,7 +31,6 @@ func _physics_process(delta: float) -> void:
 
 	# 🔥 SOLO rotar si NO está atacando
 	if not _atacando_cooldown:
-		await get_tree().create_timer(0.1).timeout
 		var target_position = player.position
 		target_position.y = global_position.y
 
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 
 	elif dist < attack_range:
 		attack_behavior()
-
+		damage = int(randf_range(min_damage,max_damage))
 	elif not _en_cooldown:
 		chase_behavior()
 
@@ -68,7 +68,15 @@ func _physics_process(delta: float) -> void:
 
 
 func recibir_damage(_damage):
-	vida -= _damage
+	var calcular_damage = int(randf_range(_damage.x, _damage.y))
+	print (calcular_damage)
+	vida -= calcular_damage
+	
+	var sonido = AudioStreamPlayer.new()
+	sonido.stream = ESPADA_GOLPE
+	add_child(sonido)          # ← agregarlo al árbol
+	sonido.play()
+	sonido.finished.connect(sonido.queue_free) 
 
 
 func chase_behavior():

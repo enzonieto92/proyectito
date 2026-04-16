@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dcgsorj44nwk3"]
+
+[ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_4td84"]
+[ext_resource type="Resource" uid="uid://cbr4jdhfx7qnr" path="res://armas/espada_corta.tres" id="2_cjcxe"]
+[ext_resource type="Texture2D" uid="uid://d2k4nm6yt47oy" path="res://texturas/Armas/daga.png" id="3_cjcxe"]
+[ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="3_mk50l"]
+[ext_resource type="Texture2D" uid="uid://mbuobsdhvxtp" path="res://texturas/Armas/daga_normales.png" id="4_mk50l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
+radius = 0.17626953
+height = 0.35253906
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mk50l"]
+size = Vector3(0.6676636, 0.58392334, 0.85621643)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk50l"]
+transparency = 1
+albedo_texture = ExtResource("3_cjcxe")
+normal_enabled = true
+normal_texture = ExtResource("4_mk50l")
+texture_filter = 0
+
+[node name="daga_ritual" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_4td84")
+item = ExtResource("2_cjcxe")
+
+[node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=330304897]
+shape = SubResource("CapsuleShape3D_tcnuu")
+
+[node name="area_interaccion" type="Area3D" parent="." unique_id=1519646548]
+collision_layer = 3
+
+[node name="colision_area" type="CollisionShape3D" parent="area_interaccion" unique_id=1641568912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21517944, 0.057525635, -0.12625885)
+shape = SubResource("BoxShape3D_mk50l")
+
+[node name="sprite" type="MeshInstance3D" parent="." unique_id=170180650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.16514498)
+mesh = SubResource("PlaneMesh_jsk3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_mk50l")
+script = ExtResource("3_mk50l")
+
+[connection signal="body_entered" from="area_interaccion" to="." method="_on_area_interaccion_body_entered"]
+[connection signal="body_exited" from="area_interaccion" to="." method="_on_area_interaccion_body_exited"]

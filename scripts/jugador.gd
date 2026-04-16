@@ -17,6 +17,7 @@ extends CharacterBody3D
 @export var golpeando = false
 @export var JUMP_VELOCITY = 3.5
 @export var vida : float
+@export var armadura : float
 var inventario_abierto = false
 var moving = false
 var corriendo = false
@@ -26,9 +27,10 @@ const mouse_sensitivity = 0.00002
 var sobre_enemigo = false
 var debug_line: MeshInstance3D
 var arma : Item = null
-var damage : float = 0
-var damage_arma : float
-var total_damage : float
+var CONSTANTE_ARMADURA : float = 100
+var damage : Vector2
+var damage_arma : Vector2
+var total_damage : Vector2
 var footstep_sounds = [
 	preload("uid://bcy7vwpq2v668"),
 	preload("uid://dugv4k8tmfje3"),
@@ -39,10 +41,19 @@ var footstep_sounds = [
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	total_damage = damage + damage_arma
+	total_damage.x = (damage.x + damage_arma.x)
+	total_damage.y = (damage.y + damage_arma.y)
 func recibir_damage(_damage):
-	vida -= _damage
-	print ("vida del jugador: ", vida)
+	print ("damage antes: ", _damage)
+	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
+	print ("reduccion por arnadura:",reduccion)
+	print ("armadura: ", armadura, "constante: ", CONSTANTE_ARMADURA)
+	var daño_final = _damage * (1.0 - reduccion)
+	print ("damage final: ", daño_final)
+	vida -= int(daño_final)
+	reaccion_ui()
+	
+func reaccion_ui():
 	var texture = jugador_ui.get_node("blood_splash")
 	texture.visible = true
 	texture.modulate = Color(1, 1, 1, 1)
@@ -50,6 +61,7 @@ func recibir_damage(_damage):
 	tween.tween_interval(0.1)
 	tween.tween_property(texture, "modulate:a", 0.0, 0.5).set_delay(1.0)
 	tween.tween_callback(func(): texture.visible = false)
+	
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
 		inventario_abierto = !inventario_abierto
@@ -87,13 +99,17 @@ func _physics_process(delta):
 
 	if raycast.is_colliding():
 		raycast.show()
+		
 		var obj = raycast.get_collider()
+		print ("objeto: ",obj)
+		
 		if is_instance_valid(obj) and not obj.has_method("puede_interactuar"):
 			obj = obj.get_parent()
 
 		if is_instance_valid(obj) \
 		and obj.has_method("puede_interactuar") \
 		and obj.puede_interactuar():
+			print ("puede interactuar: ",obj)
 			objeto_actual = obj
 
 	if Input.is_action_pressed("agacharse"):

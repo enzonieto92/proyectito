@@ -12,6 +12,7 @@ func _process(_delta: float) -> void:
 		var collider = get_collider()
 		if collider.is_in_group("enemigos") and not golpeando_enemigo:
 			golpeando_enemigo = true
+			jugador.golpeando = false
+
 			collider.recibir_damage(jugador.total_damage)
-			
-			print("vida enemigo:", collider.vida)
+			set_enabled(false)

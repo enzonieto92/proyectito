@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8e6osxb41ty5"
-path.s3tc="res://.godot/imported/daga_item.png-6e8c4eeb1feea07d4e7349c026d3717a.s3tc.ctex"
+uid="uid://dwimn84kcrrfm"
+path.s3tc="res://.godot/imported/pared_compuerta_walldungeon.png-ba8d4a482ef39166a825febd3e8e05fb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "ee07ca02e92d27914c4dcac35f1d1269"
+}
 
 [deps]
 
-source_file="res://texturas/Armas/daga_item.png"
-dest_files=["res://.godot/imported/daga_item.png-6e8c4eeb1feea07d4e7349c026d3717a.s3tc.ctex"]
+source_file="res://objetos glb/pared_compuerta_walldungeon.png"
+dest_files=["res://.godot/imported/pared_compuerta_walldungeon.png-ba8d4a482ef39166a825febd3e8e05fb.s3tc.ctex"]
 
 [params]
 

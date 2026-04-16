@@ -7,7 +7,8 @@ class_name Item
 @export var textura: CompressedTexture2D
 @export var descripcion: String = ""
 
-@export var damage: float
+@export var damage : Vector2
+
 @export var weapon_size: float    
 
 # tamaño en la grilla (ej: 2x2)

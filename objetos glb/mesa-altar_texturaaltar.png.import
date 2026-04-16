@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8e6osxb41ty5"
-path.s3tc="res://.godot/imported/daga_item.png-6e8c4eeb1feea07d4e7349c026d3717a.s3tc.ctex"
+uid="uid://dgqs4w3w5mnb0"
+path.s3tc="res://.godot/imported/mesa-altar_texturaaltar.png-4b4bccf96621bb079a2fa715a93c97fd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "256ef58ac43d3fb0d8f964c590e55847"
+}
 
 [deps]
 
-source_file="res://texturas/Armas/daga_item.png"
-dest_files=["res://.godot/imported/daga_item.png-6e8c4eeb1feea07d4e7349c026d3717a.s3tc.ctex"]
+source_file="res://objetos glb/mesa-altar_texturaaltar.png"
+dest_files=["res://.godot/imported/mesa-altar_texturaaltar.png-4b4bccf96621bb079a2fa715a93c97fd.s3tc.ctex"]
 
 [params]
 

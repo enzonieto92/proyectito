@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://lqyq8ki31dlw" path="res://scripts/jugador.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ckcuynwuawjok" path="res://scripts/animation_controller.gd" id="2_r4hsq"]
 [ext_resource type="PackedScene" uid="uid://ceyurw2moikg2" path="res://escenas/inventario_controller.tscn" id="2_sweqy"]
-[ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="3_2hs0m"]
 [ext_resource type="AudioStream" uid="uid://cjxlxobyflnn8" path="res://sonido/deuslower-atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215.mp3" id="4_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://iw1jjrm2qss1" path="res://escenas/jugador_ui.tscn" id="4_ig1bj"]
 [ext_resource type="AudioStream" uid="uid://bcy7vwpq2v668" path="res://sonido/paso1.mp3" id="5_ig1bj"]
@@ -65,7 +64,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivote/posicion_arma/sprite_arma/raycast_arma:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_dw050"]
@@ -103,10 +114,22 @@ tracks/2/path = NodePath(".:golpeando")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 0.60833335),
+"times": PackedFloat32Array(0, 0.53333336),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivote/posicion_arma/sprite_arma/raycast_arma:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5311571, 0.7377626),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_w7fad"]
@@ -204,13 +227,6 @@ _data = {
 &"idle": SubResource("Animation_p52f3")
 }
 
-[sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
-size = Vector2(1.325, 0.765)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3v7ru"]
-render_priority = 0
-shader = ExtResource("3_2hs0m")
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
 radius = 0.3
 height = 1.8
@@ -224,8 +240,8 @@ albedo_color = Color(0.8745098, 0, 0.83137256, 1)
 
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
 script = ExtResource("1_hqtel")
-golpeando = true
-vida = 60.0
+vida = 75.0
+armadura = 100.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1162736894]
 environment = SubResource("Environment_sacnx")
@@ -242,11 +258,6 @@ script = ExtResource("2_r4hsq")
 
 [node name="camara_player" type="Camera3D" parent="." unique_id=219131178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="camara_player" unique_id=399597848]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07)
-mesh = SubResource("QuadMesh_wlxy5")
-surface_material_override/0 = SubResource("ShaderMaterial_3v7ru")
 
 [node name="raycast" type="RayCast3D" parent="camara_player" unique_id=310805274]
 target_position = Vector3(0, 0, -2)
@@ -290,15 +301,16 @@ script = ExtResource("6_p52f3")
 transform = Transform3D(0.83997923, -0.094352365, -0.5343522, 0.37468958, 0.81314975, 0.44541565, 0.3924824, -0.57435626, 0.7183817, 0.2622436, -0.15999827, -0.80995387)
 
 [node name="sprite_arma" type="Sprite3D" parent="pivote/posicion_arma" unique_id=605076613 groups=["sprite_arma"]]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -4.656613e-10, -0.01228652, -9.313227e-10)
+transform = Transform3D(0.8915488, 0.33353665, 0.3064214, -0.28271395, 0.93836963, -0.19883472, -0.35385522, 0.090641305, 0.9308979, 0.10871428, -0.09835851, -0.092663854)
 flip_h = true
 shaded = true
+no_depth_test = true
 alpha_cut = 1
 texture_filter = 0
-render_priority = 1
 
 [node name="raycast_arma" type="RayCast3D" parent="pivote/posicion_arma/sprite_arma" unique_id=1054449448]
 transform = Transform3D(-1, 6.7055225e-08, 1.8626451e-08, -9.685755e-08, -1, -2.9802322e-08, -7.450581e-09, -2.9802322e-08, 1, 0, -0.31296873, -1.1920929e-07)
+enabled = false
 target_position = Vector3(0, -0.62, 0)
 script = ExtResource("9_w7fad")
 

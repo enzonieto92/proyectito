@@ -23,7 +23,7 @@ script = ExtResource("1_hvxa3")
 [node name="UI" type="CanvasLayer" parent="." unique_id=1235935335]
 follow_viewport_enabled = true
 
-[node name="dialogo" type="RichTextLabel" parent="UI" unique_id=785342466]
+[node name="dialogo" type="RichTextLabel" parent="UI" unique_id=785342466 groups=["dialogo"]]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -77,4 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.523201, 0.0088825375, 1.7072277)
 
 [node name="Enemigo" parent="." unique_id=1587185498 instance=ExtResource("10_xqdpg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.47764, 0.4006243, -0.21195507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.418045, 0.9606244, 0.6684456)
+
+[node name="Enemigo2" parent="." unique_id=1121871139 instance=ExtResource("10_xqdpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.668795, 0.9606244, 0.6684456)

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c4dyh1p4opnoy"]
+
+[ext_resource type="PackedScene" uid="uid://c2uhaftjixji" path="res://objetos glb/mesa-altar.glb" id="1_4pwm4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4pwm4"]
+size = Vector3(1.0010986, 1.1826172, 0.539032)
+
+[node name="mesa-altar" unique_id=107865010 instance=ExtResource("1_4pwm4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1452912914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035217285, 0.62353516, 0.008682251)
+shape = SubResource("BoxShape3D_4pwm4")
