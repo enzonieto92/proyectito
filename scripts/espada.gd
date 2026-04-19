@@ -1,12 +1,13 @@
 extends StaticBody3D
 
-@export var item: Item
+@export var arma: Arma
+
 var player_entered = false
 func puede_interactuar() -> bool:
 	return player_entered
 
 func interactuar(player):
-	if await player.inventario_controller.agregar_item(item):
+	if await player.inventario_controller.agregar_item(arma):
 		print ("agregando item")
 		queue_free()
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dd5mj7x4npmfd"]
 
-[ext_resource type="Script" uid="uid://42hkv6uyaqmu" path="res://scripts/slot_mano_izquierda.gd" id="1_4f3mb"]
+[ext_resource type="Script" uid="uid://42hkv6uyaqmu" path="res://scripts/slot_mano_derecha.gd" id="1_4f3mb"]
 
 [node name="slot_arma" type="Control" unique_id=726035691]
 layout_mode = 3

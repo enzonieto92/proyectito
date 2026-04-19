@@ -2,10 +2,12 @@ extends CharacterBody3D
 
 @onready var inv_UI: Node = $Inventario_Controller/CanvasLayer/Inventario_UI
 @onready var inventario_controller: Node = $Inventario_Controller
-@onready var camera: Camera3D = $camara_player
+@onready var camera: Camera3D = $camara_controller/camara_player
+
 @onready var footstep = $footstep
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var raycast: RayCast3D = $camara_player/raycast
+@onready var footstep_player: AudioStreamPlayer3D = $footstep
+@onready var raycast: RayCast3D = $camara_controller/camara_player/raycast
 @onready var raycast_arma: RayCast3D = $pivote/posicion_arma/sprite_arma/raycast_arma
 @onready var shape = $CollisionShape3D.shape as CapsuleShape3D
 @onready var collision = $CollisionShape3D
@@ -13,20 +15,22 @@ extends CharacterBody3D
 @onready var texto_plano = $"../UI/texto_plano"
 @onready var jugador_ui: CanvasLayer = $Jugador_UI
 
-
+@export var stamina : float
 @export var golpeando = false
 @export var JUMP_VELOCITY = 3.5
 @export var vida : float
 @export var armadura : float
+
+var stamina_agotada: bool = false
 var inventario_abierto = false
 var moving = false
 var corriendo = false
 var objeto_actual = null
 var SPEED : float = 2.5
-const mouse_sensitivity = 0.00002
-var sobre_enemigo = false
+const mouse_sensitivity = 0.002
+var pitch := 0.0  # rotación vertical acumulada
 var debug_line: MeshInstance3D
-var arma : Item = null
+var arma : Arma = null
 var CONSTANTE_ARMADURA : float = 100
 var damage : Vector2
 var damage_arma : Vector2
@@ -36,20 +40,17 @@ var footstep_sounds = [
 	preload("uid://dugv4k8tmfje3"),
 	preload("uid://cj0w3fingavab")
 ]
-@onready var footstep_player: AudioStreamPlayer3D = $footstep
 
-
+func cambiar_pitch_swing():
+	var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma
+	sonido_arma.pitch_scale = randf_range(0.7, 1.3)
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	total_damage.x = (damage.x + damage_arma.x)
 	total_damage.y = (damage.y + damage_arma.y)
 func recibir_damage(_damage):
-	print ("damage antes: ", _damage)
 	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
-	print ("reduccion por arnadura:",reduccion)
-	print ("armadura: ", armadura, "constante: ", CONSTANTE_ARMADURA)
 	var daño_final = _damage * (1.0 - reduccion)
-	print ("damage final: ", daño_final)
 	vida -= int(daño_final)
 	reaccion_ui()
 	
@@ -72,9 +73,6 @@ func _unhandled_input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-	if Input.is_action_just_pressed("atacar"):
-		animation_player.play("atacar")
 	if event.is_action_pressed("interactuar"):
 		if inventario_abierto:
 			return
@@ -88,9 +86,15 @@ func _unhandled_input(event):
 			objeto_actual.interactuar(self)
 
 	if event is InputEventMouseMotion and not inventario_abierto:
-		rotate_y(-rad_to_deg(event.relative.x * mouse_sensitivity))
-		camera.rotate_x(-rad_to_deg(event.relative.y * mouse_sensitivity))
+		# Rotación horizontal (libre)
+		rotate_y(-event.relative.x * mouse_sensitivity)
 
+		# Acumular pitch (vertical)
+		pitch -= event.relative.y * mouse_sensitivity
+		pitch = clamp(pitch, deg_to_rad(-80), deg_to_rad(80))
+
+		# Aplicar rotación limitada
+		camera.rotation.x = pitch
 
 
 func _physics_process(delta):
@@ -98,36 +102,46 @@ func _physics_process(delta):
 	objeto_actual = null
 
 	if raycast.is_colliding():
-		raycast.show()
-		
 		var obj = raycast.get_collider()
-		print ("objeto: ",obj)
-		
+
 		if is_instance_valid(obj) and not obj.has_method("puede_interactuar"):
 			obj = obj.get_parent()
 
 		if is_instance_valid(obj) \
 		and obj.has_method("puede_interactuar") \
 		and obj.puede_interactuar():
-			print ("puede interactuar: ",obj)
 			objeto_actual = obj
 
 	if Input.is_action_pressed("agacharse"):
-		shape.height = lerp(shape.height, 1.0, 25 * delta)
-		collision.position.y = lerp(collision.position.y, 1.28,25 * delta)
+		if shape.height > 1.05:  # solo lerp si no llegó al destino
+			shape.height = lerp(shape.height, 1.0, 25 * delta)
+			collision.position.y = lerp(collision.position.y, 1.28, 25 * delta)
 	elif not test_move(global_transform, Vector3.UP * 0.5):
+		if shape.height < 1.75:  # solo lerp si no llegó al destino
 			shape.height = lerp(shape.height, 1.8, 15 * delta)
 			collision.position.y = lerp(collision.position.y, 0.881, 25 * delta)
-	if Input.is_action_pressed("correr"):
-		SPEED = 4
-		corriendo = true
-	else:
-		SPEED = 2.5
-		corriendo = false
+	if stamina <= 5:
+		stamina_agotada = true
+	elif stamina >= 25:
+		stamina_agotada = false
 
+	if Input.is_action_pressed("correr") and stamina > 5 and not stamina_agotada:
+		SPEED = 4
+		if moving:
+			stamina -= delta * SPEED * 4
+			corriendo = true
+		else:
+			corriendo = false
+			if stamina < 40:
+				stamina += delta * 2.0 * 1.5  # valor fijo, no depende de SPEED
+	else:
+		SPEED = 2.0
+		corriendo = false
+		if stamina < 40:
+			stamina += delta * 2.0 * 1.5  # mismo valor fijo
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not inventario_abierto:
 		velocity.y = JUMP_VELOCITY
-
+		
 	if inventario_abierto:
 		if footstep.playing:
 			footstep.stop()
@@ -143,20 +157,28 @@ func _physics_process(delta):
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (camera.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+	var forward = -camera.global_transform.basis.z
+	forward.y = 0
+	forward = forward.normalized()
 
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	var right = camera.global_transform.basis.x
+	right.y = 0
+	right = right.normalized()
+
+	var direction = (right * input_dir.x - forward * input_dir.y).normalized()
+
+	if is_on_floor():
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-	moving = velocity.length() > 0.1 and is_on_floor()
+	moving = velocity.length_squared() > 0.01 and is_on_floor()
 
 func _process(_delta):
 	if objeto_actual and not dialogo.visible and not inventario_abierto:

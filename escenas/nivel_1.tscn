@@ -7,11 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="5_4a01a"]
 [ext_resource type="PackedScene" uid="uid://daphq6mgow8wf" path="res://escenas/silla_tirada.tscn" id="6_8lvc2"]
 [ext_resource type="PackedScene" uid="uid://cenpahd676ouq" path="res://escenas/hoja.tscn" id="7_lgf0p"]
-[ext_resource type="PackedScene" uid="uid://du5leifwhuq6r" path="res://escenas/espada.tscn" id="8_bvwj0"]
 [ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
-[ext_resource type="PackedScene" uid="uid://cmmijprdnkysr" path="res://escenas/espada_corta.tscn" id="9_78vvm"]
 [ext_resource type="PackedScene" uid="uid://00i8tkohagvw" path="res://escenas/Enemigo.tscn" id="10_xqdpg"]
-[ext_resource type="PackedScene" uid="uid://ewbvkienff2i" path="res://escenas/maza.tscn" id="12_xejmm"]
 
 [sub_resource type="Theme" id="Theme_3v7ru"]
 default_font = ExtResource("2_78vvm")
@@ -58,26 +55,17 @@ script = ExtResource("4_u4y7y")
 transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -0.21210957, 0, 0.3686205)
 floor_stop_on_slope = false
 
-[node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_bvwj0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.135345, 0, 0.19589567)
-
 [node name="silla" parent="." unique_id=30108936 instance=ExtResource("6_8lvc2")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -4.153, 0.31319487, 5.548)
 
 [node name="hoja" parent="." unique_id=690816751 instance=ExtResource("7_lgf0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7874975, 0.9046548, 0.101058796)
 
-[node name="espada_corta" parent="." unique_id=667668280 instance=ExtResource("9_78vvm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.94147, 0, 0.347)
-
-[node name="dungeon" parent="." unique_id=1761309701 instance=ExtResource("9_0lcy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
-
-[node name="maza" parent="." unique_id=124967807 instance=ExtResource("12_xejmm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.523201, 0.0088825375, 1.7072277)
-
 [node name="Enemigo" parent="." unique_id=1587185498 instance=ExtResource("10_xqdpg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.418045, 0.9606244, 0.6684456)
 
 [node name="Enemigo2" parent="." unique_id=1121871139 instance=ExtResource("10_xqdpg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.668795, 0.9606244, 0.6684456)
+
+[node name="dungeon" parent="." unique_id=1761309701 instance=ExtResource("9_0lcy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)

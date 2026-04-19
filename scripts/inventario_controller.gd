@@ -6,8 +6,11 @@ extends Node
 func _ready():
 	add_to_group("inventario")
 
-
 func agregar_item(item) -> bool:
+	if not is_instance_valid(item):
+		push_error("agregar_item: item es null o inválido")
+		return false
+	
 	var inventario_ui = grid_container.get_parent().get_parent()
 	var era_visible = inventario_ui.visible
 	
@@ -19,7 +22,9 @@ func agregar_item(item) -> bool:
 	# 🔥 CLAVE: esperar 2 frames
 	await get_tree().process_frame
 	await get_tree().process_frame
-	
+
+	if not is_instance_valid(grid_container):
+		return false
 	for y in range(grid_container.grid_height):
 		for x in range(grid_container.grid_width):
 			var pos = Vector2i(x, y)

@@ -13,15 +13,23 @@ config_version=5
 config/name="proyectito"
 run/main_scene="res://escenas/nivel_1.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
-run/max_fps=200
+run/max_fps=500
+
+[audio]
+
+buses/default_bus_layout="uid://cirqksb6w5hpv"
 
 [display]
 
 window/size/mode=3
 window/size/initial_screen=1
 window/size/resizable=false
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
+
+[editor]
+
+movie_writer/disable_vsync=true
 
 [global_group]
 

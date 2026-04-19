@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Arma" format=3 uid="uid://b573ek7vl2aem"]
+
+[ext_resource type="Texture2D" uid="uid://psi7gjcffda4" path="res://texturas/Armas/Pica_item.png" id="1_1g2sc"]
+[ext_resource type="Script" uid="uid://bw8ib7rq5xuw5" path="res://scripts/Arma.gd" id="1_t62vi"]
+[ext_resource type="Texture2D" uid="uid://doghknbtc1e3h" path="res://texturas/Armas/Pica.png" id="3_p32ka"]
+
+[resource]
+script = ExtResource("1_t62vi")
+nombre = "Lanza"
+icono = ExtResource("1_1g2sc")
+textura = ExtResource("3_p32ka")
+damage = Vector2(12, 17)
+weapon_size = 1.8
+size = Vector2i(1, 4)
+tipo = 1
+metadata/_custom_type_script = "uid://bw8ib7rq5xuw5"

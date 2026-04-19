@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://da3ceu1m6q62m"]
+
+[ext_resource type="Script" uid="uid://cludds3aonx0l" path="res://scripts/boton_compuerta.gd" id="1_0gopq"]
+[ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="2_07800"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b4tto"]
+load_path = "res://.godot/imported/paredes_dungeonglb_walldungeon.png-dcb59a4443367088cd30a96fba9be52a.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_531j8"]
+load_path = "res://.godot/imported/paredes_dungeonglb_walldungeon_specular (2).png-cb4a780e207444e110fac8b0dc34905f.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbelj"]
+albedo_texture = SubResource("CompressedTexture2D_b4tto")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_531j8")
+uv1_scale = Vector3(0.419, 0.415, 0.512)
+uv1_offset = Vector3(0, -0.179, -2.218)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_mjcbw"]
+material = SubResource("StandardMaterial3D_xbelj")
+size = Vector3(0.185, 0.375, 0.39)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0gopq"]
+size = Vector3(1.0258999, 1.135376, 0.8909912)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfoxl"]
+size = Vector3(0.19216919, 0.36198425, 0.45063782)
+
+[sub_resource type="Animation" id="Animation_p6738"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sonido_boton:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.02),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.037, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xqbbn"]
+resource_name = "activar_boton"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sonido_boton:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.037, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_igwts"]
+_data = {
+&"RESET": SubResource("Animation_p6738"),
+&"activar_boton": SubResource("Animation_xqbbn")
+}
+
+[node name="ladrillo" type="Node3D" unique_id=1903809485]
+
+[node name="ladrillo_boton" type="CSGMesh3D" parent="." unique_id=1504936124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037, 0, 0)
+mesh = SubResource("BoxMesh_mjcbw")
+
+[node name="area_interaccion" type="Area3D" parent="ladrillo_boton" unique_id=1735069470]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ladrillo_boton/area_interaccion" unique_id=343722311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41709423, 0.20977783, -0.14923096)
+shape = SubResource("BoxShape3D_0gopq")
+
+[node name="boton" type="StaticBody3D" parent="ladrillo_boton" unique_id=802869136]
+script = ExtResource("1_0gopq")
+
+[node name="indicador_raycast" type="CollisionShape3D" parent="ladrillo_boton/boton" unique_id=1338030221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00010681152, 0.0006790161, -0.0027389526)
+shape = SubResource("BoxShape3D_hfoxl")
+
+[node name="animacion_ladrillo" type="AnimationPlayer" parent="ladrillo_boton" unique_id=467746974]
+libraries/ = SubResource("AnimationLibrary_igwts")
+
+[node name="sonido_boton" type="AudioStreamPlayer" parent="ladrillo_boton" unique_id=1257817862]
+stream = ExtResource("2_07800")
+
+[connection signal="body_entered" from="ladrillo_boton/area_interaccion" to="ladrillo_boton/boton" method="_on_area_interaccion_body_entered"]
+[connection signal="body_exited" from="ladrillo_boton/area_interaccion" to="ladrillo_boton/boton" method="_on_area_interaccion_body_exited"]

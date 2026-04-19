@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://byyboqd0cbev4" path="res://texturas/favpng_3c26b07e0fcabf141c10c4b006414359.png" id="1_17j6d"]
 [ext_resource type="FontFile" uid="uid://c5xd2k2y55fr3" path="res://otros/Pixelpurl-0vBPP.ttf" id="2_v5cmr"]
+[ext_resource type="Script" uid="uid://1exwuqcr3xqp" path="res://scripts/barra_stamina.gd" id="3_bt4of"]
 
 [node name="Jugador_UI" type="CanvasLayer" unique_id=1673448679]
 
@@ -36,3 +37,15 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_v5cmr")
 theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
+
+[node name="barra_stamina" type="ProgressBar" parent="." unique_id=1895136430]
+anchors_preset = -1
+anchor_right = 0.35200003
+anchor_bottom = 0.20400001
+offset_left = 11.0
+offset_top = 119.0
+offset_right = 0.49597168
+offset_bottom = -0.19200134
+max_value = 40.0
+show_percentage = false
+script = ExtResource("3_bt4of")

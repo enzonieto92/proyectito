@@ -1,7 +1,6 @@
 extends StaticBody3D
 
 @onready var animacion_ladrillo: AnimationPlayer = $"../animacion_ladrillo"
-
 @onready var animacion_puerta: AnimationPlayer = $"../../../animacion_puerta"
 
 var player_entered

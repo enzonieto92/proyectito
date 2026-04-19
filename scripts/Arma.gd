@@ -1,5 +1,6 @@
 extends Resource
-class_name Item
+
+class_name Arma
 
 @export var id: String
 @export var nombre: String
@@ -21,6 +22,7 @@ class_name Item
 enum Tipo {
 	CONSUMIBLE,
 	ARMA,
+	SECUNDARIA,
 	EQUIPO,
 	LLAVE,
 	MISC

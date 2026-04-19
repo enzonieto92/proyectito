@@ -217,7 +217,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_nkg5f"]
 resource_name = "attack"
-length = 2.0732145
+length = 2.0732
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -261,10 +261,10 @@ tracks/3/path = NodePath(".:animation_vector")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25836912, 0.35271695, 0.72636694, 0.8590825, 1.3827341, 1.6618207),
+"times": PackedFloat32Array(0, 0.25836912, 0.35556477, 0.72636694, 0.8591, 1.3827341, 1.6618207),
 "transitions": PackedFloat32Array(1, 1, 1.4455018, 29.85697, 0.05255613, 0.21022427, 5.278032),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-1.5, 0, -1.5), Vector3(0, 0, 0), Vector3(2.5, 3, 2.5), Vector3(5, 3.5, 5), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-2, 0, -2), Vector3(0, 0, 0), Vector3(2.5, 4, 2.5), Vector3(5, 3.5, 5), Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -289,6 +289,20 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.8591),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"look_at_target"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_chp7c"]

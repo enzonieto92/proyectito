@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doghknbtc1e3h"
-path.s3tc="res://.godot/imported/Pica.png-5b01a5bead86327960c4bf9f374921aa.s3tc.ctex"
+uid="uid://pmoxvn83o6yv"
+path.s3tc="res://.godot/imported/technical-difficulties-please-stand-by-v0-644bm9s4ym4f1.webp-0b7e49e13e721020b4381a0ccb0d39d0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://texturas/Armas/Pica.png"
-dest_files=["res://.godot/imported/Pica.png-5b01a5bead86327960c4bf9f374921aa.s3tc.ctex"]
+source_file="res://texturas/technical-difficulties-please-stand-by-v0-644bm9s4ym4f1.webp"
+dest_files=["res://.godot/imported/technical-difficulties-please-stand-by-v0-644bm9s4ym4f1.webp-0b7e49e13e721020b4381a0ccb0d39d0.s3tc.ctex"]
 
 [params]
 

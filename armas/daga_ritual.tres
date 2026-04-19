@@ -1,17 +1,13 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dro78t07lk26i"]
+[gd_resource type="Resource" script_class="Arma" format=3 uid="uid://dro78t07lk26i"]
 
 [ext_resource type="Texture2D" uid="uid://b8e6osxb41ty5" path="res://texturas/Armas/daga_item.png" id="1_as0m3"]
-[ext_resource type="Script" uid="uid://swuyinalvgjo" path="res://scripts/Item.gd" id="1_w8ioy"]
+[ext_resource type="Script" uid="uid://bw8ib7rq5xuw5" path="res://scripts/Arma.gd" id="1_w8ioy"]
 [ext_resource type="Texture2D" uid="uid://d2k4nm6yt47oy" path="res://texturas/Armas/daga.png" id="3_7b6re"]
 
 [resource]
 script = ExtResource("1_w8ioy")
-nombre = "Daga de Ritual"
+nombre = "Daga Ritual"
 icono = ExtResource("1_as0m3")
 textura = ExtResource("3_7b6re")
-descripcion = "Daga de los 7 malditos, se dice que esta daga fue utilizada para el ritual que trajo tempestad a estas tierras olvidadas por tu vieja"
 damage = Vector2(9, 14)
-weapon_size = 0.4
 size = Vector2i(1, 2)
-tipo = 1
-metadata/_custom_type_script = "uid://swuyinalvgjo"

@@ -65,7 +65,7 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 		return false
 	if data.get("desde_weapon_slot", false):
 		return false
-	if data["item"].tipo != Item.Tipo.ARMA:
+	if data["item"].tipo != Arma.Tipo.ARMA:
 		color_rect_2.modulate = Color(1.0, 0.593, 0.533, 0.78)
 		return false
 	if ocupado:
@@ -84,9 +84,9 @@ func _drop_data(_at_position: Vector2, data):
 	jugador.damage_arma = Vector2(item.damage.x, item.damage.y)
 	jugador.total_damage.x = (jugador.damage.x + item.damage.x)
 	jugador.total_damage.y = (jugador.damage.y + item.damage.y)
-	print ("damage Arma: ", item.damage)
-	print ("damage Jugador: ", jugador.total_damage)
-	
+	jugador.arma = item
+	jugador.raycast_arma.target_position.y = -item.weapon_size
+	print ("raycast jugador: ",jugador.raycast_arma.target_position.y,"item weapon size: ", -item.weapon_size )
 	ocupado = true
 	_mostrar_icono()
 	if sprite_arma:

@@ -31,14 +31,8 @@ func _physics_process(delta: float) -> void:
 
 	# 🔥 SOLO rotar si NO está atacando
 	if not _atacando_cooldown:
-		var target_position = player.position
-		target_position.y = global_position.y
-
-		var dir = (target_position - global_position).normalized()
-		dir.y = 0
-
-		var target_angle = atan2(dir.x, dir.z)
-		rotation.y = lerp_angle(rotation.y, target_angle, 8.0 * delta)
+		look_at_target()
+	
 
 	# gravedad siempre
 	velocity += get_gravity() * delta
@@ -66,6 +60,15 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func look_at_target():
+	var target_position = player.position
+	target_position.y = global_position.y
+
+	var dir = (target_position - global_position).normalized()
+	dir.y = 0
+
+	var target_angle = atan2(dir.x, dir.z)
+	rotation.y = target_angle
 
 func recibir_damage(_damage):
 	var calcular_damage = int(randf_range(_damage.x, _damage.y))
