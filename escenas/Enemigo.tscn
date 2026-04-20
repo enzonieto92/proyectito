@@ -418,6 +418,10 @@ _data = {
 &"dying": SubResource("Animation_p4thj")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g7x46"]
+height = 1.4238281
+radius = 4.7680664
+
 [node name="Enemigo" type="CharacterBody3D" unique_id=1587185498 groups=["enemigos"]]
 rotation_order = 0
 script = ExtResource("1_jx5fs")
@@ -448,6 +452,7 @@ script = ExtResource("6_w463i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1991871366]
 libraries/ = SubResource("AnimationLibrary_nkg5f")
+autoplay = &"chase"
 
 [node name="sangre" type="Sprite3D" parent="." unique_id=2043400470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5324233, 0)
@@ -457,3 +462,12 @@ shaded = true
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("8_chp7c")
+
+[node name="area_deteccion" type="Area3D" parent="." unique_id=1989233783]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="area_deteccion" unique_id=284487639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28808594, 0)
+shape = SubResource("CylinderShape3D_g7x46")
+
+[connection signal="body_entered" from="area_deteccion" to="." method="_on_area_deteccion_body_entered"]
+[connection signal="body_exited" from="area_deteccion" to="." method="_on_area_deteccion_body_exited"]

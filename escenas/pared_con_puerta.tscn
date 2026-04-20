@@ -26,7 +26,7 @@ albedo_color = Color(0.15487596, 0.154876, 0.15487596, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qrpq"]
 albedo_texture = ExtResource("3_1qrpq")
-normal_scale = 5.3
+normal_enabled = true
 normal_texture = ExtResource("4_cyuff")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_offset = Vector3(1, -0.5, -0.5)

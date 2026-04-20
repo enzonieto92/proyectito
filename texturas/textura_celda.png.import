@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p7gghjaiwcs0"
-path.s3tc="res://.godot/imported/velas-ase.png-2f4c2ba04cfe758e4adfc4cb73457f7a.s3tc.ctex"
+uid="uid://g2nhwl0babkc"
+path.s3tc="res://.godot/imported/textura_celda.png-e9683f1badfdccf6d79c9d12c51c5250.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://texturas/velas-ase.png"
-dest_files=["res://.godot/imported/velas-ase.png-2f4c2ba04cfe758e4adfc4cb73457f7a.s3tc.ctex"]
+source_file="res://texturas/textura_celda.png"
+dest_files=["res://.godot/imported/textura_celda.png-e9683f1badfdccf6d79c9d12c51c5250.s3tc.ctex"]
 
 [params]
 

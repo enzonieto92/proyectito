@@ -195,7 +195,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/path = NodePath("camara_controller:position")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
@@ -207,7 +207,7 @@ tracks/6/keys = {
 }
 tracks/7/type = "value"
 tracks/7/imported = false
-tracks/7/enabled = true
+tracks/7/enabled = false
 tracks/7/path = NodePath("camara_controller:rotation")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
@@ -283,7 +283,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("camara_controller:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -295,7 +295,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/path = NodePath("camara_controller:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
@@ -308,6 +308,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_ig1bj"]
 resource_name = "caminar"
+length = 1.15
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -316,31 +317,31 @@ tracks/0/path = NodePath("pivote/posicion_arma/sprite_arma:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.07871893, 0.25651574, 0.514668, 0.73050797, 0.99229705),
+"times": PackedFloat32Array(0, 0.29920167, 0.5631125, 0.85944885, 1.139024),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.027, 0.036, 0), Vector3(-0.05, 0.03, 0), Vector3(-0.027, 0.036, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-0.027, 0.07, 0), Vector3(-0.05, 0.03, 0), Vector3(-0.027, 0.07, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("camara_controller:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.21000002, 0.45741785, 0.65, 0.91),
+"times": PackedFloat32Array(0.0031482242, 0.29702538, 0.5616251, 0.85944885, 1.1427274),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.05, 0, 0), Vector3(0, 0.036, 0), Vector3(-0.05, 0, 0), Vector3(0, 0.036, 0), Vector3(0.05, 0, 0)]
+"values": [Vector3(0.12, 0, 0), Vector3(0, 0.07, 0), Vector3(-0.12, 0, 0), Vector3(0, 0.07, 0), Vector3(0.12, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("camara_controller:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 1.1361985),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
@@ -352,7 +353,7 @@ tracks/3/path = NodePath("pivote/posicion_arma/sprite_arma:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4686825, 0.9515346),
+"times": PackedFloat32Array(0, 0.56443924, 1.1424687),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
@@ -388,7 +389,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("camara_controller:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
@@ -428,7 +429,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("camara_controller:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -440,7 +441,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("camara_controller:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -476,7 +477,7 @@ albedo_color = Color(0.8745098, 0, 0.83137256, 1)
 script = ExtResource("1_hqtel")
 stamina = 40.0
 vida = 75.0
-armadura = 100.0
+armadura = 75.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1162736894]
 environment = SubResource("Environment_sacnx")
@@ -496,7 +497,8 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="camara_player" type="Camera3D" parent="camara_controller" unique_id=219131178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
-far = 100.95
+fov = 70.0
+far = 24.46
 
 [node name="raycast" type="RayCast3D" parent="camara_controller/camara_player" unique_id=310805274]
 target_position = Vector3(0, 0, -2)

@@ -6,7 +6,7 @@ extends CharacterBody3D
 const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
 
 var speed := 2.5
-
+var player_entered_area : bool = false
 @export var atacando : bool = false
 @export var vida : float 
 @export var attack_range : float
@@ -52,7 +52,8 @@ func _physics_process(delta: float) -> void:
 		attack_behavior()
 		damage = int(randf_range(min_damage,max_damage))
 	elif not _en_cooldown:
-		chase_behavior()
+		if player_entered_area:
+			chase_behavior()
 
 	else:
 		velocity.x = 0
@@ -120,3 +121,13 @@ func attack_behavior():
 
 	_en_cooldown = false
 	_atacando_cooldown = false
+
+
+func _on_area_deteccion_body_entered(body: Node3D) -> void:
+	if body.is_in_group("jugador"):
+		player_entered_area = true
+
+
+func _on_area_deteccion_body_exited(body: Node3D) -> void:
+	if body.is_in_group("jugador"):
+		player_entered_area = false

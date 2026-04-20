@@ -5,6 +5,9 @@ extends ProgressBar
 func _ready() -> void:
 	max_value = jugador.stamina
 	value = max_value
-func _process(delta: float) -> void:
-
+func _process(_delta: float) -> void:
 	value = jugador.stamina
+	if jugador.inventario_abierto:
+		visible = false
+	else:
+		visible = true

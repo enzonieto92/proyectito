@@ -1,5 +1,6 @@
 # weapon_slot.gd
 class_name WeaponSlot extends Control
+
 @onready var color_rect_2: ColorRect = $ColorRect2
 var ocupado: bool = false
 var item = null
@@ -8,22 +9,41 @@ static var drag_activo := false
 
 @onready var sprite_arma: Sprite3D = get_tree().get_first_node_in_group("sprite_arma")
 
-# Guardamos el item durante el drag para poder restaurarlo si falla
 var _item_en_drag = null
 var _drop_exitoso := false
 
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+
+# -------------------------
+# JUGADOR
+# -------------------------
+func _aplicar_arma(jugador, arma):
+	jugador.damage_arma = Vector2(arma.damage.x, arma.damage.y)
+	jugador.total_damage.x = jugador.damage.x + arma.damage.x
+	jugador.total_damage.y = jugador.damage.y + arma.damage.y
+	jugador.arma = arma
+	jugador.raycast_arma.target_position.y = -arma.weapon_size
+	print("raycast jugador: ", jugador.raycast_arma.target_position.y, " item weapon size: ", -arma.weapon_size)
+
+func _remover_arma(jugador):
+	jugador.damage_arma = Vector2.ZERO
+	jugador.total_damage.x = jugador.damage.x
+	jugador.total_damage.y = jugador.damage.y
+	jugador.arma = null
+
 # -------------------------
 # HOVER
 # -------------------------
 func _on_mouse_entered():
 	if not ocupado or drag_activo: return
 	color_rect_2.modulate = Color(0.57, 0.57, 0.57, 0.529)
+
 func _on_mouse_exited():
 	if not ocupado or drag_activo: return
 	color_rect_2.modulate = Color.WHITE
+
 # -------------------------
 # DRAG (sacar el item)
 # -------------------------
@@ -37,12 +57,12 @@ func _get_drag_data(_at_position: Vector2):
 	if icon:
 		icon.visible = false
 
-	# Guardamos referencia ANTES de vaciar
 	_item_en_drag = item
 	vaciar()
-	# Limpiar sprite del arma al sacarla del slot
+
 	if sprite_arma:
 		sprite_arma.texture = null
+
 	var preview = TextureRect.new()
 	preview.texture = _item_en_drag.icono
 	preview.size = slot_size
@@ -50,8 +70,9 @@ func _get_drag_data(_at_position: Vector2):
 	var container = Control.new()
 	container.custom_minimum_size = slot_size
 	container.add_child(preview)
-	preview.position = -slot_size / 2  # centrado respecto al cursor
+	preview.position = -slot_size / 2
 	set_drag_preview(container)
+
 	return {
 		"item": _item_en_drag,
 		"origen": Vector2i(-1, -1),
@@ -77,20 +98,21 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 func _drop_data(_at_position: Vector2, data):
 	_drop_exitoso = true
 	color_rect_2.modulate = Color.WHITE
+
 	var inventario = get_tree().get_first_node_in_group("inventario")
 	inventario.remover_item(data["item"], data["item"].grid_pos)
+
 	item = data["item"]
-	var jugador = get_tree().get_first_node_in_group("jugador")
-	jugador.damage_arma = Vector2(item.damage.x, item.damage.y)
-	jugador.total_damage.x = (jugador.damage.x + item.damage.x)
-	jugador.total_damage.y = (jugador.damage.y + item.damage.y)
-	jugador.arma = item
-	jugador.raycast_arma.target_position.y = -item.weapon_size
-	print ("raycast jugador: ",jugador.raycast_arma.target_position.y,"item weapon size: ", -item.weapon_size )
 	ocupado = true
+
+	var jugador = get_tree().get_first_node_in_group("jugador")
+	_aplicar_arma(jugador, item)
+
 	_mostrar_icono()
+
 	if sprite_arma:
 		sprite_arma.texture = item.textura
+
 # -------------------------
 # FIN DRAG
 # -------------------------
@@ -104,10 +126,12 @@ func _notification(what):
 			ocupado = true
 			_mostrar_icono()
 			if sprite_arma:
-				sprite_arma.texture = item.textura  # solo si se restaura
+				sprite_arma.texture = item.textura
 
 		_item_en_drag = null
 		_drop_exitoso = false
+
+# -------------------------
 # VISUAL
 # -------------------------
 func _mostrar_icono():
@@ -117,12 +141,15 @@ func _mostrar_icono():
 	icon.name = "ItemIcon"
 	icon.texture = item.icono
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	icon.position = Vector2.ZERO
+	icon.size = size
 	add_child(icon)
 
 func vaciar():
 	ocupado = false
 	item = null
 	color_rect_2.modulate = Color.WHITE
+	var jugador = get_tree().get_first_node_in_group("jugador")
+	_remover_arma(jugador)
 	var existing = get_node_or_null("ItemIcon")
 	if existing: existing.queue_free()
