@@ -11,3 +11,4 @@ icono = ExtResource("1_as0m3")
 textura = ExtResource("3_7b6re")
 damage = Vector2(9, 14)
 size = Vector2i(1, 2)
+weight = 0.8

@@ -1,11 +1,33 @@
 extends Node
 
 @onready var grid_container: GridContainer = $CanvasLayer/Inventario_UI/panel_mochila/GridContainer
-
+@onready var label_peso: Label = $CanvasLayer/Inventario_UI/panel_mochila/label_peso
+@export var peso_maximo: float = 20.0
 
 func _ready():
 	add_to_group("inventario")
+	actualizar_label_peso()
+func calcular_peso_total() -> float:
+	var items_contados = {}
+	var peso_total = 0.0
+	
+	for x in range(grid_container.grid_width):
+		for y in range(grid_container.grid_height):
+			var slot = grid_container.grid[x][y]
+			if not slot.esta_vacio() and slot.item != null:
+				var item = slot.item
+				if not items_contados.has(item.get_instance_id()):
+					items_contados[item.get_instance_id()] = true
+					peso_total += item.weight
+					print("Contando: ", item.nombre, " weight: ", item.weight)  # 👈
+				else:
+					print("Ignorando duplicado: ", item.nombre)  # 👈
+	
+	return peso_total
 
+func actualizar_label_peso():
+	var peso = calcular_peso_total()
+	label_peso.text = "Peso: %.1f/%.0f kg" % [peso, peso_maximo]
 func agregar_item(item) -> bool:
 	if not is_instance_valid(item):
 		push_error("agregar_item: item es null o inválido")
@@ -31,7 +53,7 @@ func agregar_item(item) -> bool:
 			
 			if puede_colocar(item, pos):
 				_colocar_en(item, pos)
-				
+				actualizar_label_peso()
 				if not era_visible:
 					inventario_ui.visible = false
 					inventario_ui.modulate.a = 1
@@ -83,14 +105,19 @@ func puede_colocar_ignorando_origen(item, pos: Vector2i, origen: Vector2i) -> bo
 				return false
 	
 	return true
-
+func remover_item_sin_actualizar_peso(item, origen: Vector2i):
+	for ix in range(item.size.x):
+		for iy in range(item.size.y):
+			var slot = grid_container.grid[origen.x + ix][origen.y + iy]
+			slot.ocupado = false
+			slot.item = null
 func remover_item(item, origen: Vector2i):
 	for ix in range(item.size.x):
 		for iy in range(item.size.y):
 			var slot = grid_container.grid[origen.x + ix][origen.y + iy]
 			slot.ocupado = false
 			slot.item = null
-			
+	actualizar_label_peso()
 func mover_item(origen: Vector2i, destino: Vector2i, item):
 	if not puede_colocar_ignorando_origen(item, destino, origen):
 		return

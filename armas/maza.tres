@@ -12,4 +12,5 @@ textura = ExtResource("3_2j6du")
 damage = Vector2(19, 28)
 weapon_size = 1.5
 size = Vector2i(1, 3)
+weight = 3.0
 tipo = 1

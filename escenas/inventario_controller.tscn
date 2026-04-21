@@ -67,6 +67,10 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="LabelSettings" id="LabelSettings_u2bl6"]
+font = ExtResource("4_u2bl6")
+font_size = 12
+
 [node name="Inventario_Controller" type="Node" unique_id=822035638 groups=["enemigos"]]
 script = ExtResource("1_3wa74")
 
@@ -336,11 +340,13 @@ offset_right = 317.85
 offset_bottom = 107.0
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_collar" unique_id=606021261]
+visible = false
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_collar" unique_id=475373198]
+visible = false
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
@@ -360,11 +366,13 @@ offset_right = 161.84999
 offset_bottom = 294.0
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cinto" unique_id=1680975308]
+visible = false
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cinto" unique_id=1647570677]
+visible = false
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
@@ -384,11 +392,13 @@ offset_right = 322.85
 offset_bottom = 292.0
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_manos" unique_id=402002470]
+visible = false
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_manos" unique_id=53688929]
+visible = false
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
@@ -432,3 +442,19 @@ script = ExtResource("1_is5u2")
 slot_scene = ExtResource("2_7flxi")
 bg_items_color = Color(0.21176471, 0.21176471, 0.21176471, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="label_peso" type="Label" parent="CanvasLayer/Inventario_UI/panel_mochila" unique_id=538928641]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 157.0
+offset_top = 322.0
+offset_right = -11.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PESO: "
+label_settings = SubResource("LabelSettings_u2bl6")
+horizontal_alignment = 3
+vertical_alignment = 1

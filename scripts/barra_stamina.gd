@@ -7,7 +7,7 @@ func _ready() -> void:
 	value = max_value
 func _process(_delta: float) -> void:
 	value = jugador.stamina
-	if jugador.inventario_abierto:
-		visible = false
-	else:
-		visible = true
+	#if jugador.inventario_abierto:
+	#	visible = false
+	#else:
+	#	visible = true

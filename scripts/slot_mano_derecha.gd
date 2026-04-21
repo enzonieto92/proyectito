@@ -100,14 +100,13 @@ func _drop_data(_at_position: Vector2, data):
 	color_rect_2.modulate = Color.WHITE
 
 	var inventario = get_tree().get_first_node_in_group("inventario")
-	inventario.remover_item(data["item"], data["item"].grid_pos)
+	inventario.remover_item_sin_actualizar_peso(data["item"], data["item"].grid_pos)  # 👈
 
 	item = data["item"]
 	ocupado = true
 
 	var jugador = get_tree().get_first_node_in_group("jugador")
 	_aplicar_arma(jugador, item)
-
 	_mostrar_icono()
 
 	if sprite_arma:

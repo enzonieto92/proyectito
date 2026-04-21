@@ -1,3 +1,4 @@
+#slot secundario
 class_name SecundarySlot extends Control
 
 @onready var color_rect_2: ColorRect = $ColorRect2
@@ -84,9 +85,7 @@ func _drop_data(_at_position: Vector2, data):
 	jugador.damage_arma = Vector2(item.damage.x, item.damage.y)
 	jugador.total_damage.x = (jugador.damage.x + item.damage.x)
 	jugador.total_damage.y = (jugador.damage.y + item.damage.y)
-	jugador.arma = item
-	jugador.raycast_arma.target_position.y = -item.weapon_size
-	print ("raycast jugador: ",jugador.raycast_arma.target_position.y,"item weapon size: ", -item.weapon_size )
+	jugador.secundaria = item
 	ocupado = true
 	_mostrar_icono()
 	if sprite_secundaria:

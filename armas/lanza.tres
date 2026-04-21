@@ -12,5 +12,6 @@ textura = ExtResource("3_p32ka")
 damage = Vector2(12, 17)
 weapon_size = 1.8
 size = Vector2i(1, 4)
+weight = 2.5
 tipo = 1
 metadata/_custom_type_script = "uid://bw8ib7rq5xuw5"

@@ -4,6 +4,18 @@
 [ext_resource type="FontFile" uid="uid://c5xd2k2y55fr3" path="res://otros/Pixelpurl-0vBPP.ttf" id="2_v5cmr"]
 [ext_resource type="Script" uid="uid://1exwuqcr3xqp" path="res://scripts/barra_stamina.gd" id="3_bt4of"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1kk6"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.62859356, 0.5299813, 0.2789413, 1)
+corner_detail = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_bt4of"]
+font = ExtResource("2_v5cmr")
+font_size = 51
+
 [node name="Jugador_UI" type="CanvasLayer" unique_id=1673448679]
 
 [node name="blood_splash" type="TextureRect" parent="." unique_id=941195193]
@@ -39,13 +51,22 @@ theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
 
 [node name="barra_stamina" type="ProgressBar" parent="." unique_id=1895136430]
+visible = false
 anchors_preset = -1
 anchor_right = 0.35200003
 anchor_bottom = 0.20400001
 offset_left = 11.0
 offset_top = 119.0
-offset_right = 0.49597168
+offset_right = -201.50403
 offset_bottom = -0.19200134
+theme_override_styles/fill = SubResource("StyleBoxFlat_a1kk6")
 max_value = 40.0
 show_percentage = false
 script = ExtResource("3_bt4of")
+
+[node name="current_animation" type="Label" parent="." unique_id=303847167 groups=["label_animacion"]]
+offset_left = 846.0
+offset_top = 44.0
+offset_right = 1084.0
+offset_bottom = 128.0
+label_settings = SubResource("LabelSettings_bt4of")

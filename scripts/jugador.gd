@@ -3,7 +3,6 @@ extends CharacterBody3D
 @onready var inv_UI: Node = $Inventario_Controller/CanvasLayer/Inventario_UI
 @onready var inventario_controller: Node = $Inventario_Controller
 @onready var camera: Camera3D = $camara_controller/camara_player
-
 @onready var footstep = $footstep
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var footstep_player: AudioStreamPlayer3D = $footstep
@@ -14,13 +13,15 @@ extends CharacterBody3D
 @onready var dialogo = $"../UI/dialogo"
 @onready var texto_plano = $"../UI/texto_plano"
 @onready var jugador_ui: CanvasLayer = $Jugador_UI
+@onready var slot_mano_secundaria: SecundarySlot = $Inventario_Controller/CanvasLayer/Inventario_UI/panel_equipo/slot_mano_secundaria
 
 @export var stamina : float
 @export var golpeando = false
 @export var JUMP_VELOCITY = 3.5
 @export var vida : float
 @export var armadura : float
-
+@export var peso : float
+@export var bloqueando = false
 var stamina_agotada: bool = false
 var inventario_abierto = false
 var moving = false
@@ -31,6 +32,7 @@ const mouse_sensitivity = 0.002
 var pitch := 0.0  # rotación vertical acumulada
 var debug_line: MeshInstance3D
 var arma : Arma = null
+var secundaria : Secundaria = null
 var CONSTANTE_ARMADURA : float = 100
 var damage : Vector2
 var damage_arma : Vector2
@@ -51,9 +53,11 @@ func _ready():
 func recibir_damage(_damage):
 	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
 	var daño_final = _damage * (1.0 - reduccion)
-	vida -= int(daño_final)
-	reaccion_ui()
-	
+	if slot_mano_secundaria.item == null:
+		vida -= int(daño_final)
+		reaccion_ui()
+	else:
+		animation_player.play("hit_bloqueado")
 func reaccion_ui():
 	var texture = jugador_ui.get_node("blood_splash")
 	texture.visible = true
@@ -210,15 +214,22 @@ func _process(_delta):
 		#tendra que frenar el mundo entero
 		go_screen.visible = true
 		return
-	#sonido pies
-	if moving:
-		if not footstep_player.is_playing():
-			footstep_player.stream = footstep_sounds.pick_random()
-			footstep_player.play()
-	else:
-		if footstep_player.is_playing():
-			footstep_player.stop()
-	if corriendo:
-		footstep_player.pitch_scale = 1
-	else:
-		footstep_player.pitch_scale = 0.56
+var last_step_time := 0.0
+var step_cooldown := 0.2  # ajustalo según tu animación
+
+func play_footstep():
+	if not moving:
+		return
+	
+	var now = Time.get_ticks_msec() / 1000.0
+	if now - last_step_time < step_cooldown:
+		return
+	
+	last_step_time = now
+	
+	footstep_player.stream = footstep_sounds.pick_random()
+	footstep_player.pitch_scale = 1.0 if corriendo else 0.56
+	footstep_player.play()
+func stop_footstep():
+	if footstep_player.is_playing():
+		footstep_player.stop()

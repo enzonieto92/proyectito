@@ -1,6 +1,6 @@
 extends Resource
 
-class_name Arma
+class_name Secundaria
 
 @export var id: String
 @export var nombre: String
