@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ceg0awyobh8ld" path="res://texturas/seguidor_attack.png" id="5_2nodj"]
 [ext_resource type="Texture2D" uid="uid://jrt5dtfusfyx" path="res://texturas/seguidor-dead-sprite.png" id="6_dxnq1"]
 [ext_resource type="Script" uid="uid://ct1miin5x3sy3" path="res://scripts/raycast_enemigo.gd" id="6_w463i"]
+[ext_resource type="AudioStream" uid="uid://dihjxs15viicy" path="res://sonido/sonido_enemigo_pasivo.mp3" id="7_dxnq1"]
 [ext_resource type="Texture2D" uid="uid://brpxjynnuu5lj" path="res://texturas/sangre_suelo.png" id="8_chp7c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inx13"]
@@ -468,6 +469,11 @@ texture = ExtResource("8_chp7c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="area_deteccion" unique_id=284487639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28808594, 0)
 shape = SubResource("CylinderShape3D_g7x46")
+
+[node name="sonido_enemigo" type="AudioStreamPlayer3D" parent="." unique_id=415566684]
+stream = ExtResource("7_dxnq1")
+autoplay = true
+max_distance = 10.0
 
 [connection signal="body_entered" from="area_deteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="body_exited" from="area_deteccion" to="." method="_on_area_deteccion_body_exited"]

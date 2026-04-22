@@ -24,8 +24,7 @@ func _aplicar_arma(jugador, arma):
 	jugador.total_damage.x = jugador.damage.x + arma.damage.x
 	jugador.total_damage.y = jugador.damage.y + arma.damage.y
 	jugador.arma = arma
-	jugador.raycast_arma.target_position.y = -arma.weapon_size
-	print("raycast jugador: ", jugador.raycast_arma.target_position.y, " item weapon size: ", -arma.weapon_size)
+	jugador.raycast_arma.target_position.y = arma.weapon_size
 
 func _remover_arma(jugador):
 	jugador.damage_arma = Vector2.ZERO

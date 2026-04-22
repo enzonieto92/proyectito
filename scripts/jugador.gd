@@ -4,7 +4,6 @@ extends CharacterBody3D
 @onready var inventario_controller: Node = $Inventario_Controller
 @onready var camera: Camera3D = $camara_controller/camara_player
 @onready var footstep = $footstep
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var footstep_player: AudioStreamPlayer3D = $footstep
 @onready var raycast: RayCast3D = $camara_controller/camara_player/raycast
 @onready var raycast_arma: RayCast3D = $pivote/posicion_arma/sprite_arma/raycast_arma
@@ -14,9 +13,11 @@ extends CharacterBody3D
 @onready var texto_plano = $"../UI/texto_plano"
 @onready var jugador_ui: CanvasLayer = $Jugador_UI
 @onready var slot_mano_secundaria: SecundarySlot = $Inventario_Controller/CanvasLayer/Inventario_UI/panel_equipo/slot_mano_secundaria
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var stamina : float
 @export var golpeando = false
+@export var recibiendo_damage = false
 @export var JUMP_VELOCITY = 3.5
 @export var vida : float
 @export var armadura : float
@@ -51,13 +52,14 @@ func _ready():
 	total_damage.x = (damage.x + damage_arma.x)
 	total_damage.y = (damage.y + damage_arma.y)
 func recibir_damage(_damage):
+	recibiendo_damage = true
+
 	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
-	var daño_final = _damage * (1.0 - reduccion)
-	if slot_mano_secundaria.item == null:
-		vida -= int(daño_final)
-		reaccion_ui()
-	else:
-		animation_player.play("hit_bloqueado")
+	var daño_final = int(_damage * (1.0 - reduccion))
+	vida -= int(daño_final)
+	animation_player.on_block_hit()
+	reaccion_ui()
+	recibiendo_damage = false
 func reaccion_ui():
 	var texture = jugador_ui.get_node("blood_splash")
 	texture.visible = true
@@ -110,7 +112,6 @@ func _physics_process(delta):
 
 		if is_instance_valid(obj) and not obj.has_method("puede_interactuar"):
 			obj = obj.get_parent()
-
 		if is_instance_valid(obj) \
 		and obj.has_method("puede_interactuar") \
 		and obj.puede_interactuar():

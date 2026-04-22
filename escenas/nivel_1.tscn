@@ -62,10 +62,10 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -4.153, 0.31
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7874975, 0.9046548, 0.101058796)
 
 [node name="Enemigo" parent="." unique_id=1587185498 instance=ExtResource("10_xqdpg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.418045, 0.9606244, 0.6684456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.418045, 0.9606244, -10.331554)
 
 [node name="Enemigo2" parent="." unique_id=1121871139 instance=ExtResource("10_xqdpg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.668795, 0.9606244, 0.6684456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.668795, 0.9606244, -12.331554)
 
 [node name="dungeon" parent="." unique_id=1761309701 instance=ExtResource("9_0lcy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)

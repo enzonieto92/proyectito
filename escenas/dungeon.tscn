@@ -13,15 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bd06igfxy3273" path="res://escenas/altar_secreto.tscn" id="13_hc4sh"]
 [ext_resource type="PackedScene" uid="uid://c3aibayik4w7l" path="res://escenas/compuerta_secreta.tscn" id="15_81g75"]
 [ext_resource type="Resource" uid="uid://cgn2squmk4a6b" path="res://armas/espada.tres" id="16_i6a64"]
-[ext_resource type="PackedScene" uid="uid://cmmijprdnkysr" path="res://escenas/espada_corta.tscn" id="16_xaa2s"]
-[ext_resource type="PackedScene" uid="uid://ewbvkienff2i" path="res://escenas/maza.tscn" id="17_i6a64"]
-[ext_resource type="Resource" uid="uid://cbr4jdhfx7qnr" path="res://armas/espada_corta.tres" id="18_jxelf"]
-[ext_resource type="Resource" uid="uid://dwx1jm2fn5mwq" path="res://armas/maza.tres" id="18_ovxel"]
-[ext_resource type="PackedScene" uid="uid://dvqv6odm45s26" path="res://escenas/lanza.tscn" id="19_jxelf"]
 [ext_resource type="PackedScene" uid="uid://ctvlbe882v53o" path="res://escenas/celda.tscn" id="19_mnaqj"]
-[ext_resource type="Resource" uid="uid://b573ek7vl2aem" path="res://armas/lanza.tres" id="19_ovxel"]
-[ext_resource type="Script" uid="uid://dgah05n5bn6mf" path="res://scripts/escudo.gd" id="20_jxelf"]
-[ext_resource type="Resource" uid="uid://cbfetsu1038cn" path="res://armas/escudo.tres" id="21_01jbd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ovxel"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -130,25 +122,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -29,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.151123, 1.0124118, 6.475681)
 
 [node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_mnaqj")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -33.958595, -0.08439112, 2.5260165)
+transform = Transform3D(0.2510389, 0, -0.9679769, 0, 1, 0, 0.967977, 0, 0.25103888, -27.435768, -0.45350036, -5.560133)
 arma = ExtResource("16_i6a64")
-
-[node name="espada_corta" parent="." unique_id=1641330329 instance=ExtResource("16_xaa2s")]
-transform = Transform3D(0.13398615, 0, 0.9909832, 0, 1, 0, -0.9909832, 0, 0.13398615, -33.987427, -0.39806083, 2.8287718)
-arma = ExtResource("18_jxelf")
-
-[node name="maza" parent="." unique_id=455596994 instance=ExtResource("17_i6a64")]
-transform = Transform3D(-4.371139e-08, -0.09584575, 0.9953962, 0, 0.9953962, 0.09584575, -1, 4.189551e-09, -4.351015e-08, -33.96516, -0.02846893, 2.100852)
-arma = ExtResource("18_ovxel")
-
-[node name="lanza" parent="." unique_id=364381025 instance=ExtResource("19_jxelf")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -33.865955, 0.042541847, 3.1366258)
-arma = ExtResource("19_ovxel")
-
-[node name="escudo" parent="." unique_id=1066821601 instance=ExtResource("19_jxelf")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -33.865955, 0.042541847, 4.0122385)
-script = ExtResource("20_jxelf")
-secundaria = ExtResource("21_01jbd")
 
 [node name="antorcha" parent="." unique_id=1286579013 instance=ExtResource("5_7wc3a")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -37.037514, 1.033648, -7.2558694)
@@ -176,3 +151,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.963, -0.471, 1.6)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=400222932]
 environment = SubResource("Environment_jxelf")
+
+[node name="silla" parent="." unique_id=1310355822 instance=ExtResource("1_vol8w")]
+transform = Transform3D(-1.8862873, -4.462322e-08, 1.5875219e-07, 0, 1.8159132, 0.5104302, -1.6490448e-07, 0.51043016, -1.8159133, -27.519585, -0.49347872, -4.74721)

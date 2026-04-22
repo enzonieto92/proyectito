@@ -17,7 +17,7 @@ run/max_fps=500
 
 [audio]
 
-buses/default_bus_layout="uid://cirqksb6w5hpv"
+buses/default_bus_layout=""
 
 [display]
 

@@ -9,25 +9,21 @@ static var drag_activo := false
 
 @onready var sprite_secundaria: Sprite3D = get_tree().get_first_node_in_group("sprite_secundaria")
 
-# Guardamos el item durante el drag para poder restaurarlo si falla
 var _item_en_drag = null
 var _drop_exitoso := false
+var _armadura_antes_drag := 0  # 👈
 
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-# -------------------------
-# HOVER
-# -------------------------
+
 func _on_mouse_entered():
 	if not ocupado or drag_activo: return
 	color_rect_2.modulate = Color(0.57, 0.57, 0.57, 0.529)
 func _on_mouse_exited():
 	if not ocupado or drag_activo: return
 	color_rect_2.modulate = Color.WHITE
-# -------------------------
-# DRAG (sacar el item)
-# -------------------------
+
 func _get_drag_data(_at_position: Vector2):
 	if not ocupado:
 		return null
@@ -38,10 +34,12 @@ func _get_drag_data(_at_position: Vector2):
 	if icon:
 		icon.visible = false
 
-	# Guardamos referencia ANTES de vaciar
 	_item_en_drag = item
+	# Guardar armadura antes del drag
+	var jugador = get_tree().get_first_node_in_group("jugador")
+	if jugador:
+		_armadura_antes_drag = jugador.armadura  # 👈
 	vaciar()
-	# Limpiar sprite del arma al sacarla del slot
 	if sprite_secundaria:
 		sprite_secundaria.texture = null
 	var preview = TextureRect.new()
@@ -51,14 +49,15 @@ func _get_drag_data(_at_position: Vector2):
 	var container = Control.new()
 	container.custom_minimum_size = slot_size
 	container.add_child(preview)
-	preview.position = -slot_size / 2  # centrado respecto al cursor
+	preview.position = -slot_size / 2
 	set_drag_preview(container)
 	return {
 		"item": _item_en_drag,
 		"origen": Vector2i(-1, -1),
 		"drag_offset": Vector2i.ZERO,
-		"desde_weapon_slot": true,
-		"weapon_slot_ref": self
+		"desde_weapon_slot": false,
+		"desde_secundary_slot": true,
+		"secundary_slot_ref": self
 	}
 
 func _can_drop_data(_at_position: Vector2, data) -> bool:
@@ -86,29 +85,32 @@ func _drop_data(_at_position: Vector2, data):
 	jugador.total_damage.x = (jugador.damage.x + item.damage.x)
 	jugador.total_damage.y = (jugador.damage.y + item.damage.y)
 	jugador.secundaria = item
+	jugador.armadura = jugador.armadura + item.armadura
 	ocupado = true
 	_mostrar_icono()
 	if sprite_secundaria:
 		sprite_secundaria.texture = item.textura
-# -------------------------
-# FIN DRAG
-# -------------------------
+
 func _notification(what):
 	if what == NOTIFICATION_DRAG_END:
 		drag_activo = false
 		color_rect_2.modulate = Color.WHITE
-
+		var jugador = get_tree().get_first_node_in_group("jugador")
 		if not _drop_exitoso and _item_en_drag != null:
 			item = _item_en_drag
 			ocupado = true
 			_mostrar_icono()
 			if sprite_secundaria:
-				sprite_secundaria.texture = item.textura  # solo si se restaura
-
+				sprite_secundaria.texture = item.textura
+			if jugador:
+				jugador.armadura = _armadura_antes_drag  # 👈 restaura exacto
+		elif _drop_exitoso and _item_en_drag != null:
+			if jugador:
+				jugador.armadura -= _item_en_drag.armadura  # 👈 resta solo si fue exitoso
 		_item_en_drag = null
 		_drop_exitoso = false
-# VISUAL
-# -------------------------
+		_armadura_antes_drag = 0  # 👈
+
 func _mostrar_icono():
 	var existing = get_node_or_null("ItemIcon")
 	if existing: existing.queue_free()
@@ -119,7 +121,7 @@ func _mostrar_icono():
 	icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(icon)
 
-func vaciar():
+func vaciar():  # 👈 solo visual, sin tocar armadura
 	ocupado = false
 	item = null
 	color_rect_2.modulate = Color.WHITE

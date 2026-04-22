@@ -19,10 +19,6 @@ func calcular_peso_total() -> float:
 				if not items_contados.has(item.get_instance_id()):
 					items_contados[item.get_instance_id()] = true
 					peso_total += item.weight
-					print("Contando: ", item.nombre, " weight: ", item.weight)  # 👈
-				else:
-					print("Ignorando duplicado: ", item.nombre)  # 👈
-	
 	return peso_total
 
 func actualizar_label_peso():

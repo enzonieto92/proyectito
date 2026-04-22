@@ -4,7 +4,9 @@ extends CharacterBody3D
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
-
+const SONIDO_ENEMIGO_PASIVO = preload("uid://dihjxs15viicy")
+const SONIDO_ENEMIGO = preload("uid://7l0ge7qhpr1b")
+@onready var sonido_enemigo: AudioStreamPlayer3D = $sonido_enemigo
 var speed := 2.5
 var player_entered_area : bool = false
 @export var atacando : bool = false
@@ -73,7 +75,6 @@ func look_at_target():
 
 func recibir_damage(_damage):
 	var calcular_damage = int(randf_range(_damage.x, _damage.y))
-	print (calcular_damage)
 	vida -= calcular_damage
 	
 	var sonido = AudioStreamPlayer.new()
@@ -125,6 +126,8 @@ func attack_behavior():
 
 func _on_area_deteccion_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jugador"):
+		sonido_enemigo.stream = SONIDO_ENEMIGO
+		sonido_enemigo.play()
 		player_entered_area = true
 
 

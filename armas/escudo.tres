@@ -11,5 +11,6 @@ icono = ExtResource("1_c27h7")
 textura = ExtResource("3_s7vih")
 size = Vector2i(2, 2)
 weight = 5.0
+armadura = 3
 tipo = 2
 metadata/_custom_type_script = "uid://cd84ee4s24j4g"

@@ -13,8 +13,7 @@ func _ready() -> void:
 	vida = int(jugador.vida)
 	damage = jugador.total_damage
 	armadura = int(jugador.armadura)
-	print (jugador)
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	vida = int(jugador.vida)
 	damage  = jugador.total_damage
 	armadura = int(jugador.armadura)

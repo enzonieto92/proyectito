@@ -155,6 +155,12 @@ func _drop_data(_at_position: Vector2, data):
 		if weapon_slot:
 			weapon_slot._drop_exitoso = true
 			weapon_slot.vaciar()
+	elif data.get("desde_secundary_slot", false):  # 👈 nuevo bloque
+		inventario._colocar_en(data["item"], destino)
+		var secundary_slot = data.get("secundary_slot_ref")
+		if secundary_slot:
+			secundary_slot._drop_exitoso = true
+			secundary_slot.vaciar()
 	else:
 		inventario.mover_item(data["origen"], destino, data["item"])
 

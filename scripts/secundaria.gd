@@ -17,7 +17,7 @@ class_name Secundaria
 @export var weight : float = 0
 @export var stackable: bool = false
 @export var max_stack: int = 1
-
+@export var armadura: int
 
 enum Tipo {
 	CONSUMIBLE,

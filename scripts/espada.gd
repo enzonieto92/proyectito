@@ -8,7 +8,6 @@ func puede_interactuar() -> bool:
 
 func interactuar(player):
 	if await player.inventario_controller.agregar_item(arma):
-		print ("agregando item")
 		queue_free()
 
 

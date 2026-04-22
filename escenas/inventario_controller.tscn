@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://c5xd2k2y55fr3" path="res://otros/Pixelpurl-0vBPP.ttf" id="3_5ftgr"]
 [ext_resource type="FontFile" uid="uid://berjkm7dt2kx2" path="res://otros/PixelSymtext-eYmn.ttf" id="4_u2bl6"]
 [ext_resource type="Script" uid="uid://dvxyphx7ssdo0" path="res://scripts/slot_mano_secundaria.gd" id="4_yvvfg"]
+[ext_resource type="Texture2D" uid="uid://bkk14g0nxchfk" path="res://texturas/placeholder.png" id="5_5ftgr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7flxi"]
 content_margin_left = 0.0
@@ -181,15 +182,28 @@ offset_right = -0.33599854
 offset_bottom = 0.19195557
 theme_override_styles/panel = SubResource("StyleBoxFlat_loeo7")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1918615826]
+modulate = Color(1, 1, 1, 0.6156863)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.938
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 19.000002
+offset_right = 84.078
+offset_bottom = 179.0
+scale = Vector2(0.685, 0.685)
+texture = ExtResource("5_5ftgr")
+
 [node name="slot_mano_derecha" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=701505931]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 284.0
-offset_top = 119.0
-offset_right = -89.0
-offset_bottom = -104.0
+offset_left = 301.0
+offset_top = 248.0
+offset_right = -72.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_loeo7")
@@ -208,9 +222,11 @@ offset_bottom = 132.0
 color = Color(0.10747976, 0.10747973, 0.10747973, 1)
 
 [node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_mano_derecha" unique_id=1908624691]
+modulate = Color(1, 1, 1, 0.13725491)
 layout_mode = 0
+offset_top = 1.0
 offset_right = 96.0
-offset_bottom = 132.0
+offset_bottom = 133.0
 texture = ExtResource("2_0jk7v")
 
 [node name="slot_mano_secundaria" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1000698355]
@@ -218,10 +234,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 70.0
-offset_top = 119.0
-offset_right = -303.0
-offset_bottom = -104.0
+offset_left = 4.0
+offset_top = 38.0
+offset_right = -369.0
+offset_bottom = -185.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_yvvfg")
@@ -246,6 +262,7 @@ grow_vertical = 2
 color = Color(0.10747976, 0.10747973, 0.10747973, 1)
 
 [node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_mano_secundaria" unique_id=1889966784]
+modulate = Color(1, 1, 1, 0.13725491)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -256,10 +273,10 @@ texture = ExtResource("2_0jk7v")
 
 [node name="slot_pecho" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1203425133]
 anchors_preset = 0
-offset_left = 177.84999
-offset_top = 118.0
-offset_right = 273.85
-offset_bottom = 250.0
+offset_left = 189.00002
+offset_top = 113.0
+offset_right = 285.00003
+offset_bottom = 245.0
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_pecho" unique_id=242797496]
 visible = false
@@ -275,6 +292,7 @@ offset_bottom = 132.0
 color = Color(0.10747976, 0.10747973, 0.10747973, 1)
 
 [node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_pecho" unique_id=615547611]
+modulate = Color(1, 1, 1, 0.13725491)
 layout_mode = 0
 offset_right = 96.0
 offset_bottom = 132.0
@@ -282,10 +300,10 @@ texture = ExtResource("2_0jk7v")
 
 [node name="slot_cabeza" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=653974450]
 anchors_preset = 0
-offset_left = 177.84999
-offset_top = 14.0
-offset_right = 273.85
-offset_bottom = 110.0
+offset_left = 164.00002
+offset_top = 7.0
+offset_right = 260.00003
+offset_bottom = 103.0
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza" unique_id=1214594237]
 visible = false
@@ -301,6 +319,7 @@ offset_bottom = 96.0
 color = Color(0.10747976, 0.10747973, 0.10747973, 1)
 
 [node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza" unique_id=356375087]
+modulate = Color(1, 1, 1, 0.13725491)
 layout_mode = 0
 offset_right = 96.000015
 offset_bottom = 96.0
@@ -308,10 +327,10 @@ texture = ExtResource("2_0jk7v")
 
 [node name="slot_piernas" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1050473272]
 anchors_preset = 0
-offset_left = 178.84999
-offset_top = 259.0
-offset_right = 274.85
-offset_bottom = 355.0
+offset_left = 78.000015
+offset_top = 265.0
+offset_right = 174.00003
+offset_bottom = 361.0
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_piernas" unique_id=663084407]
 visible = false
@@ -327,6 +346,7 @@ offset_bottom = 96.0
 color = Color(0.10747976, 0.10747973, 0.10747973, 1)
 
 [node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_piernas" unique_id=655128997]
+modulate = Color(1, 1, 1, 0.13725491)
 layout_mode = 0
 offset_right = 96.000015
 offset_bottom = 96.0
@@ -334,10 +354,10 @@ texture = ExtResource("2_0jk7v")
 
 [node name="slot_collar" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1430094779]
 anchors_preset = 0
-offset_left = 285.85
-offset_top = 75.0
-offset_right = 317.85
-offset_bottom = 107.0
+offset_left = 278.00003
+offset_top = 50.0
+offset_right = 310.00003
+offset_bottom = 82.0
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_collar" unique_id=606021261]
 visible = false
@@ -353,6 +373,7 @@ offset_bottom = 32.0
 color = Color(0.10747976, 0.10747973, 0.10747973, 1)
 
 [node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_collar" unique_id=907619912]
+modulate = Color(1, 1, 1, 0.13725491)
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
@@ -360,10 +381,10 @@ texture = ExtResource("2_0jk7v")
 
 [node name="slot_cinto" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1541021345]
 anchors_preset = 0
-offset_left = 129.84999
-offset_top = 262.0
-offset_right = 161.84999
-offset_bottom = 294.0
+offset_left = 307.0
+offset_top = 172.0
+offset_right = 339.0
+offset_bottom = 204.0
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cinto" unique_id=1680975308]
 visible = false
@@ -379,6 +400,7 @@ offset_bottom = 32.0
 color = Color(0.10747976, 0.10747973, 0.10747973, 1)
 
 [node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cinto" unique_id=1283093528]
+modulate = Color(1, 1, 1, 0.13725491)
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
@@ -386,10 +408,10 @@ texture = ExtResource("2_0jk7v")
 
 [node name="slot_manos" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1344380390]
 anchors_preset = 0
-offset_left = 290.85
-offset_top = 260.0
-offset_right = 322.85
-offset_bottom = 292.0
+offset_left = 118.00003
+offset_top = 74.0
+offset_right = 150.00003
+offset_bottom = 106.0
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_manos" unique_id=402002470]
 visible = false
@@ -405,6 +427,7 @@ offset_bottom = 32.0
 color = Color(0.10747976, 0.10747973, 0.10747973, 1)
 
 [node name="marco_slot" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_manos" unique_id=118061081]
+modulate = Color(1, 1, 1, 0.13725491)
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0

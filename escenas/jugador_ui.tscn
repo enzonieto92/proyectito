@@ -22,6 +22,7 @@ font_size = 51
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.58, 0.58)
 texture = ExtResource("1_17j6d")
 
 [node name="game_over_screen" type="ColorRect" parent="." unique_id=1115024860]
