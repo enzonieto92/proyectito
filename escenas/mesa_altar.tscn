@@ -3,10 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://c2uhaftjixji" path="res://objetos glb/mesa-altar.glb" id="1_4pwm4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pwm4"]
-size = Vector3(1.0010986, 1.1826172, 0.539032)
+size = Vector3(1.0010986, 0.93310547, 0.46958923)
 
 [node name="mesa-altar" unique_id=107865010 instance=ExtResource("1_4pwm4")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1452912914]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035217285, 0.62353516, 0.008682251)
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=768075435]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1452912914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035217285, 0.4987793, -0.026039124)
 shape = SubResource("BoxShape3D_4pwm4")

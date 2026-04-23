@@ -4,9 +4,11 @@ extends CharacterBody3D
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
-
+const SONIDO_ENEMIGO_PASIVO = preload("uid://dihjxs15viicy")
+const SONIDO_ENEMIGO = preload("uid://7l0ge7qhpr1b")
+@onready var sonido_enemigo: AudioStreamPlayer3D = $sonido_enemigo
 var speed := 2.5
-
+var player_entered_area : bool = false
 @export var atacando : bool = false
 @export var vida : float 
 @export var attack_range : float
@@ -31,14 +33,8 @@ func _physics_process(delta: float) -> void:
 
 	# 🔥 SOLO rotar si NO está atacando
 	if not _atacando_cooldown:
-		var target_position = player.position
-		target_position.y = global_position.y
-
-		var dir = (target_position - global_position).normalized()
-		dir.y = 0
-
-		var target_angle = atan2(dir.x, dir.z)
-		rotation.y = lerp_angle(rotation.y, target_angle, 8.0 * delta)
+		look_at_target()
+	
 
 	# gravedad siempre
 	velocity += get_gravity() * delta
@@ -58,7 +54,8 @@ func _physics_process(delta: float) -> void:
 		attack_behavior()
 		damage = int(randf_range(min_damage,max_damage))
 	elif not _en_cooldown:
-		chase_behavior()
+		if player_entered_area:
+			chase_behavior()
 
 	else:
 		velocity.x = 0
@@ -66,10 +63,18 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func look_at_target():
+	var target_position = player.position
+	target_position.y = global_position.y
+
+	var dir = (target_position - global_position).normalized()
+	dir.y = 0
+
+	var target_angle = atan2(dir.x, dir.z)
+	rotation.y = target_angle
 
 func recibir_damage(_damage):
 	var calcular_damage = int(randf_range(_damage.x, _damage.y))
-	print (calcular_damage)
 	vida -= calcular_damage
 	
 	var sonido = AudioStreamPlayer.new()
@@ -117,3 +122,15 @@ func attack_behavior():
 
 	_en_cooldown = false
 	_atacando_cooldown = false
+
+
+func _on_area_deteccion_body_entered(body: Node3D) -> void:
+	if body.is_in_group("jugador"):
+		sonido_enemigo.stream = SONIDO_ENEMIGO
+		sonido_enemigo.play()
+		player_entered_area = true
+
+
+func _on_area_deteccion_body_exited(body: Node3D) -> void:
+	if body.is_in_group("jugador"):
+		player_entered_area = false

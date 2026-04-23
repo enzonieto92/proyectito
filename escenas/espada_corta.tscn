@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cmmijprdnkysr"]
 
 [ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_i3e82"]
-[ext_resource type="Resource" uid="uid://cbr4jdhfx7qnr" path="res://armas/espada_corta.tres" id="2_i3e82"]
 [ext_resource type="Texture2D" uid="uid://bg23uqd8v4ac4" path="res://texturas/Armas/espada_corta.png" id="3_i3e82"]
 [ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="5_t3cr7"]
 
@@ -30,7 +29,6 @@ texture_filter = 0
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_i3e82")
-item = ExtResource("2_i3e82")
 
 [node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=330304897]
 shape = SubResource("CapsuleShape3D_tcnuu")
@@ -42,6 +40,7 @@ collision_layer = 3
 shape = SubResource("CylinderShape3D_tuemg")
 
 [node name="sprite" type="MeshInstance3D" parent="." unique_id=170180650]
+transform = Transform3D(1, 0, 0, 0, 0.25713277, -0.96637607, 0, 0.96637607, 0.25713277, 0, 0.23867851, 1.0432969e-08)
 mesh = SubResource("PlaneMesh_jsk3o")
 surface_material_override/0 = SubResource("StandardMaterial3D_4arys")
 script = ExtResource("5_t3cr7")

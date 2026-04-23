@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ceg0awyobh8ld" path="res://texturas/seguidor_attack.png" id="5_2nodj"]
 [ext_resource type="Texture2D" uid="uid://jrt5dtfusfyx" path="res://texturas/seguidor-dead-sprite.png" id="6_dxnq1"]
 [ext_resource type="Script" uid="uid://ct1miin5x3sy3" path="res://scripts/raycast_enemigo.gd" id="6_w463i"]
+[ext_resource type="AudioStream" uid="uid://dihjxs15viicy" path="res://sonido/sonido_enemigo_pasivo.mp3" id="7_dxnq1"]
 [ext_resource type="Texture2D" uid="uid://brpxjynnuu5lj" path="res://texturas/sangre_suelo.png" id="8_chp7c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inx13"]
@@ -217,7 +218,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_nkg5f"]
 resource_name = "attack"
-length = 2.0732145
+length = 2.0732
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -261,10 +262,10 @@ tracks/3/path = NodePath(".:animation_vector")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25836912, 0.35271695, 0.72636694, 0.8590825, 1.3827341, 1.6618207),
+"times": PackedFloat32Array(0, 0.25836912, 0.35556477, 0.72636694, 0.8591, 1.3827341, 1.6618207),
 "transitions": PackedFloat32Array(1, 1, 1.4455018, 29.85697, 0.05255613, 0.21022427, 5.278032),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-1.5, 0, -1.5), Vector3(0, 0, 0), Vector3(2.5, 3, 2.5), Vector3(5, 3.5, 5), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-2, 0, -2), Vector3(0, 0, 0), Vector3(2.5, 4, 2.5), Vector3(5, 3.5, 5), Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -289,6 +290,20 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.8591),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"look_at_target"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_chp7c"]
@@ -404,6 +419,10 @@ _data = {
 &"dying": SubResource("Animation_p4thj")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g7x46"]
+height = 1.4238281
+radius = 4.7680664
+
 [node name="Enemigo" type="CharacterBody3D" unique_id=1587185498 groups=["enemigos"]]
 rotation_order = 0
 script = ExtResource("1_jx5fs")
@@ -434,6 +453,7 @@ script = ExtResource("6_w463i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1991871366]
 libraries/ = SubResource("AnimationLibrary_nkg5f")
+autoplay = &"chase"
 
 [node name="sangre" type="Sprite3D" parent="." unique_id=2043400470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5324233, 0)
@@ -443,3 +463,17 @@ shaded = true
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("8_chp7c")
+
+[node name="area_deteccion" type="Area3D" parent="." unique_id=1989233783]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="area_deteccion" unique_id=284487639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28808594, 0)
+shape = SubResource("CylinderShape3D_g7x46")
+
+[node name="sonido_enemigo" type="AudioStreamPlayer3D" parent="." unique_id=415566684]
+stream = ExtResource("7_dxnq1")
+autoplay = true
+max_distance = 10.0
+
+[connection signal="body_entered" from="area_deteccion" to="." method="_on_area_deteccion_body_entered"]
+[connection signal="body_exited" from="area_deteccion" to="." method="_on_area_deteccion_body_exited"]

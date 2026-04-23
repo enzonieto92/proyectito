@@ -4,7 +4,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nxj0"]
 resource_name = "Material.006"
-cull_mode = 2
+depth_draw_mode = 1
 albedo_texture = ExtResource("1_jiiav")
 texture_filter = 2
 
@@ -136,6 +136,7 @@ data = PackedVector3Array(-0.035130758, 0.6225892, 0.6403258, -0.03513076, 0.608
 [node name="cruz" type="Node3D" unique_id=1267122633]
 
 [node name="mesatortura2" type="MeshInstance3D" parent="." unique_id=265780265]
+transform = Transform3D(0.9999996, -0.00014495623, -0.0009129322, 0.00014030622, 0.999987, -0.0051005855, 0.0009136584, 0.005100455, 0.9999866, 0, 0, 0)
 mesh = SubResource("ArrayMesh_udroo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="mesatortura2" unique_id=688143681]
