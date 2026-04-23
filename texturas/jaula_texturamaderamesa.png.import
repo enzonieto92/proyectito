@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7arr4lvlsjhm"
-path.s3tc="res://.godot/imported/jaula_texturamaderamesa.png-5da0052dd817d2b97b2c179463e595de.s3tc.ctex"
+uid="uid://co204brg1fm7l"
+path.s3tc="res://.godot/imported/Jaula_texturamaderamesa.png-052987819489ac550b99256eca97abc2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://texturas/jaula_texturamaderamesa.png"
-dest_files=["res://.godot/imported/jaula_texturamaderamesa.png-5da0052dd817d2b97b2c179463e595de.s3tc.ctex"]
+source_file="res://texturas/Jaula_texturamaderamesa.png"
+dest_files=["res://.godot/imported/Jaula_texturamaderamesa.png-052987819489ac550b99256eca97abc2.s3tc.ctex"]
 
 [params]
 
