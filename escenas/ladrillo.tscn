@@ -10,6 +10,7 @@ load_path = "res://.godot/imported/paredes_dungeonglb_walldungeon.png-dcb59a4443
 load_path = "res://.godot/imported/paredes_dungeonglb_walldungeon_specular (2).png-cb4a780e207444e110fac8b0dc34905f.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbelj"]
+albedo_color = Color(0.7750634, 0.7750634, 0.7750634, 1)
 albedo_texture = SubResource("CompressedTexture2D_b4tto")
 normal_enabled = true
 normal_texture = SubResource("CompressedTexture2D_531j8")

@@ -48,7 +48,6 @@ func cambiar_pitch_swing():
 	var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma
 	sonido_arma.pitch_scale = randf_range(0.7, 1.3)
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	total_damage.x = (damage.x + damage_arma.x)
 	total_damage.y = (damage.y + damage_arma.y)
 func recibir_damage(_damage):

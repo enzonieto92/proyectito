@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dqrqprrqi2lc8" path="res://scripts/dialogo.gd" id="3_xejmm"]
 [ext_resource type="Script" uid="uid://xfxh6s2wuhij" path="res://scripts/texto_plano.gd" id="4_u4y7y"]
 [ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="5_4a01a"]
+[ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://escenas/menu_controller.gd" id="5_hvxa3"]
 [ext_resource type="PackedScene" uid="uid://daphq6mgow8wf" path="res://escenas/silla_tirada.tscn" id="6_8lvc2"]
 [ext_resource type="PackedScene" uid="uid://cenpahd676ouq" path="res://escenas/hoja.tscn" id="7_lgf0p"]
 [ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
@@ -13,6 +14,9 @@
 [sub_resource type="Theme" id="Theme_3v7ru"]
 default_font = ExtResource("2_78vvm")
 default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_70khi"]
+default_font_size = 0
 
 [node name="escena principal" type="Node3D" unique_id=1018523294]
 script = ExtResource("1_hvxa3")
@@ -50,6 +54,49 @@ offset_bottom = 620.0
 theme = SubResource("Theme_3v7ru")
 horizontal_alignment = 1
 script = ExtResource("4_u4y7y")
+
+[node name="panel_opciones" type="Panel" parent="UI" unique_id=944489288]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_hvxa3")
+
+[node name="GridContainer" type="GridContainer" parent="UI/panel_opciones" unique_id=628145639]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -130.0
+offset_right = 100.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_70khi")
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 32
+
+[node name="Button" type="Button" parent="UI/panel_opciones/GridContainer" unique_id=1780553641]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_78vvm")
+theme_override_font_sizes/font_size = 35
+text = "Opciones"
+
+[node name="reiniciar_escena" type="Button" parent="UI/panel_opciones/GridContainer" unique_id=1121167532]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_78vvm")
+theme_override_font_sizes/font_size = 35
+text = "Reiniciar Escena"
+
+[node name="boton_salir" type="Button" parent="UI/panel_opciones/GridContainer" unique_id=2083833824]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_78vvm")
+theme_override_font_sizes/font_size = 35
+text = "Salir"
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("5_4a01a")]
 transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -0.21210957, 0, 0.3686205)

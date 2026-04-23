@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://lqyq8ki31dlw" path="res://scripts/jugador.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ckcuynwuawjok" path="res://scripts/animation_controller.gd" id="2_r4hsq"]
 [ext_resource type="PackedScene" uid="uid://ceyurw2moikg2" path="res://escenas/inventario_controller.tscn" id="2_sweqy"]
-[ext_resource type="AudioStream" uid="uid://cjxlxobyflnn8" path="res://sonido/deuslower-atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215.mp3" id="4_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://iw1jjrm2qss1" path="res://escenas/jugador_ui.tscn" id="4_ig1bj"]
 [ext_resource type="AudioStream" uid="uid://bcy7vwpq2v668" path="res://sonido/paso1.mp3" id="5_ig1bj"]
+[ext_resource type="AudioStream" uid="uid://bpvtl2rls4cxu" path="res://sonido/tension_1_suave.mp3" id="6_meqng"]
 [ext_resource type="Script" uid="uid://dg5uvq1yj8ud0" path="res://scripts/posicion_arma.gd" id="6_p52f3"]
+[ext_resource type="AudioStream" uid="uid://dibg0fuyllvim" path="res://sonido/tension_1.mp3" id="7_yn8ju"]
 [ext_resource type="AudioStream" uid="uid://eyxh8xjrs4h" path="res://sonido/swing_arma.mp3" id="9_ig1bj"]
 [ext_resource type="Script" uid="uid://2w1wkxecn551" path="res://scripts/raycast_arma.gd" id="9_w7fad"]
 [ext_resource type="AudioStream" uid="uid://ck6u42udbwsfj" path="res://sonido/block.mp3" id="10_meqng"]
@@ -830,6 +831,26 @@ height = 1.8
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
 albedo_color = Color(0.8745098, 0, 0.83137256, 1)
 
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_lctvp"]
+clip_count = 2
+clip_0/name = &"Tension 1 Suave"
+clip_0/stream = ExtResource("6_meqng")
+clip_0/auto_advance = 0
+clip_1/name = &"Tension 1"
+clip_1/stream = ExtResource("7_yn8ju")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 2.0,
+"fade_mode": 3,
+"filler_clip": 1,
+"from_time": 1,
+"hold_previous": true,
+"to_time": 1,
+"use_filler_clip": true
+}
+}
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_475hk"]
 height = 0.10913086
 
@@ -866,10 +887,10 @@ debug_shape_thickness = 1
 [node name="SpotLight3D" type="SpotLight3D" parent="camara_controller/camara_player" unique_id=2060468858]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022611976, 0.28595096)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.7
+light_energy = 0.245
 light_volumetric_fog_energy = 9.065
-spot_range = 14.931965
-spot_angle = 55.64838
+spot_range = 23.383232
+spot_angle = 45.55635
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881, 0)
@@ -887,17 +908,18 @@ stream = ExtResource("5_ig1bj")
 volume_db = -28.0
 
 [node name="Musica" type="AudioStreamPlayer" parent="." unique_id=1621554514]
-stream = ExtResource("4_1jxqw")
+stream = SubResource("AudioStreamInteractive_lctvp")
 volume_db = -13.419
+pitch_scale = 0.7
+autoplay = true
 mix_target = 1
-parameters/looping = true
 
 [node name="pivote" type="Node3D" parent="." unique_id=991400812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
 script = ExtResource("6_p52f3")
 
 [node name="posicion_arma" type="Node3D" parent="pivote" unique_id=1760938995]
-transform = Transform3D(0.8066229, -0.16035502, -0.5688987, 0.4419465, 0.8027456, 0.40035257, 0.3924824, -0.5743559, 0.7183821, 0.5151274, -0.15985763, -0.80995387)
+transform = Transform3D(0.8066229, -0.16035502, -0.5688987, 0.44194648, 0.8027456, 0.40035257, 0.3924824, -0.5743559, 0.7183821, 0.5151274, -0.15985763, -0.80995387)
 
 [node name="sprite_arma" type="Sprite3D" parent="pivote/posicion_arma" unique_id=605076613 groups=["sprite_arma"]]
 transform = Transform3D(0.9999997, 0, 0, 0, 0.99999875, 0, 0, 0, 0.99999976, 0, 0, 0)
@@ -922,7 +944,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.475, 0)
 script = ExtResource("6_p52f3")
 
 [node name="posicion_secundaria" type="Node3D" parent="pivote_secundaria" unique_id=1756086592]
-transform = Transform3D(0.9458871, 0, 0.3244952, 0, 0.99999994, 0, -0.3244952, 0, 0.945887, -0.46723223, -0.42968047, -0.69782907)
+transform = Transform3D(0.945887, 0, 0.32449514, 0, 0.99999994, 0, -0.3244952, 0, 0.9458869, -0.46723223, -0.42968047, -0.69782907)
 
 [node name="sprite_secundaria" type="Sprite3D" parent="pivote_secundaria/posicion_secundaria" unique_id=79353298 groups=["sprite_secundaria"]]
 transform = Transform3D(1, 0, -5.9604638e-08, 0, 1, 0, 5.9604638e-08, 0, 1, 0, -0.11768806, 0)
