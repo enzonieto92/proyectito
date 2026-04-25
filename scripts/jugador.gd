@@ -14,6 +14,8 @@ extends CharacterBody3D
 @onready var jugador_ui: CanvasLayer = $Jugador_UI
 @onready var slot_mano_secundaria: SecundarySlot = $Inventario_Controller/CanvasLayer/Inventario_UI/panel_equipo/slot_mano_secundaria
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
+@onready var hit_sound: AudioStreamPlayer3D = $hit_sound
 
 @export var stamina : float
 @export var golpeando = false
@@ -52,10 +54,12 @@ func _ready():
 	total_damage.y = (damage.y + damage_arma.y)
 func recibir_damage(_damage):
 	recibiendo_damage = true
-
-	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
-	var daño_final = int(_damage * (1.0 - reduccion))
-	vida -= int(daño_final)
+	var controller = camera.get_parent()
+	controller.shake(0.05, 0.5, 60.0)
+	hit_sound.play()
+	#var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
+	#var daño_final = int(_damage * (1.0 - reduccion))
+	#vida -= int(daño_final)
 	animation_player.on_block_hit()
 	reaccion_ui()
 	recibiendo_damage = false
@@ -185,6 +189,7 @@ func _physics_process(delta):
 	moving = velocity.length_squared() > 0.01 and is_on_floor()
 
 func _process(_delta):
+
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		if objeto_actual.is_in_group("puertas"):
 			if objeto_actual.abierta:

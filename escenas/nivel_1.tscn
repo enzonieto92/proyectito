@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dqrqprrqi2lc8" path="res://scripts/dialogo.gd" id="3_xejmm"]
 [ext_resource type="Script" uid="uid://xfxh6s2wuhij" path="res://scripts/texto_plano.gd" id="4_u4y7y"]
 [ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="5_4a01a"]
-[ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://escenas/menu_controller.gd" id="5_hvxa3"]
+[ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://scripts/menu_controller.gd" id="5_hvxa3"]
 [ext_resource type="PackedScene" uid="uid://daphq6mgow8wf" path="res://escenas/silla_tirada.tscn" id="6_8lvc2"]
 [ext_resource type="PackedScene" uid="uid://cenpahd676ouq" path="res://escenas/hoja.tscn" id="7_lgf0p"]
 [ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
@@ -56,6 +56,7 @@ horizontal_alignment = 1
 script = ExtResource("4_u4y7y")
 
 [node name="panel_opciones" type="Panel" parent="UI" unique_id=944489288]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -218,7 +218,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_nkg5f"]
 resource_name = "attack"
-length = 2.0732
+length = 1.2432
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -238,7 +238,7 @@ tracks/1/path = NodePath("sprite_enemy:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8547926, 1.06254, 1.5140078),
+"times": PackedFloat32Array(0, 0.3599618, 0.56770927, 1.0191772),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 0]
@@ -250,7 +250,7 @@ tracks/2/path = NodePath(".:atacando")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.0608622),
+"times": PackedFloat32Array(0.5660314),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -262,10 +262,10 @@ tracks/3/path = NodePath(".:animation_vector")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25836912, 0.35556477, 0.72636694, 0.8591, 1.3827341, 1.6618207),
-"transitions": PackedFloat32Array(1, 1, 1.4455018, 29.85697, 0.05255613, 0.21022427, 5.278032),
+"times": PackedFloat32Array(0, 0.2767626, 0.36958998, 0.88790333, 1.16699),
+"transitions": PackedFloat32Array(1, 29.85697, 0.034674093, 0.21022427, 5.278032),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-2, 0, -2), Vector3(0, 0, 0), Vector3(2.5, 4, 2.5), Vector3(5, 3.5, 5), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(5, 4, 5), Vector3(5, 3.5, 5), Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -274,7 +274,7 @@ tracks/4/path = NodePath(".:salto")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.8725043),
+"times": PackedFloat32Array(0.3776735),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -286,7 +286,7 @@ tracks/5/path = NodePath("raycast_enemigo:enabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.99965507, 1.4663601),
+"times": PackedFloat32Array(0.5048243, 0.9715294),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -298,7 +298,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.8591),
+"times": PackedFloat32Array(0.34830692),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
