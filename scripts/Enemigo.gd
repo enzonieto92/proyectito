@@ -93,6 +93,7 @@ func chase_behavior():
 
 
 func dying_behavior():
+	await is_on_floor()
 	animation_player.play("dying")
 	await animation_player.animation_finished
 	queue_free()

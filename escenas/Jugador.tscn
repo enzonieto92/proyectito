@@ -184,6 +184,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("camara_controller/camara_player:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.47499, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_dw050"]
 resource_name = "atacar"
@@ -481,82 +493,70 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("camara_controller:rotation")
-tracks/0/interp = 2
+tracks/0/path = NodePath("pivote/posicion_arma/sprite_arma:rotation")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2534184, 0.47223356, 0.76187027, 1.1361985),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.008726646), Vector3(0, 0, 0), Vector3(0, 0, 0.008726646), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("pivote/posicion_arma/sprite_arma:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.56443924, 1.1424687),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("pivote_secundaria/posicion_secundaria:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivote_secundaria/posicion_secundaria:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.030564114, 0.3178672, 0.5909072, 0.8476459, 1.1084607),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.467, -0.535, -0.698), Vector3(-0.467, -0.495, -0.798), Vector3(-0.467, -0.535, -0.698), Vector3(-0.467, -0.495, -0.683), Vector3(-0.46723223, -0.42968047, -0.69782907)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.030564114, 0.31582955, 0.5909072, 0.84560835, 1.1084607),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivote/posicion_arma:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.26692706, 0.54446375, 0.8007809, 1.0579417),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(0.515, -0.11, -0.76), Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(0.515, -0.125, -0.84), Vector3(0.515, -0.16, -0.81)]
+}
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("pivote/posicion_arma:position")
+tracks/4/path = NodePath("pivote/posicion_arma:rotation")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.26692706, 0.54446375, 0.8007809, 1.0579417),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(0.515, -0.11, -0.76), Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(0.515, -0.125, -0.84), Vector3(0.515, -0.16, -0.81)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("pivote/posicion_arma:rotation")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.26692706, 0.54446375, 0.8007809, 1.0579417),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
 "values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-0.41190138, -0.66979253, 0.5032604)]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.04418791, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -567,17 +567,17 @@ tracks/6/keys = {
 "method": &"play_footstep"
 }]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("camara_controller:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2534184, 0.4769559, 0.7597277),
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("camara_controller/camara_player:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(-0.0031482242, 0.23333335, 0.4926971, 0.8333334),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.055, 0, 0), Vector3(0, 0, 0), Vector3(-0.055, 0, 0)]
+"values": [Vector3(0, 1.47499, 0), Vector3(0, 1.52, 0), Vector3(0, 1.47499, 0), Vector3(0, 1.52, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_yn8ju"]
@@ -610,71 +610,59 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("camara_controller:position")
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivote_secundaria/posicion_secundaria:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.48813918, 0.64943117, 0.8170402, 0.9859673, 1.1375704, 1.3006513),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.07, 0, 0), Vector3(0, 0.06, 0), Vector3(0.07, 0, 0), Vector3(0, 0.06, 0), Vector3(-0.07, 0, 0), Vector3(0, 0.06, 0), Vector3(0.07, 0, 0), Vector3(0, 0.06, 0), Vector3(-0.07, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("pivote_secundaria/posicion_secundaria:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.15909332, 0.34295776, 0.5353676, 0.71150845, 0.8881508, 1.0502522, 1.1751975),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.467, -0.495, -0.798), Vector3(-0.467, -0.535, -0.698), Vector3(-0.467, -0.495, -0.683), Vector3(-0.467, -0.535, -0.698), Vector3(-0.467, -0.495, -0.798), Vector3(-0.467, -0.535, -0.698), Vector3(-0.467, -0.495, -0.683), Vector3(-0.467, -0.535, -0.698)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(-0.0020376444, 0.15909332, 0.34092024, 0.5353676, 0.7094708, 0.8881508, 1.0482147, 1.1751975),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pivote/posicion_arma:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5151274, -0.15985763, -0.80995387)]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("pivote/posicion_arma:position")
+tracks/5/path = NodePath("pivote/posicion_arma:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.5151274, -0.15985763, -0.80995387)]
+"values": [Vector3(-0.41190138, -0.66979253, 0.5032604)]
 }
-tracks/6/type = "value"
+tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("pivote/posicion_arma:rotation")
+tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.41190138, -0.66979253, 0.5032604)]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.33410293, 0.68215984, 1.0139964),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
@@ -690,6 +678,18 @@ tracks/7/keys = {
 "args": [],
 "method": &"play_footstep"
 }]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("camara_controller/camara_player:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1750912, 0.30695188, 0.47915816, 0.6, 0.77509123, 0.9069519, 1.0791582),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.47499, 0), Vector3(0, 1.52, 0), Vector3(0, 1.47499, 0), Vector3(0, 1.52, 0), Vector3(0, 1.47499, 0), Vector3(0, 1.52, 0), Vector3(0, 1.47499, 0), Vector3(0, 1.52, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_475hk"]
@@ -946,7 +946,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.475, 0)
 script = ExtResource("6_p52f3")
 
 [node name="posicion_secundaria" type="Node3D" parent="pivote_secundaria" unique_id=1756086592]
-transform = Transform3D(0.945887, 0, 0.32449514, 0, 0.99999994, 0, -0.3244952, 0, 0.94588685, -0.46723223, -0.42968047, -0.69782907)
+transform = Transform3D(0.94588697, 0, 0.3244951, 0, 0.99999994, 0, -0.32449517, 0, 0.9458868, -0.46723223, -0.42968047, -0.69782907)
 
 [node name="sprite_secundaria" type="Sprite3D" parent="pivote_secundaria/posicion_secundaria" unique_id=79353298 groups=["sprite_secundaria"]]
 transform = Transform3D(1, 0, -5.9604638e-08, 0, 1, 0, 5.9604638e-08, 0, 1, 0, -0.11768806, 0)

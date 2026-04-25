@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cuoosf7lprwxg"]
+
+[ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_q7uc5"]
+[ext_resource type="Resource" uid="uid://dro78t07lk26i" path="res://armas/daga_ritual.tres" id="2_nh3vm"]
+[ext_resource type="Texture2D" uid="uid://d2k4nm6yt47oy" path="res://texturas/Armas/daga.png" id="3_stdfm"]
+[ext_resource type="Texture2D" uid="uid://mbuobsdhvxtp" path="res://texturas/Armas/daga_normales.png" id="4_4ki8j"]
+[ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="5_5d43m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sbege"]
+size = Vector3(1.6007919, 1.9008789, 1.862915)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uwcph"]
+radius = 0.17626953
+height = 0.35253906
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5foml"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nilqj"]
+transparency = 1
+albedo_texture = ExtResource("3_stdfm")
+normal_enabled = true
+normal_texture = ExtResource("4_4ki8j")
+texture_filter = 0
+
+[node name="daga" type="Node3D" unique_id=480963315]
+
+[node name="area_interaccion" type="Area3D" parent="." unique_id=1030725869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74638677, 0)
+collision_layer = 2
+
+[node name="colision_area" type="CollisionShape3D" parent="area_interaccion" unique_id=20989893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5681343, 0.22485352, -0.07196045)
+shape = SubResource("BoxShape3D_sbege")
+
+[node name="area_raycast" type="StaticBody3D" parent="area_interaccion" unique_id=1446903369 groups=["recogibles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.74638677, 0)
+collision_layer = 3
+script = ExtResource("1_q7uc5")
+arma = ExtResource("2_nh3vm")
+
+[node name="colision_objeto" type="CollisionShape3D" parent="area_interaccion/area_raycast" unique_id=1280504304]
+transform = Transform3D(0.9186396, 0, 0.39509663, 0, 1, 0, -0.39509663, 0, 0.9186396, 0.14382486, 1.0606759, -0.19872043)
+shape = SubResource("CapsuleShape3D_uwcph")
+
+[node name="sprite" type="MeshInstance3D" parent="area_interaccion/area_raycast" unique_id=1799775419]
+transform = Transform3D(0.8703451, 0.29393542, 0.39509663, -0.3199682, 0.9474283, 0, -0.37432572, -0.12641835, 0.9186396, 0.09344356, 1.0606759, -0.35172662)
+mesh = SubResource("PlaneMesh_5foml")
+surface_material_override/0 = SubResource("StandardMaterial3D_nilqj")
+script = ExtResource("5_5d43m")
+
+[connection signal="body_entered" from="area_interaccion" to="area_interaccion/area_raycast" method="_on_area_interaccion_body_entered"]
+[connection signal="body_exited" from="area_interaccion" to="area_interaccion/area_raycast" method="_on_area_interaccion_body_exited"]

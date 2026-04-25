@@ -9,8 +9,11 @@ func puede_interactuar():
 
 func interactuar(_player):
 	dialogo.visible = true
-	dialogo.show_text("La hoja 2 dice cosas que diria la HoJa DoX")
-
+	dialogo.show_text(
+		"\"No usar la llave hasta dar con una\npersona indicada.\n" +
+		"Enkotena.. o Inketova no hará más que\ntomar su vida, como siempre...\n" +
+	    "Presiento que estamos más cerca de\nconfirmar el nombre del nuevo dios.\""
+	)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "player":

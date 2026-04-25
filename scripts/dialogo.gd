@@ -1,6 +1,6 @@
 extends RichTextLabel
 
-@export var chars_per_second: float = 20.0
+@export var chars_per_second: float = 40.0
 var tween_actual : Tween = null
 
 func show_text(new_text: String):

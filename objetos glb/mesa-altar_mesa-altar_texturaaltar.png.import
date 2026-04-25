@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://18yxljccgv2e"
-path.s3tc="res://.godot/imported/azotador-dead.png-b4cb41f941d0e759ff0d06bad76b11a1.s3tc.ctex"
+uid="uid://fbbsr6k0nus1"
+path.s3tc="res://.godot/imported/mesa-altar_mesa-altar_texturaaltar.png-5eaea6e3503f20a9b5594514ca29d42f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "256ef58ac43d3fb0d8f964c590e55847"
+}
 
 [deps]
 
-source_file="res://texturas/azotador-dead.png"
-dest_files=["res://.godot/imported/azotador-dead.png-b4cb41f941d0e759ff0d06bad76b11a1.s3tc.ctex"]
+source_file="res://objetos glb/mesa-altar_mesa-altar_texturaaltar.png"
+dest_files=["res://.godot/imported/mesa-altar_mesa-altar_texturaaltar.png-5eaea6e3503f20a9b5594514ca29d42f.s3tc.ctex"]
 
 [params]
 
