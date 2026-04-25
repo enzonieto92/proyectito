@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kw187u4gp0vv"
-path="res://.godot/imported/wall-tileset.glb-7c85d19b27d5b31c7051da0c53563651.scn"
+uid="uid://bguu1por0kimh"
+path="res://.godot/imported/wall-chunks.glb-d697f4679309949c95ec1c7abec02321.scn"
 
 [deps]
 
-source_file="res://objetos glb/wall-tileset.glb"
-dest_files=["res://.godot/imported/wall-tileset.glb-7c85d19b27d5b31c7051da0c53563651.scn"]
+source_file="res://objetos glb/wall-chunks.glb"
+dest_files=["res://.godot/imported/wall-chunks.glb-d697f4679309949c95ec1c7abec02321.scn"]
 
 [params]
 
@@ -43,7 +43,7 @@ _subresources={
 "generate/occluder": 1
 },
 "PATH:diagonal_1": {
-"generate/occluder": 2
+"generate/occluder": 1
 },
 "PATH:diagonal_2": {
 "generate/occluder": 1

@@ -5,12 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://ceyurw2moikg2" path="res://escenas/inventario_controller.tscn" id="2_sweqy"]
 [ext_resource type="PackedScene" uid="uid://iw1jjrm2qss1" path="res://escenas/jugador_ui.tscn" id="4_ig1bj"]
 [ext_resource type="AudioStream" uid="uid://bcy7vwpq2v668" path="res://sonido/paso1.mp3" id="5_ig1bj"]
+[ext_resource type="Script" uid="uid://bcnm275lq36cm" path="res://scripts/efectos_camara.gd" id="5_lctvp"]
 [ext_resource type="AudioStream" uid="uid://bpvtl2rls4cxu" path="res://sonido/tension_1_suave.mp3" id="6_meqng"]
 [ext_resource type="Script" uid="uid://dg5uvq1yj8ud0" path="res://scripts/posicion_arma.gd" id="6_p52f3"]
 [ext_resource type="AudioStream" uid="uid://dibg0fuyllvim" path="res://sonido/tension_1.mp3" id="7_yn8ju"]
 [ext_resource type="AudioStream" uid="uid://eyxh8xjrs4h" path="res://sonido/swing_arma.mp3" id="9_ig1bj"]
 [ext_resource type="Script" uid="uid://2w1wkxecn551" path="res://scripts/raycast_arma.gd" id="9_w7fad"]
 [ext_resource type="AudioStream" uid="uid://ck6u42udbwsfj" path="res://sonido/block.mp3" id="10_meqng"]
+[ext_resource type="AudioStream" uid="uid://clxo03u4jxli7" path="res://sonido/hit_enemigo.mp3" id="13_475hk"]
 
 [sub_resource type="Animation" id="Animation_2hs0m"]
 length = 0.001
@@ -478,15 +480,15 @@ resource_name = "caminar"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("camara_controller:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1361985),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2534184, 0.47223356, 0.76187027, 1.1361985),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.008726646), Vector3(0, 0, 0), Vector3(0, 0, 0.008726646), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -564,6 +566,18 @@ tracks/6/keys = {
 "args": [],
 "method": &"play_footstep"
 }]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("camara_controller:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2534184, 0.4769559, 0.7597277),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.055, 0, 0), Vector3(0, 0, 0), Vector3(-0.055, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_yn8ju"]
@@ -824,13 +838,6 @@ _data = {
 radius = 0.3
 height = 1.8
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_a0tk4"]
-radius = 0.3
-height = 1.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
-albedo_color = Color(0.8745098, 0, 0.83137256, 1)
-
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_lctvp"]
 clip_count = 2
 clip_0/name = &"Tension 1 Suave"
@@ -872,6 +879,7 @@ script = ExtResource("2_r4hsq")
 
 [node name="camara_controller" type="Node3D" parent="." unique_id=1718200563]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("5_lctvp")
 
 [node name="camara_player" type="Camera3D" parent="camara_controller" unique_id=219131178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
@@ -896,16 +904,10 @@ spot_angle = 45.55635
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881, 0)
 shape = SubResource("CapsuleShape3D_noarx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1331905896]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9013792, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_a0tk4")
-surface_material_override/0 = SubResource("StandardMaterial3D_noarx")
-
 [node name="footstep" type="AudioStreamPlayer3D" parent="." unique_id=1255816085]
 transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
 stream = ExtResource("5_ig1bj")
-volume_db = -28.0
+max_db = -12.134
 
 [node name="Musica" type="AudioStreamPlayer" parent="." unique_id=1621554514]
 stream = SubResource("AudioStreamInteractive_lctvp")
@@ -944,7 +946,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.475, 0)
 script = ExtResource("6_p52f3")
 
 [node name="posicion_secundaria" type="Node3D" parent="pivote_secundaria" unique_id=1756086592]
-transform = Transform3D(0.945887, 0, 0.32449514, 0, 0.99999994, 0, -0.3244952, 0, 0.9458869, -0.46723223, -0.42968047, -0.69782907)
+transform = Transform3D(0.945887, 0, 0.32449514, 0, 0.99999994, 0, -0.3244952, 0, 0.94588685, -0.46723223, -0.42968047, -0.69782907)
 
 [node name="sprite_secundaria" type="Sprite3D" parent="pivote_secundaria/posicion_secundaria" unique_id=79353298 groups=["sprite_secundaria"]]
 transform = Transform3D(1, 0, -5.9604638e-08, 0, 1, 0, 5.9604638e-08, 0, 1, 0, -0.11768806, 0)
@@ -967,3 +969,10 @@ collision_layer = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pivote_secundaria/posicion_secundaria/area_escudo" unique_id=827036023]
 transform = Transform3D(1.0000002, -5.9604645e-08, 2.4868996e-14, 0, -4.371139e-08, -1.0000002, 0, 1.0000002, -4.3711424e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_475hk")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=281302950]
+current = true
+
+[node name="hit_sound" type="AudioStreamPlayer3D" parent="." unique_id=463426134]
+stream = ExtResource("13_475hk")
+max_db = -5.242

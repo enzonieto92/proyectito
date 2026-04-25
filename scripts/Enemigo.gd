@@ -127,6 +127,7 @@ func attack_behavior():
 func _on_area_deteccion_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jugador"):
 		sonido_enemigo.stream = SONIDO_ENEMIGO
+		sonido_enemigo.volume_db = -30.0
 		sonido_enemigo.play()
 		player_entered_area = true
 
