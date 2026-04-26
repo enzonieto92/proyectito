@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://18yxljccgv2e"
-path.s3tc="res://.godot/imported/azotador-dead.png-b4cb41f941d0e759ff0d06bad76b11a1.s3tc.ctex"
+uid="uid://mno15gv24rnx"
+path.s3tc="res://.godot/imported/mesa-altar_mesa-altar_texturaaltar-normales.png-e3239c3aa3e357dbfbee0a7d16bd4978.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "41b3cb6bd35047ec3156a86544d42fc4"
+}
 
 [deps]
 
-source_file="res://texturas/azotador-dead.png"
-dest_files=["res://.godot/imported/azotador-dead.png-b4cb41f941d0e759ff0d06bad76b11a1.s3tc.ctex"]
+source_file="res://objetos glb/mesa-altar_mesa-altar_texturaaltar-normales.png"
+dest_files=["res://.godot/imported/mesa-altar_mesa-altar_texturaaltar-normales.png-e3239c3aa3e357dbfbee0a7d16bd4978.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://objetos glb/mesa-altar_mesa-altar_texturaaltar-normales.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -25,23 +25,23 @@ script = ExtResource("1_hvxa3")
 follow_viewport_enabled = true
 
 [node name="dialogo" type="RichTextLabel" parent="UI" unique_id=785342466 groups=["dialogo"]]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -365.0
+offset_left = -297.0
 offset_top = -197.0
-offset_right = 365.0
+offset_right = 384.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_3v7ru")
 scroll_active = false
 scroll_following_visible_characters = true
-autowrap_mode = 1
-autowrap_trim_flags = 0
+autowrap_mode = 2
+autowrap_trim_flags = 64
+justification_flags = 227
 script = ExtResource("3_xejmm")
 
 [node name="texto_plano" type="RichTextLabel" parent="UI" unique_id=361409940]

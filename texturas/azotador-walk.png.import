@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://18yxljccgv2e"
-path.s3tc="res://.godot/imported/azotador-dead.png-b4cb41f941d0e759ff0d06bad76b11a1.s3tc.ctex"
+uid="uid://dbx0aotxomfjq"
+path="res://.godot/imported/azotador-walk.png-1113ec97bd75dd6327b90ef1eeede603.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://texturas/azotador-dead.png"
-dest_files=["res://.godot/imported/azotador-dead.png-b4cb41f941d0e759ff0d06bad76b11a1.s3tc.ctex"]
+source_file="res://texturas/azotador-walk.png"
+dest_files=["res://.godot/imported/azotador-walk.png-1113ec97bd75dd6327b90ef1eeede603.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
