@@ -6,8 +6,6 @@
 [ext_resource type="Script" uid="uid://xfxh6s2wuhij" path="res://scripts/texto_plano.gd" id="4_u4y7y"]
 [ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="5_4a01a"]
 [ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://scripts/menu_controller.gd" id="5_hvxa3"]
-[ext_resource type="PackedScene" uid="uid://daphq6mgow8wf" path="res://escenas/silla_tirada.tscn" id="6_8lvc2"]
-[ext_resource type="PackedScene" uid="uid://cenpahd676ouq" path="res://escenas/hoja.tscn" id="7_lgf0p"]
 [ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
 [ext_resource type="PackedScene" uid="uid://00i8tkohagvw" path="res://escenas/Enemigo.tscn" id="10_xqdpg"]
 
@@ -102,12 +100,6 @@ text = "Salir"
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("5_4a01a")]
 transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -0.21210957, 0, 0.3686205)
 floor_stop_on_slope = false
-
-[node name="silla" parent="." unique_id=30108936 instance=ExtResource("6_8lvc2")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -4.153, 0.31319487, 5.548)
-
-[node name="hoja" parent="." unique_id=690816751 instance=ExtResource("7_lgf0p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7874975, 0.9046548, 0.101058796)
 
 [node name="Enemigo" parent="." unique_id=1587185498 instance=ExtResource("10_xqdpg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.418045, 0.9606244, -10.331554)

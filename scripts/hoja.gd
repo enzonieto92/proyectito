@@ -1,5 +1,5 @@
 extends Node3D
-@onready var dialogo: RichTextLabel = $"../UI/dialogo"
+@onready var dialogo: RichTextLabel = $"../../UI/dialogo"
 
 var player_entered = false
 
