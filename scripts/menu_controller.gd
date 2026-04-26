@@ -18,9 +18,23 @@ func restart():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") and not event.is_echo():
 		mostrando_opciones = !mostrando_opciones
-		get_tree().paused = mostrando_opciones
-		_actualizar_ui()  
-
+		
+		if mostrando_opciones:
+			# Abriendo menú: ocultar inventario si estaba abierto
+			if inv_ui.visible:
+				inv_ui.visible = false
+				var player = get_tree().get_first_node_in_group("player")
+				if player:
+					player.inventario_abierto = false
+			get_tree().paused = true
+		else:
+			# Cerrando menú: primero despausar, luego actualizar
+			get_tree().paused = false
+			var player = get_tree().get_first_node_in_group("player")
+			if player:
+				player.inventario_abierto = false
+		
+		_actualizar_ui()
 # solo actualiza cuando cambia el estado
 
 func _actualizar_ui() -> void:
@@ -30,6 +44,12 @@ func _actualizar_ui() -> void:
 		texto_plano.hide()
 		show()
 	else:
+		var player = get_tree().get_first_node_in_group("player")
+		# Si el inv_ui no está visible, asegurarse que el player lo sepa
+		if not inv_ui.visible:
+			if player:
+				player.inventario_abierto = false
+		
 		if inv_ui.visible:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:

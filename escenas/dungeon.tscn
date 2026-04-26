@@ -31,9 +31,9 @@ ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.05
 tonemap_mode = 2
 fog_enabled = true
-fog_light_color = Color(0.199285, 0.10392662, 1.2032687e-07, 1)
-fog_light_energy = 0.02
-fog_density = 0.2
+fog_light_color = Color(0.56, 0.38770667, 0.1624, 1)
+fog_light_energy = 0.91
+adjustment_enabled = true
 
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
 

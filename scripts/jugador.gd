@@ -74,8 +74,8 @@ func reaccion_ui():
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
-		inventario_abierto = !inventario_abierto
-		inv_UI.visible = inventario_abierto
+		inv_UI.visible = !inv_UI.visible
+		inventario_abierto = inv_UI.visible 
 		raycast.enabled = not inventario_abierto
 
 		if inventario_abierto:

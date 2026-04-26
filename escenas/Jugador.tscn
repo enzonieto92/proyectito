@@ -884,7 +884,7 @@ script = ExtResource("5_lctvp")
 [node name="camara_player" type="Camera3D" parent="camara_controller" unique_id=219131178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
 fov = 70.0
-far = 24.46
+far = 30.0
 
 [node name="raycast" type="RayCast3D" parent="camara_controller/camara_player" unique_id=310805274]
 target_position = Vector3(0, 0, -2)
@@ -897,7 +897,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022611976, 0.28595096)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
 light_energy = 0.245
 light_volumetric_fog_energy = 9.065
-spot_range = 23.383232
+spot_range = 13.549277
 spot_angle = 45.55635
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
@@ -946,7 +946,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.475, 0)
 script = ExtResource("6_p52f3")
 
 [node name="posicion_secundaria" type="Node3D" parent="pivote_secundaria" unique_id=1756086592]
-transform = Transform3D(0.94588697, 0, 0.3244951, 0, 0.99999994, 0, -0.32449517, 0, 0.9458868, -0.46723223, -0.42968047, -0.69782907)
+transform = Transform3D(0.94588685, 0, 0.3244951, 0, 0.99999994, 0, -0.32449514, 0, 0.9458868, -0.46723223, -0.42968047, -0.69782907)
 
 [node name="sprite_secundaria" type="Sprite3D" parent="pivote_secundaria/posicion_secundaria" unique_id=79353298 groups=["sprite_secundaria"]]
 transform = Transform3D(1, 0, -5.9604638e-08, 0, 1, 0, 5.9604638e-08, 0, 1, 0, -0.11768806, 0)
