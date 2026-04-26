@@ -472,8 +472,9 @@ shape = SubResource("CylinderShape3D_g7x46")
 
 [node name="sonido_enemigo" type="AudioStreamPlayer3D" parent="." unique_id=415566684]
 stream = ExtResource("7_dxnq1")
+volume_db = 19.341
 autoplay = true
-max_distance = 10.0
+max_distance = 12.0
 
 [connection signal="body_entered" from="area_deteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="body_exited" from="area_deteccion" to="." method="_on_area_deteccion_body_exited"]

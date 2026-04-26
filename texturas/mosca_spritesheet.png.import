@@ -2,24 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co204brg1fm7l"
-path.s3tc="res://.godot/imported/Jaula_texturamaderamesa.png-052987819489ac550b99256eca97abc2.s3tc.ctex"
+uid="uid://c22vlv4pf7j0g"
+path="res://.godot/imported/mosca_spritesheet.png-c7dac4daf180168a78355d1cac788cde.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "3391a98a46ee9b001e5802f0cf74517a"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://texturas/Jaula_texturamaderamesa.png"
-dest_files=["res://.godot/imported/Jaula_texturamaderamesa.png-052987819489ac550b99256eca97abc2.s3tc.ctex"]
+source_file="res://texturas/mosca_spritesheet.png"
+dest_files=["res://.godot/imported/mosca_spritesheet.png-c7dac4daf180168a78355d1cac788cde.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

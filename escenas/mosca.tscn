@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://deqebrtynhpca"]
+
+[ext_resource type="Texture2D" uid="uid://c22vlv4pf7j0g" path="res://texturas/mosca_spritesheet.png" id="1_03tb0"]
+[ext_resource type="Script" uid="uid://cy7m5a5k40hw5" path="res://mosca_sprite.gd" id="2_yjam3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq50o"]
+atlas = ExtResource("1_03tb0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkjoe"]
+atlas = ExtResource("1_03tb0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2uhy"]
+atlas = ExtResource("1_03tb0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2g2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq50o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkjoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2uhy")
+}],
+"loop": true,
+"name": &"volando",
+"speed": 20.0
+}]
+
+[node name="mosca" type="Node3D" unique_id=1518323532]
+
+[node name="mosca_sprite" type="AnimatedSprite3D" parent="." unique_id=1764870666]
+modulate = Color(0.69135684, 0.6913568, 0.6913567, 1)
+billboard = 1
+shaded = true
+texture_filter = 0
+render_priority = 1
+sprite_frames = SubResource("SpriteFrames_t2g2b")
+animation = &"volando"
+autoplay = "volando"
+frame = 2
+frame_progress = 0.7265201
+script = ExtResource("2_yjam3")

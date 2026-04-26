@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://iw1jjrm2qss1" path="res://escenas/jugador_ui.tscn" id="4_ig1bj"]
 [ext_resource type="AudioStream" uid="uid://bcy7vwpq2v668" path="res://sonido/paso1.mp3" id="5_ig1bj"]
 [ext_resource type="Script" uid="uid://bcnm275lq36cm" path="res://scripts/efectos_camara.gd" id="5_lctvp"]
-[ext_resource type="AudioStream" uid="uid://bpvtl2rls4cxu" path="res://sonido/tension_1_suave.mp3" id="6_meqng"]
+[ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="6_lctvp"]
 [ext_resource type="Script" uid="uid://dg5uvq1yj8ud0" path="res://scripts/posicion_arma.gd" id="6_p52f3"]
-[ext_resource type="AudioStream" uid="uid://dibg0fuyllvim" path="res://sonido/tension_1.mp3" id="7_yn8ju"]
 [ext_resource type="AudioStream" uid="uid://eyxh8xjrs4h" path="res://sonido/swing_arma.mp3" id="9_ig1bj"]
 [ext_resource type="Script" uid="uid://2w1wkxecn551" path="res://scripts/raycast_arma.gd" id="9_w7fad"]
 [ext_resource type="AudioStream" uid="uid://ck6u42udbwsfj" path="res://sonido/block.mp3" id="10_meqng"]
@@ -834,29 +833,18 @@ _data = {
 &"idle": SubResource("Animation_p52f3")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lctvp"]
+render_priority = 0
+shader = ExtResource("6_lctvp")
+shader_parameter/pixel_size = 5
+
+[sub_resource type="QuadMesh" id="QuadMesh_ddw1h"]
+material = SubResource("ShaderMaterial_lctvp")
+size = Vector2(1.145, 0.66)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
 radius = 0.3
 height = 1.8
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_lctvp"]
-clip_count = 2
-clip_0/name = &"Tension 1 Suave"
-clip_0/stream = ExtResource("6_meqng")
-clip_0/auto_advance = 0
-clip_1/name = &"Tension 1"
-clip_1/stream = ExtResource("7_yn8ju")
-clip_1/auto_advance = 0
-_transitions = {
-Vector2i(0, 1): {
-"fade_beats": 2.0,
-"fade_mode": 3,
-"filler_clip": 1,
-"from_time": 1,
-"hold_previous": true,
-"to_time": 1,
-"use_filler_clip": true
-}
-}
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_475hk"]
 height = 0.10913086
@@ -900,6 +888,10 @@ light_volumetric_fog_energy = 9.065
 spot_range = 13.549277
 spot_angle = 45.55635
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="camara_controller/camara_player" unique_id=431156984]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, -0.054520607)
+mesh = SubResource("QuadMesh_ddw1h")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881, 0)
 shape = SubResource("CapsuleShape3D_noarx")
@@ -908,13 +900,6 @@ shape = SubResource("CapsuleShape3D_noarx")
 transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
 stream = ExtResource("5_ig1bj")
 max_db = -12.134
-
-[node name="Musica" type="AudioStreamPlayer" parent="." unique_id=1621554514]
-stream = SubResource("AudioStreamInteractive_lctvp")
-volume_db = -13.419
-pitch_scale = 0.7
-autoplay = true
-mix_target = 1
 
 [node name="pivote" type="Node3D" parent="." unique_id=991400812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)

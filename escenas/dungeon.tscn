@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://daphq6mgow8wf" path="res://escenas/silla_tirada.tscn" id="17_pbugk"]
 [ext_resource type="PackedScene" uid="uid://cenpahd676ouq" path="res://escenas/hoja.tscn" id="18_mnaqj"]
 [ext_resource type="PackedScene" uid="uid://ctvlbe882v53o" path="res://escenas/celda.tscn" id="19_mnaqj"]
-[ext_resource type="PackedScene" uid="uid://dhkoyfpu2n2fm" path="res://escenas/balde.glb" id="19_xaa2s"]
+[ext_resource type="PackedScene" uid="uid://ctqhhln0mdlye" path="res://escenas/balde.tscn" id="19_xaa2s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ovxel"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -32,10 +32,10 @@ background_mode = 2
 sky = SubResource("Sky_6h3nq")
 ambient_light_color = Color(0.56, 0.37865332, 0.18479998, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.05
-tonemap_mode = 2
+ambient_light_energy = 0.0
+tonemap_mode = 1
 fog_enabled = true
-fog_light_color = Color(0.56, 0.38770667, 0.1624, 1)
+fog_light_color = Color(0.46, 0.31977668, 0.18860002, 1)
 fog_light_energy = 0.91
 adjustment_enabled = true
 
@@ -142,10 +142,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.808643, 1.0129658, -12.91
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.808643, 1.0129658, -16.522194)
 
 [node name="celda" parent="." unique_id=1099349959 instance=ExtResource("19_mnaqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027, -0.471, 1.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9752031e-05, -0.471, 1.6)
 
 [node name="celda2" parent="." unique_id=1172924421 instance=ExtResource("19_mnaqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.963, -0.471, 1.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9845076, -0.471, 1.6)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=400222932]
 environment = SubResource("Environment_jxelf")
@@ -165,5 +165,5 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -4.153, -0.0
 [node name="hoja" parent="." unique_id=690816751 instance=ExtResource("18_mnaqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.787, 0.385, 0.101)
 
-[node name="balde" parent="." unique_id=1818865212 instance=ExtResource("19_xaa2s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2002375, -0.27319336, -1.1671777)
+[node name="balde" parent="." unique_id=167562202 instance=ExtResource("19_xaa2s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94361985, -0.28387344, -0.99474394)

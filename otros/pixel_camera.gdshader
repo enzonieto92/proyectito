@@ -3,7 +3,8 @@ render_mode unshaded, depth_draw_never, depth_test_disabled;
 
 uniform sampler2D screen_tex : hint_screen_texture;
 
-const int pixel_size = 4;
+uniform int pixel_size : hint_range(1, 32) = 6;  // slider en el Inspector
+
 
 void fragment() {
 	float x = float(int(FRAGCOORD.x) % pixel_size);

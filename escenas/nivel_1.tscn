@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="5_4a01a"]
 [ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://scripts/menu_controller.gd" id="5_hvxa3"]
 [ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
+[ext_resource type="AudioStream" uid="uid://cinfu1xea6a0l" path="res://sonido/celda_metal.mp3" id="9_70khi"]
+[ext_resource type="AudioStream" uid="uid://bpvtl2rls4cxu" path="res://sonido/tension_1_suave.mp3" id="10_hvxa3"]
 [ext_resource type="PackedScene" uid="uid://00i8tkohagvw" path="res://escenas/Enemigo.tscn" id="10_xqdpg"]
 
 [sub_resource type="Theme" id="Theme_3v7ru"]
@@ -109,3 +111,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.668795, 0.9606244, -12.33
 
 [node name="dungeon" parent="." unique_id=1761309701 instance=ExtResource("9_0lcy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
+
+[node name="sonido_ambiente" type="AudioStreamPlayer" parent="." unique_id=1151365499]
+stream = ExtResource("9_70khi")
+volume_db = 2.751
+pitch_scale = 0.2
+autoplay = true
+playback_type = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="sonido_ambiente" unique_id=1839278103]
+stream = ExtResource("9_70khi")
+pitch_scale = 0.1
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="sonido_ambiente" unique_id=1316315285]
+stream = ExtResource("9_70khi")
+pitch_scale = 0.2
+autoplay = true
+
+[node name="sonido_ambiente_2" type="AudioStreamPlayer" parent="." unique_id=1114678375]
+stream = ExtResource("10_hvxa3")
+volume_db = -12.656
+autoplay = true

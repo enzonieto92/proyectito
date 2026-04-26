@@ -229,6 +229,16 @@ image = SubResource("Image_xhsgp")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_altyc"]
 data = PackedVector3Array(0.49999997, 3, 0.5, -0.5, 3, -0.5, -0.5, 3, 0.5, 0.49999997, 3, 0.5, 0.49999997, 3, -0.5, -0.5, 3, -0.5, 0.49999997, 3.01, 0.5, -0.5, 3.01, -0.5, 0.49999997, 3.01, -0.5, 0.49999997, 3.01, 0.5, -0.5, 3.01, 0.5, -0.5, 3.01, -0.5, -0.5, 3, 0.5, 0.49999997, 3.01, 0.5, 0.49999997, 3, 0.5, -0.5, 3, 0.5, -0.5, 3.01, 0.5, 0.49999997, 3.01, 0.5, -0.5, 3, -0.5, -0.5, 3.01, 0.5, -0.5, 3, 0.5, -0.5, 3, -0.5, -0.5, 3.01, -0.5, -0.5, 3.01, 0.5, 0.49999997, 3, -0.5, -0.5, 3.01, -0.5, -0.5, 3, -0.5, 0.49999997, 3, -0.5, 0.49999997, 3.01, -0.5, -0.5, 3.01, -0.5, 0.49999997, 3, 0.5, 0.49999997, 3.01, -0.5, 0.49999997, 3, -0.5, 0.49999997, 3, 0.5, 0.49999997, 3.01, 0.5, 0.49999997, 3.01, -0.5, 0.49999997, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.49999997, 0, -0.5, 0.49999997, 0, 0.5, -0.5, 0, 0.5, 0.49999997, -0.01, -0.5, -0.5, -0.01, 0.5, 0.49999997, -0.01, 0.5, 0.49999997, -0.01, -0.5, -0.5, -0.01, -0.5, -0.5, -0.01, 0.5, 0.49999997, 0, -0.5, 0.49999997, -0.01, 0.5, 0.49999997, 0, 0.5, 0.49999997, 0, -0.5, 0.49999997, -0.01, -0.5, 0.49999997, -0.01, 0.5, -0.5, 0, -0.5, 0.49999997, -0.01, -0.5, 0.49999997, 0, -0.5, -0.5, 0, -0.5, -0.5, -0.01, -0.5, 0.49999997, -0.01, -0.5, 0.49999997, 0, 0.5, -0.5, -0.01, 0.5, -0.5, 0, 0.5, 0.49999997, 0, 0.5, 0.49999997, -0.01, 0.5, -0.5, -0.01, 0.5, -0.5, 0, 0.5, -0.5, -0.01, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, -0.01, 0.5, -0.5, -0.01, -0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbffk"]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("1_prg7t")
+normal_enabled = true
+normal_texture = ExtResource("2_223gu")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0, -0.41, 0)
+texture_filter = 2
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_q66hy"]
 _surfaces = [{
 "aabb": AABB(-0.5, 2.4, -0.5060921, 1.0060921, 0.6099999, 1.0060921),
@@ -253,7 +263,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_62qtb"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xhsgp"]
 resource_name = "wall-chunks_Plano_005"
 _surfaces = [{
 "aabb": AABB(-0.5, 2.4, -0.5060921, 1.0060921, 0.6099999, 1.0060921),
@@ -261,7 +271,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 60,
 "index_data": PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABQAGAAcACAAJAAoACQAIAAsACQALAAwADQAOAA8AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
-"material": SubResource("StandardMaterial3D_esx3n"),
+"material": SubResource("StandardMaterial3D_nbffk"),
 "name": "Material.002",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -669,7 +679,7 @@ item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 
 item/2/navigation_layers = 1
 item/2/preview = SubResource("ImageTexture_wj727")
 item/3/name = "out_corner"
-item/3/mesh = SubResource("ArrayMesh_62qtb")
+item/3/mesh = SubResource("ArrayMesh_xhsgp")
 item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/mesh_cast_shadow = 1
 item/3/shapes = [SubResource("ConcavePolygonShape3D_g0orq"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]

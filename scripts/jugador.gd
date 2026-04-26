@@ -74,14 +74,13 @@ func reaccion_ui():
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
-		inv_UI.visible = !inv_UI.visible
-		inventario_abierto = inv_UI.visible 
-		raycast.enabled = not inventario_abierto
-
-		if inventario_abierto:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if inv_UI.visible:
+			cerrar_inventario()  # cierra limpiamente
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			inv_UI.visible = true
+			inventario_abierto = true
+			raycast.enabled = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("interactuar"):
 		if inventario_abierto:
 			return
@@ -104,7 +103,13 @@ func _unhandled_input(event):
 
 		# Aplicar rotación limitada
 		camera.rotation.x = pitch
-
+func cerrar_inventario() -> void:
+	inv_UI.visible = false
+	inventario_abierto = false
+	raycast.enabled = true
+	animation_player.resetear_estado()
+	if not get_tree().paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
 

@@ -1,8 +1,6 @@
 extends MeshInstance3D
 
 @onready var pivote = $".."
-@onready var sonido_celda: AudioStreamPlayer3D = $sonido_celda
-@onready var celda_unlock: AudioStreamPlayer3D = $"celda unlock"
 
 var player_inside = false
 @export var abierta = false
@@ -14,7 +12,6 @@ func puede_interactuar():
 
 func interactuar(_player):
 
-	sonido_celda.play()
 	var tween = create_tween()
 
 	if !abierta:
