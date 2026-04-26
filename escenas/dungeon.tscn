@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bd06igfxy3273" path="res://escenas/altar_secreto.tscn" id="13_hc4sh"]
 [ext_resource type="PackedScene" uid="uid://c3aibayik4w7l" path="res://escenas/compuerta_secreta.tscn" id="15_81g75"]
 [ext_resource type="PackedScene" uid="uid://48k12tldmh24" path="res://escenas/area_cambiar_musica.tscn" id="15_nnpnv"]
+[ext_resource type="PackedScene" uid="uid://cadcqp3v7r0jt" path="res://objetos glb/Estatua-fuente.glb" id="16_81g75"]
 [ext_resource type="Resource" uid="uid://cgn2squmk4a6b" path="res://armas/espada.tres" id="16_i6a64"]
 [ext_resource type="PackedScene" uid="uid://ctvlbe882v53o" path="res://escenas/celda.tscn" id="19_mnaqj"]
 
@@ -151,3 +152,6 @@ transform = Transform3D(-1.8862873, -4.462322e-08, 1.5875219e-07, 0, 1.8159132, 
 
 [node name="area_cambiar_tension" parent="." unique_id=2115117697 instance=ExtResource("15_nnpnv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.259142, 1.2824659, 1.7660592)
+
+[node name="Estatua-fuente" parent="." unique_id=1621174036 instance=ExtResource("16_81g75")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.559, -0.48666954, -14.5772505)
