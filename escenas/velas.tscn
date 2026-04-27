@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://d1d84h0l0ac52"]
+
+[ext_resource type="Texture2D" uid="uid://p7gghjaiwcs0" path="res://texturas/velas-ase.png" id="1_xpb0g"]
+[ext_resource type="Script" uid="uid://dnnpg7wv7fkaj" path="res://scripts/rrotacion_fuego.gd" id="2_45cev"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ed48"]
+atlas = ExtResource("1_xpb0g")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmoqd"]
+atlas = ExtResource("1_xpb0g")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hlif"]
+atlas = ExtResource("1_xpb0g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tld1g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ed48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmoqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hlif")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Velas" type="AnimatedSprite3D" unique_id=820431156]
+transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0, 0, 0)
+modulate = Color(0.50534403, 0.5053441, 0.50534403, 1)
+billboard = 2
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_tld1g")
+autoplay = "default"
+frame_progress = 0.7262199
+speed_scale = 5.43
+
+[node name="empty" type="Node3D" parent="." unique_id=1211438095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051900476, 0.06558431, 0)
+script = ExtResource("2_45cev")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="empty" unique_id=379566566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004064858, 0.00929296, 0.0035625398)
+light_color = Color(1, 0.6472993, 0.24281082, 1)
+light_energy = 0.545
+light_size = 0.033
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.001
+shadow_normal_bias = 0.5
+shadow_transmittance_bias = 0.0
+shadow_blur = 0.0
+omni_range = 3.0
+omni_attenuation = 1.06

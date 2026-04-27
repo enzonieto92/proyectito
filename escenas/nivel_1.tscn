@@ -11,7 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xejmm"]
 shader = ExtResource("6_78vvm")
-shader_parameter/pixel_size = 6
+shader_parameter/pixel_size = 3
 
 [node name="escena principal" type="Node3D" unique_id=1018523294]
 script = ExtResource("1_hvxa3")
