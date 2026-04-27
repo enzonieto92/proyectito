@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://6llqhxolhj1e"]
 
-[ext_resource type="Texture2D" uid="uid://7arr4lvlsjhm" path="res://texturas/jaula_texturamaderamesa.png" id="1_ygn62"]
+[ext_resource type="Texture2D" uid="uid://co204brg1fm7l" path="res://texturas/jaula_texturamaderamesa.png" id="1_ygn62"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tubuj"]
 resource_name = "Material.018"
@@ -34,7 +34,7 @@ resource_name = "colorjaula"
 cull_mode = 2
 albedo_color = Color(0.21518405, 0.20150182, 0.08661283, 1)
 metallic = 0.8267717
-roughness = 0.5
+roughness = 0.62
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_c0jha"]
 _surfaces = [{
