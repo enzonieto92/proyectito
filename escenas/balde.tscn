@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://ctqhhln0mdlye"]
 
-[ext_resource type="Texture2D" uid="uid://ckmku4gvcvs0m" path="res://escenas/balde_texturaaltar.png" id="1_6oqa0"]
-[ext_resource type="Texture2D" uid="uid://vj5bf20nx2tq" path="res://escenas/balde_texturaaltar-normales.png" id="2_to542"]
+[ext_resource type="Texture2D" uid="uid://ckmku4gvcvs0m" path="res://texturas/balde_texturaaltar.png" id="1_6oqa0"]
+[ext_resource type="Texture2D" uid="uid://vj5bf20nx2tq" path="res://texturas/balde_texturaaltar-normales.png" id="2_to542"]
 [ext_resource type="PackedScene" uid="uid://deqebrtynhpca" path="res://escenas/mosca.tscn" id="3_y3ckc"]
 [ext_resource type="AudioStream" uid="uid://lykbtuqnay8w" path="res://sonido/moscas_sonido.mp3" id="4_to542"]
 

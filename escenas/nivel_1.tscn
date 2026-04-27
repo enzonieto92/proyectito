@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gl2bvdbh4rho"]
 
 [ext_resource type="Script" uid="uid://babstx0yl570n" path="res://scripts/escena.gd" id="1_hvxa3"]
+[ext_resource type="Script" uid="uid://dbpq4vpssk1m3" path="res://escenas/contenedor_ux.gd" id="2_61s06"]
 [ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="6_78vvm"]
 [ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
 [ext_resource type="AudioStream" uid="uid://cinfu1xea6a0l" path="res://sonido/celda_metal.mp3" id="9_70khi"]
@@ -24,6 +25,7 @@ grow_vertical = 2
 mouse_filter = 0
 mouse_force_pass_scroll_events = false
 stretch = true
+script = ExtResource("2_61s06")
 
 [node name="SubViewport" type="SubViewport" parent="contenedor_UX" unique_id=2079962601]
 handle_input_locally = false
@@ -35,6 +37,7 @@ render_target_update_mode = 4
 layer = 2
 
 [node name="pixelation" type="ColorRect" parent="contenedor_UX/SubViewport/capa_pixelacion" unique_id=1464824116]
+visible = false
 material = SubResource("ShaderMaterial_xejmm")
 anchors_preset = 15
 anchor_right = 1.0
