@@ -31,6 +31,7 @@ var stamina_agotada: bool = false
 var inventario_abierto = false
 var moving = false
 var corriendo = false
+var puede_correr: bool = false
 var objeto_actual = null
 var SPEED : float = 2.5
 const mouse_sensitivity = 0.002
@@ -129,6 +130,7 @@ func _physics_process(delta):
 			objeto_actual = obj
 
 	if Input.is_action_pressed("agacharse"):
+		puede_correr = false
 		if shape.height > 1.05:  # solo lerp si no llegó al destino
 			shape.height = lerp(shape.height, 1.0, 25 * delta)
 			collision.position.y = lerp(collision.position.y, 1.28, 25 * delta)
@@ -141,7 +143,7 @@ func _physics_process(delta):
 	elif stamina >= 25:
 		stamina_agotada = false
 
-	if Input.is_action_pressed("correr") and stamina > 5 and not stamina_agotada:
+	if Input.is_action_pressed("correr") and stamina > 5 and not stamina_agotada and puede_correr:
 		SPEED = 4
 		if moving:
 			stamina -= delta * SPEED * 4
@@ -186,6 +188,8 @@ func _physics_process(delta):
 	var direction = (right * input_dir.x - forward * input_dir.y).normalized()
 
 	if is_on_floor():
+		if not animation_player.animacion_en_curso:  # ← esta línea
+			puede_correr = true
 		if direction:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED

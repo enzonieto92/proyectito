@@ -3,6 +3,7 @@ extends AnimationPlayer
 @onready var player: CharacterBody3D = $".."
 @onready var label_UI: Label = get_tree().get_first_node_in_group("label_animacion")
 var defendiendo: bool = false
+
 var animaciones_arma = ["atacar", "atacar_horizontal"]
 var animacion_en_curso: bool = false
 
@@ -12,16 +13,19 @@ func _ready():
 func resetear_estado() -> void:
 	animacion_en_curso = false
 	defendiendo = false
+	player.puede_correr = true 
 	play("idle")
 func _on_animation_finished(anim_name: String):
 	if anim_name in animaciones_arma or anim_name == "hit_bloqueado":
 		animacion_en_curso = false
+		player.puede_correr = true
 		if defendiendo:
 			var anim = get_animation("bloquear")
 			play("bloquear")
 			seek(anim.length, true)
 			pause()
 		elif Input.is_action_pressed("atacar") and is_instance_valid(player.arma):
+			
 			play_random_animation()
 	
 	if anim_name == "bloquear":
@@ -59,12 +63,14 @@ func _process(_delta: float) -> void:
 	
 	if atacando_input:
 		if not animacion_en_curso:
+			
 			play_random_animation()
+			
 		return
 	
 	if not animacion_en_curso:
 		if player.moving:
-			if player.corriendo:
+			if player.corriendo and player.puede_correr:
 				if current_animation != "correr":
 					play("correr")
 			else:
@@ -77,6 +83,7 @@ func _process(_delta: float) -> void:
 func play_random_animation():
 	var disponibles = animaciones_arma.filter(func(a): return a != current_animation)
 	animacion_en_curso = true
+	player.puede_correr = false  # ← acá
 	
 	if disponibles.is_empty():
 		play(animaciones_arma[0])

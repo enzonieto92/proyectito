@@ -855,7 +855,6 @@ script = ExtResource("5_lctvp")
 
 [node name="camara_player" type="Camera3D" parent="camara_controller" unique_id=219131178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
-fov = 70.0
 far = 30.0
 
 [node name="raycast" type="RayCast3D" parent="camara_controller/camara_player" unique_id=310805274]
