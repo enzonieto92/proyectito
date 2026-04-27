@@ -145,7 +145,7 @@ func _drop_data(_at_position: Vector2, data):
 	ultimo_highlight_item = null
 	ultimo_highlight_pos = Vector2i(-1, -1)
 	
-	var inventario = get_tree().get_first_node_in_group("inventario")
+	var inventario = get_tree().get_first_node_in_group("inventario_controller")
 
 	# Si viene de un WeaponSlot, agregarlo al inventario directamente
 	# y avisarle al slot que el drop fue exitoso para que se vacíe

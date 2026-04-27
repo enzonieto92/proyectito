@@ -146,6 +146,9 @@ func dying_behavior() -> void:
 		animation_player.play("dying")
 		await animation_player.animation_finished
 		queue_free()
+	else:
+		velocity += get_gravity()
+		move_and_slide()
 
 func attack_behavior() -> void:
 	if _atacando_cooldown:
