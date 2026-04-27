@@ -163,6 +163,7 @@ light_color = Color(1, 0.6745098, 0.3254902, 1)
 light_energy = 0.09
 light_size = 0.107
 shadow_enabled = true
+shadow_blur = 0.0
 shadow_caster_mask = 4294967287
 distance_fade_enabled = true
 distance_fade_shadow = 0.5
