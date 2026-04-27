@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://cenpahd676ouq" path="res://escenas/hoja.tscn" id="18_mnaqj"]
 [ext_resource type="PackedScene" uid="uid://ctvlbe882v53o" path="res://escenas/celda.tscn" id="19_mnaqj"]
 [ext_resource type="PackedScene" uid="uid://ctqhhln0mdlye" path="res://escenas/balde.tscn" id="19_xaa2s"]
+[ext_resource type="PackedScene" uid="uid://00i8tkohagvw" path="res://escenas/Enemigo.tscn" id="20_i6a64"]
+[ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="21_ovxel"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ovxel"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -35,11 +37,13 @@ ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.0
 tonemap_mode = 1
 fog_enabled = true
-fog_light_color = Color(0.46, 0.31977668, 0.18860002, 1)
-fog_light_energy = 0.91
+fog_light_color = Color(0.36369076, 0.25081426, 0.14089853, 1)
 adjustment_enabled = true
 
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=400222932]
+environment = SubResource("Environment_jxelf")
 
 [node name="decoracion" type="Node3D" parent="." unique_id=1009839208]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
@@ -98,72 +102,81 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.836, -1.5604966, 5.743)
 [node name="cruz" parent="decoracion" unique_id=1267122633 instance=ExtResource("7_6h3nq")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -20.353975, -0.24640441, -1.4812409)
 
-[node name="GridMap" parent="." unique_id=928146224 instance=ExtResource("8_nnpnv")]
+[node name="antorcha4" parent="decoracion" unique_id=1286579013 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -27.037514, 0.033648014, -7.2558694)
+
+[node name="antorcha13" parent="decoracion" unique_id=1272465261 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -28.194767, 0.033648014, -8.413122)
+
+[node name="antorcha14" parent="decoracion" unique_id=1716026281 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.186476, 0.03462124, -9.201643)
+
+[node name="antorcha15" parent="decoracion" unique_id=1880039269 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.186476, 0.03462124, -14.723452)
+
+[node name="antorcha16" parent="decoracion" unique_id=1819137794 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.808643, 0.012965798, -12.914308)
+
+[node name="antorcha17" parent="decoracion" unique_id=474295596 instance=ExtResource("5_7wc3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.808643, 0.012965798, -16.522194)
+
+[node name="silla3" parent="decoracion" unique_id=1310355822 instance=ExtResource("1_vol8w")]
+transform = Transform3D(-1.8862873, -4.462322e-08, 1.5875219e-07, 0, 1.8159132, 0.5104302, -1.6490448e-07, 0.51043016, -1.8159133, -17.519585, -1.4934788, -4.74721)
+
+[node name="Estatua-fuente" parent="decoracion" unique_id=1621174036 instance=ExtResource("16_81g75")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -29.558998, -1.4866695, -14.5772505)
+
+[node name="silla4" parent="decoracion" unique_id=1219736006 instance=ExtResource("17_pbugk")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 5.847, -1.012, 5.548)
+
+[node name="hoja" parent="decoracion" unique_id=690816751 instance=ExtResource("18_mnaqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2130003, -0.615, 0.101)
+
+[node name="balde" parent="decoracion" unique_id=167562202 instance=ExtResource("19_xaa2s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.05638, -1.2838734, -0.99474394)
+
+[node name="altar_secreto" parent="decoracion" unique_id=934175357 instance=ExtResource("13_hc4sh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.566792, -2.4950004, 4.0953503)
+
+[node name="Mapa" parent="." unique_id=928146224 instance=ExtResource("8_nnpnv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495, 0)
-
-[node name="pared con puerta" parent="." unique_id=486144690 groups=["puertas"] instance=ExtResource("7_jqckn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.15, 1, 2)
-
-[node name="pared con puerta2" parent="." unique_id=1197986885 groups=["puertas"] instance=ExtResource("7_jqckn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.844528, 1, 4)
-
-[node name="pared_compuerta" parent="." unique_id=1535462391 instance=ExtResource("15_81g75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.10255, -1.495, 3.8236861)
-
-[node name="altar_secreto" parent="." unique_id=934175357 instance=ExtResource("13_hc4sh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.56679, -1.4950002, 4.0953503)
-
-[node name="pared con puerta3" parent="." unique_id=1277012550 instance=ExtResource("7_jqckn")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -29, 1, -4.1193905)
-
-[node name="pared con puerta4" parent="." unique_id=254134512 instance=ExtResource("7_jqckn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.151123, 1.0124118, 6.475681)
 
 [node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_mnaqj")]
 transform = Transform3D(0.2510389, 0, -0.9679769, 0, 1, 0, 0.967977, 0, 0.25103888, -27.435768, -0.45350036, -5.560133)
 arma = ExtResource("16_i6a64")
 
-[node name="antorcha" parent="." unique_id=1286579013 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -37.037514, 1.033648, -7.2558694)
-
-[node name="antorcha2" parent="." unique_id=1272465261 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -38.194767, 1.033648, -8.413122)
-
-[node name="antorcha3" parent="." unique_id=1716026281 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -24.186476, 1.0346212, -9.201643)
-
-[node name="antorcha4" parent="." unique_id=1880039269 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -24.186476, 1.0346212, -14.723452)
-
-[node name="antorcha5" parent="." unique_id=1819137794 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.808643, 1.0129658, -12.914308)
-
-[node name="antorcha6" parent="." unique_id=474295596 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.808643, 1.0129658, -16.522194)
-
-[node name="celda" parent="." unique_id=1099349959 instance=ExtResource("19_mnaqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9752031e-05, -0.471, 1.6)
-
-[node name="celda2" parent="." unique_id=1172924421 instance=ExtResource("19_mnaqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9845076, -0.471, 1.6)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=400222932]
-environment = SubResource("Environment_jxelf")
-
-[node name="silla" parent="." unique_id=1310355822 instance=ExtResource("1_vol8w")]
-transform = Transform3D(-1.8862873, -4.462322e-08, 1.5875219e-07, 0, 1.8159132, 0.5104302, -1.6490448e-07, 0.51043016, -1.8159133, -27.519585, -0.49347872, -4.74721)
-
 [node name="area_cambiar_tension" parent="." unique_id=2115117697 instance=ExtResource("15_nnpnv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.259142, 1.2824659, 1.7660592)
 
-[node name="Estatua-fuente" parent="." unique_id=1621174036 instance=ExtResource("16_81g75")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.559, -0.48666954, -14.5772505)
+[node name="puertas" type="Node3D" parent="." unique_id=1176219373]
 
-[node name="silla2" parent="." unique_id=1219736006 instance=ExtResource("17_pbugk")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -4.153, -0.012, 5.548)
+[node name="pared con puerta" parent="puertas" unique_id=486144690 groups=["puertas"] instance=ExtResource("7_jqckn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.15, 1, 2)
 
-[node name="hoja" parent="." unique_id=690816751 instance=ExtResource("18_mnaqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.787, 0.385, 0.101)
+[node name="pared con puerta2" parent="puertas" unique_id=1197986885 groups=["puertas"] instance=ExtResource("7_jqckn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.844528, 1, 4)
 
-[node name="balde" parent="." unique_id=167562202 instance=ExtResource("19_xaa2s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94361985, -0.28387344, -0.99474394)
+[node name="pared_compuerta" parent="puertas" unique_id=1535462391 instance=ExtResource("15_81g75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.10255, -1.495, 3.8236861)
+
+[node name="pared con puerta3" parent="puertas" unique_id=1277012550 instance=ExtResource("7_jqckn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -29, 1, -4.1193905)
+
+[node name="pared con puerta4" parent="puertas" unique_id=254134512 instance=ExtResource("7_jqckn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.151123, 1.0124118, 6.475681)
+
+[node name="celda" parent="puertas" unique_id=1099349959 instance=ExtResource("19_mnaqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9752031e-05, -0.471, 1.6)
+
+[node name="celda2" parent="puertas" unique_id=1172924421 instance=ExtResource("19_mnaqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9845076, -0.471, 1.6)
+
+[node name="Enemigo" parent="." unique_id=1587185498 instance=ExtResource("20_i6a64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.418045, 0.9606244, -10.331554)
+
+[node name="Enemigo2" parent="." unique_id=1793496238 instance=ExtResource("20_i6a64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.668795, 0.9606244, -12.331554)
+
+[node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
+transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -0.21210957, 0, 0.3686205)
+floor_stop_on_slope = false

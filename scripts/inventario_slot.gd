@@ -124,7 +124,7 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 	if ultimo_highlight_item != null:
 		_limpiar_highlight(ultimo_highlight_item, ultimo_highlight_pos)
 	
-	var inventario = get_tree().get_first_node_in_group("inventario")
+	var inventario = get_tree().get_first_node_in_group("inventario_controller")
 	var puede = inventario.puede_colocar_ignorando_origen(
 		data["item"], destino, data["origen"]
 	)

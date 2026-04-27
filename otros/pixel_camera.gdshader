@@ -1,21 +1,13 @@
-shader_type spatial;
-render_mode unshaded, depth_draw_never, depth_test_disabled;
+shader_type canvas_item;
 
 uniform sampler2D screen_tex : hint_screen_texture;
-
-uniform int pixel_size : hint_range(1, 32) = 6;  // slider en el Inspector
-
+uniform int pixel_size : hint_range(1, 32) = 6;
 
 void fragment() {
-	float x = float(int(FRAGCOORD.x) % pixel_size);
-	float y = float(int(FRAGCOORD.y) % pixel_size);
+    vec2 frag    = FRAGCOORD.xy;
+    vec2 block   = vec2(float(pixel_size));
+    vec2 snapped = (floor(frag / block) + 0.5) * block;
+    vec2 uv      = snapped / vec2(textureSize(screen_tex, 0));
 
-	x = FRAGCOORD.x + floor(float(pixel_size) / 2.0) - x;
-	y = FRAGCOORD.y + floor(float(pixel_size) / 2.0) - y;
-
-	vec2 uv = vec2(x, y) / VIEWPORT_SIZE;
-
-	vec3 color = texture(screen_tex, uv).rgb;
-
-	ALBEDO = color;
+    COLOR = texture(screen_tex, uv);
 }

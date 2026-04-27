@@ -76,6 +76,7 @@ font_size = 12
 script = ExtResource("1_3wa74")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1875799421]
+follow_viewport_enabled = true
 
 [node name="Inventario_UI" type="Control" parent="CanvasLayer" unique_id=5108280 groups=["inventario_ui"]]
 visible = false

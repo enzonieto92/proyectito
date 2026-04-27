@@ -1,5 +1,5 @@
 extends Node3D
-@onready var dialogo: RichTextLabel = $"../../UI/dialogo"
+@onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
 
 var player_entered = false
 

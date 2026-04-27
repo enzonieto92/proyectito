@@ -5,7 +5,6 @@ extends Node
 @export var peso_maximo: float = 20.0
 
 func _ready():
-	add_to_group("inventario")
 	actualizar_label_peso()
 func calcular_peso_total() -> float:
 	var items_contados = {}
@@ -20,7 +19,6 @@ func calcular_peso_total() -> float:
 					items_contados[item.get_instance_id()] = true
 					peso_total += item.weight
 	return peso_total
-
 func actualizar_label_peso():
 	var peso = calcular_peso_total()
 	label_peso.text = "Peso: %.1f/%.0f kg" % [peso, peso_maximo]
@@ -61,7 +59,6 @@ func agregar_item(item) -> bool:
 		inventario_ui.modulate.a = 1
 	
 	return false
-
 func puede_colocar(item, pos: Vector2i) -> bool:
 	if pos.x < 0 or pos.y < 0:
 		return false
@@ -77,8 +74,6 @@ func puede_colocar(item, pos: Vector2i) -> bool:
 				return false
 	
 	return true
-
-
 func puede_colocar_ignorando_origen(item, pos: Vector2i, origen: Vector2i) -> bool:
 	if pos.x < 0 or pos.y < 0:
 		return false
@@ -125,8 +120,6 @@ func mover_item(origen: Vector2i, destino: Vector2i, item):
 			slot.item = null
 	
 	_colocar_en(item, destino)
-
-
 func _colocar_en(item, pos: Vector2i):
 	item.grid_pos = pos
 	

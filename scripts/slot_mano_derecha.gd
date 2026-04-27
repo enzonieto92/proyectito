@@ -98,7 +98,7 @@ func _drop_data(_at_position: Vector2, data):
 	_drop_exitoso = true
 	color_rect_2.modulate = Color.WHITE
 
-	var inventario = get_tree().get_first_node_in_group("inventario")
+	var inventario = get_tree().get_first_node_in_group("inventario_controller")
 	inventario.remover_item_sin_actualizar_peso(data["item"], data["item"].grid_pos)  # 👈
 
 	item = data["item"]

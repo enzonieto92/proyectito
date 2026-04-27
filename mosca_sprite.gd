@@ -1,85 +1,57 @@
 extends AnimatedSprite3D
-# ── Configuración ──────────────────────────────────────────
-@export var speed          : float = 3.0
-@export var wander_radius  : float = 0.3
-@export var hover_height   : float = 0.0
-@export var hover_amplitude: float = 0.15
-@export var dart_chance    : float = 0.3
-@export var min_idle_time  : float = 0.4
-@export var max_idle_time  : float = 1.8
-@export var steering_speed : float = 4.0   # qué tan rápido gira hacia el destino (menor = más curvo)
 
-# ── Estado interno ─────────────────────────────────────────
-var _origin        : Vector3
-var _target        : Vector3
-var _idle_timer    : float   = 0.0
-var _is_darting    : bool    = false
-var _velocity      : Vector3 = Vector3.ZERO   # velocidad actual interpolada
+@export var speed          : float = 2.0
+@export var wander_radius  : float = 0.5
+@export var hover_height   : float = 0.5
+@export var hover_amplitude: float = 0.2
+@export var turn_speed     : float = 2.5
+@export var wander_rate    : float = 1.2
 
-# Target Y independiente
-var _target_y      : float
-var _target_y_timer: float = 0.0
-var _vertical_spd  : float = 0.0
+var _origin  : Vector3
+var _vel     : Vector3 = Vector3.ZERO
+var _time    : float   = 0.0
+var _wander  : float   = 0.0
+
+var _phase_a : float
+var _freq_a  : float
+var _freq_b  : float
+var _amp_b   : float
 
 func _ready() -> void:
 	await get_tree().process_frame
-	_origin   = global_position
-	_target_y = _origin.y
-	_pick_new_target()
-	_pick_new_target_y()
+	_origin = global_position
+	_wander = randf() * TAU
+	_vel    = Vector3(cos(_wander), 0, sin(_wander)) * speed
+
+	_phase_a = randf() * TAU
+	_freq_a  = randf_range(0.8, 1.8)
+	_freq_b  = randf_range(2.0, 3.5)
+	_amp_b   = randf_range(0.2, 0.5)
+
 	play("volando")
 
-func _pick_new_target_y() -> void:
-	_target_y       = _origin.y + hover_height + randf_range(-hover_amplitude, hover_amplitude) * 3.0
-	_vertical_spd   = randf_range(0.3, 1.4)
-	_target_y_timer = randf_range(0.3, 1.2)
-
 func _process(delta: float) -> void:
-	# ── Movimiento vertical errático interpolado ──
-	_target_y_timer -= delta
-	if _target_y_timer <= 0.0:
-		_pick_new_target_y()
-	var target_vy = (_target_y - global_position.y) * _vertical_spd
-	_velocity.y = lerp(_velocity.y, target_vy, steering_speed * delta)
-	global_position.y += _velocity.y * delta
+	_time += delta
 
-	# ── Movimiento horizontal ──
-	if _is_darting:
-		_move_toward_target(delta)
-	else:
-		_idle_timer -= delta
-		if _idle_timer <= 0.0:
-			_pick_new_target()
+	_wander += randf_range(-wander_rate, wander_rate) * delta * TAU
+	var wander_dir = Vector2(cos(_wander), sin(_wander))
 
-func _move_toward_target(delta: float) -> void:
-	var flat_pos    = Vector3(global_position.x, 0.0, global_position.z)
-	var flat_target = Vector3(_target.x,         0.0, _target.z)
-	var dist        = flat_pos.distance_to(flat_target)
+	var flat    = Vector2(global_position.x, global_position.z)
+	var to_home = Vector2(_origin.x, _origin.z) - flat
+	var dist    = to_home.length()
+	var pull    = to_home.normalized() * clamp((dist - wander_radius) / wander_radius, 0.0, 1.0)
 
-	if dist < 0.08:
-		_is_darting = false
-		_idle_timer = randf_range(min_idle_time, max_idle_time)
-		_velocity.x = 0.0
-		_velocity.z = 0.0
-		return
+	var dir     = (wander_dir + pull * 2.0).normalized()
+	var desired = Vector3(dir.x, 0, dir.y) * speed
 
-	# Dirección deseada con posible tirón brusco
-	var desired_spd = speed * (2.0 if randf() < dart_chance * delta else 1.0)
-	var desired_vel = (flat_target - flat_pos).normalized() * desired_spd
+	_vel.x = lerp(_vel.x, desired.x, turn_speed * delta)
+	_vel.z = lerp(_vel.z, desired.z, turn_speed * delta)
 
-	# Interpolar velocidad actual → deseada (aquí está la curva)
-	_velocity.x = lerp(_velocity.x, desired_vel.x, steering_speed * delta)
-	_velocity.z = lerp(_velocity.z, desired_vel.z, steering_speed * delta)
+	global_position += Vector3(_vel.x, 0, _vel.z) * delta
+	flip_h = _vel.x < 0.0
 
-	global_position += Vector3(_velocity.x, 0.0, _velocity.z) * delta
-	flip_h = _velocity.x < 0.0
-
-func _pick_new_target() -> void:
-	var angle  = randf() * TAU
-	var radius = randf_range(0.1, wander_radius)
-	_target = Vector3(
-		_origin.x + cos(angle) * radius,
-		0.0,
-		_origin.z + sin(angle) * radius
-	)
-	_is_darting = true
+	var t        = _time + _phase_a
+	var target_y = _origin.y + hover_height \
+		+ sin(t * _freq_a) * hover_amplitude \
+		+ sin(t * _freq_b) * hover_amplitude * _amp_b
+	global_position.y = lerp(global_position.y, target_y, 3.0 * delta)

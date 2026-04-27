@@ -1,7 +1,9 @@
 extends CharacterBody3D
 
-@onready var inv_UI: Node = $Inventario_Controller/CanvasLayer/Inventario_UI
-@onready var inventario_controller: Node = $Inventario_Controller
+@onready var inventario_ui: Control = get_tree().get_first_node_in_group("inventario_ui")
+
+@onready var inventario_controller: Node = get_tree().get_first_node_in_group("inventario_controller")
+
 @onready var camera: Camera3D = $camara_controller/camara_player
 @onready var footstep = $footstep
 @onready var footstep_player: AudioStreamPlayer3D = $footstep
@@ -9,10 +11,10 @@ extends CharacterBody3D
 @onready var raycast_arma: RayCast3D = $pivote/posicion_arma/sprite_arma/raycast_arma
 @onready var shape = $CollisionShape3D.shape as CapsuleShape3D
 @onready var collision = $CollisionShape3D
-@onready var dialogo = $"../UI/dialogo"
-@onready var texto_plano = $"../UI/texto_plano"
-@onready var jugador_ui: CanvasLayer = $Jugador_UI
-@onready var slot_mano_secundaria: SecundarySlot = $Inventario_Controller/CanvasLayer/Inventario_UI/panel_equipo/slot_mano_secundaria
+@onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
+@onready var texto_plano: RichTextLabel = get_tree().get_first_node_in_group("texto_plano")
+@onready var jugador_ui: CanvasLayer = get_tree().get_first_node_in_group("jugador_ui")
+@onready var slot_mano_secundaria: SecundarySlot = inventario_ui.get_node("panel_equipo/slot_mano_secundaria")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @onready var hit_sound: AudioStreamPlayer3D = $hit_sound
@@ -50,6 +52,7 @@ func cambiar_pitch_swing():
 	var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma
 	sonido_arma.pitch_scale = randf_range(0.7, 1.3)
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	total_damage.x = (damage.x + damage_arma.x)
 	total_damage.y = (damage.y + damage_arma.y)
 func recibir_damage(_damage):
@@ -74,10 +77,10 @@ func reaccion_ui():
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
-		if inv_UI.visible:
+		if inventario_ui.visible:
 			cerrar_inventario()  # cierra limpiamente
 		else:
-			inv_UI.visible = true
+			inventario_ui.visible = true
 			inventario_abierto = true
 			raycast.enabled = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -104,7 +107,7 @@ func _unhandled_input(event):
 		# Aplicar rotación limitada
 		camera.rotation.x = pitch
 func cerrar_inventario() -> void:
-	inv_UI.visible = false
+	inventario_ui.visible = false
 	inventario_abierto = false
 	raycast.enabled = true
 	animation_player.resetear_estado()

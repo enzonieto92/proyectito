@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://byyboqd0cbev4" path="res://texturas/favpng_3c26b07e0fcabf141c10c4b006414359.png" id="1_17j6d"]
 [ext_resource type="FontFile" uid="uid://c5xd2k2y55fr3" path="res://otros/Pixelpurl-0vBPP.ttf" id="2_v5cmr"]
 [ext_resource type="Script" uid="uid://1exwuqcr3xqp" path="res://scripts/barra_stamina.gd" id="3_bt4of"]
+[ext_resource type="FontFile" uid="uid://berjkm7dt2kx2" path="res://otros/PixelSymtext-eYmn.ttf" id="4_6cur2"]
+[ext_resource type="Script" uid="uid://dqrqprrqi2lc8" path="res://scripts/dialogo.gd" id="5_wndoy"]
+[ext_resource type="Script" uid="uid://xfxh6s2wuhij" path="res://scripts/texto_plano.gd" id="6_84h12"]
+[ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://scripts/menu_controller.gd" id="7_8ln1y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1kk6"]
 content_margin_left = 2.0
@@ -16,13 +20,21 @@ corner_detail = 6
 font = ExtResource("2_v5cmr")
 font_size = 51
 
-[node name="Jugador_UI" type="CanvasLayer" unique_id=1673448679]
+[sub_resource type="Theme" id="Theme_1god3"]
+default_font = ExtResource("4_6cur2")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_xejkj"]
+default_font_size = 0
+
+[node name="Jugador_UI" type="CanvasLayer" unique_id=1673448679 groups=["jugador_ui"]]
 
 [node name="blood_splash" type="TextureRect" parent="." unique_id=941195193]
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.58, 0.58)
+mouse_filter = 2
 texture = ExtResource("1_17j6d")
 
 [node name="game_over_screen" type="ColorRect" parent="." unique_id=1115024860]
@@ -72,3 +84,79 @@ offset_top = 44.0
 offset_right = 1084.0
 offset_bottom = 128.0
 label_settings = SubResource("LabelSettings_bt4of")
+
+[node name="dialogo" type="RichTextLabel" parent="." unique_id=568361249 groups=["dialogo"]]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -297.0
+offset_top = -197.0
+offset_right = 384.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_1god3")
+scroll_active = false
+scroll_following_visible_characters = true
+autowrap_mode = 2
+autowrap_trim_flags = 64
+justification_flags = 227
+script = ExtResource("5_wndoy")
+
+[node name="texto_plano" type="RichTextLabel" parent="." unique_id=2014920056 groups=["texto_plano"]]
+visible = false
+z_index = 1
+offset_left = 112.0
+offset_top = 393.0
+offset_right = 1037.0
+offset_bottom = 620.0
+theme = SubResource("Theme_1god3")
+horizontal_alignment = 1
+script = ExtResource("6_84h12")
+
+[node name="panel_opciones" type="Panel" parent="." unique_id=1650565856]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_8ln1y")
+
+[node name="GridContainer" type="GridContainer" parent="panel_opciones" unique_id=1996662521]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -130.0
+offset_right = 100.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xejkj")
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 32
+
+[node name="Button" type="Button" parent="panel_opciones/GridContainer" unique_id=1077837262]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6cur2")
+theme_override_font_sizes/font_size = 35
+text = "Opciones"
+
+[node name="reiniciar_escena" type="Button" parent="panel_opciones/GridContainer" unique_id=826909234]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6cur2")
+theme_override_font_sizes/font_size = 35
+text = "Reiniciar Escena"
+
+[node name="boton_salir" type="Button" parent="panel_opciones/GridContainer" unique_id=1794587381]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6cur2")
+theme_override_font_sizes/font_size = 35
+text = "Salir"
