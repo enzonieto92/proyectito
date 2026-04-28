@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co204brg1fm7l"
-path.s3tc="res://.godot/imported/jaula_texturamaderamesa.png-5da0052dd817d2b97b2c179463e595de.s3tc.ctex"
+uid="uid://dufqcsd0f4j27"
+path.s3tc="res://.godot/imported/Jaulatortura_texturaaltar-normales.png-5662cebbb8b635f3bf22f49a778880aa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3391a98a46ee9b001e5802f0cf74517a"
+"md5": "41b3cb6bd35047ec3156a86544d42fc4"
 }
 
 [deps]
 
-source_file="res://texturas/jaula_texturamaderamesa.png"
-dest_files=["res://.godot/imported/jaula_texturamaderamesa.png-5da0052dd817d2b97b2c179463e595de.s3tc.ctex"]
+source_file="res://objetos glb/Jaulatortura_texturaaltar-normales.png"
+dest_files=["res://.godot/imported/Jaulatortura_texturaaltar-normales.png-5662cebbb8b635f3bf22f49a778880aa.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://objetos glb/Jaulatortura_texturaaltar-normales.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

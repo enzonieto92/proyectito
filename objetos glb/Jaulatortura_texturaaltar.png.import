@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co204brg1fm7l"
-path.s3tc="res://.godot/imported/jaula_texturamaderamesa.png-5da0052dd817d2b97b2c179463e595de.s3tc.ctex"
+uid="uid://cx50npxhalnnl"
+path.s3tc="res://.godot/imported/Jaulatortura_texturaaltar.png-6bfcc88c673544d1adc37f66c52bfad0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3391a98a46ee9b001e5802f0cf74517a"
+"md5": "256ef58ac43d3fb0d8f964c590e55847"
 }
 
 [deps]
 
-source_file="res://texturas/jaula_texturamaderamesa.png"
-dest_files=["res://.godot/imported/jaula_texturamaderamesa.png-5da0052dd817d2b97b2c179463e595de.s3tc.ctex"]
+source_file="res://objetos glb/Jaulatortura_texturaaltar.png"
+dest_files=["res://.godot/imported/Jaulatortura_texturaaltar.png-6bfcc88c673544d1adc37f66c52bfad0.s3tc.ctex"]
 
 [params]
 
