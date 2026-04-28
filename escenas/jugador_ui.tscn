@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://iw1jjrm2qss1"]
 
-[ext_resource type="Texture2D" uid="uid://byyboqd0cbev4" path="res://texturas/favpng_3c26b07e0fcabf141c10c4b006414359.png" id="1_17j6d"]
+[ext_resource type="Texture2D" uid="uid://b3g0b6lcdob6u" path="res://texturas/ui_daño.png" id="1_6cur2"]
 [ext_resource type="FontFile" uid="uid://c5xd2k2y55fr3" path="res://otros/Pixelpurl-0vBPP.ttf" id="2_v5cmr"]
+[ext_resource type="Script" uid="uid://dixe7qhq4prcs" path="res://escenas/blood_splash.gd" id="2_wndoy"]
 [ext_resource type="Script" uid="uid://1exwuqcr3xqp" path="res://scripts/barra_stamina.gd" id="3_bt4of"]
 [ext_resource type="FontFile" uid="uid://berjkm7dt2kx2" path="res://otros/PixelSymtext-eYmn.ttf" id="4_6cur2"]
 [ext_resource type="Script" uid="uid://dqrqprrqi2lc8" path="res://scripts/dialogo.gd" id="5_wndoy"]
@@ -22,7 +23,7 @@ font_size = 51
 
 [sub_resource type="Theme" id="Theme_1god3"]
 default_font = ExtResource("4_6cur2")
-default_font_size = 30
+default_font_size = 16
 
 [sub_resource type="Theme" id="Theme_xejkj"]
 default_font_size = 0
@@ -31,11 +32,25 @@ default_font_size = 0
 
 [node name="blood_splash" type="TextureRect" parent="." unique_id=941195193]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.58, 0.58)
+modulate = Color(1, 1, 1, 0.39607844)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("1_17j6d")
+texture = ExtResource("1_6cur2")
+expand_mode = 1
+script = ExtResource("2_wndoy")
+speed = 3.425
+amplitude = 0.06
+base_scale = 1.21
 
 [node name="game_over_screen" type="ColorRect" parent="." unique_id=1115024860]
 visible = false
@@ -87,15 +102,11 @@ label_settings = SubResource("LabelSettings_bt4of")
 
 [node name="dialogo" type="RichTextLabel" parent="." unique_id=568361249 groups=["dialogo"]]
 visible = false
-anchors_preset = 7
-anchor_left = 0.5
+custom_minimum_size = Vector2(400, 80)
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -297.0
-offset_top = -197.0
-offset_right = 384.0
-offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_1god3")
@@ -103,16 +114,23 @@ scroll_active = false
 scroll_following_visible_characters = true
 autowrap_mode = 2
 autowrap_trim_flags = 64
+horizontal_alignment = 1
 justification_flags = 227
 script = ExtResource("5_wndoy")
 
 [node name="texto_plano" type="RichTextLabel" parent="." unique_id=2014920056 groups=["texto_plano"]]
 visible = false
 z_index = 1
-offset_left = 112.0
-offset_top = 393.0
-offset_right = 1037.0
-offset_bottom = 620.0
+custom_minimum_size = Vector2(600, 80)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 0
 theme = SubResource("Theme_1god3")
 horizontal_alignment = 1
 script = ExtResource("6_84h12")

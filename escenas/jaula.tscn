@@ -20,7 +20,6 @@ resource_name = "color cadenas.001"
 cull_mode = 2
 albedo_color = Color(0.21960714, 0.20784327, 0.18431377, 1)
 metallic = 0.5
-roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rt5n"]
 resource_name = "Material.010"
@@ -33,8 +32,7 @@ roughness = 0.0
 resource_name = "colorjaula"
 cull_mode = 2
 albedo_color = Color(0.21518405, 0.20150182, 0.08661283, 1)
-metallic = 0.8267717
-roughness = 0.62
+metallic = 0.4
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_c0jha"]
 _surfaces = [{

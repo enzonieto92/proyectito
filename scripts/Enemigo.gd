@@ -22,7 +22,7 @@ var _en_cooldown := false
 var _atacando_cooldown := false
 var damage: int
 var attack_dir := Vector3.ZERO
-
+var died = false
 # ── Patrulla ──────────────────────────────────────────────
 enum EstadoPatrulla { AVANZANDO, ESPERANDO, GIRANDO }
 var patrol_estado: EstadoPatrulla = EstadoPatrulla.AVANZANDO
@@ -142,11 +142,28 @@ func chase_behavior() -> void:
 	velocity.z = dir.z * speed
 
 func dying_behavior() -> void:
-	if is_on_floor():
+
+	if is_on_floor() and !died:
+		var area = get_node("area_deteccion")
+		var colision = get_node("CollisionShape3D")
+		if area.monitoring:
+			colision.disabled = true
+			area.monitoring = false
+		var dying_sonido = load("res://sonido/dying_enemigo.mp3")
+		var stream_enemigo = get_node("sonido_enemigo")
+		stream_enemigo.stream = dying_sonido
+		stream_enemigo.volume_db = 40.0
+		stream_enemigo.pitch_scale = 2.0
+		stream_enemigo.play()
 		animation_player.play("dying")
 		await animation_player.animation_finished
-		queue_free()
-	else:
+		animation_player.pause()
+		area.queue_free()
+		colision.queue_free()
+		died = true
+		
+
+	elif !died:
 		velocity += get_gravity()
 		move_and_slide()
 

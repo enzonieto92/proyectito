@@ -133,7 +133,10 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 5.847, -1.01
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2130003, -0.615, 0.101)
 
 [node name="balde" parent="decoracion" unique_id=167562202 instance=ExtResource("19_xaa2s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.05638, -1.2838734, -0.99474394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.356824, -1.2838734, -1.3609687)
+
+[node name="balde2" parent="decoracion" unique_id=228724323 instance=ExtResource("19_xaa2s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3455248, -1.2838734, -1.5775826)
 
 [node name="altar_secreto" parent="decoracion" unique_id=934175357 instance=ExtResource("13_hc4sh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.566792, -2.4950004, 4.0953503)

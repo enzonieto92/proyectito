@@ -61,9 +61,9 @@ func recibir_damage(_damage):
 	var controller = camera.get_parent()
 	controller.shake(0.05, 0.5, 60.0)
 	hit_sound.play()
-	#var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
-	#var daño_final = int(_damage * (1.0 - reduccion))
-	#vida -= int(daño_final)
+	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
+	var daño_final = int(_damage * (1.0 - reduccion))
+	vida -= int(daño_final)
 	animation_player.on_block_hit()
 	reaccion_ui()
 	recibiendo_damage = false
@@ -74,7 +74,7 @@ func reaccion_ui():
 	var tween = create_tween()
 	tween.tween_interval(0.1)
 	tween.tween_property(texture, "modulate:a", 0.0, 0.5).set_delay(1.0)
-	tween.tween_callback(func(): texture.visible = false)
+
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
@@ -103,7 +103,7 @@ func _unhandled_input(event):
 
 		# Acumular pitch (vertical)
 		pitch -= event.relative.y * mouse_sensitivity
-		pitch = clamp(pitch, deg_to_rad(-80), deg_to_rad(80))
+		pitch = clamp(pitch, deg_to_rad(-50), deg_to_rad(50))
 
 		# Aplicar rotación limitada
 		camera.rotation.x = pitch
@@ -144,7 +144,7 @@ func _physics_process(delta):
 		stamina_agotada = false
 
 	if Input.is_action_pressed("correr") and stamina > 5 and not stamina_agotada and puede_correr:
-		SPEED = 4
+		SPEED = 2.5
 		if moving:
 			stamina -= delta * SPEED * 4
 			corriendo = true
@@ -153,7 +153,7 @@ func _physics_process(delta):
 			if stamina < 40:
 				stamina += delta * 2.0 * 1.5  # valor fijo, no depende de SPEED
 	else:
-		SPEED = 2.0
+		SPEED = 1
 		corriendo = false
 		if stamina < 40:
 			stamina += delta * 2.0 * 1.5  # mismo valor fijo
