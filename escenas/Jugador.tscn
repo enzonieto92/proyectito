@@ -840,7 +840,7 @@ height = 0.10913086
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
 script = ExtResource("1_hqtel")
 stamina = 1000.0
-vida = 75.0
+vida_max = 75.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=602970200]
 libraries/ = SubResource("AnimationLibrary_dw050")

@@ -23,11 +23,12 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @export var golpeando = false
 @export var recibiendo_damage = false
 @export var JUMP_VELOCITY = 3.5
-@export var vida : float
+@export var vida_max : float
 @export var armadura : float
 @export var peso : float
 @export var bloqueando = false
 var stamina_agotada: bool = false
+var vida : float 
 var inventario_abierto = false
 var moving = false
 var corriendo = false
@@ -56,6 +57,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	total_damage.x = (damage.x + damage_arma.x)
 	total_damage.y = (damage.y + damage_arma.y)
+	vida = vida_max
 func recibir_damage(_damage):
 	recibiendo_damage = true
 	var controller = camera.get_parent()
@@ -69,13 +71,16 @@ func recibir_damage(_damage):
 	recibiendo_damage = false
 func reaccion_ui():
 	var texture = jugador_ui.get_node("blood_splash")
-	texture.visible = true
-	texture.modulate = Color(1, 1, 1, 1)
+	if !texture.visible:
+		texture.visible = true
 	var tween = create_tween()
 	tween.tween_interval(0.1)
-	tween.tween_property(texture, "modulate:a", 0.0, 0.5).set_delay(1.0)
-
-	
+	tween.tween_property(texture, "modulate:a", 1, 0.5).set_delay(1.0)
+	const FRAME_WIDTH = 144
+	const DAMAGE_FRAMES = 5
+	var atlas = texture.texture as AtlasTexture
+	var frame_index = clamp(int((1.0 - vida / vida_max) * DAMAGE_FRAMES), 0, DAMAGE_FRAMES - 1)
+	atlas.region = Rect2(frame_index * FRAME_WIDTH, 0, FRAME_WIDTH, atlas.region.size.y)
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
 		if inventario_ui.visible:

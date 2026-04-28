@@ -9,6 +9,10 @@
 [ext_resource type="Script" uid="uid://xfxh6s2wuhij" path="res://scripts/texto_plano.gd" id="6_84h12"]
 [ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://scripts/menu_controller.gd" id="7_8ln1y"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wndoy"]
+atlas = ExtResource("1_6cur2")
+region = Rect2(0, 0, 144, 81)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1kk6"]
 content_margin_left = 2.0
 content_margin_top = 2.0
@@ -33,23 +37,17 @@ default_font_size = 0
 [node name="blood_splash" type="TextureRect" parent="." unique_id=941195193]
 visible = false
 modulate = Color(1, 1, 1, 0.39607844)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("1_6cur2")
+texture = SubResource("AtlasTexture_wndoy")
 expand_mode = 1
 script = ExtResource("2_wndoy")
 speed = 3.425
-amplitude = 0.06
+amplitude = 0.025
 base_scale = 1.21
 
 [node name="game_over_screen" type="ColorRect" parent="." unique_id=1115024860]
