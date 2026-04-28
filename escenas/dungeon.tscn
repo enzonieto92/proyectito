@@ -143,7 +143,7 @@ transform = Transform3D(1, 0, 0, 0, 0.056535915, -0.9984005, 0, 0.9984005, 0.056
 transform = Transform3D(0.7131038, 0, 0.7010586, 0, 1, 0, -0.7010586, 0, 0.7131038, -16.341227, -1.4819756, -1.8247149)
 
 [node name="cruz" parent="decoracion" unique_id=882656994 instance=ExtResource("7_6h3nq")]
-transform = Transform3D(0.6549651, 0, -0.75565916, 0, 1, 0, 0.75565916, 0, 0.6549651, -21.836761, -1.421138, -1.4677014)
+transform = Transform3D(0.6549651, 0, -0.75565916, 0, 1, 0, 0.75565916, 0, 0.6549651, -21.836761, -1.4605775, -1.4677014)
 
 [node name="Mapa" parent="." unique_id=928146224 instance=ExtResource("8_nnpnv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495, 0)
