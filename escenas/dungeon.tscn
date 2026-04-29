@@ -142,6 +142,9 @@ transform = Transform3D(0.7131038, 0, 0.7010586, 0, 1, 0, -0.7010586, 0, 0.71310
 [node name="cruz" parent="decoracion" unique_id=882656994 instance=ExtResource("7_6h3nq")]
 transform = Transform3D(0.6549651, 0, -0.75565916, 0, 1, 0, 0.75565916, 0, 0.6549651, -21.836761, -1.4605775, -1.4677014)
 
+[node name="Estatua-fuente" parent="decoracion" unique_id=1696430299 instance=ExtResource("22_ovxel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.398983, -1.4866694, -14.836861)
+
 [node name="Mapa" parent="." unique_id=928146224 instance=ExtResource("8_nnpnv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495, 0)
 
@@ -184,6 +187,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.668795, 0.9606244, -12.33
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
 transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -42.112034, 0, 5.1696515)
 floor_stop_on_slope = false
-
-[node name="Estatua-fuente" parent="." unique_id=1696430299 instance=ExtResource("22_ovxel")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.296402, -0.48666942, -14.836861)
