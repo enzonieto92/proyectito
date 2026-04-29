@@ -164,7 +164,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.15, 1, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87, 1, 4)
 
 [node name="pared_compuerta" parent="puertas" unique_id=1535462391 instance=ExtResource("15_81g75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.10255, -1.495, 3.8236861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.086, -1.495, 3.824)
 
 [node name="pared con puerta3" parent="puertas" unique_id=1277012550 instance=ExtResource("7_jqckn")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -29, 1, -4.1193905)
@@ -185,5 +185,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.418045, 0.9606244, -10.33
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.668795, 0.9606244, -12.331554)
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
-transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -0.21210957, 0, 0.3686205)
+transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -42.112034, 0, 5.1696515)
 floor_stop_on_slope = false
