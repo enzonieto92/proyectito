@@ -222,6 +222,13 @@ func _process(_delta):
 			
 		elif objeto_actual.is_in_group("recogibles"):
 			texto_plano.show_text("(E) Recoger")
+		elif objeto_actual.is_in_group("estatua"):
+			if arma != null:
+				if arma.nombre == "Daga Ritual":
+					texto_plano.show_text("(E) Colocar")
+			else:
+				if objeto_actual.daga_colocada == true:
+					texto_plano.show_text("(E) Cortarse")
 		else:
 			texto_plano.show_text("(E) Interactuar")
 

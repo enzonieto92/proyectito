@@ -3,6 +3,7 @@ extends Node
 @onready var grid_container: GridContainer = $CanvasLayer/Inventario_UI/panel_mochila/GridContainer
 @onready var label_peso: Label = $CanvasLayer/Inventario_UI/panel_mochila/label_peso
 @export var peso_maximo: float = 20.0
+@onready var slot_mano_derecha: WeaponSlot = $CanvasLayer/Inventario_UI/panel_equipo/slot_mano_derecha
 
 func _ready():
 	actualizar_label_peso()
@@ -135,3 +136,13 @@ func _colocar_en(item, pos: Vector2i):
 		item.visual_bg.queue_free()
 	
 	grid_container.mostrar_item_visual(item, pos)
+func tiene_item(item_buscado) -> bool:
+	for x in range(grid_container.grid_width):
+		for y in range(grid_container.grid_height):
+			var slot = grid_container.grid[x][y]
+			if not slot.esta_vacio() and slot.item != null:
+				if slot.item.get_instance_id() == item_buscado.get_instance_id():
+					return true
+	return false
+func remover_item_de_weapon_slot() -> void:
+	slot_mano_derecha.vaciar()  # ya limpia el slot, remueve arma del jugador y el icono

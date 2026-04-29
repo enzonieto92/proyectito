@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bd06igfxy3273" path="res://escenas/altar_secreto.tscn" id="13_hc4sh"]
 [ext_resource type="PackedScene" uid="uid://c3aibayik4w7l" path="res://escenas/compuerta_secreta.tscn" id="15_81g75"]
 [ext_resource type="PackedScene" uid="uid://48k12tldmh24" path="res://escenas/area_cambiar_musica.tscn" id="15_nnpnv"]
-[ext_resource type="PackedScene" uid="uid://cadcqp3v7r0jt" path="res://objetos glb/Estatua-fuente.glb" id="16_81g75"]
 [ext_resource type="Resource" uid="uid://cgn2squmk4a6b" path="res://armas/espada.tres" id="16_i6a64"]
 [ext_resource type="PackedScene" uid="uid://daphq6mgow8wf" path="res://escenas/silla_tirada.tscn" id="17_pbugk"]
 [ext_resource type="PackedScene" uid="uid://cenpahd676ouq" path="res://escenas/hoja.tscn" id="18_mnaqj"]
@@ -22,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://6q0c7riqo4c0" path="res://objetos glb/Jaulatortura.glb" id="21_jxelf"]
 [ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="21_ovxel"]
 [ext_resource type="PackedScene" uid="uid://cq7x5lktbhxro" path="res://escenas/Bandera-Simbolo.tscn" id="22_01jbd"]
+[ext_resource type="PackedScene" uid="uid://dyvvp3xm7d1tm" path="res://escenas/estatua_fuente.tscn" id="22_ovxel"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ovxel"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -110,16 +110,13 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.186476, 0.03462124, -14.723452)
 
 [node name="antorcha16" parent="decoracion" unique_id=1819137794 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.808643, 0.012965798, -12.914308)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.808643, 0.012965798, -13.600611)
 
 [node name="antorcha17" parent="decoracion" unique_id=474295596 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.808643, 0.012965798, -16.522194)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.808643, 0.012965798, -15.932519)
 
 [node name="silla3" parent="decoracion" unique_id=1310355822 instance=ExtResource("1_vol8w")]
 transform = Transform3D(-1.8862873, -4.462322e-08, 1.5875219e-07, 0, 1.8159132, 0.5104302, -1.6490448e-07, 0.51043016, -1.8159133, -17.519585, -1.4934788, -4.74721)
-
-[node name="Estatua-fuente" parent="decoracion" unique_id=1621174036 instance=ExtResource("16_81g75")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -29.558998, -1.4866695, -14.5772505)
 
 [node name="silla4" parent="decoracion" unique_id=1219736006 instance=ExtResource("17_pbugk")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 5.847, -1.012, 5.548)
@@ -187,3 +184,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.668795, 0.9606244, -12.33
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
 transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -42.112034, 0, 5.1696515)
 floor_stop_on_slope = false
+
+[node name="Estatua-fuente" parent="." unique_id=1696430299 instance=ExtResource("22_ovxel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.296402, -0.48666942, -14.836861)

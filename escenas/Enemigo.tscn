@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://ba6du2a6ih045" path="res://scripts/Enemigo.gd" id="1_jx5fs"]
 [ext_resource type="Texture2D" uid="uid://cw83jmv8kau85" path="res://texturas/seguidor_possitionbase.png" id="4_ev3pp"]
 [ext_resource type="Texture2D" uid="uid://ceg0awyobh8ld" path="res://texturas/seguidor_attack.png" id="5_2nodj"]
-[ext_resource type="Script" uid="uid://dnfgyht670ym" path="res://escenas/sprite_enemy.gd" id="5_chp7c"]
+[ext_resource type="Script" uid="uid://dnfgyht670ym" path="res://scripts/sprite_enemy.gd" id="5_chp7c"]
 [ext_resource type="Texture2D" uid="uid://jrt5dtfusfyx" path="res://texturas/seguidor-dead-sprite.png" id="6_dxnq1"]
 [ext_resource type="Script" uid="uid://ct1miin5x3sy3" path="res://scripts/raycast_enemigo.gd" id="6_w463i"]
 [ext_resource type="AudioStream" uid="uid://dgjx3647oxucb" path="res://sonido/dying_enemigo.mp3" id="7_chp7c"]
-[ext_resource type="Texture2D" uid="uid://brpxjynnuu5lj" path="res://texturas/sangre_suelo.png" id="8_chp7c"]
+[ext_resource type="Texture2D" uid="uid://c52j8elh4bk6f" path="res://texturas/sangre.png" id="7_nkg5f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inx13"]
 atlas = ExtResource("4_ev3pp")
@@ -456,14 +456,14 @@ script = ExtResource("6_w463i")
 libraries/ = SubResource("AnimationLibrary_nkg5f")
 
 [node name="sangre" type="Sprite3D" parent="." unique_id=2043400470]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5324233, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.532, 0)
 visible = false
-modulate = Color(0.5409904, 0.54099053, 0.5409904, 0.5686275)
+modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
+pixel_size = 0.015
 axis = 1
-shaded = true
-alpha_cut = 1
+alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("8_chp7c")
+texture = ExtResource("7_nkg5f")
 
 [node name="area_deteccion" type="Area3D" parent="." unique_id=1989233783]
 

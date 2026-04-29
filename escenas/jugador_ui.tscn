@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b3g0b6lcdob6u" path="res://texturas/ui_daño.png" id="1_6cur2"]
 [ext_resource type="FontFile" uid="uid://c5xd2k2y55fr3" path="res://otros/Pixelpurl-0vBPP.ttf" id="2_v5cmr"]
-[ext_resource type="Script" uid="uid://dixe7qhq4prcs" path="res://escenas/blood_splash.gd" id="2_wndoy"]
+[ext_resource type="Script" uid="uid://dixe7qhq4prcs" path="res://scripts/blood_splash.gd" id="2_wndoy"]
 [ext_resource type="Script" uid="uid://1exwuqcr3xqp" path="res://scripts/barra_stamina.gd" id="3_bt4of"]
 [ext_resource type="FontFile" uid="uid://berjkm7dt2kx2" path="res://otros/PixelSymtext-eYmn.ttf" id="4_6cur2"]
 [ext_resource type="Script" uid="uid://dqrqprrqi2lc8" path="res://scripts/dialogo.gd" id="5_wndoy"]

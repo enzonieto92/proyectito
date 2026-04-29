@@ -45,6 +45,7 @@ sprite_arma=""
 jugador=""
 dialogo=""
 sprite_secundaria=""
+estatua=""
 
 [importer_defaults]
 
