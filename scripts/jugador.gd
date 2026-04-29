@@ -15,7 +15,8 @@ extends CharacterBody3D
 @onready var texto_plano: RichTextLabel = get_tree().get_first_node_in_group("texto_plano")
 @onready var jugador_ui: CanvasLayer = get_tree().get_first_node_in_group("jugador_ui")
 @onready var slot_mano_secundaria: SecundarySlot = inventario_ui.get_node("panel_equipo/slot_mano_secundaria")
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animaciones_ataque: AnimationPlayer = $animaciones_ataque
+
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @onready var hit_sound: AudioStreamPlayer3D = $hit_sound
 
@@ -66,7 +67,7 @@ func recibir_damage(_damage):
 	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
 	var daño_final = int(_damage * (1.0 - reduccion))
 	vida -= int(daño_final)
-	animation_player.on_block_hit()
+	animaciones_ataque.on_block_hit()
 	reaccion_ui()
 	recibiendo_damage = false
 func reaccion_ui():
@@ -116,7 +117,7 @@ func cerrar_inventario() -> void:
 	inventario_ui.visible = false
 	inventario_abierto = false
 	raycast.enabled = true
-	animation_player.resetear_estado()
+	animaciones_ataque.resetear_estado()
 	if not get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -193,7 +194,7 @@ func _physics_process(delta):
 	var direction = (right * input_dir.x - forward * input_dir.y).normalized()
 
 	if is_on_floor():
-		if not animation_player.animacion_en_curso:  # ← esta línea
+		if not animaciones_ataque.animacion_en_curso:  # ← esta línea
 			puede_correr = true
 		if direction:
 			velocity.x = direction.x * SPEED

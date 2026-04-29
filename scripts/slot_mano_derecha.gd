@@ -31,7 +31,39 @@ func _remover_arma(jugador):
 	jugador.total_damage.x = jugador.damage.x
 	jugador.total_damage.y = jugador.damage.y
 	jugador.arma = null
+func equipar(nuevo_item) -> bool:
+	if ocupado:
+		return false
+	if nuevo_item.tipo != Arma.Tipo.ARMA:
+		return false
 
+	var inventario = get_tree().get_first_node_in_group("inventario_controller")
+
+	# Apagar hover antes de remover
+	var slot_origen = inventario.grid_container.grid[nuevo_item.grid_pos.x][nuevo_item.grid_pos.y]
+	slot_origen._hover_item(nuevo_item, nuevo_item.grid_pos, false)
+
+	inventario.remover_item_sin_actualizar_peso(nuevo_item, nuevo_item.grid_pos)
+
+	if nuevo_item.visual_node:
+		nuevo_item.visual_node.queue_free()
+		nuevo_item.visual_node = null
+	if nuevo_item.visual_bg:
+		nuevo_item.visual_bg.queue_free()
+		nuevo_item.visual_bg = null
+
+	item = nuevo_item
+	ocupado = true
+
+	var jugador = get_tree().get_first_node_in_group("jugador")
+	_aplicar_arma(jugador, item)
+	_mostrar_icono()
+
+	if sprite_arma:
+		sprite_arma.texture = item.textura
+
+	inventario.actualizar_label_peso()
+	return true
 # -------------------------
 # HOVER
 # -------------------------

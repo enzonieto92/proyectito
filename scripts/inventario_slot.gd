@@ -222,3 +222,30 @@ func _limpiar_highlight(it, pos: Vector2i):
 
 func _en_rango(grid, x, y):
 	return x >= 0 and y >= 0 and x < grid.grid_width and y < grid.grid_height
+# inventario_slot.gd — agregar estas variables arriba:
+var _ultimo_click_tiempo: float = 0.0
+const DOBLE_CLICK_UMBRAL: float = 0.35  # segundos
+
+
+# Agregar este método:
+func _gui_input(event: InputEvent):
+	if not (event is InputEventMouseButton):
+		return
+	if not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
+		return
+	if not ocupado or drag_activo:
+		return
+
+	var ahora = Time.get_ticks_msec() / 1000.0
+
+	if ahora - _ultimo_click_tiempo <= DOBLE_CLICK_UMBRAL:
+		# Es doble click — intentar equipar
+		_ultimo_click_tiempo = 0.0
+		_intentar_equipar()
+	else:
+		_ultimo_click_tiempo = ahora
+
+
+func _intentar_equipar():
+	var inventario = get_tree().get_first_node_in_group("inventario_controller")
+	inventario.slot_mano_derecha.equipar(item)
