@@ -229,6 +229,8 @@ func _process(_delta):
 			else:
 				if objeto_actual.daga_colocada == true:
 					texto_plano.show_text("(E) Cortarse")
+				else:
+					texto_plano.show_text("(E) Inspeccionar")
 		else:
 			texto_plano.show_text("(E) Interactuar")
 

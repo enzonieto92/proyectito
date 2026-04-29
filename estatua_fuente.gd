@@ -31,7 +31,9 @@ func interactuar(player):
 			player.inventario_controller.remover_item_de_weapon_slot()
 			print("rioich tenkai")
 			daga_colocada = true
-	elif !daga_colocada:
+		
+	else:
+		print("pasa")
 		dialogo.visible = true
 		dialogo.show_text("Parece que esta rezando, o ¿rogando?")
 
