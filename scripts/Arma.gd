@@ -7,7 +7,7 @@ class_name Arma
 @export var icono: CompressedTexture2D
 @export var textura: CompressedTexture2D
 @export var descripcion: String = ""
-
+@export var armadura: int
 @export var damage : Vector2
 
 @export var weapon_size: float    

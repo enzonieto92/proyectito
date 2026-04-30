@@ -9,6 +9,7 @@ script = ExtResource("1_qmwkv")
 nombre = "Espada"
 icono = ExtResource("1_rfoht")
 textura = ExtResource("3_f281o")
+armadura = 2
 damage = Vector2(6, 12)
 weapon_size = 1.2
 size = Vector2i(1, 3)

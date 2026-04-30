@@ -9,6 +9,7 @@ script = ExtResource("1_w8ioy")
 nombre = "Daga Ritual"
 icono = ExtResource("1_as0m3")
 textura = ExtResource("3_7b6re")
+armadura = 1
 damage = Vector2(9, 14)
 weapon_size = 0.8
 size = Vector2i(1, 2)

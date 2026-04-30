@@ -4,9 +4,14 @@ extends RayCast3D
 
 func _process(_delta: float) -> void:
 	look_at(player.position, Vector3.UP)
+	rotation.x = 0
+	rotation.z = 0
 	
 	if is_colliding(): # Solo verifica la colisión
 		var obj = get_collider()
 		if obj.is_in_group("jugador"):
-			obj.recibir_damage(enemigo.damage)
-			set_enabled(false) # Desactiva para evitar múltiples golpes
+			if obj.bloqueando == false:
+				obj.recibir_damage(enemigo.damage) # Desactiva para evitar múltiples golpes
+			else:
+				print("bloqueado")
+			set_enabled(false)

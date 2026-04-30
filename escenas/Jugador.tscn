@@ -174,22 +174,10 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath(".:bloqueando")
+tracks/13/path = NodePath("camara_controller/camara_player:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("camara_controller/camara_player:position")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -514,6 +502,34 @@ tracks/3/keys = {
 "values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-0.62133723, -1.4660766, 0.25132743)]
 }
 
+[sub_resource type="Animation" id="Animation_ddw1h"]
+resource_name = "bloqueo_arma"
+length = 0.57
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivote/posicion_arma:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.050547246, 0.44288045),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(-0.058, 0.06, -0.56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivote/posicion_arma:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.050547246, 0.44288045),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(0.47492233, -0.06943137, 1.3075888)]
+}
+
 [sub_resource type="Animation" id="Animation_475hk"]
 resource_name = "hit_bloqueado"
 length = 0.3338
@@ -548,6 +564,7 @@ _data = {
 &"atacar": SubResource("Animation_dw050"),
 &"atacar_horizontal": SubResource("Animation_meqng"),
 &"bloquear": SubResource("Animation_lctvp"),
+&"bloqueo_arma": SubResource("Animation_ddw1h"),
 &"caminar": ExtResource("3_475hk"),
 &"correr": ExtResource("4_ddw1h"),
 &"hit_bloqueado": SubResource("Animation_475hk"),
@@ -573,6 +590,12 @@ animation = &"atacar"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ddw1h"]
 animation = &"atacar_horizontal"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lctvp"]
+animation = &"bloqueo_arma"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_op6lh"]
+animation = &"hit_bloqueado"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_op6lh"]
 switch_mode = 1
 
@@ -585,14 +608,31 @@ switch_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ooj51"]
 switch_mode = 1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ghhxw"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bxkub"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_orh7j"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6rshw"]
+switch_mode = 1
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ghhxw"]
 states/End/position = Vector2(717, 100)
-states/Start/position = Vector2(287, 100)
+states/Start/position = Vector2(249, 85)
 states/atacar/node = SubResource("AnimationNodeAnimation_475hk")
 states/atacar/position = Vector2(511, 63)
 states/atacar_horizontal/node = SubResource("AnimationNodeAnimation_ddw1h")
 states/atacar_horizontal/position = Vector2(517, 154)
-transitions = ["Start", "atacar", SubResource("AnimationNodeStateMachineTransition_op6lh"), "Start", "atacar_horizontal", SubResource("AnimationNodeStateMachineTransition_ko7k4"), "atacar", "End", SubResource("AnimationNodeStateMachineTransition_pvtpb"), "atacar_horizontal", "End", SubResource("AnimationNodeStateMachineTransition_ooj51")]
+states/bloqueo_arma/node = SubResource("AnimationNodeAnimation_lctvp")
+states/bloqueo_arma/position = Vector2(517, 301)
+states/hit_bloqueado/node = SubResource("AnimationNodeAnimation_op6lh")
+states/hit_bloqueado/position = Vector2(511, 215)
+transitions = ["Start", "atacar", SubResource("AnimationNodeStateMachineTransition_op6lh"), "Start", "atacar_horizontal", SubResource("AnimationNodeStateMachineTransition_ko7k4"), "atacar", "End", SubResource("AnimationNodeStateMachineTransition_pvtpb"), "atacar_horizontal", "End", SubResource("AnimationNodeStateMachineTransition_ooj51"), "Start", "hit_bloqueado", SubResource("AnimationNodeStateMachineTransition_ghhxw"), "Start", "bloqueo_arma", SubResource("AnimationNodeStateMachineTransition_bxkub"), "hit_bloqueado", "End", SubResource("AnimationNodeStateMachineTransition_orh7j"), "bloqueo_arma", "End", SubResource("AnimationNodeStateMachineTransition_6rshw")]
+graph_offset = Vector2(54, 41)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxkub"]
 animation = &"caminar"
@@ -627,7 +667,7 @@ states/idle/position = Vector2(420, 183)
 transitions = ["Start", "caminar", SubResource("AnimationNodeStateMachineTransition_ehok7"), "Start", "correr", SubResource("AnimationNodeStateMachineTransition_c267k"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_wvgm1"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_pdj80"), "caminar", "End", SubResource("AnimationNodeStateMachineTransition_p05sv"), "correr", "End", SubResource("AnimationNodeStateMachineTransition_6ghc4")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1udw8"]
-graph_offset = Vector2(-587.7953, 43.529083)
+graph_offset = Vector2(-759.6116, 227.6529)
 nodes/output/position = Vector2(620, 100)
 nodes/movimiento/node = SubResource("AnimationNodeStateMachine_3wdqr")
 nodes/movimiento/position = Vector2(-560, 80)
@@ -687,7 +727,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
 script = ExtResource("6_p52f3")
 
 [node name="posicion_arma" type="Node3D" parent="pivote" unique_id=1760938995]
-transform = Transform3D(0.8066229, -0.16035502, -0.5688987, 0.44194648, 0.8027456, 0.40035257, 0.3924824, -0.5743559, 0.7183821, 0.5151274, -0.15985763, -0.80995387)
+transform = Transform3D(0.80662286, -0.16035499, -0.5688987, 0.44194645, 0.8027454, 0.40035257, 0.39248237, -0.5743558, 0.7183821, 0.5151274, -0.15985763, -0.80995387)
 
 [node name="sprite_arma" type="Sprite3D" parent="pivote/posicion_arma" unique_id=605076613 groups=["sprite_arma"]]
 transform = Transform3D(0.9999997, 0, 0, 0, 0.99999875, 0, 0, 0, 0.99999976, 0, 0, 0)
@@ -701,6 +741,7 @@ texture_filter = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7252903e-09, -0.45337552, -1.1920929e-07)
 enabled = false
 target_position = Vector3(0, 0.875, 0)
+collide_with_areas = true
 script = ExtResource("9_w7fad")
 
 [node name="sonido_arma" type="AudioStreamPlayer" parent="pivote/posicion_arma/sprite_arma" unique_id=1901042069]

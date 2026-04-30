@@ -9,6 +9,7 @@ script = ExtResource("1_x6ta6")
 nombre = "Maza"
 icono = ExtResource("1_lbv0y")
 textura = ExtResource("3_2j6du")
+armadura = 1
 damage = Vector2(19, 28)
 weapon_size = 1.0
 size = Vector2i(1, 3)

@@ -28,6 +28,7 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @export var armadura : float
 @export var peso : float
 @export var bloqueando = false
+var armadura_total : float
 var stamina_agotada: bool = false
 var vida : float 
 var inventario_abierto = false
@@ -60,6 +61,17 @@ func _ready():
 	total_damage.y = (damage.y + damage_arma.y)
 	vida = vida_max
 func recibir_damage(_damage):
+	recibiendo_damage = true
+	var controller = camera.get_parent()
+	controller.shake(0.05, 0.5, 60.0)
+	hit_sound.play()
+	var reduccion = armadura_total / (armadura_total + CONSTANTE_ARMADURA)
+	var daño_final = int(_damage * (1.0 - reduccion))
+	vida -= int(daño_final)
+	animaciones_ataque.on_block_hit()
+	reaccion_ui()
+	recibiendo_damage = false
+func recibir_damage_reducido(_damage):
 	recibiendo_damage = true
 	var controller = camera.get_parent()
 	controller.shake(0.05, 0.5, 60.0)
@@ -122,9 +134,10 @@ func cerrar_inventario() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
-
+	if arma != null:
+		var label = jugador_ui.get_node("Label")
+		label.text = str(bloqueando) +  "armadura total: " + str(armadura_total) + ", Armadura Arma: " + str(arma.armadura)
 	objeto_actual = null
-
 	if raycast.is_colliding():
 		var obj = raycast.get_collider()
 
@@ -207,7 +220,10 @@ func _physics_process(delta):
 	moving = velocity.length_squared() > 0.01 and is_on_floor()
 
 func _process(_delta):
-
+	if arma != null and bloqueando:
+		armadura_total = armadura + arma.armadura
+	elif not bloqueando:
+		armadura_total = armadura
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		if objeto_actual.is_in_group("puertas"):
 			if objeto_actual.abierta:
@@ -265,3 +281,13 @@ func play_footstep():
 func stop_footstep():
 	if footstep_player.is_playing():
 		footstep_player.stop()
+func desactivar_bloqueo():
+	if bloqueando:
+		bloqueando = false
+		if arma != null:
+			raycast_arma.enabled = false 
+func activar_bloqueo():
+	if not bloqueando:
+		bloqueando = true
+		if arma != null:
+			raycast_arma.enabled = true 
