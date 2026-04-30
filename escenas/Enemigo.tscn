@@ -440,6 +440,7 @@ alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_id0nj")
 animation = &"enemy2_dying"
+autoplay = "enemy2"
 frame = 2
 speed_scale = 0.65
 script = ExtResource("5_chp7c")
@@ -477,6 +478,9 @@ stream = ExtResource("7_chp7c")
 volume_db = 19.341
 autoplay = true
 max_distance = 12.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=616496208]
+debug_enabled = true
 
 [connection signal="body_entered" from="area_deteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="body_exited" from="area_deteccion" to="." method="_on_area_deteccion_body_exited"]
