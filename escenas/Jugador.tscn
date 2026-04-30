@@ -561,6 +561,86 @@ height = 1.8
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_475hk"]
 height = 0.10913086
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_lctvp"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lctvp"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_475hk"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_475hk"]
+animation = &"atacar"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ddw1h"]
+animation = &"atacar_horizontal"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_op6lh"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ko7k4"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pvtpb"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ooj51"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ghhxw"]
+states/End/position = Vector2(717, 100)
+states/Start/position = Vector2(287, 100)
+states/atacar/node = SubResource("AnimationNodeAnimation_475hk")
+states/atacar/position = Vector2(511, 63)
+states/atacar_horizontal/node = SubResource("AnimationNodeAnimation_ddw1h")
+states/atacar_horizontal/position = Vector2(517, 154)
+transitions = ["Start", "atacar", SubResource("AnimationNodeStateMachineTransition_op6lh"), "Start", "atacar_horizontal", SubResource("AnimationNodeStateMachineTransition_ko7k4"), "atacar", "End", SubResource("AnimationNodeStateMachineTransition_pvtpb"), "atacar_horizontal", "End", SubResource("AnimationNodeStateMachineTransition_ooj51")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxkub"]
+animation = &"caminar"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_orh7j"]
+animation = &"correr"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6rshw"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ehok7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c267k"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wvgm1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pdj80"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p05sv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ghc4"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3wdqr"]
+states/End/position = Vector2(723, 100)
+states/Start/position = Vector2(185, 100)
+states/caminar/node = SubResource("AnimationNodeAnimation_bxkub")
+states/caminar/position = Vector2(420, 34)
+states/correr/node = SubResource("AnimationNodeAnimation_orh7j")
+states/correr/position = Vector2(420, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_6rshw")
+states/idle/position = Vector2(420, 183)
+transitions = ["Start", "caminar", SubResource("AnimationNodeStateMachineTransition_ehok7"), "Start", "correr", SubResource("AnimationNodeStateMachineTransition_c267k"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_wvgm1"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_pdj80"), "caminar", "End", SubResource("AnimationNodeStateMachineTransition_p05sv"), "correr", "End", SubResource("AnimationNodeStateMachineTransition_6ghc4")]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1udw8"]
+graph_offset = Vector2(-587.7953, 43.529083)
+nodes/output/position = Vector2(620, 100)
+nodes/movimiento/node = SubResource("AnimationNodeStateMachine_3wdqr")
+nodes/movimiento/position = Vector2(-560, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_lctvp")
+nodes/TimeScale/position = Vector2(313.17203, 158.71123)
+nodes/ataque/node = SubResource("AnimationNodeStateMachine_ghhxw")
+nodes/ataque/position = Vector2(-560, 380)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_lctvp")
+nodes/Add2/position = Vector2(20.460232, 194.8934)
+nodes/TimeScale_ataque/node = SubResource("AnimationNodeTimeScale_475hk")
+nodes/TimeScale_ataque/position = Vector2(-260, 320)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2", 0, &"movimiento", &"Add2", 1, &"TimeScale_ataque", &"TimeScale_ataque", 0, &"ataque"]
+
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
 script = ExtResource("1_hqtel")
 stamina = 1000.0
@@ -662,3 +742,11 @@ current = true
 [node name="hit_sound" type="AudioStreamPlayer3D" parent="." unique_id=463426134]
 stream = ExtResource("13_475hk")
 max_db = -5.242
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1439636149]
+callback_mode_discrete = 0
+tree_root = SubResource("AnimationNodeBlendTree_1udw8")
+anim_player = NodePath("../animaciones_ataque")
+parameters/TimeScale/scale = 1.0
+parameters/Add2/add_amount = 0.0
+parameters/TimeScale_ataque/scale = 1.0
