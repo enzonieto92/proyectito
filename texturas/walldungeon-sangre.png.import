@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhvonomjwrwk0"
-path="res://.godot/imported/Bandera-simbolo.png-de77076d04f39eb686081f027503c705.ctex"
+uid="uid://douyle70n81ny"
+path="res://.godot/imported/walldungeon-sangre.png-50bff0f3cf084e78ad60fe0ae18dc635.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texturas/Bandera-simbolo.png"
-dest_files=["res://.godot/imported/Bandera-simbolo.png-de77076d04f39eb686081f027503c705.ctex"]
+source_file="res://texturas/walldungeon-sangre.png"
+dest_files=["res://.godot/imported/walldungeon-sangre.png-50bff0f3cf084e78ad60fe0ae18dc635.ctex"]
 
 [params]
 

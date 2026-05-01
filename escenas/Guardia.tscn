@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kqlong62cjln"]
 
-[ext_resource type="Script" uid="uid://d1ue2c2yujin0" path="res://scripts/guardia.gd" id="1_huxnx"]
+[ext_resource type="Script" uid="uid://d1ue2c2yujin0" path="res://scripts/Guardia.gd" id="1_huxnx"]
 [ext_resource type="Texture2D" uid="uid://bts0lyieerwda" path="res://texturas/azotador_Ataque_original.png" id="2_u3e3u"]
 [ext_resource type="Texture2D" uid="uid://dbx0aotxomfjq" path="res://texturas/azotador-walk.png" id="3_p6h7k"]
 [ext_resource type="Texture2D" uid="uid://18yxljccgv2e" path="res://texturas/azotador-dead.png" id="4_26gnp"]
@@ -234,6 +234,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.74128306),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"look_at_target"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_fvkq1"]
 resource_name = "chase"
@@ -360,7 +374,7 @@ radius = 6.309082
 [node name="Guardia" type="CharacterBody3D" unique_id=834906040 groups=["enemigos"]]
 script = ExtResource("1_huxnx")
 vida = 75.0
-attack_range = 4.0
+attack_range = 3.0
 max_damage = 21.0
 min_damage = 19.0
 
@@ -373,7 +387,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.78184426, 0)
 shape = SubResource("CylinderShape3D_huxnx")
 
 [node name="sprite_enemy" type="AnimatedSprite3D" parent="." unique_id=464011000]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.08389043, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.012036435, 0)
 shaded = true
 alpha_cut = 1
 texture_filter = 0
@@ -384,15 +398,14 @@ script = ExtResource("6_smdhk")
 
 [node name="raycast_enemigo" type="RayCast3D" parent="." unique_id=1319847300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058597535, 0)
-target_position = Vector3(0, 0, -1)
+target_position = Vector3(0, 0, -1.3)
 script = ExtResource("7_46rtu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1026104812]
 libraries/ = SubResource("AnimationLibrary_mj5ly")
 
 [node name="sangre" type="Sprite3D" parent="." unique_id=1725185734]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.532, 0)
-visible = false
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.8009243, 0)
 modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
 pixel_size = 0.015
 axis = 1
@@ -416,6 +429,11 @@ max_distance = 12.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1064882854]
 debug_enabled = true
+
+[node name="raycast_vision" type="RayCast3D" parent="." unique_id=966443226]
+target_position = Vector3(0, -1, -6)
+
+[node name="sonido_golpe" type="AudioStreamPlayer" parent="." unique_id=1065348469]
 
 [connection signal="body_entered" from="area_deteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="body_exited" from="area_deteccion" to="." method="_on_area_deteccion_body_exited"]

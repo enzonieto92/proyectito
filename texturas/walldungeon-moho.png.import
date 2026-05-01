@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhvonomjwrwk0"
-path="res://.godot/imported/Bandera-simbolo.png-de77076d04f39eb686081f027503c705.ctex"
+uid="uid://upo8jyweuwoc"
+path="res://.godot/imported/walldungeon-moho.png-98deeb017a537dfe993d67e98561c30b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texturas/Bandera-simbolo.png"
-dest_files=["res://.godot/imported/Bandera-simbolo.png-de77076d04f39eb686081f027503c705.ctex"]
+source_file="res://texturas/walldungeon-moho.png"
+dest_files=["res://.godot/imported/walldungeon-moho.png-98deeb017a537dfe993d67e98561c30b.ctex"]
 
 [params]
 

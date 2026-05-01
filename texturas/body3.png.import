@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhvonomjwrwk0"
-path="res://.godot/imported/Bandera-simbolo.png-de77076d04f39eb686081f027503c705.ctex"
+uid="uid://ulobe5b64rl5"
+path="res://.godot/imported/body3.png-3ea8aba72ab24db93e7e89e320be076b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texturas/Bandera-simbolo.png"
-dest_files=["res://.godot/imported/Bandera-simbolo.png-de77076d04f39eb686081f027503c705.ctex"]
+source_file="res://texturas/body3.png"
+dest_files=["res://.godot/imported/body3.png-3ea8aba72ab24db93e7e89e320be076b.ctex"]
 
 [params]
 

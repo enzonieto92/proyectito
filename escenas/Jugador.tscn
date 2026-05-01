@@ -194,7 +194,7 @@ tracks/0/path = NodePath(".:golpeando")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.53333336),
+"times": PackedFloat32Array(0, 0.5379847),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -206,7 +206,7 @@ tracks/1/path = NodePath("pivote/posicion_arma/sprite_arma/raycast_arma:enabled"
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5311571, 0.7377626),
+"times": PackedFloat32Array(0, 0.4962719, 0.7028774),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -218,7 +218,7 @@ tracks/2/path = NodePath("pivote/posicion_arma/sprite_arma/sonido_arma:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.51),
+"times": PackedFloat32Array(0.47511482),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -230,7 +230,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.33756545),
+"times": PackedFloat32Array(0.34221682),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -244,7 +244,7 @@ tracks/4/path = NodePath("camara_controller:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0017890669, 0.4061181, 0.59933734),
+"times": PackedFloat32Array(0.0017890669, 0.37123293, 0.5644522),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.15490341, -0.008605659, 0), Vector3(0, 0, 0)]
@@ -256,7 +256,7 @@ tracks/5/path = NodePath("camara_controller:rotation")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(-0.007635176, 0.4061181, 0.59933734),
+"times": PackedFloat32Array(-0.007635176, 0.37123293, 0.5644522),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -0.11986922), Vector3(0, 0, 0)]
@@ -268,7 +268,7 @@ tracks/6/path = NodePath("pivote_secundaria/posicion_secundaria:position")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.398938, 0.64135474, 1.1933),
+"times": PackedFloat32Array(0, 0.36405283, 0.6064695, 1.1584147),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.467, -0.535, -0.698), Vector3(-0.46723223, -0.42968047, -0.69782907), Vector3(-0.853, -0.456, -0.605), Vector3(-0.46723223, -0.42968047, -0.69782907)]
@@ -280,7 +280,7 @@ tracks/7/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.0021762904, 0.398938, 0.64135474, 1.1933),
+"times": PackedFloat32Array(0.0021762904, 0.36405283, 0.6064695, 1.1584147),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5114552, 0), Vector3(0, 0.9738937, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0)]
@@ -292,7 +292,7 @@ tracks/8/path = NodePath("pivote/posicion_arma:position")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.4504754, 0.5955437, 0.73679453, 1.1933),
+"times": PackedFloat32Array(0, 0.41559023, 0.56065845, 0.7019093, 1.1584147),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(0.562, 0.053, -0.621), Vector3(0, -0.088, -1.108), Vector3(-0.196, -0.267, -0.766), Vector3(0.5151274, -0.15985763, -0.80995387)]
@@ -304,7 +304,7 @@ tracks/9/path = NodePath("pivote/posicion_arma:rotation")
 tracks/9/interp = 2
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.4504754, 0.5974525, 0.7367945, 1.1933),
+"times": PackedFloat32Array(0, 0.41559023, 0.56256735, 0.7019093, 1.1584147),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(0.15533431, -0.27401668, -0.35430184), Vector3(-0.7193, -0.7961691, 0.636213), Vector3(-0.7592666, -1.09351, 1.2705113), Vector3(-0.41190138, -0.66979253, 0.5032604)]
@@ -316,7 +316,7 @@ tracks/10/path = NodePath("animaciones_ataque")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0.32135424),
+"times": PackedFloat32Array(0.30740017),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -334,7 +334,7 @@ tracks/0/path = NodePath(".:golpeando")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.53333336),
+"times": PackedFloat32Array(0, 0.47054),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -346,7 +346,7 @@ tracks/1/path = NodePath("pivote/posicion_arma/sprite_arma/raycast_arma:enabled"
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5311571, 0.7377626),
+"times": PackedFloat32Array(0, 0.4683637, 0.6749692),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -358,7 +358,7 @@ tracks/2/path = NodePath("pivote/posicion_arma/sprite_arma/sonido_arma:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.51),
+"times": PackedFloat32Array(0.44720662),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -370,7 +370,7 @@ tracks/3/path = NodePath("camara_controller:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.0017890669, 0.51167303, 0.6691109, 1.0161898, 1.2017891),
+"times": PackedFloat32Array(0.0017890669, 0.44887966, 0.6063175, 0.95339644, 1.1389958),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.095, -0.009, 0), Vector3(0.02, 0, 0), Vector3(0.05, 0, 0), Vector3(0, 0, 0)]
@@ -382,7 +382,7 @@ tracks/4/path = NodePath("camara_controller:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.50988394, 0.6673218, 1.0161898, 1.2),
+"times": PackedFloat32Array(0, 0.44709057, 0.6045284, 0.95339644, 1.1372067),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.12042772), Vector3(0, 0, 0), Vector3(0, 0, -0.1134464), Vector3(0, 0, 0)]
@@ -394,7 +394,7 @@ tracks/5/path = NodePath("pivote_secundaria/posicion_secundaria:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.18706183, 0.42947856, 0.9814238),
+"times": PackedFloat32Array(0, 0.14752528, 0.3666852, 0.9186304),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.467, -0.535, -0.698), Vector3(-0.46723223, -0.42968047, -0.69782907), Vector3(-0.853, -0.456, -0.605), Vector3(-0.46723223, -0.42968047, -0.69782907)]
@@ -406,7 +406,7 @@ tracks/6/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.18706183, 0.42947856, 0.9814238),
+"times": PackedFloat32Array(0, 0.14752528, 0.3666852, 0.9186304),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5114552, 0), Vector3(0, 1.0821041, 0), Vector3(0, 1.3700835, 0), Vector3(0, 1.5114552, 0)]
@@ -418,7 +418,7 @@ tracks/7/path = NodePath("pivote/posicion_arma:position")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.13775814, 0.6798453, 0.8158144, 1.2),
+"times": PackedFloat32Array(0, 0.09822158, 0.6170519, 0.753021, 1.1372067),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(-0.439, -0.192, -0.711), Vector3(0.003871195, -0.052450776, -0.85291666), Vector3(0.5502981, -0.052450776, -0.66960466), Vector3(0.5151274, -0.15985763, -0.80995387)]
@@ -430,7 +430,7 @@ tracks/8/path = NodePath("pivote/posicion_arma:rotation")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.13775814, 0.6798453, 0.8158144, 1.2),
+"times": PackedFloat32Array(0, 0.09822158, 0.6170519, 0.753021, 1.1372067),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-1.0960667, -0.07853982, 1.0367255), Vector3(-1.0485474, 0.5207188, -0.4456866), Vector3(-1.0485476, -1.1319509, -0.44568664), Vector3(-0.41190138, -0.66979253, 0.5032604)]
@@ -442,7 +442,7 @@ tracks/9/path = NodePath("animaciones_ataque")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.30222952),
+"times": PackedFloat32Array(0.23943616),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -688,6 +688,7 @@ vida_max = 75.0
 
 [node name="animaciones_ataque" type="AnimationPlayer" parent="." unique_id=602970200]
 libraries/ = SubResource("AnimationLibrary_dw050")
+speed_scale = 1.4
 blend_times = [&"bloquear", &"atacar", 0.2, &"bloquear", &"atacar_horizontal", 0.2, &"bloquear", &"bloquear", 0.2, &"bloquear", &"hit_bloqueado", 0.2]
 script = ExtResource("2_r4hsq")
 

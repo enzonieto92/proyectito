@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://cenpahd676ouq" path="res://escenas/hoja.tscn" id="18_mnaqj"]
 [ext_resource type="PackedScene" uid="uid://ctvlbe882v53o" path="res://escenas/celda.tscn" id="19_mnaqj"]
 [ext_resource type="PackedScene" uid="uid://ctqhhln0mdlye" path="res://escenas/balde.tscn" id="19_xaa2s"]
-[ext_resource type="PackedScene" uid="uid://00i8tkohagvw" path="res://escenas/Creyente.tscn" id="20_i6a64"]
 [ext_resource type="PackedScene" uid="uid://6q0c7riqo4c0" path="res://objetos glb/Jaulatortura.glb" id="21_jxelf"]
 [ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="21_ovxel"]
 [ext_resource type="PackedScene" uid="uid://cq7x5lktbhxro" path="res://escenas/Bandera-Simbolo.tscn" id="22_01jbd"]
@@ -86,12 +85,6 @@ arma = ExtResource("16_i6a64")
 
 [node name="area_cambiar_tension" parent="." unique_id=2115117697 instance=ExtResource("15_nnpnv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.259142, 1.2824659, 1.7660592)
-
-[node name="Enemigo" parent="." unique_id=1587185498 instance=ExtResource("20_i6a64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.418045, 0.9606244, -10.331554)
-
-[node name="Enemigo2" parent="." unique_id=1793496238 instance=ExtResource("20_i6a64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.668795, 0.9606244, -12.331554)
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
 transform = Transform3D(-0.99999064, 0, 0.004328385, 0, 1, 0, -0.004328385, 0, -0.99999064, -42.112034, 0, 5.1696515)
@@ -188,9 +181,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.356824, -1.2838734, -1.3609
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3455248, -1.2838734, -1.5775826)
 
 [node name="altar_secreto" parent="NavigationRegion3D/decoracion" unique_id=934175357 instance=ExtResource("13_hc4sh")]
-transform = Transform3D(0.9999973, 6.52463e-06, -0.002320932, -6.4321916e-06, 1, 4.0013238e-05, 0.0023209325, -3.999827e-05, 0.9999973, -30.562317, -2.4950795, 4.096075)
+transform = Transform3D(0.9999973, 6.52463e-06, -0.002320932, -6.4321916e-06, 1, 4.0013238e-05, 0.0023209325, -3.999827e-05, 0.9999973, -30.562317, -2.4950795, 3.9709992)
 
-[node name="Bandera-Simbolo" parent="NavigationRegion3D/decoracion" unique_id=313089849 instance=ExtResource("22_01jbd")]
+[node name="Bandera-Simbolo2" parent="NavigationRegion3D/decoracion" unique_id=313089849 instance=ExtResource("22_01jbd")]
+transform = Transform3D(0.0023208882, 0.99999726, -6.5683407e-06, -4.0013238e-05, -6.475903e-06, -0.99999994, -0.9999973, 0.0023208878, 3.9998155e-05, -30.939106, -1.1650016, 4.028753)
+
+[node name="Bandera-Simbolo" parent="NavigationRegion3D/decoracion" unique_id=1813822760 instance=ExtResource("22_01jbd")]
 transform = Transform3D(1, 0, 0, 0, 0.056535915, -0.9984005, 0, 0.9984005, 0.056535915, 0.059606552, -0.074588776, -1.9364599)
 
 [node name="Jaulatortura" parent="NavigationRegion3D/decoracion" unique_id=800925059 instance=ExtResource("21_jxelf")]
@@ -203,4 +199,4 @@ transform = Transform3D(0.6549651, 0, -0.75565916, 0, 1, 0, 0.75565916, 0, 0.654
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.398983, -1.4866694, -14.836861)
 
 [node name="Guardia" parent="." unique_id=834906040 instance=ExtResource("23_jxelf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.371056, 0.38110918, 5.1753125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3876, 0.38110894, 2.0009189)

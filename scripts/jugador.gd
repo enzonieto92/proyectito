@@ -1,9 +1,7 @@
 extends CharacterBody3D
 
 @onready var inventario_ui: Control = get_tree().get_first_node_in_group("inventario_ui")
-
 @onready var inventario_controller: Node = get_tree().get_first_node_in_group("inventario_controller")
-
 @onready var camera: Camera3D = $camara_controller/camara_player
 @onready var footstep = $footstep
 @onready var footstep_player: AudioStreamPlayer3D = $footstep
@@ -14,117 +12,116 @@ extends CharacterBody3D
 @onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
 @onready var texto_plano: RichTextLabel = get_tree().get_first_node_in_group("texto_plano")
 @onready var jugador_ui: CanvasLayer = get_tree().get_first_node_in_group("jugador_ui")
-@onready var slot_mano_secundaria: SecundarySlot = inventario_ui.get_node("panel_equipo/slot_mano_secundaria")
 @onready var animaciones_ataque: AnimationPlayer = $animaciones_ataque
+@onready var label_debug: Label = jugador_ui.get_node("Label")  # ✅ onready en vez de get_node cada frame
+@onready var blood_splash = jugador_ui.get_node("blood_splash")  # ✅ onready
+@onready var go_screen = jugador_ui.get_node("game_over_screen")  # ✅ onready
+@onready var camara_controller = $camara_controller  # ✅ onready para shake
 
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @onready var hit_sound: AudioStreamPlayer3D = $hit_sound
+@onready var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma  # ✅ onready
 
-@export var stamina : float
+@export var stamina: float
 @export var golpeando = false
 @export var recibiendo_damage = false
 @export var JUMP_VELOCITY = 3.5
-@export var vida_max : float
-@export var armadura : float
-@export var peso : float
+@export var vida_max: float
+@export var armadura: float
+@export var peso: float
 @export var bloqueando = false
-var armadura_total : float
+var armadura_total: float
 var stamina_agotada: bool = false
-var vida : float 
+var vida: float
 var inventario_abierto = false
 var moving = false
 var corriendo = false
 var puede_correr: bool = false
 var objeto_actual = null
-var SPEED : float = 2.5
+var SPEED: float = 2.5
 const mouse_sensitivity = 0.002
-var pitch := 0.0  # rotación vertical acumulada
-var debug_line: MeshInstance3D
-var arma : Arma = null
-var secundaria : Secundaria = null
-var CONSTANTE_ARMADURA : float = 100
-var damage : Vector2
-var damage_arma : Vector2
-var total_damage : Vector2
+var pitch := 0.0
+var arma: Arma = null
+var secundaria: Secundaria = null
+var CONSTANTE_ARMADURA: float = 100
+var damage: Vector2
+var damage_arma: Vector2
+var total_damage: Vector2
 var footstep_sounds = [
 	preload("uid://bcy7vwpq2v668"),
 	preload("uid://dugv4k8tmfje3"),
 	preload("uid://cj0w3fingavab")
 ]
 
+# ✅ cache para evitar recalcular texto cada frame
+var _ultimo_objeto: Object = null
+var _ultimo_texto: String = ""
+var _vida_muerto := false
+
 func cambiar_pitch_swing():
-	var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma
-	sonido_arma.pitch_scale = randf_range(0.7, 1.3)
+	sonido_arma.pitch_scale = randf_range(0.7, 1.3)  # ✅ usa onready
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	total_damage.x = (damage.x + damage_arma.x)
-	total_damage.y = (damage.y + damage_arma.y)
+	total_damage.x = damage.x + damage_arma.x
+	total_damage.y = damage.y + damage_arma.y
 	vida = vida_max
+
 func recibir_damage(_damage):
 	recibiendo_damage = true
-	var controller = camera.get_parent()
-	controller.shake(0.05, 0.5, 60.0)
+	camara_controller.shake(0.05, 0.5, 60.0)
 	hit_sound.play()
 	var reduccion = armadura_total / (armadura_total + CONSTANTE_ARMADURA)
-	var daño_final = int(_damage * (1.0 - reduccion))
-	vida -= int(daño_final)
+	vida -= int(_damage * (1.0 - reduccion))
 	animaciones_ataque.on_block_hit()
 	reaccion_ui()
 	recibiendo_damage = false
+
 func recibir_damage_reducido(_damage):
 	recibiendo_damage = true
-	var controller = camera.get_parent()
-	controller.shake(0.05, 0.5, 60.0)
+	camara_controller.shake(0.05, 0.5, 60.0)
 	hit_sound.play()
 	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
-	var daño_final = int(_damage * (1.0 - reduccion))
-	vida -= int(daño_final)
+	vida -= int(_damage * (1.0 - reduccion))
 	animaciones_ataque.on_block_hit()
 	reaccion_ui()
 	recibiendo_damage = false
+
 func reaccion_ui():
-	var texture = jugador_ui.get_node("blood_splash")
-	if !texture.visible:
-		texture.visible = true
-	var tween = create_tween()
-	tween.tween_interval(0.1)
-	tween.tween_property(texture, "modulate:a", 1, 0.5).set_delay(1.0)
+	if !blood_splash.visible:
+		blood_splash.visible = true
 	const FRAME_WIDTH = 144
 	const DAMAGE_FRAMES = 5
-	var atlas = texture.texture as AtlasTexture
+	var atlas = blood_splash.texture as AtlasTexture
 	var frame_index = clamp(int((1.0 - vida / vida_max) * DAMAGE_FRAMES), 0, DAMAGE_FRAMES - 1)
 	atlas.region = Rect2(frame_index * FRAME_WIDTH, 0, FRAME_WIDTH, atlas.region.size.y)
+
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
 		if inventario_ui.visible:
-			cerrar_inventario()  # cierra limpiamente
+			cerrar_inventario()
 		else:
 			inventario_ui.visible = true
 			inventario_abierto = true
 			raycast.enabled = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 	if event.is_action_pressed("interactuar"):
 		if inventario_abierto:
 			return
-
 		if dialogo.visible:
 			dialogo.visible = false
 			dialogo.stop_text()
 			return
-
 		if objeto_actual and objeto_actual.has_method("interactuar"):
 			objeto_actual.interactuar(self)
 
 	if event is InputEventMouseMotion and not inventario_abierto:
-		# Rotación horizontal (libre)
 		rotate_y(-event.relative.x * mouse_sensitivity)
-
-		# Acumular pitch (vertical)
 		pitch -= event.relative.y * mouse_sensitivity
 		pitch = clamp(pitch, deg_to_rad(-50), deg_to_rad(50))
-
-		# Aplicar rotación limitada
 		camera.rotation.x = pitch
+
 func cerrar_inventario() -> void:
 	inventario_ui.visible = false
 	inventario_abierto = false
@@ -134,29 +131,25 @@ func cerrar_inventario() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
-	if arma != null:
-		var label = jugador_ui.get_node("Label")
-		label.text = str(bloqueando) +  "armadura total: " + str(armadura_total) + ", Armadura Arma: " + str(arma.armadura)
 	objeto_actual = null
 	if raycast.is_colliding():
 		var obj = raycast.get_collider()
-
+		print (obj)
 		if is_instance_valid(obj) and not obj.has_method("puede_interactuar"):
 			obj = obj.get_parent()
-		if is_instance_valid(obj) \
-		and obj.has_method("puede_interactuar") \
-		and obj.puede_interactuar():
+		if is_instance_valid(obj) and obj.has_method("puede_interactuar") and obj.puede_interactuar():
 			objeto_actual = obj
 
 	if Input.is_action_pressed("agacharse"):
 		puede_correr = false
-		if shape.height > 1.05:  # solo lerp si no llegó al destino
+		if shape.height > 1.05:
 			shape.height = lerp(shape.height, 1.0, 25 * delta)
 			collision.position.y = lerp(collision.position.y, 1.28, 25 * delta)
 	elif not test_move(global_transform, Vector3.UP * 0.5):
-		if shape.height < 1.75:  # solo lerp si no llegó al destino
+		if shape.height < 1.75:
 			shape.height = lerp(shape.height, 1.8, 15 * delta)
 			collision.position.y = lerp(collision.position.y, 0.881, 25 * delta)
+
 	if stamina <= 5:
 		stamina_agotada = true
 	elif stamina >= 25:
@@ -170,44 +163,40 @@ func _physics_process(delta):
 		else:
 			corriendo = false
 			if stamina < 40:
-				stamina += delta * 2.0 * 1.5  # valor fijo, no depende de SPEED
+				stamina += delta * 3.0
 	else:
 		SPEED = 1
 		corriendo = false
 		if stamina < 40:
-			stamina += delta * 2.0 * 1.5  # mismo valor fijo
+			stamina += delta * 3.0
+
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not inventario_abierto:
 		velocity.y = JUMP_VELOCITY
-		
+
 	if inventario_abierto:
 		if footstep.playing:
 			footstep.stop()
-
 		velocity += get_gravity() * delta
-
 		if is_on_floor():
 			velocity.x = 0
 			velocity.z = 0
-
 		move_and_slide()
 		return
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
+	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var forward = -camera.global_transform.basis.z
 	forward.y = 0
 	forward = forward.normalized()
-
 	var right = camera.global_transform.basis.x
 	right.y = 0
 	right = right.normalized()
-
 	var direction = (right * input_dir.x - forward * input_dir.y).normalized()
 
 	if is_on_floor():
-		if not animaciones_ataque.animacion_en_curso:  # ← esta línea
+		if not animaciones_ataque.animacion_en_curso:
 			puede_correr = true
 		if direction:
 			velocity.x = direction.x * SPEED
@@ -224,70 +213,73 @@ func _process(_delta):
 		armadura_total = armadura + arma.armadura
 	elif not bloqueando:
 		armadura_total = armadura
-	if objeto_actual and not dialogo.visible and not inventario_abierto:
-		if objeto_actual.is_in_group("puertas"):
-			if objeto_actual.abierta:
-				texto_plano.show_text("(E) Cerrar")
-			else:
-				texto_plano.show_text("(E) Abrir")
-		
-		elif objeto_actual.is_in_group("hoja_papel"):
-			texto_plano.show_text("(E) Leer")
-			
-		elif objeto_actual.is_in_group("silla"):
-			texto_plano.show_text("(E) Investigar")
-			
-		elif objeto_actual.is_in_group("recogibles"):
-			texto_plano.show_text("(E) Recoger")
-		elif objeto_actual.is_in_group("estatua"):
-			if arma != null:
-				if arma.nombre == "Daga Ritual":
-					texto_plano.show_text("(E) Colocar")
-			else:
-				if objeto_actual.daga_colocada == true:
-					texto_plano.show_text("(E) Cortarse")
-				else:
-					texto_plano.show_text("(E) Inspeccionar")
-		else:
-			texto_plano.show_text("(E) Interactuar")
 
+	if arma != null:
+		label_debug.text = str(bloqueando) + " armadura total: " + str(armadura_total) + ", Armadura Arma: " + str(arma.armadura)
+
+	if objeto_actual and not dialogo.visible and not inventario_abierto:
+		if objeto_actual != _ultimo_objeto:
+			_ultimo_objeto = objeto_actual
+			_ultimo_texto = _calcular_texto_interaccion()
+			texto_plano.show_text(_ultimo_texto)
 		texto_plano.visible = true
 	else:
+		# ✅ siempre ocultar si no hay objeto, sin importar el cache
 		texto_plano.ocultar()
-
+		_ultimo_objeto = null
+		_ultimo_texto = ""
 		if dialogo.visible and objeto_actual == null:
 			dialogo.stop_text()
-	if vida <= 0:
-		var go_screen = jugador_ui.get_node("game_over_screen")
-		#tendra que frenar el mundo entero
+
+	if not _vida_muerto and vida <= 0:
+		_vida_muerto = true
 		go_screen.visible = true
-		return
+func _calcular_texto_interaccion() -> String:
+	if objeto_actual.is_in_group("puertas"):
+		return "(E) Cerrar" if objeto_actual.abierta else "(E) Abrir"
+	elif objeto_actual.is_in_group("hoja_papel"):
+		return "(E) Leer"
+	elif objeto_actual.is_in_group("silla"):
+		return "(E) Investigar"
+	elif objeto_actual.is_in_group("recogibles"):
+		return "(E) Recoger"
+	elif objeto_actual.is_in_group("estatua"):
+		if arma != null:
+			if arma.nombre == "Daga Ritual":
+				return "(E) Colocar"
+		else:
+			if objeto_actual.daga_colocada == true:
+				return "(E) Cortarse"
+			else:
+				return "(E) Inspeccionar"
+	return "(E) Interactuar"
+
 var last_step_time := 0.0
-var step_cooldown := 0.2  # ajustalo según tu animación
+var step_cooldown := 0.2
 
 func play_footstep():
 	if not moving:
 		return
-	
 	var now = Time.get_ticks_msec() / 1000.0
 	if now - last_step_time < step_cooldown:
 		return
-	
 	last_step_time = now
-	
 	footstep_player.stream = footstep_sounds.pick_random()
 	footstep_player.pitch_scale = 1.0 if corriendo else 0.56
 	footstep_player.play()
+
 func stop_footstep():
 	if footstep_player.is_playing():
 		footstep_player.stop()
+
 func desactivar_bloqueo():
 	if bloqueando:
 		bloqueando = false
 		if arma != null:
-			raycast_arma.enabled = false 
+			raycast_arma.enabled = false
+
 func activar_bloqueo():
 	if not bloqueando:
 		bloqueando = true
 		if arma != null:
-			raycast_arma.enabled = true 
+			raycast_arma.enabled = true

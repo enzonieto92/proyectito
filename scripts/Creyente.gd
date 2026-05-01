@@ -3,12 +3,14 @@ extends CharacterBody3D
 const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
 const SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
 const SONIDO_ENEMIGO = preload("uid://dehsfh1pliac7")
+const SONIDO_MUERTE = preload("res://sonido/dying_enemigo.mp3")  # ✅ preload en vez de load
 
 @onready var player: CharacterBody3D = $"../player"
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var sonido_enemigo: AudioStreamPlayer3D = $sonido_enemigo
+@onready var sonido_golpe: AudioStreamPlayer3D = $sonido_golpe  # ✅ nodo fijo en editor
 
 @export var atacando: bool = false
 @export var vida: float
@@ -25,8 +27,6 @@ var _atacando_cooldown := false
 var damage: int
 var attack_dir := Vector3.ZERO
 var died = false
-
-# 🔧 control de pathfinding
 var repath_timer := 0.0
 var repath_interval := 0.5
 
@@ -42,7 +42,6 @@ func _physics_process(delta: float) -> void:
 	var dist = global_position.distance_to(player.global_position)
 	velocity += get_gravity() * delta
 
-	# 🔥 actualizar destino cada cierto tiempo (no cada frame)
 	repath_timer -= delta
 	if repath_timer <= 0.0:
 		nav_agent.target_position = player.global_position
@@ -54,15 +53,11 @@ func _physics_process(delta: float) -> void:
 		if salto:
 			velocity.y = animation_vector.y
 			salto = false
-
 	elif dist < attack_range:
-		attack_behavior()
-		damage = int(randf_range(min_damage, max_damage))
-
+		attack_behavior()  # ✅ damage movido adentro
 	elif player_entered_area and not _en_cooldown:
 		look_at_target()
 		chase_behavior()
-
 	else:
 		velocity.x = 0
 		velocity.z = 0
@@ -91,57 +86,59 @@ func chase_behavior() -> void:
 
 func recibir_damage(_damage) -> void:
 	vida -= int(randf_range(_damage.x, _damage.y))
-	var sonido = AudioStreamPlayer.new()
-	sonido.stream = ESPADA_GOLPE
-	add_child(sonido)
-	sonido.play()
-	sonido.finished.connect(sonido.queue_free)
+	sonido_golpe.stream = ESPADA_GOLPE  # ✅ reutiliza nodo fijo
+	sonido_golpe.play()
 
 func dying_behavior() -> void:
 	if is_on_floor() and !died:
-		var area = get_node("area_deteccion")
+		died = true  # ✅ primero para evitar doble ejecución
 		var colision = get_node("CollisionShape3D")
+		colision.disabled = true
 
-		if area.monitoring:
-			colision.disabled = true
+		var area = get_node_or_null("area_deteccion")
+		if area and area.monitoring:
 			area.monitoring = false
 
-		var dying_sonido = load("res://sonido/dying_enemigo.mp3")
-		var stream_enemigo = get_node("sonido_enemigo")
-		stream_enemigo.stream = dying_sonido
-		stream_enemigo.volume_db = 40.0
-		stream_enemigo.pitch_scale = 2.0
-		stream_enemigo.play()
+		sonido_enemigo.stream = SONIDO_MUERTE  # ✅ preload
+		sonido_enemigo.volume_db = 40.0
+		sonido_enemigo.pitch_scale = 2.0
+		sonido_enemigo.play()
 
 		animation_player.play("dying")
-		await animation_player.animation_finished
-		animation_player.pause()
-
-		area.queue_free()
-		colision.queue_free()
-		died = true
+		animation_player.animation_finished.connect(_on_dying_finished, CONNECT_ONE_SHOT)
 
 	elif !died:
 		velocity += get_gravity()
 		move_and_slide()
+
+func _on_dying_finished(_anim: String) -> void:
+	animation_player.pause()
+	var area = get_node_or_null("area_deteccion")
+	if area:
+		area.queue_free()
+	var colision = get_node_or_null("CollisionShape3D")
+	if colision:
+		colision.queue_free()
 
 func attack_behavior() -> void:
 	if _atacando_cooldown:
 		return
 
 	_atacando_cooldown = true
+	damage = int(randf_range(min_damage, max_damage))  # ✅ movido acá
 	attack_dir = (player.global_position - global_position).normalized()
 	attack_dir.y = 0
 
 	animation_player.play("attack")
-	await animation_player.animation_finished
+	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 
+func _on_attack_finished(_anim: String) -> void:
 	animation_vector = Vector3.ZERO
 	_en_cooldown = true
-
 	animation_player.play("chase")
-	await get_tree().create_timer(1.0).timeout
+	get_tree().create_timer(1.0).timeout.connect(_on_cooldown_finished, CONNECT_ONE_SHOT)
 
+func _on_cooldown_finished() -> void:
 	_en_cooldown = false
 	_atacando_cooldown = false
 

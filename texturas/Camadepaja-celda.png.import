@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhvonomjwrwk0"
-path="res://.godot/imported/Bandera-simbolo.png-de77076d04f39eb686081f027503c705.ctex"
+uid="uid://dykmliu6qdaw8"
+path="res://.godot/imported/Camadepaja-celda.png-ce76fe0b06864fa43c6a1051b419742b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texturas/Bandera-simbolo.png"
-dest_files=["res://.godot/imported/Bandera-simbolo.png-de77076d04f39eb686081f027503c705.ctex"]
+source_file="res://texturas/Camadepaja-celda.png"
+dest_files=["res://.godot/imported/Camadepaja-celda.png-ce76fe0b06864fa43c6a1051b419742b.ctex"]
 
 [params]
 
