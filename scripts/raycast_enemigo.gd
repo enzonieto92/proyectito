@@ -14,4 +14,4 @@ func _process(_delta: float) -> void:
 				obj.recibir_damage(enemigo.damage) 
 			else:
 				print("bloqueado")
-			set_enabled(false)# Desactiva para evitar múltiples golpes
+		set_enabled(false)# Desactiva para evitar múltiples golpes
