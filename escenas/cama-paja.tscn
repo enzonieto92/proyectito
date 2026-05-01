@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://besvuspjqkffo"]
+
+[ext_resource type="Texture2D" uid="uid://dykmliu6qdaw8" path="res://texturas/Camadepaja-celda.png" id="1_1t1hl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8l4dn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmuwg"]
+transparency = 1
+albedo_color = Color(0.52906674, 0.5290667, 0.5290667, 1)
+albedo_texture = ExtResource("1_1t1hl")
+metallic_specular = 0.03
+texture_filter = 0
+
+[node name="camadepaja" type="MeshInstance3D" unique_id=1536594149]
+mesh = SubResource("PlaneMesh_8l4dn")
+surface_material_override/0 = SubResource("StandardMaterial3D_pmuwg")

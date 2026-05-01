@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://6q0c7riqo4c0" path="res://objetos glb/Jaulatortura.glb" id="21_jxelf"]
 [ext_resource type="PackedScene" uid="uid://dbopc3u2pgmxo" path="res://escenas/Jugador.tscn" id="21_ovxel"]
 [ext_resource type="PackedScene" uid="uid://cq7x5lktbhxro" path="res://escenas/Bandera-Simbolo.tscn" id="22_01jbd"]
+[ext_resource type="PackedScene" uid="uid://besvuspjqkffo" path="res://escenas/cama-paja.tscn" id="22_jxelf"]
 [ext_resource type="PackedScene" uid="uid://dyvvp3xm7d1tm" path="res://escenas/estatua_fuente.tscn" id="22_ovxel"]
 [ext_resource type="PackedScene" uid="uid://kqlong62cjln" path="res://escenas/Guardia.tscn" id="23_jxelf"]
 
@@ -197,6 +198,9 @@ transform = Transform3D(0.6549651, 0, -0.75565916, 0, 1, 0, 0.75565916, 0, 0.654
 
 [node name="Estatua-fuente" parent="NavigationRegion3D/decoracion" unique_id=1696430299 instance=ExtResource("22_ovxel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.398983, -1.4866694, -14.836861)
+
+[node name="camadepaja" parent="NavigationRegion3D/decoracion" unique_id=1536594149 instance=ExtResource("22_jxelf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.871427, -1.4795047, -0.7001786)
 
 [node name="Guardia" parent="." unique_id=834906040 instance=ExtResource("23_jxelf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3876, 0.38110894, 2.0009189)
