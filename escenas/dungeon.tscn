@@ -109,37 +109,37 @@ transform = Transform3D(-1.8791096, 0, -0.16440059, 0, 1.8862873, 0, 0.16440059,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6575756, -1.5990243, -0.36206996)
 
 [node name="antorcha" parent="NavigationRegion3D/decoracion" unique_id=1834885261 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4020357, 0.07440674, -1.8021486)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4020357, 0.23931324, -1.9245203)
 
 [node name="antorcha2" parent="NavigationRegion3D/decoracion" unique_id=1372566602 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.489754, 0.07440674, 0.17556193)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.489754, 0.26902974, 0.079582095)
 
 [node name="antorcha3" parent="NavigationRegion3D/decoracion" unique_id=980023091 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.489754, 0.07440674, 3.8375409)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.489754, 0.24526727, 3.9221404)
 
 [node name="antorcha8" parent="NavigationRegion3D/decoracion" unique_id=767292174 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -29.811, -0.8, 7.853)
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -29.811, -0.73420227, 7.916491)
 
 [node name="antorcha9" parent="NavigationRegion3D/decoracion" unique_id=1202155551 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -33.818, -0.8, 3.532)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -33.916645, -0.71964014, 3.532)
 
 [node name="antorcha11" parent="NavigationRegion3D/decoracion" unique_id=1399087366 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, -29.875, -0.8, 0.194)
+transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, -29.875, -0.7225994, 0.082353204)
 
 [node name="antorcha12" parent="NavigationRegion3D/decoracion" unique_id=1565935312 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, -26.2, -0.8, 3.5)
+transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.9999999, -26.079227, -0.7352867, 3.5)
 
 [node name="antorcha5" parent="NavigationRegion3D/decoracion" unique_id=317225984 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.823673, 0.07440674, 1.0588458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.924015, 0.25795782, 1.0588458)
 
 [node name="antorcha6" parent="NavigationRegion3D/decoracion" unique_id=729264104 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.860668, 0.07440674, -3.8460293)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.860668, 0.26549935, -3.8908594)
 
 [node name="antorcha7" parent="NavigationRegion3D/decoracion" unique_id=1891915364 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.861, 0.074, 7.828)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.861, 0.2507552, 7.916052)
 
 [node name="antorcha10" parent="NavigationRegion3D/decoracion" unique_id=1241256681 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.183874, 0.07440674, 5.827802)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.183874, 0.2354418, 5.9161434)
 
 [node name="mesagrillete" parent="NavigationRegion3D/decoracion" unique_id=1541051804 instance=ExtResource("6_jqckn")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.965, -1.467, 6.109)
@@ -148,22 +148,22 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.836, -1.5604966, 5.743)
 
 [node name="antorcha4" parent="NavigationRegion3D/decoracion" unique_id=1286579013 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -27.037514, 0.033648014, -7.2558694)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -27.037514, 0.27841115, -7.1534066)
 
 [node name="antorcha13" parent="NavigationRegion3D/decoracion" unique_id=1272465261 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -28.194767, 0.033648014, -8.413122)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -28.306557, 0.27591908, -8.413122)
 
 [node name="antorcha14" parent="NavigationRegion3D/decoracion" unique_id=1716026281 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.186476, 0.03462124, -9.201643)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.078545, 0.27105558, -9.201643)
 
 [node name="antorcha15" parent="NavigationRegion3D/decoracion" unique_id=1880039269 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.186476, 0.03462124, -14.723452)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.085512, 0.26915848, -14.723452)
 
 [node name="antorcha16" parent="NavigationRegion3D/decoracion" unique_id=1819137794 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.808643, 0.012965798, -13.600611)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.917152, 0.27819383, -13.600611)
 
 [node name="antorcha17" parent="NavigationRegion3D/decoracion" unique_id=474295596 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.808643, 0.012965798, -15.932519)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.920872, 0.28058553, -15.932519)
 
 [node name="silla3" parent="NavigationRegion3D/decoracion" unique_id=1310355822 instance=ExtResource("1_vol8w")]
 transform = Transform3D(-1.8862873, -4.462322e-08, 1.5875219e-07, 0, 1.8159132, 0.5104302, -1.6490448e-07, 0.51043016, -1.8159133, -17.519585, -1.4934788, -4.74721)
