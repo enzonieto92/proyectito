@@ -106,7 +106,7 @@ func dying_behavior() -> void:
 			colision.disabled = true
 			area.monitoring = false
 
-		var dying_sonido = load("res://sonido/dying_enemigo.mp3")
+		var dying_sonido = load("res://sonido/muerte_guardia.mp3")
 		var stream_enemigo = get_node("sonido_enemigo")
 		stream_enemigo.stream = dying_sonido
 		stream_enemigo.volume_db = 40.0

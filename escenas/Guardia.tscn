@@ -357,7 +357,7 @@ _data = {
 height = 0.87900543
 radius = 6.309082
 
-[node name="Guardia" type="CharacterBody3D" unique_id=834906040]
+[node name="Guardia" type="CharacterBody3D" unique_id=834906040 groups=["enemigos"]]
 script = ExtResource("1_huxnx")
 vida = 75.0
 attack_range = 4.0
