@@ -140,7 +140,7 @@ func attack_behavior() -> void:
 	_en_cooldown = true
 
 	animation_player.play("chase")
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(3.0).timeout
 
 	_en_cooldown = false
 	_atacando_cooldown = false

@@ -99,21 +99,22 @@ offset_bottom = 128.0
 label_settings = SubResource("LabelSettings_bt4of")
 
 [node name="dialogo" type="RichTextLabel" parent="." unique_id=568361249 groups=["dialogo"]]
-visible = false
 custom_minimum_size = Vector2(400, 80)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -129.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_1god3")
 scroll_active = false
 scroll_following_visible_characters = true
-autowrap_mode = 2
-autowrap_trim_flags = 64
+autowrap_trim_flags = 128
 horizontal_alignment = 1
-justification_flags = 227
+vertical_alignment = 1
+visible_characters_behavior = 1
 script = ExtResource("5_wndoy")
 
 [node name="texto_plano" type="RichTextLabel" parent="." unique_id=2014920056 groups=["texto_plano"]]

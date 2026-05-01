@@ -1,0 +1,423 @@
+[gd_scene format=3 uid="uid://kqlong62cjln"]
+
+[ext_resource type="Script" uid="uid://d1ue2c2yujin0" path="res://scripts/guardia.gd" id="1_huxnx"]
+[ext_resource type="Texture2D" uid="uid://bts0lyieerwda" path="res://texturas/azotador_Ataque_original.png" id="2_u3e3u"]
+[ext_resource type="Texture2D" uid="uid://dbx0aotxomfjq" path="res://texturas/azotador-walk.png" id="3_p6h7k"]
+[ext_resource type="Texture2D" uid="uid://18yxljccgv2e" path="res://texturas/azotador-dead.png" id="4_26gnp"]
+[ext_resource type="Texture2D" uid="uid://cpvxdpmxgctou" path="res://texturas/azotador-idle.png" id="5_nxbs7"]
+[ext_resource type="Script" uid="uid://dnfgyht670ym" path="res://scripts/sprite_enemy.gd" id="6_smdhk"]
+[ext_resource type="Script" uid="uid://ct1miin5x3sy3" path="res://scripts/raycast_enemigo.gd" id="7_46rtu"]
+[ext_resource type="Texture2D" uid="uid://c52j8elh4bk6f" path="res://texturas/sangre.png" id="8_0ymqe"]
+[ext_resource type="AudioStream" uid="uid://cjv6cjh0wdmoo" path="res://sonido/jadeo.mp3" id="9_huxnx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u3e3u"]
+height = 1.3278809
+radius = 0.35546875
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_huxnx"]
+height = 0.0986557
+radius = 0.19677734
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_522ny"]
+atlas = ExtResource("2_u3e3u")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a338h"]
+atlas = ExtResource("2_u3e3u")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay6ho"]
+atlas = ExtResource("2_u3e3u")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugpgt"]
+atlas = ExtResource("3_p6h7k")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upxrh"]
+atlas = ExtResource("3_p6h7k")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_motsl"]
+atlas = ExtResource("3_p6h7k")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n81jx"]
+atlas = ExtResource("3_p6h7k")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wui7"]
+atlas = ExtResource("4_26gnp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t45al"]
+atlas = ExtResource("4_26gnp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qivbk"]
+atlas = ExtResource("4_26gnp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c1rb"]
+atlas = ExtResource("5_nxbs7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1aqof"]
+atlas = ExtResource("5_nxbs7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0xgi"]
+atlas = ExtResource("5_nxbs7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fp3i5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_522ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a338h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay6ho")
+}],
+"loop": false,
+"name": &"Ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugpgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upxrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_motsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n81jx")
+}],
+"loop": true,
+"name": &"Carrera",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wui7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t45al")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qivbk")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c1rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1aqof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0xgi")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_t45al"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_vector")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite_enemy:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Ataque"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite_enemy:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("raycast_enemigo:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qivbk"]
+resource_name = "attack"
+length = 1.7122995
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_enemy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0044329367, 0.9961567),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Carrera", &"Ataque"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite_enemy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.76773113, 0.84013575, 0.9347052, 1.0786154, 1.0878807, 1.2423718, 1.3556249),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0, 1, 2, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:animation_vector")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25882635, 0.39180934, 0.7441071, 1.0686448, 1.1072507),
+"transitions": PackedFloat32Array(1, 1, 107.634705, 3691.5205, 1e-05),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(7, 0, 7), Vector3(7, 0, 7), Vector3(3, 0, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("raycast_enemigo:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.2718422),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fvkq1"]
+resource_name = "chase"
+length = 0.6249225
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_enemy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Carrera"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite_enemy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.045460053, 0.13518444, 0.22648297, 0.32880026, 0.42276704, 0.5188756),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_5oyv7"]
+resource_name = "dying"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_enemy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.023611682),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Dead"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite_enemy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.025185794, 0.2912107, 0.6516824, 0.9161333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sangre:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5, 1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sangre:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ak8l5"]
+resource_name = "idle"
+length = 0.4785301
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_enemy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite_enemy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2975072, 0.41084325),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mj5ly"]
+_data = {
+&"RESET": SubResource("Animation_t45al"),
+&"attack": SubResource("Animation_qivbk"),
+&"chase": SubResource("Animation_fvkq1"),
+&"dying": SubResource("Animation_5oyv7"),
+&"idle": SubResource("Animation_ak8l5")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8wui7"]
+height = 0.87900543
+radius = 6.309082
+
+[node name="Guardia" type="CharacterBody3D" unique_id=834906040]
+script = ExtResource("1_huxnx")
+vida = 75.0
+attack_range = 4.0
+max_damage = 21.0
+min_damage = 19.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2015585413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25915527, 0)
+shape = SubResource("CylinderShape3D_u3e3u")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1986957199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.78184426, 0)
+shape = SubResource("CylinderShape3D_huxnx")
+
+[node name="sprite_enemy" type="AnimatedSprite3D" parent="." unique_id=464011000]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.08389043, 0)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_fp3i5")
+animation = &"Ataque"
+autoplay = "Idle"
+script = ExtResource("6_smdhk")
+
+[node name="raycast_enemigo" type="RayCast3D" parent="." unique_id=1319847300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058597535, 0)
+enabled = false
+target_position = Vector3(0, 0, 1.5)
+script = ExtResource("7_46rtu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1026104812]
+libraries/ = SubResource("AnimationLibrary_mj5ly")
+autoplay = &"idle"
+
+[node name="sangre" type="Sprite3D" parent="." unique_id=1725185734]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.532, 0)
+visible = false
+modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
+pixel_size = 0.015
+axis = 1
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("8_0ymqe")
+
+[node name="area_deteccion" type="Area3D" parent="." unique_id=743734564]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="area_deteccion" unique_id=8992959]
+shape = SubResource("CylinderShape3D_8wui7")
+
+[node name="sonido_enemigo" type="AudioStreamPlayer3D" parent="." unique_id=1280044398]
+stream = ExtResource("9_huxnx")
+volume_db = 28.235
+unit_size = 37.91
+max_db = 6.0
+pitch_scale = 0.74
+autoplay = true
+max_distance = 12.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1064882854]
+debug_enabled = true
+
+[connection signal="body_entered" from="area_deteccion" to="." method="_on_area_deteccion_body_entered"]
+[connection signal="body_exited" from="area_deteccion" to="." method="_on_area_deteccion_body_exited"]
