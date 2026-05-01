@@ -180,7 +180,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_qivbk"]
@@ -205,10 +205,10 @@ tracks/1/path = NodePath("sprite_enemy:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.76773113, 0.84013575, 0.9347052, 1.0786154, 1.0878807, 1.2423718, 1.3556249),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.6349774, 0.78355217, 0.9347052, 1.0786154, 1.1553457, 1.2163068),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 0, 1, 2, 0]
+"values": [0, 1, 2, 0, 1, 2]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -217,10 +217,10 @@ tracks/2/path = NodePath(".:animation_vector")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.25882635, 0.39180934, 0.7441071, 1.0686448, 1.1072507),
-"transitions": PackedFloat32Array(1, 1, 107.634705, 3691.5205, 1e-05),
+"times": PackedFloat32Array(0.25882635, 0.39180934, 0.7441071, 0.98216164, 1.1699699, 1.2159983),
+"transitions": PackedFloat32Array(1, 1, 107.634705, 3691.5205, 1e-05, 1),
 "update": 1,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(7, 0, 7), Vector3(7, 0, 7), Vector3(3, 0, 3)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(7, 0, 7), Vector3(7, 0, 7), Vector3(3, 0, 3), Vector3(0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -229,10 +229,10 @@ tracks/3/path = NodePath("raycast_enemigo:enabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.0822011),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.2190042, 1.2691512),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_fvkq1"]
@@ -384,13 +384,11 @@ script = ExtResource("6_smdhk")
 
 [node name="raycast_enemigo" type="RayCast3D" parent="." unique_id=1319847300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058597535, 0)
-enabled = false
-target_position = Vector3(0, 0, -1.5)
+target_position = Vector3(0, 0, -1)
 script = ExtResource("7_46rtu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1026104812]
 libraries/ = SubResource("AnimationLibrary_mj5ly")
-autoplay = &"idle"
 
 [node name="sangre" type="Sprite3D" parent="." unique_id=1725185734]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.532, 0)
