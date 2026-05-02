@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bjfaovk41p3dh" path="res://objetos glb/puerta_Puerta.png" id="1_r5d6k"]
 [ext_resource type="Texture2D" uid="uid://tsj4ljtws7l2" path="res://objetos glb/puerta_Puerta-normal_map.png" id="2_wtvel"]
 [ext_resource type="AudioStream" uid="uid://bjv8fc54lh6f4" path="res://sonido/ellvdr-rechinar-de-puerta-squeaking-door-6-337111.mp3" id="4_dpyu7"]
+[ext_resource type="AudioStream" uid="uid://wq01tk3omecl" path="res://sonido/hit_door.mp3" id="5_dpyu7"]
+[ext_resource type="AudioStream" uid="uid://86oku1s8boam" path="res://sonido/break_puerta.mp3" id="6_wta5v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qn1or"]
 resource_name = "Material"
@@ -71,6 +73,14 @@ shape = SubResource("CylinderShape3D_2el6h")
 stream = ExtResource("4_dpyu7")
 volume_db = -21.979
 pitch_scale = 0.63
+
+[node name="hit_puerta" type="AudioStreamPlayer3D" parent="." unique_id=1038590019]
+stream = ExtResource("5_dpyu7")
+volume_db = -15.0
+
+[node name="break_puerta" type="AudioStreamPlayer3D" parent="." unique_id=255458781]
+stream = ExtResource("6_wta5v")
+volume_db = -16.471
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

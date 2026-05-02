@@ -30,7 +30,7 @@ var damage: int
 var attack_dir := Vector3.ZERO
 var died = false
 var dying_started = false
-
+var _puerta_cooldown = false
 var vision_timer := 0.0
 var vision_interval := 0.3
 var repath_timer := 0.0
@@ -213,12 +213,14 @@ func rastrear() -> void:
 		_confirmar_avistado()
 		return
 
-	if coll.is_in_group("puertas"):
+	if coll.is_in_group("puertas") and not _puerta_cooldown:  # ← agregado
 		print("golpeando puerta (rastrear)")
 		golpear_puerta(coll)
 
-
 func chequear_puerta_en_camino() -> void:
+	if _puerta_cooldown:  # ← salir antes del raycast incluso
+		return
+
 	raycast_vision.target_position = to_local(player.global_position)
 	raycast_vision.force_raycast_update()
 
@@ -230,22 +232,20 @@ func chequear_puerta_en_camino() -> void:
 		print("golpeando puerta (persecucion)")
 		golpear_puerta(coll)
 
-
 func golpear_puerta(coll: Node) -> void:
-	if coll.has_meta("golpeando"):
+	if _puerta_cooldown:
 		return
 
-	coll.set_meta("golpeando", true)
+	_puerta_cooldown = true
 	coll.resistencia -= damage
 	print("puerta resistencia: ", coll.resistencia)
-
+	coll.hit_puerta()
 	if coll.resistencia <= 0:
-		coll.romper()
+		coll.call_deferred("romper")  # ← diferido
+		_puerta_cooldown = false
 	else:
 		get_tree().create_timer(1.0).timeout.connect(
-			func():
-				if is_instance_valid(coll):
-					coll.remove_meta("golpeando")
+			func(): _puerta_cooldown = false
 		)
 
 
