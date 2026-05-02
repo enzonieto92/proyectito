@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://g6v7pxrs1620"]
+
+[ext_resource type="Texture2D" uid="uid://c52j8elh4bk6f" path="res://texturas/sangre.png" id="1_chwax"]
+
+[node name="manchasdesangre1" type="Decal" unique_id=560532660]
+texture_albedo = ExtResource("1_chwax")

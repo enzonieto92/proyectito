@@ -23,6 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://dyvvp3xm7d1tm" path="res://escenas/estatua_fuente.tscn" id="22_ovxel"]
 [ext_resource type="PackedScene" uid="uid://dpk5mxobjru5r" path="res://escenas/mesadetorturarota.tscn" id="23_01jbd"]
 [ext_resource type="PackedScene" uid="uid://kqlong62cjln" path="res://escenas/Guardia.tscn" id="23_jxelf"]
+[ext_resource type="PackedScene" uid="uid://s2c3rx2t25xx" path="res://escenas/manchasdesangre.tscn" id="24_01jbd"]
+[ext_resource type="PackedScene" uid="uid://g6v7pxrs1620" path="res://escenas/manchasdesangre_1.tscn" id="25_adah3"]
+[ext_resource type="PackedScene" uid="uid://dak8keit137s5" path="res://escenas/manchasdesangre_2.tscn" id="26_ob7hp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ovxel"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -203,4 +206,20 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.8
 transform = Transform3D(-0.41921443, 0, 0.9078872, 0, 1, 0, -0.9078872, 0, -0.41921443, -16, -1.4596957, 5.5464444)
 
 [node name="Guardia" parent="." unique_id=834906040 instance=ExtResource("23_jxelf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3876, 0.38110894, 2.0009189)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.057774, 0.38110894, 2.0009189)
+
+[node name="manchadesangre" parent="." unique_id=1041175977 instance=ExtResource("24_01jbd")]
+transform = Transform3D(-1, 8.742277e-08, 4.3711392e-08, -4.371139e-08, 1.9106853e-15, -1.0000001, -8.742278e-08, -0.9999999, 1.9106857e-15, -26.432621, 1.2607799, 7.92286)
+size = Vector3(2.049797, 0.5878906, 1.9763279)
+
+[node name="manchasdesangre1" parent="." unique_id=560532660 instance=ExtResource("25_adah3")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -26.549671, -0.3769992, -1.39707)
+size = Vector3(1.9614258, 0.38916016, 2.270256)
+
+[node name="manchasdesangre2" parent="." unique_id=704931653 instance=ExtResource("26_ob7hp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.52615, -0.44601277, 2.0123975)
+size = Vector3(2, 0.23571777, 2)
+
+[node name="manchasdesangre3" parent="." unique_id=1953921112 instance=ExtResource("26_ob7hp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.177393, -0.50465775, 3.3088267)
+size = Vector3(1.6381836, 0.26343536, 2)
