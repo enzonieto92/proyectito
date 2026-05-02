@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7bkgvry1xmbs" path="res://scripts/pantalla_principal.gd" id="1_poj3a"]
 [ext_resource type="FontFile" uid="uid://berjkm7dt2kx2" path="res://otros/PixelSymtext-eYmn.ttf" id="2_udnhx"]
+[ext_resource type="Script" uid="uid://c6xmj80feuai2" path="res://escenas/titulo.gd" id="3_uw7aw"]
 
 [node name="Pantalla Principal" type="Control" unique_id=384989241]
 layout_mode = 3
@@ -30,17 +31,20 @@ vertical_alignment = 1
 [node name="titulo" type="Label" parent="." unique_id=1764761044]
 modulate = Color(0.4041827, 0.050209656, 0.08526274, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -318.0
-offset_top = -200.595
-offset_right = 318.0
-offset_bottom = -78.59497
+anchors_preset = -1
+anchor_left = 0.224
+anchor_top = 0.40600002
+anchor_right = 0.776
+anchor_bottom = 0.59400004
+offset_left = -0.04800415
+offset_top = -108.08801
+offset_right = 0.047973633
+offset_bottom = -107.91202
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_udnhx")
-theme_override_font_sizes/font_size = 82
+theme_override_font_sizes/font_size = 62
 text = "Antes del rojo"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_uw7aw")

@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ddwg0sw5ehflg" path="res://texturas/walldungeon.jpeg" id="1_3tyi2"]
 [ext_resource type="PackedScene" uid="uid://7gh3p8jym6ec" path="res://escenas/antorcha_principal.tscn" id="2_imiid"]
 [ext_resource type="PackedScene" uid="uid://byaxxrdciuyp3" path="res://escenas/pantalla_principal.tscn" id="3_uxd1d"]
+[ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="4_uxd1d"]
+[ext_resource type="Script" uid="uid://bqcqy6suc85y6" path="res://scripts/inicio.gd" id="5_hxpc2"]
+[ext_resource type="AudioStream" uid="uid://cjxlxobyflnn8" path="res://sonido/deuslower-atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215.mp3" id="6_arkap"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxd1d"]
 albedo_texture = ExtResource("1_3tyi2")
@@ -18,6 +21,10 @@ ambient_light_energy = 0.0
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxpc2"]
+shader = ExtResource("4_uxd1d")
+shader_parameter/pixel_size = 3
 
 [node name="Escena_principal" type="Node3D" unique_id=166205054]
 
@@ -40,3 +47,25 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.89
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1191592789]
 
 [node name="Pantalla Principal" parent="CanvasLayer" unique_id=384989241 instance=ExtResource("3_uxd1d")]
+
+[node name="pixelation" type="ColorRect" parent="CanvasLayer" unique_id=488630272]
+material = SubResource("ShaderMaterial_hxpc2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="inicio" type="ColorRect" parent="CanvasLayer" unique_id=481073056]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("5_hxpc2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=8358351]
+stream = ExtResource("6_arkap")
+autoplay = true
