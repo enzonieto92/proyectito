@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://lqrljq7f42tm"]
+
+[ext_resource type="Texture2D" uid="uid://ddwg0sw5ehflg" path="res://texturas/walldungeon.jpeg" id="1_3tyi2"]
+[ext_resource type="PackedScene" uid="uid://7gh3p8jym6ec" path="res://escenas/antorcha_principal.tscn" id="2_imiid"]
+[ext_resource type="PackedScene" uid="uid://byaxxrdciuyp3" path="res://escenas/pantalla_principal.tscn" id="3_uxd1d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxd1d"]
+albedo_texture = ExtResource("1_3tyi2")
+uv1_scale = Vector3(1.855, 1.855, 1.855)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hxpc2"]
+size = Vector2(6, 4)
+
+[sub_resource type="Environment" id="Environment_3tyi2"]
+background_mode = 3
+ambient_light_energy = 0.0
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.3
+
+[node name="Escena_principal" type="Node3D" unique_id=166205054]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=310421166]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1798489771]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -2.0877042)
+material_override = SubResource("StandardMaterial3D_uxd1d")
+mesh = SubResource("PlaneMesh_hxpc2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1175581305]
+environment = SubResource("Environment_3tyi2")
+
+[node name="antorcha" parent="." unique_id=1834885261 instance=ExtResource("2_imiid")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.856, 0.715, -1.65)
+
+[node name="antorcha2" parent="." unique_id=613621591 instance=ExtResource("2_imiid")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.894, 0.715, -1.65)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1191592789]
+
+[node name="Pantalla Principal" parent="CanvasLayer" unique_id=384989241 instance=ExtResource("3_uxd1d")]
