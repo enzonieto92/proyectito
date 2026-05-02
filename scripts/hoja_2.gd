@@ -17,7 +17,6 @@ func interactuar(_player):
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "player":
-		print ("player entro en el area de la hoja")
 		player_entered = true
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.name == "player":

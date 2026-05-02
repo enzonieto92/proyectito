@@ -29,11 +29,9 @@ func interactuar(player):
 			daga_ritual.visible = true
 			sprite_arma.texture = null
 			player.inventario_controller.remover_item_de_weapon_slot()
-			print("rioich tenkai")
 			daga_colocada = true
 		
 	else:
-		print("pasa")
 		dialogo.visible = true
 		dialogo.show_text("Parece que esta rezando, o ¿rogando?")
 

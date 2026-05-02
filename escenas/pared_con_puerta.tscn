@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://texturas/walldungeon.png" id="1_tgnhd"]
 [ext_resource type="Texture2D" uid="uid://cfa750iu8o0in" path="res://texturas/walldungeon_specular (2).png" id="2_e8xjx"]
 [ext_resource type="PackedScene" uid="uid://dgsorseqc2wpn" path="res://escenas/puerta.tscn" id="3_ptser"]
-[ext_resource type="Script" uid="uid://bbjy0ga4u5glp" path="res://scripts/door.gd" id="4_5a2c0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
 transparency = 2
@@ -40,4 +39,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
 
 [node name="puerta" parent="pivote" unique_id=1779312608 instance=ExtResource("3_ptser")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3062107, -0.7077985)
-script = ExtResource("4_5a2c0")

@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://byaxxrdciuyp3"]
+
+[ext_resource type="Script" uid="uid://b7bkgvry1xmbs" path="res://scripts/pantalla_principal.gd" id="1_poj3a"]
+[ext_resource type="FontFile" uid="uid://berjkm7dt2kx2" path="res://otros/PixelSymtext-eYmn.ttf" id="2_udnhx"]
+
+[node name="Pantalla Principal" type="Control" unique_id=384989241]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_poj3a")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=391211502]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1984717929]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -194.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_udnhx")
+theme_override_font_sizes/font_size = 39
+text = "Presiona Enter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="titulo" type="Label" parent="." unique_id=1764761044]
+modulate = Color(0.34, 0.0646, 0.101319976, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_udnhx")
+theme_override_font_sizes/font_size = 82
+text = "Before The Red"

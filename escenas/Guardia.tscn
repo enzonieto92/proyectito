@@ -375,8 +375,8 @@ radius = 6.309082
 script = ExtResource("1_huxnx")
 vida = 75.0
 attack_range = 3.0
-max_damage = 21.0
-min_damage = 19.0
+max_damage = 19.0
+min_damage = 21.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2015585413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25915527, 0)
@@ -431,7 +431,7 @@ max_distance = 12.0
 debug_enabled = true
 
 [node name="raycast_vision" type="RayCast3D" parent="." unique_id=966443226]
-target_position = Vector3(0, -1, -6)
+target_position = Vector3(0, 0, -6)
 
 [node name="sonido_golpe" type="AudioStreamPlayer" parent="." unique_id=1065348469]
 

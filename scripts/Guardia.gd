@@ -11,7 +11,7 @@ const SONIDO_MUERTE = preload("res://sonido/muerte_guardia.mp3")
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var sonido_enemigo: AudioStreamPlayer3D = $sonido_enemigo
 @onready var raycast_vision: RayCast3D = $raycast_vision
-@onready var sonido_golpe: AudioStreamPlayer = $sonido_golpe 
+@onready var sonido_golpe: AudioStreamPlayer = $sonido_golpe
 
 @export var atacando: bool = false
 @export var vida: float
@@ -29,13 +29,13 @@ var _atacando_cooldown := false
 var damage: int
 var attack_dir := Vector3.ZERO
 var died = false
+var dying_started = false
 
 var vision_timer := 0.0
 var vision_interval := 0.3
 var repath_timer := 0.0
 var repath_interval := 0.5
 
-# 🔴 CLAVE
 var hit_applied := false
 
 
@@ -61,9 +61,7 @@ func _physics_process(delta: float) -> void:
 		vision_timer -= delta
 		if vision_timer <= 0.0:
 			vision_timer = vision_interval
-			if rastrear():
-				avistado = true
-				$area_deteccion.queue_free()
+			rastrear()
 
 	repath_timer -= delta
 	if repath_timer <= 0.0:
@@ -80,6 +78,7 @@ func _physics_process(delta: float) -> void:
 		attack_behavior()
 	elif avistado and not _en_cooldown:
 		look_at_target()
+		chequear_puerta_en_camino()
 		chase_behavior()
 	else:
 		velocity.x = 0
@@ -121,23 +120,22 @@ func attack_behavior() -> void:
 		return
 
 	_atacando_cooldown = true
-	hit_applied = false  # 🔑 reset del golpe
+	hit_applied = false
 
 	damage = int(randf_range(min_damage, max_damage))
 	attack_dir = (player.global_position - global_position).normalized()
 	attack_dir.y = 0
 
 	animation_player.play("attack")
+	if animation_player.animation_finished.is_connected(_on_attack_finished):
+		animation_player.animation_finished.disconnect(_on_attack_finished)
 	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 
 
-# 🔴 ÚNICO lugar donde se aplica daño
 func aplicar_golpe() -> void:
 	if hit_applied:
 		return
-
 	hit_applied = true
-
 	if global_position.distance_to(player.global_position) <= attack_range:
 		player.recibir_damage(Vector2(min_damage, max_damage))
 
@@ -155,11 +153,16 @@ func _on_cooldown_finished() -> void:
 
 
 func dying_behavior() -> void:
-	if is_on_floor() and !died:
+	if dying_started:
+		return
+
+	if is_on_floor():
+		dying_started = true
 		died = true
 
-		var colision = get_node("CollisionShape3D")
-		colision.disabled = true
+		var colision = get_node_or_null("CollisionShape3D")
+		if colision:
+			colision.disabled = true
 
 		var area = get_node_or_null("area_deteccion")
 		if area and area.monitoring:
@@ -170,10 +173,15 @@ func dying_behavior() -> void:
 		sonido_enemigo.pitch_scale = 2.0
 		sonido_enemigo.play()
 
+		animation_player.stop()
+		if animation_player.animation_finished.is_connected(_on_attack_finished):
+			animation_player.animation_finished.disconnect(_on_attack_finished)
+		if animation_player.animation_finished.is_connected(_on_dying_finished):
+			animation_player.animation_finished.disconnect(_on_dying_finished)
+
 		animation_player.play("dying")
 		animation_player.animation_finished.connect(_on_dying_finished, CONNECT_ONE_SHOT)
-
-	elif !died:
+	else:
 		velocity += get_gravity()
 		move_and_slide()
 
@@ -190,6 +198,68 @@ func _on_dying_finished(_anim: String) -> void:
 		colision.queue_free()
 
 
+func rastrear() -> void:
+	print("rastreando")
+	raycast_vision.target_position = to_local(player.global_position)
+	raycast_vision.force_raycast_update()
+
+	if not raycast_vision.is_colliding():
+		_confirmar_avistado()
+		return
+
+	var coll = raycast_vision.get_collider()
+
+	if coll.is_in_group("jugador"):
+		_confirmar_avistado()
+		return
+
+	if coll.is_in_group("puertas"):
+		print("golpeando puerta (rastrear)")
+		golpear_puerta(coll)
+
+
+func chequear_puerta_en_camino() -> void:
+	raycast_vision.target_position = to_local(player.global_position)
+	raycast_vision.force_raycast_update()
+
+	if not raycast_vision.is_colliding():
+		return
+
+	var coll = raycast_vision.get_collider()
+	if coll.is_in_group("puertas"):
+		print("golpeando puerta (persecucion)")
+		golpear_puerta(coll)
+
+
+func golpear_puerta(coll: Node) -> void:
+	if coll.has_meta("golpeando"):
+		return
+
+	coll.set_meta("golpeando", true)
+	coll.resistencia -= damage
+	print("puerta resistencia: ", coll.resistencia)
+
+	if coll.resistencia <= 0:
+		coll.romper()
+	else:
+		get_tree().create_timer(1.0).timeout.connect(
+			func():
+				if is_instance_valid(coll):
+					coll.remove_meta("golpeando")
+		)
+
+
+func _confirmar_avistado() -> void:
+	if not avistado:
+		avistado = true
+		var area = get_node_or_null("area_deteccion")
+		if area:
+			area.queue_free()
+		sonido_enemigo.stream = SONIDO_ENEMIGO
+		sonido_enemigo.volume_db = -30.0
+		sonido_enemigo.play()
+
+
 func _on_area_deteccion_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jugador"):
 		player_entered_area = true
@@ -198,18 +268,3 @@ func _on_area_deteccion_body_entered(body: Node3D) -> void:
 func _on_area_deteccion_body_exited(body: Node3D) -> void:
 	if body.is_in_group("jugador"):
 		player_entered_area = false
-
-
-func rastrear() -> bool:
-	raycast_vision.target_position = to_local(player.global_position)
-	raycast_vision.force_raycast_update()
-
-	if raycast_vision.is_colliding():
-		var coll = raycast_vision.get_collider()
-		if coll.is_in_group("jugador"):
-			sonido_enemigo.stream = SONIDO_ENEMIGO
-			sonido_enemigo.volume_db = -30.0
-			sonido_enemigo.play()
-			return true
-
-	return false

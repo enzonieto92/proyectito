@@ -134,7 +134,6 @@ func _physics_process(delta):
 	objeto_actual = null
 	if raycast.is_colliding():
 		var obj = raycast.get_collider()
-		print (obj)
 		if is_instance_valid(obj) and not obj.has_method("puede_interactuar"):
 			obj = obj.get_parent()
 		if is_instance_valid(obj) and obj.has_method("puede_interactuar") and obj.puede_interactuar():

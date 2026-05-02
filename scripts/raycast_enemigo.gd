@@ -16,5 +16,3 @@ func _process(_delta: float) -> void:
 			set_enabled(false)
 			if obj.bloqueando == false:
 				obj.recibir_damage(enemigo.damage)
-			else:
-				print("bloqueado")

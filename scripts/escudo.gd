@@ -15,7 +15,6 @@ func puede_interactuar() -> bool:
 
 func interactuar(player):
 	if await player.inventario_controller.agregar_item(secundaria):
-		print ("agregando item")
 		queue_free()
 
 
