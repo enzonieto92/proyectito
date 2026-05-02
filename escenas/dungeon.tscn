@@ -200,26 +200,26 @@ transform = Transform3D(0.6549651, 0, -0.75565916, 0, 1, 0, 0.75565916, 0, 0.654
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.398983, -1.4866694, -14.836861)
 
 [node name="camadepaja" parent="NavigationRegion3D/decoracion" unique_id=1536594149 instance=ExtResource("22_jxelf")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.871427, -1.4795047, -0.7001786)
+transform = Transform3D(1.0827103, 0, -0.10389265, 0, 1, 0, 0.070452206, 0, 1.5966234, 11.103943, -1.4457946, -0.68083715)
 
 [node name="mesadetorturarota" parent="NavigationRegion3D/decoracion" unique_id=1964371390 instance=ExtResource("23_01jbd")]
 transform = Transform3D(-0.41921443, 0, 0.9078872, 0, 1, 0, -0.9078872, 0, -0.41921443, -16, -1.4596957, 5.5464444)
 
-[node name="Guardia" parent="." unique_id=834906040 instance=ExtResource("23_jxelf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.057774, 0.38110894, 2.0009189)
-
-[node name="manchadesangre" parent="." unique_id=1041175977 instance=ExtResource("24_01jbd")]
-transform = Transform3D(-1, 8.742277e-08, 4.3711392e-08, -4.371139e-08, 1.9106853e-15, -1.0000001, -8.742278e-08, -0.9999999, 1.9106857e-15, -26.432621, 1.2607799, 7.92286)
+[node name="manchadesangre" parent="NavigationRegion3D/decoracion" unique_id=1041175977 instance=ExtResource("24_01jbd")]
+transform = Transform3D(-1, 8.742277e-08, 4.3711392e-08, -4.371139e-08, 1.9106853e-15, -1.0000001, -8.742278e-08, -0.9999999, 1.9106857e-15, -16.432621, 0.26077986, 7.92286)
 size = Vector3(2.049797, 0.5878906, 1.9763279)
 
-[node name="manchasdesangre1" parent="." unique_id=560532660 instance=ExtResource("25_adah3")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -26.549671, -0.3769992, -1.39707)
+[node name="manchasdesangre1" parent="NavigationRegion3D/decoracion" unique_id=560532660 instance=ExtResource("25_adah3")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -16.549671, -1.3769991, -1.39707)
 size = Vector3(1.9614258, 0.38916016, 2.270256)
 
-[node name="manchasdesangre2" parent="." unique_id=704931653 instance=ExtResource("26_ob7hp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.52615, -0.44601277, 2.0123975)
+[node name="manchasdesangre2" parent="NavigationRegion3D/decoracion" unique_id=704931653 instance=ExtResource("26_ob7hp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.52615, -1.4460127, 2.0123975)
 size = Vector3(2, 0.23571777, 2)
 
-[node name="manchasdesangre3" parent="." unique_id=1953921112 instance=ExtResource("26_ob7hp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.177393, -0.50465775, 3.3088267)
+[node name="manchasdesangre3" parent="NavigationRegion3D/decoracion" unique_id=1953921112 instance=ExtResource("26_ob7hp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.822607, -1.5046577, 3.3088267)
 size = Vector3(1.6381836, 0.26343536, 2)
+
+[node name="Guardia" parent="." unique_id=834906040 instance=ExtResource("23_jxelf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.057774, 0.38110894, 2.0009189)

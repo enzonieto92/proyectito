@@ -12,5 +12,6 @@ metallic_specular = 0.03
 texture_filter = 0
 
 [node name="camadepaja" type="MeshInstance3D" unique_id=1536594149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.59, 0, 0, 0)
 mesh = SubResource("PlaneMesh_8l4dn")
 surface_material_override/0 = SubResource("StandardMaterial3D_pmuwg")
