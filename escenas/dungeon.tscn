@@ -25,7 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://kqlong62cjln" path="res://escenas/Guardia.tscn" id="23_jxelf"]
 [ext_resource type="PackedScene" uid="uid://s2c3rx2t25xx" path="res://escenas/manchasdesangre.tscn" id="24_01jbd"]
 [ext_resource type="PackedScene" uid="uid://g6v7pxrs1620" path="res://escenas/manchasdesangre_1.tscn" id="25_adah3"]
+[ext_resource type="PackedScene" uid="uid://dabr5egkrvib4" path="res://escenas/simbolo_sangre.tscn" id="26_5geou"]
 [ext_resource type="PackedScene" uid="uid://dak8keit137s5" path="res://escenas/manchasdesangre_2.tscn" id="26_ob7hp"]
+[ext_resource type="PackedScene" uid="uid://bamljpune2w02" path="res://escenas/cadaver_1.tscn" id="27_5wt16"]
+[ext_resource type="PackedScene" uid="uid://d0ugugalqbhyb" path="res://escenas/cadaver_2.tscn" id="28_lmhtd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ovxel"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -200,7 +203,7 @@ transform = Transform3D(0.6549651, 0, -0.75565916, 0, 1, 0, 0.75565916, 0, 0.654
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.398983, -1.4866694, -14.836861)
 
 [node name="camadepaja" parent="NavigationRegion3D/decoracion" unique_id=1536594149 instance=ExtResource("22_jxelf")]
-transform = Transform3D(1.0827103, 0, -0.10389265, 0, 1, 0, 0.070452206, 0, 1.5966234, 10.925299, -1.4457946, -0.14670008)
+transform = Transform3D(-0.26130915, 0, -1.5529045, 0, 1, 0, 1.0530634, 0, -0.38534063, 10.656577, -1.4457946, -0.53102064)
 
 [node name="mesadetorturarota" parent="NavigationRegion3D/decoracion" unique_id=1964371390 instance=ExtResource("23_01jbd")]
 transform = Transform3D(-0.41921443, 0, 0.9078872, 0, 1, 0, -0.9078872, 0, -0.41921443, -16, -1.4596957, 5.5464444)
@@ -223,6 +226,32 @@ size = Vector3(1.6381836, 0.26343536, 2)
 
 [node name="camadepaja2" parent="NavigationRegion3D/decoracion" unique_id=1082613343 instance=ExtResource("22_jxelf")]
 transform = Transform3D(0.99345076, 0, 0.18167493, 0, 1, 0, -0.11426096, 0, 1.5795867, 4.7653303, -1.4585595, -0.68987477)
+
+[node name="Simbolo-sangre" parent="NavigationRegion3D/decoracion" unique_id=57049567 instance=ExtResource("26_5geou")]
+transform = Transform3D(-0.70587164, 0.70833975, -3.0962514e-08, 0, -4.371139e-08, -1, -0.70833975, -0.70587164, 3.085463e-08, -29.65826, 0.07278919, -9.672046)
+
+[node name="Simbolo-sangre2" parent="NavigationRegion3D/decoracion" unique_id=34199960 instance=ExtResource("26_5geou")]
+transform = Transform3D(-6.403719e-08, -1.465, 6.403719e-08, 0, -6.403719e-08, -1.465, 1.465, -6.403719e-08, 2.7991542e-15, -14.011826, -0.015841603, -11.968722)
+
+[node name="manchasdesangre4" parent="NavigationRegion3D/decoracion" unique_id=581693770 instance=ExtResource("26_ob7hp")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -14.056963, -0.62520546, -13.651953)
+size = Vector3(1.1269531, 0.29760742, 1.5656738)
+
+[node name="manchasdesangre5" parent="NavigationRegion3D/decoracion" unique_id=1706228354 instance=ExtResource("26_ob7hp")]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, -13.907837, 0.18824565, -11.145765)
+size = Vector3(1.3691406, 0.56726074, 2)
+
+[node name="cadaver1" parent="NavigationRegion3D/decoracion" unique_id=1974810236 instance=ExtResource("27_5wt16")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -27.069126, -0.641817, -17.080051)
+
+[node name="cadaver2" parent="NavigationRegion3D/decoracion" unique_id=1402515944 instance=ExtResource("27_5wt16")]
+transform = Transform3D(0.09584576, 0.9953962, -4.351015e-08, 0, -4.371139e-08, -1, -0.9953962, 0.09584576, -4.1895514e-09, -23.91616, -0.5446769, -6.6477556)
+
+[node name="Cadaver2" parent="NavigationRegion3D/decoracion" unique_id=1871251017 instance=ExtResource("28_lmhtd")]
+transform = Transform3D(-0.69465846, 0.7193397, -3.144334e-08, 0, -4.371139e-08, -1, -0.7193397, -0.69465846, 3.0364486e-08, 3.4055123, -1.0782332, 4.8636265)
+
+[node name="Cadaver3" parent="NavigationRegion3D/decoracion" unique_id=39231621 instance=ExtResource("28_lmhtd")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -19.43129, -1.0413295, -16.396652)
 
 [node name="Guardia" parent="." unique_id=834906040 instance=ExtResource("23_jxelf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.057774, 0.38110894, 2.0009189)

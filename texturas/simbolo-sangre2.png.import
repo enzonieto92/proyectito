@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ot8t5bdmlehu"
-path.s3tc="res://.godot/imported/simbolo-sangre.png-96dd31f620f210bf7ebe9f090c5c53cd.s3tc.ctex"
+uid="uid://bpf3ni5pkrdib"
+path.s3tc="res://.godot/imported/simbolo-sangre2.png-f0fe208e0dfb18064b400cb2633c64a9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://texturas/simbolo-sangre.png"
-dest_files=["res://.godot/imported/simbolo-sangre.png-96dd31f620f210bf7ebe9f090c5c53cd.s3tc.ctex"]
+source_file="res://texturas/simbolo-sangre2.png"
+dest_files=["res://.godot/imported/simbolo-sangre2.png-f0fe208e0dfb18064b400cb2633c64a9.s3tc.ctex"]
 
 [params]
 
