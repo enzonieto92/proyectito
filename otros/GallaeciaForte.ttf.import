@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://berjkm7dt2kx2"
-path="res://.godot/imported/PixelSymtext-eYmn.ttf-e1707773466a7bd3a88a9fba0c00352c.fontdata"
+uid="uid://bbphv524e86v1"
+path="res://.godot/imported/GallaeciaForte.ttf-9483a0688635d8a67904423d2d5c6309.fontdata"
 
 [deps]
 
-source_file="res://otros/PixelSymtext-eYmn.ttf"
-dest_files=["res://.godot/imported/PixelSymtext-eYmn.ttf-e1707773466a7bd3a88a9fba0c00352c.fontdata"]
+source_file="res://otros/GallaeciaForte.ttf"
+dest_files=["res://.godot/imported/GallaeciaForte.ttf-9483a0688635d8a67904423d2d5c6309.fontdata"]
 
 [params]
 

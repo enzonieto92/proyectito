@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://iw1jjrm2qss1"]
 
 [ext_resource type="Texture2D" uid="uid://b3g0b6lcdob6u" path="res://texturas/ui_daño.png" id="1_6cur2"]
-[ext_resource type="FontFile" uid="uid://c5xd2k2y55fr3" path="res://otros/Pixelpurl-0vBPP.ttf" id="2_v5cmr"]
 [ext_resource type="Script" uid="uid://dixe7qhq4prcs" path="res://scripts/blood_splash.gd" id="2_wndoy"]
 [ext_resource type="Script" uid="uid://1exwuqcr3xqp" path="res://scripts/barra_stamina.gd" id="3_bt4of"]
-[ext_resource type="FontFile" uid="uid://berjkm7dt2kx2" path="res://otros/PixelSymtext-eYmn.ttf" id="4_6cur2"]
+[ext_resource type="FontFile" uid="uid://deigckxeuy4rq" path="res://otros/nokiafc22.ttf" id="4_6cur2"]
 [ext_resource type="Script" uid="uid://dqrqprrqi2lc8" path="res://scripts/dialogo.gd" id="5_wndoy"]
 [ext_resource type="Script" uid="uid://xfxh6s2wuhij" path="res://scripts/texto_plano.gd" id="6_84h12"]
 [ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://scripts/menu_controller.gd" id="7_8ln1y"]
@@ -22,7 +21,6 @@ bg_color = Color(0.62859356, 0.5299813, 0.2789413, 1)
 corner_detail = 6
 
 [sub_resource type="LabelSettings" id="LabelSettings_bt4of"]
-font = ExtResource("2_v5cmr")
 font_size = 51
 
 [sub_resource type="Theme" id="Theme_1god3"]
@@ -73,7 +71,6 @@ offset_right = 187.5
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_v5cmr")
 theme_override_font_sizes/font_size = 100
 text = "HAS MUERTO"
 
@@ -163,19 +160,16 @@ theme_override_constants/v_separation = 32
 
 [node name="Button" type="Button" parent="panel_opciones/GridContainer" unique_id=1077837262]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_6cur2")
 theme_override_font_sizes/font_size = 35
 text = "Opciones"
 
 [node name="reiniciar_escena" type="Button" parent="panel_opciones/GridContainer" unique_id=826909234]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_6cur2")
 theme_override_font_sizes/font_size = 35
 text = "Reiniciar Escena"
 
 [node name="boton_salir" type="Button" parent="panel_opciones/GridContainer" unique_id=1794587381]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_6cur2")
 theme_override_font_sizes/font_size = 35
 text = "Salir"
 

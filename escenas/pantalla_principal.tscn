@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://byaxxrdciuyp3"]
 
 [ext_resource type="Script" uid="uid://b7bkgvry1xmbs" path="res://scripts/pantalla_principal.gd" id="1_poj3a"]
-[ext_resource type="FontFile" uid="uid://berjkm7dt2kx2" path="res://otros/PixelSymtext-eYmn.ttf" id="2_udnhx"]
+[ext_resource type="FontFile" uid="uid://deigckxeuy4rq" path="res://otros/nokiafc22.ttf" id="2_terxd"]
 [ext_resource type="Script" uid="uid://c6xmj80feuai2" path="res://escenas/titulo.gd" id="3_uw7aw"]
+[ext_resource type="FontFile" uid="uid://bbphv524e86v1" path="res://otros/GallaeciaForte.ttf" id="3_wnfxn"]
+
+[sub_resource type="Theme" id="Theme_3ofuu"]
+default_font = ExtResource("2_terxd")
+
+[sub_resource type="Theme" id="Theme_1ajdi"]
+default_font = ExtResource("3_wnfxn")
 
 [node name="Pantalla Principal" type="Control" unique_id=384989241]
 layout_mode = 3
@@ -22,7 +29,7 @@ anchor_bottom = 1.0
 offset_top = -194.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_udnhx")
+theme = SubResource("Theme_3ofuu")
 theme_override_font_sizes/font_size = 39
 text = "Presiona enter"
 horizontal_alignment = 1
@@ -42,7 +49,7 @@ offset_right = 0.047973633
 offset_bottom = -107.91202
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_udnhx")
+theme = SubResource("Theme_1ajdi")
 theme_override_font_sizes/font_size = 62
 text = "Antes del rojo"
 horizontal_alignment = 1
