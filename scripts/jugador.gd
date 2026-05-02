@@ -12,7 +12,7 @@ extends CharacterBody3D
 @onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
 @onready var texto_plano: RichTextLabel = get_tree().get_first_node_in_group("texto_plano")
 @onready var jugador_ui: CanvasLayer = get_tree().get_first_node_in_group("jugador_ui")
-@onready var animaciones_ataque: AnimationPlayer = $animaciones_ataque
+@onready var animaciones: AnimationPlayer = $animaciones
 @onready var label_debug: Label = jugador_ui.get_node("Label")  # ✅ onready en vez de get_node cada frame
 @onready var blood_splash = jugador_ui.get_node("blood_splash")  # ✅ onready
 @onready var go_screen = jugador_ui.get_node("game_over_screen")  # ✅ onready
@@ -66,14 +66,14 @@ func _ready():
 	total_damage.x = damage.x + damage_arma.x
 	total_damage.y = damage.y + damage_arma.y
 	vida = vida_max
-
+	animaciones.play_spawn()  # ← acá
 func recibir_damage(_damage):
 	recibiendo_damage = true
 	camara_controller.shake(0.05, 0.5, 60.0)
 	hit_sound.play()
 	var reduccion = armadura_total / (armadura_total + CONSTANTE_ARMADURA)
 	vida -= int(_damage * (1.0 - reduccion))
-	animaciones_ataque.on_block_hit()
+	animaciones.on_block_hit()
 	reaccion_ui()
 	recibiendo_damage = false
 
@@ -83,7 +83,7 @@ func recibir_damage_reducido(_damage):
 	hit_sound.play()
 	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
 	vida -= int(_damage * (1.0 - reduccion))
-	animaciones_ataque.on_block_hit()
+	animaciones.on_block_hit()
 	reaccion_ui()
 	recibiendo_damage = false
 
@@ -97,6 +97,7 @@ func reaccion_ui():
 	atlas.region = Rect2(frame_index * FRAME_WIDTH, 0, FRAME_WIDTH, atlas.region.size.y)
 
 func _unhandled_input(event):
+	
 	if event.is_action_pressed("Inventario"):
 		if inventario_ui.visible:
 			cerrar_inventario()
@@ -126,11 +127,15 @@ func cerrar_inventario() -> void:
 	inventario_ui.visible = false
 	inventario_abierto = false
 	raycast.enabled = true
-	animaciones_ataque.resetear_estado()
+	animaciones.resetear_estado()
 	if not get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
+	if animaciones.spawning:
+		velocity += get_gravity() * delta
+		move_and_slide()
+		return
 	objeto_actual = null
 	if raycast.is_colliding():
 		var obj = raycast.get_collider()
@@ -195,7 +200,7 @@ func _physics_process(delta):
 	var direction = (right * input_dir.x - forward * input_dir.y).normalized()
 
 	if is_on_floor():
-		if not animaciones_ataque.animacion_en_curso:
+		if not animaciones.animacion_en_curso:
 			puede_correr = true
 		if direction:
 			velocity.x = direction.x * SPEED
@@ -233,6 +238,8 @@ func _process(_delta):
 	if not _vida_muerto and vida <= 0:
 		_vida_muerto = true
 		go_screen.visible = true
+		var tween = create_tween()
+		tween.tween_property(go_screen, "modulate:a", 1.0, 2)
 func _calcular_texto_interaccion() -> String:
 	if objeto_actual.is_in_group("puertas"):
 		return "(E) Cerrar" if objeto_actual.abierta else "(E) Abrir"

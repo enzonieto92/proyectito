@@ -5,7 +5,7 @@ extends Node
 @onready var ataque_sm: AnimationNodeStateMachinePlayback = anim_tree["parameters/ataque/playback"]
 @onready var player: CharacterBody3D = $".."
 @onready var timer_bloqueo: Timer = Timer.new()
-
+var spawning := false
 var defendiendo: bool = false
 var esperando_soltar := false
 var animaciones_arma = ["atacar", "atacar_horizontal"]
@@ -48,6 +48,8 @@ func _ataque_termino():
 		play_random_animation()
 
 func _actualizar_movimiento():
+	if spawning:       # ← no pisar la animación
+		return
 	if player.moving:
 		if player.corriendo and player.puede_correr:
 			movimiento_sm.travel("correr")
@@ -69,22 +71,29 @@ func on_anticipacion_completa():
 		anim_tree["parameters/TimeScale_ataque/scale"] = 0.0
 
 func _process(_delta: float) -> void:
-	# interpolación suave del blend
 	var blend_actual = anim_tree["parameters/Add2/add_amount"]
 	anim_tree["parameters/Add2/add_amount"] = lerp(blend_actual, blend_objetivo, _delta * BLEND_VELOCIDAD)
 
-	# resetear estaba_bloqueando solo cuando el blend llegó completamente a 0
 	if blend_actual < 0.01 and blend_objetivo == 0.0:
 		estaba_bloqueando = false
 
-	# detectar fin de animación
+	# detectar fin de spawn
+	if spawning:
+		var progreso = movimiento_sm.get_current_play_position()
+		var duracion = movimiento_sm.get_current_length()
+		if duracion > 0 and progreso >= duracion - 0.05:
+			spawning = false
+			animacion_en_curso = false
+			player.puede_correr = true
+		return  # ← no procesar nada más mientras spawna
+
+	# detectar fin de animación normal
 	if animacion_en_curso:
 		var progreso = ataque_sm.get_current_play_position()
 		var duracion = ataque_sm.get_current_length()
 		if duracion > 0 and progreso >= duracion - 0.05:
 			_ataque_termino()
 			return
-
 	# movimiento SIEMPRE se actualiza
 	_actualizar_movimiento()
 
@@ -134,7 +143,11 @@ func play_random_animation():
 		ataque_sm.travel(animaciones_arma[0])
 	else:
 		ataque_sm.travel(disponibles.pick_random())
-
+func play_spawn():
+	spawning = true
+	animacion_en_curso = true
+	player.puede_correr = false
+	movimiento_sm.travel("spawn")
 func _iniciar_bloqueo():
 	blend_objetivo = 1.0 # resetear por si estaba activo
 	timer_bloqueo.stop()

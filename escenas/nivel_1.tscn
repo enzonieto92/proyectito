@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://babstx0yl570n" path="res://scripts/escena.gd" id="1_hvxa3"]
 [ext_resource type="Script" uid="uid://dbpq4vpssk1m3" path="res://scripts/contenedor_ux.gd" id="2_61s06"]
+[ext_resource type="Script" uid="uid://cu8r3be887av2" path="res://scripts/spawn_effect.gd" id="4_hvxa3"]
 [ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="6_78vvm"]
 [ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
 [ext_resource type="AudioStream" uid="uid://cinfu1xea6a0l" path="res://sonido/celda_metal.mp3" id="9_70khi"]
@@ -45,6 +46,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="spawn_effect" type="ColorRect" parent="contenedor_UX/SubViewport/capa_pixelacion" unique_id=587777517]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_hvxa3")
 
 [node name="dungeon" parent="contenedor_UX/SubViewport" unique_id=1761309701 instance=ExtResource("9_0lcy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)

@@ -48,4 +48,4 @@ func romper():
 	for child in instancia.get_children():
 		if child is RigidBody3D:
 			var direccion = Vector3(randf_range(-1, 1), randf_range(0.5, 1), randf_range(-1, 1)).normalized()
-			child.apply_impulse(direccion * randf_range(3.0, 5.0))
+			child.apply_impulse(direccion * randf_range(2.0, 3.0))

@@ -52,6 +52,7 @@ base_scale = 1.21
 
 [node name="game_over_screen" type="ColorRect" parent="." unique_id=1115024860]
 visible = false
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -74,7 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_v5cmr")
 theme_override_font_sizes/font_size = 100
-text = "GAME OVER"
+text = "HAS MUERTO"
 
 [node name="barra_stamina" type="ProgressBar" parent="." unique_id=1895136430]
 visible = false

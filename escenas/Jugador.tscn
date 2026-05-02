@@ -312,7 +312,7 @@ tracks/9/keys = {
 tracks/10/type = "method"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("animaciones_ataque")
+tracks/10/path = NodePath("animaciones")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -438,7 +438,7 @@ tracks/8/keys = {
 tracks/9/type = "method"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("animaciones_ataque")
+tracks/9/path = NodePath("animaciones")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -558,6 +558,34 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_op6lh"]
+resource_name = "spawn"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camara_controller:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23987126, 2.9992347, 3.9483495),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.5707964), Vector3(0, 0, -1.3404163), Vector3(0, 0, -0.5611045), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camara_controller:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23987126, 2.9992347),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.125, 0), Vector3(0, 0.185, 0), Vector3(0, 0.02, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dw050"]
 _data = {
 &"RESET": SubResource("Animation_2hs0m"),
@@ -568,7 +596,8 @@ _data = {
 &"caminar": ExtResource("3_475hk"),
 &"correr": ExtResource("4_ddw1h"),
 &"hit_bloqueado": SubResource("Animation_475hk"),
-&"idle": ExtResource("5_op6lh")
+&"idle": ExtResource("5_op6lh"),
+&"spawn": SubResource("Animation_op6lh")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
@@ -643,6 +672,9 @@ animation = &"correr"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6rshw"]
 animation = &"idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ko7k4"]
+animation = &"spawn"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ehok7"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c267k"]
@@ -655,6 +687,12 @@ animation = &"idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ghc4"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3wdqr"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1udw8"]
+switch_mode = 1
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3wdqr"]
 states/End/position = Vector2(723, 100)
 states/Start/position = Vector2(185, 100)
@@ -664,10 +702,13 @@ states/correr/node = SubResource("AnimationNodeAnimation_orh7j")
 states/correr/position = Vector2(420, 100)
 states/idle/node = SubResource("AnimationNodeAnimation_6rshw")
 states/idle/position = Vector2(420, 183)
-transitions = ["Start", "caminar", SubResource("AnimationNodeStateMachineTransition_ehok7"), "Start", "correr", SubResource("AnimationNodeStateMachineTransition_c267k"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_wvgm1"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_pdj80"), "caminar", "End", SubResource("AnimationNodeStateMachineTransition_p05sv"), "correr", "End", SubResource("AnimationNodeStateMachineTransition_6ghc4")]
+states/spawn/node = SubResource("AnimationNodeAnimation_ko7k4")
+states/spawn/position = Vector2(415, 280)
+transitions = ["Start", "caminar", SubResource("AnimationNodeStateMachineTransition_ehok7"), "Start", "correr", SubResource("AnimationNodeStateMachineTransition_c267k"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_wvgm1"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_pdj80"), "caminar", "End", SubResource("AnimationNodeStateMachineTransition_p05sv"), "correr", "End", SubResource("AnimationNodeStateMachineTransition_6ghc4"), "Start", "spawn", SubResource("AnimationNodeStateMachineTransition_3wdqr"), "spawn", "End", SubResource("AnimationNodeStateMachineTransition_1udw8")]
+graph_offset = Vector2(-103, 55)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1udw8"]
-graph_offset = Vector2(-759.6116, 227.6529)
+graph_offset = Vector2(-810.6199, 34.80165)
 nodes/output/position = Vector2(620, 100)
 nodes/movimiento/node = SubResource("AnimationNodeStateMachine_3wdqr")
 nodes/movimiento/position = Vector2(-560, 80)
@@ -686,14 +727,14 @@ script = ExtResource("1_hqtel")
 stamina = 1000.0
 vida_max = 75.0
 
-[node name="animaciones_ataque" type="AnimationPlayer" parent="." unique_id=602970200]
+[node name="animaciones" type="AnimationPlayer" parent="." unique_id=602970200]
 libraries/ = SubResource("AnimationLibrary_dw050")
 speed_scale = 1.4
 blend_times = [&"bloquear", &"atacar", 0.2, &"bloquear", &"atacar_horizontal", 0.2, &"bloquear", &"bloquear", 0.2, &"bloquear", &"hit_bloqueado", 0.2]
 script = ExtResource("2_r4hsq")
 
 [node name="camara_controller" type="Node3D" parent="." unique_id=1718200563]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("5_lctvp")
 
 [node name="camara_player" type="Camera3D" parent="camara_controller" unique_id=219131178]
@@ -788,7 +829,7 @@ max_db = -5.242
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1439636149]
 callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_1udw8")
-anim_player = NodePath("../animaciones_ataque")
+anim_player = NodePath("../animaciones")
 parameters/TimeScale/scale = 1.0
 parameters/Add2/add_amount = 0.0
 parameters/TimeScale_ataque/scale = 1.0

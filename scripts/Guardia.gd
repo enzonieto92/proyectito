@@ -12,6 +12,7 @@ const SONIDO_MUERTE = preload("res://sonido/muerte_guardia.mp3")
 @onready var sonido_enemigo: AudioStreamPlayer3D = $sonido_enemigo
 @onready var raycast_vision: RayCast3D = $raycast_vision
 @onready var sonido_golpe: AudioStreamPlayer = $sonido_golpe
+@onready var raycast_enemigo: RayCast3D = $raycast_enemigo
 
 @export var atacando: bool = false
 @export var vida: float
@@ -140,6 +141,7 @@ func aplicar_golpe() -> void:
 		player.recibir_damage(Vector2(min_damage, max_damage))
 
 
+
 func _on_attack_finished(_anim: String) -> void:
 	animation_vector = Vector3.ZERO
 	_en_cooldown = true
@@ -150,6 +152,7 @@ func _on_attack_finished(_anim: String) -> void:
 func _on_cooldown_finished() -> void:
 	_en_cooldown = false
 	_atacando_cooldown = false
+	raycast_enemigo.ya_golpeo = false  # ← nombre del nodo que tengas
 
 
 func dying_behavior() -> void:
@@ -169,8 +172,8 @@ func dying_behavior() -> void:
 			area.monitoring = false
 
 		sonido_enemigo.stream = SONIDO_MUERTE
-		sonido_enemigo.volume_db = 40.0
-		sonido_enemigo.pitch_scale = 2.0
+		sonido_enemigo.volume_db = -10.0
+		sonido_enemigo.pitch_scale = 0.6
 		sonido_enemigo.play()
 
 		animation_player.stop()
@@ -199,7 +202,6 @@ func _on_dying_finished(_anim: String) -> void:
 
 
 func rastrear() -> void:
-	print("rastreando")
 	raycast_vision.target_position = to_local(player.global_position)
 	raycast_vision.force_raycast_update()
 
@@ -226,7 +228,6 @@ func chequear_puerta_en_camino() -> void:
 
 	if not raycast_vision.is_colliding():
 		return
-
 	var coll = raycast_vision.get_collider()
 	if coll.is_in_group("puertas"):
 		print("golpeando puerta (persecucion)")
@@ -237,18 +238,22 @@ func golpear_puerta(coll: Node) -> void:
 		return
 
 	_puerta_cooldown = true
-	coll.resistencia -= damage
-	print("puerta resistencia: ", coll.resistencia)
-	coll.hit_puerta()
-	if coll.resistencia <= 0:
-		coll.call_deferred("romper")  # ← diferido
-		_puerta_cooldown = false
-	else:
-		get_tree().create_timer(1.0).timeout.connect(
-			func(): _puerta_cooldown = false
-		)
-
-
+	get_tree().create_timer(2.0).timeout.connect(
+		func():
+			if not is_instance_valid(coll):
+				_puerta_cooldown = false
+				return
+			damage = int(randf_range(min_damage, max_damage))
+			coll.resistencia -= damage
+			coll.hit_puerta()
+			if coll.resistencia <= 0:
+				coll.call_deferred("romper")
+				_puerta_cooldown = false
+			else:
+				get_tree().create_timer(2.0).timeout.connect(
+					func(): _puerta_cooldown = false
+				)
+	)
 func _confirmar_avistado() -> void:
 	if not avistado:
 		avistado = true
