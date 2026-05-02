@@ -223,3 +223,6 @@ size = Vector3(1.6381836, 0.26343536, 2)
 
 [node name="Guardia" parent="." unique_id=834906040 instance=ExtResource("23_jxelf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.057774, 0.38110894, 2.0009189)
+
+[node name="camadepaja" parent="." unique_id=1082613343 instance=ExtResource("22_jxelf")]
+transform = Transform3D(0.99345076, 0, 0.18167493, 0, 1, 0, -0.11426096, 0, 1.5795867, -4.963347, -0.4585595, -0.68987477)
