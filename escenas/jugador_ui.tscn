@@ -71,6 +71,7 @@ offset_right = 187.5
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_6cur2")
 theme_override_font_sizes/font_size = 100
 text = "HAS MUERTO"
 
