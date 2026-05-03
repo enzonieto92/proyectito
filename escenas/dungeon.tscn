@@ -206,21 +206,20 @@ transform = Transform3D(-0.26130915, 0, -1.5529045, 0, 1, 0, 1.0530634, 0, -0.38
 transform = Transform3D(-0.41921443, 0, 0.9078872, 0, 1, 0, -0.9078872, 0, -0.41921443, -16, -1.4596957, 5.5464444)
 
 [node name="manchadesangre" parent="NavigationRegion3D/decoracion" unique_id=1041175977 instance=ExtResource("24_01jbd")]
-transform = Transform3D(-1, 8.742277e-08, 4.3711392e-08, -4.371139e-08, 1.9106853e-15, -1.0000001, -8.742278e-08, -0.9999999, 1.9106857e-15, -16.432621, 0.26077986, 7.92286)
-size = Vector3(2.049797, 0.5878906, 1.9763279)
+transform = Transform3D(-1, 8.742277e-08, 4.3711392e-08, -4.371139e-08, 1.9106853e-15, -1.0000001, -8.742278e-08, -0.9999999, 1.9106857e-15, -15.974522, -0.111567855, 7.993224)
+size = Vector3(1.8597374, 0.5878906, 1.7479296)
 
 [node name="manchasdesangre1" parent="NavigationRegion3D/decoracion" unique_id=560532660 instance=ExtResource("25_adah3")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -16.549671, -1.510483, -1.39707)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -16.723196, -1.4905577, -1.4681104)
 size = Vector3(1.9614258, 0.12219238, 2.270256)
-texture_albedo = null
 
 [node name="manchasdesangre2" parent="NavigationRegion3D/decoracion" unique_id=704931653 instance=ExtResource("26_ob7hp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.52615, -1.4460127, 2.0123975)
 size = Vector3(2, 0.23571777, 2)
 
 [node name="manchasdesangre3" parent="NavigationRegion3D/decoracion" unique_id=1953921112 instance=ExtResource("26_ob7hp")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.822607, -1.5046577, 3.3088267)
-size = Vector3(1.6381836, 0.26343536, 2)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.7336679, -1.4726171, 3.392476)
+size = Vector3(0.6235199, 0.035036087, 0.6905594)
 
 [node name="manchasdesangre4" parent="NavigationRegion3D/decoracion" unique_id=581693770 instance=ExtResource("26_ob7hp")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -14.056963, -0.62520546, -13.651953)
@@ -237,7 +236,7 @@ transform = Transform3D(0.99345076, 0, 0.18167493, 0, 1, 0, -0.11426096, 0, 1.57
 transform = Transform3D(-0.70587164, 0.70833975, -3.0962514e-08, 0, -4.371139e-08, -1, -0.70833975, -0.70587164, 3.085463e-08, -29.65826, 0.07278919, -9.672046)
 
 [node name="Simbolo-sangre2" parent="NavigationRegion3D/decoracion" unique_id=34199960 instance=ExtResource("26_5geou")]
-transform = Transform3D(-6.403719e-08, -1.465, 6.403719e-08, 0, -6.403719e-08, -1.465, 1.465, -6.403719e-08, 2.7991542e-15, -14.011826, -0.015841603, -11.968722)
+transform = Transform3D(-6.403719e-08, -1.465, 6.403719e-08, 0, -6.403719e-08, -1.465, 1.465, -6.403719e-08, 2.7991542e-15, -14.011826, -0.10598016, -11.968722)
 
 [node name="cadaver1" parent="NavigationRegion3D/decoracion" unique_id=1974810236 instance=ExtResource("27_5wt16")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -27.069126, -0.641817, -17.080051)
