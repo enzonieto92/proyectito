@@ -20,6 +20,7 @@ texture_filter = 0
 albedo_color = Color(0.15487596, 0.154876, 0.15487596, 1)
 
 [node name="marco" type="CSGCombiner3D" unique_id=396552226]
+use_collision = true
 
 [node name="wall13" type="CSGBox3D" parent="." unique_id=229125789]
 size = Vector3(0.3, 3, 4)

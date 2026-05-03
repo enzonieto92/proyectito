@@ -1,15 +1,20 @@
 [gd_scene format=3 uid="uid://bamljpune2w02"]
 
 [ext_resource type="Texture2D" uid="uid://dxk06g2dwv385" path="res://texturas/body1.png" id="1_tovt1"]
+[ext_resource type="Script" uid="uid://dqmeykat0k77e" path="res://scripts/sprite_cadaver.gd" id="2_wfmhs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wfmhs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unk1j"]
 transparency = 1
+cull_mode = 2
 albedo_texture = ExtResource("1_tovt1")
 texture_filter = 0
 
-[node name="cadaver1" type="MeshInstance3D" unique_id=1974810236]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.9472147, 0)
+[node name="position" type="Node3D" unique_id=1096910596]
+script = ExtResource("2_wfmhs")
+
+[node name="cadaver1" type="MeshInstance3D" parent="." unique_id=1974810236]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("PlaneMesh_wfmhs")
 surface_material_override/0 = SubResource("StandardMaterial3D_unk1j")

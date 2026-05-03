@@ -7,7 +7,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e40c2"]
 transparency = 1
 albedo_texture = ExtResource("1_eiqap")
-roughness = 0.0
 texture_filter = 0
 
 [node name="Simbolo-sangre" type="MeshInstance3D" unique_id=57049567]

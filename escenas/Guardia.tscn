@@ -11,12 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://cjv6cjh0wdmoo" path="res://sonido/jadeo.mp3" id="9_huxnx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u3e3u"]
-height = 1.3278809
-radius = 0.35546875
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_huxnx"]
-height = 0.0986557
-radius = 0.19677734
+height = 1.626648
+radius = 0.41357422
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_522ny"]
 atlas = ExtResource("2_u3e3u")
@@ -379,12 +375,8 @@ max_damage = 19.0
 min_damage = 21.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2015585413]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25915527, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062083483, -0.03152466, 0)
 shape = SubResource("CylinderShape3D_u3e3u")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1986957199]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.78184426, 0)
-shape = SubResource("CylinderShape3D_huxnx")
 
 [node name="sprite_enemy" type="AnimatedSprite3D" parent="." unique_id=464011000]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.012036435, 0)
@@ -406,9 +398,11 @@ libraries/ = SubResource("AnimationLibrary_mj5ly")
 
 [node name="sangre" type="Sprite3D" parent="." unique_id=1725185734]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.8009243, 0)
+sorting_offset = -1.0
 modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
 pixel_size = 0.015
 axis = 1
+double_sided = false
 alpha_cut = 2
 texture_filter = 0
 texture = ExtResource("8_0ymqe")

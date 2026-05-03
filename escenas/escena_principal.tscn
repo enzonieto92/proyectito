@@ -63,7 +63,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.93
 [node name="Pantalla Principal" parent="CanvasLayer" unique_id=384989241 instance=ExtResource("3_uxd1d")]
 
 [node name="pixelation" type="ColorRect" parent="CanvasLayer" unique_id=488630272]
-visible = false
 material = SubResource("ShaderMaterial_hxpc2")
 anchors_preset = 15
 anchor_right = 1.0

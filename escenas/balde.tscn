@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://vj5bf20nx2tq" path="res://texturas/balde_texturaaltar-normales.png" id="2_to542"]
 [ext_resource type="PackedScene" uid="uid://deqebrtynhpca" path="res://escenas/mosca.tscn" id="3_y3ckc"]
 [ext_resource type="AudioStream" uid="uid://lykbtuqnay8w" path="res://sonido/moscas_sonido.mp3" id="4_to542"]
+[ext_resource type="Script" uid="uid://cd21665l04idi" path="res://scripts/sonido_moscas.gd" id="5_y3ckc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcvur"]
 resource_name = "Material.001"
@@ -87,8 +88,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lkv7u")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y3ckc"]
-size = Vector3(0.46174622, 0.10473633, 0.42626953)
+[sub_resource type="BoxShape3D" id="BoxShape3D_to542"]
+size = Vector3(2.9674072, 1.991333, 2.598755)
 
 [node name="balde" type="Node3D" unique_id=167562202]
 
@@ -102,10 +103,6 @@ shape = SubResource("ConvexPolygonShape3D_to542")
 
 [node name="Meada" type="MeshInstance3D" parent="." unique_id=1495387128]
 mesh = SubResource("ArrayMesh_ojccw")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Meada" unique_id=378869784]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0022506714, 0.09265137, 0.0061035156)
-shape = SubResource("BoxShape3D_y3ckc")
 
 [node name="mosca" parent="." unique_id=1518323532 instance=ExtResource("3_y3ckc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59407884, 0)
@@ -122,8 +119,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7241199, -0.084251806)
 [node name="mosca2" parent="." unique_id=134431574 instance=ExtResource("3_y3ckc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717431, 0.063239925)
 
-[node name="sonido_moscas" type="AudioStreamPlayer3D" parent="." unique_id=244706039]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62670493, 0)
+[node name="Area3D" type="Area3D" parent="." unique_id=900649154 node_paths=PackedStringArray("audio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16985583, 0, 0.159886)
+collision_layer = 0
+audio_bus_override = true
+script = ExtResource("5_y3ckc")
+audio = NodePath("sonido_moscas")
+volumen_ocluido = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=494171110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9837036, 0.8215401, 0.79937744)
+shape = SubResource("BoxShape3D_to542")
+
+[node name="sonido_moscas" type="AudioStreamPlayer3D" parent="Area3D" unique_id=244706039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16985583, 0.62670493, -0.159886)
 stream = ExtResource("4_to542")
+max_db = 0.0
 autoplay = true
-max_distance = 4.0
+max_distance = 3.0
+area_mask = 0
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

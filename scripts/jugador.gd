@@ -7,7 +7,7 @@ extends CharacterBody3D
 @onready var footstep_player: AudioStreamPlayer3D = $footstep
 @onready var raycast: RayCast3D = $camara_controller/camara_player/raycast
 @onready var raycast_arma: RayCast3D = $pivote/posicion_arma/sprite_arma/raycast_arma
-@onready var shape = $CollisionShape3D.shape as CapsuleShape3D
+@onready var shape = $CollisionShape3D.shape as CylinderShape3D
 @onready var collision = $CollisionShape3D
 @onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
 @onready var texto_plano: RichTextLabel = get_tree().get_first_node_in_group("texto_plano")
@@ -72,16 +72,6 @@ func recibir_damage(_damage):
 	camara_controller.shake(0.05, 0.5, 60.0)
 	hit_sound.play()
 	var reduccion = armadura_total / (armadura_total + CONSTANTE_ARMADURA)
-	vida -= int(_damage * (1.0 - reduccion))
-	animaciones.on_block_hit()
-	reaccion_ui()
-	recibiendo_damage = false
-
-func recibir_damage_reducido(_damage):
-	recibiendo_damage = true
-	camara_controller.shake(0.05, 0.5, 60.0)
-	hit_sound.play()
-	var reduccion = armadura / (armadura + CONSTANTE_ARMADURA)
 	vida -= int(_damage * (1.0 - reduccion))
 	animaciones.on_block_hit()
 	reaccion_ui()
