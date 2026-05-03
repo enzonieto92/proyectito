@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dp5ylecmw6mcv"]
+
+[ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://texturas/walldungeon.png" id="1_2boey"]
+[ext_resource type="Texture2D" uid="uid://cfa750iu8o0in" path="res://texturas/walldungeon_specular (2).png" id="2_8wini"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uaae8"]
+transparency = 2
+alpha_scissor_threshold = 0.0
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_2boey")
+metallic_specular = 0.0
+normal_texture = ExtResource("2_8wini")
+uv1_scale = Vector3(0.426, 0.426, 0.426)
+uv1_offset = Vector3(0, 0.623, 0)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dk8b"]
+albedo_color = Color(0.15487596, 0.154876, 0.15487596, 1)
+
+[node name="marco" type="CSGCombiner3D" unique_id=396552226]
+
+[node name="wall13" type="CSGBox3D" parent="." unique_id=229125789]
+size = Vector3(0.3, 3, 4)
+material = SubResource("StandardMaterial3D_uaae8")
+
+[node name="frame_door" type="CSGBox3D" parent="." unique_id=900554789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009751737, -0.3, 0)
+operation = 2
+size = Vector3(0.77853423, 2.4, 1.4)
+material = SubResource("StandardMaterial3D_6dk8b")

@@ -3,12 +3,15 @@ extends MeshInstance3D
 @onready var pivote = $".."
 
 var player_inside = false
-@export var abierta = false
+@export var abierta = true
 
-
+func _ready() -> void:
+	setear_abierta()
 func puede_interactuar():
 	return player_inside
 
+func setear_abierta():
+		pivote.rotation.y = deg_to_rad(65)
 
 func interactuar(_player):
 

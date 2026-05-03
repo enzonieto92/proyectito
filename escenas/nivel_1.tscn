@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://babstx0yl570n" path="res://scripts/escena.gd" id="1_hvxa3"]
 [ext_resource type="Script" uid="uid://dbpq4vpssk1m3" path="res://scripts/contenedor_ux.gd" id="2_61s06"]
-[ext_resource type="Script" uid="uid://cu8r3be887av2" path="res://scripts/spawn_effect.gd" id="4_hvxa3"]
+[ext_resource type="Script" uid="uid://dnt81ardpk8qq" path="res://scripts/spawn_animacion.gd" id="4_hvxa3"]
 [ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="6_78vvm"]
 [ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
 [ext_resource type="AudioStream" uid="uid://cinfu1xea6a0l" path="res://sonido/celda_metal.mp3" id="9_70khi"]
@@ -14,6 +14,17 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xejmm"]
 shader = ExtResource("6_78vvm")
 shader_parameter/pixel_size = 3
+
+[sub_resource type="Gradient" id="Gradient_hytxr"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.27555555, 0.84444445)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.67058825, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_78vvm"]
+gradient = SubResource("Gradient_hytxr")
+fill_from = Vector2(0.5, 0.6)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
 
 [node name="escena principal" type="Node3D" unique_id=1018523294]
 script = ExtResource("1_hvxa3")
@@ -47,14 +58,35 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="spawn_effect" type="ColorRect" parent="contenedor_UX/SubViewport/capa_pixelacion" unique_id=587777517]
+[node name="spawn_animacion" type="Control" parent="contenedor_UX/SubViewport/capa_pixelacion" unique_id=735514871]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
 script = ExtResource("4_hvxa3")
+
+[node name="inicio" type="TextureRect" parent="contenedor_UX/SubViewport/capa_pixelacion/spawn_animacion" unique_id=27481637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_78vvm")
+
+[node name="inicio2" type="TextureRect" parent="contenedor_UX/SubViewport/capa_pixelacion/spawn_animacion" unique_id=1536992915]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_78vvm")
+flip_v = true
 
 [node name="dungeon" parent="contenedor_UX/SubViewport" unique_id=1761309701 instance=ExtResource("9_0lcy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)

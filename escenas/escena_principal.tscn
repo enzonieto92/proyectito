@@ -6,6 +6,8 @@
 [ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="4_uxd1d"]
 [ext_resource type="Script" uid="uid://bqcqy6suc85y6" path="res://scripts/inicio.gd" id="5_hxpc2"]
 [ext_resource type="AudioStream" uid="uid://cjxlxobyflnn8" path="res://sonido/deuslower-atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215.mp3" id="6_arkap"]
+[ext_resource type="Script" uid="uid://clirk4j1qwbjo" path="res://scripts/tran_inicio.gd" id="6_lgbs2"]
+[ext_resource type="AudioStream" uid="uid://bj4iudl615ub2" path="res://sonido/sonido_enter.mp3" id="7_hytxr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxd1d"]
 albedo_texture = ExtResource("1_3tyi2")
@@ -25,6 +27,16 @@ fog_density = 0.3
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hxpc2"]
 shader = ExtResource("4_uxd1d")
 shader_parameter/pixel_size = 7
+
+[sub_resource type="Gradient" id="Gradient_hytxr"]
+offsets = PackedFloat32Array(0, 0.35555556, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.67058825, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lgbs2"]
+gradient = SubResource("Gradient_hytxr")
+fill_from = Vector2(0.5, 0.6)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
 
 [node name="Escena_principal" type="Node3D" unique_id=166205054]
 
@@ -51,6 +63,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.93
 [node name="Pantalla Principal" parent="CanvasLayer" unique_id=384989241 instance=ExtResource("3_uxd1d")]
 
 [node name="pixelation" type="ColorRect" parent="CanvasLayer" unique_id=488630272]
+visible = false
 material = SubResource("ShaderMaterial_hxpc2")
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,15 +72,44 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="inicio" type="ColorRect" parent="CanvasLayer" unique_id=481073056]
+[node name="inicio" type="TextureRect" parent="CanvasLayer" unique_id=2110204126]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lgbs2")
+script = ExtResource("5_hxpc2")
+
+[node name="inicio2" type="TextureRect" parent="CanvasLayer" unique_id=162804451]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 648.0
+offset_right = 3.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lgbs2")
+flip_v = true
+script = ExtResource("5_hxpc2")
+
+[node name="tran_inicio" type="ColorRect" parent="CanvasLayer" unique_id=947235154]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-script = ExtResource("5_hxpc2")
+script = ExtResource("6_lgbs2")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=8358351]
+[node name="musica_ambiente" type="AudioStreamPlayer" parent="." unique_id=8358351]
 stream = ExtResource("6_arkap")
 autoplay = true
+
+[node name="sonido_enter" type="AudioStreamPlayer" parent="." unique_id=1060599436]
+stream = ExtResource("7_hytxr")
+pitch_scale = 0.66

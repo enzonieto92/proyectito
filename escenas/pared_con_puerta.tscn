@@ -1,38 +1,8 @@
 [gd_scene format=3 uid="uid://dr0lkmm011sx5"]
 
-[ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://texturas/walldungeon.png" id="1_tgnhd"]
-[ext_resource type="Texture2D" uid="uid://cfa750iu8o0in" path="res://texturas/walldungeon_specular (2).png" id="2_e8xjx"]
 [ext_resource type="PackedScene" uid="uid://dgsorseqc2wpn" path="res://escenas/puerta.tscn" id="3_ptser"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
-transparency = 2
-alpha_scissor_threshold = 0.0
-alpha_antialiasing_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_tgnhd")
-metallic_specular = 0.0
-normal_texture = ExtResource("2_e8xjx")
-uv1_scale = Vector3(0.426, 0.426, 0.426)
-uv1_offset = Vector3(0, 0.623, 0)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a2c0"]
-albedo_color = Color(0.15487596, 0.154876, 0.15487596, 1)
-
-[node name="pared con puerta" type="CSGCombiner3D" unique_id=486144690]
-use_collision = true
-collision_mask = 0
-
-[node name="wall13" type="CSGBox3D" parent="." unique_id=260686562]
-size = Vector3(0.3, 3, 4)
-material = SubResource("StandardMaterial3D_cdqbm")
-
-[node name="frame_door" type="CSGBox3D" parent="." unique_id=1524181270]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009751737, -0.3, 0)
-operation = 2
-size = Vector3(0.77853423, 2.4, 1.4)
-material = SubResource("StandardMaterial3D_5a2c0")
+[node name="pared con puerta" type="Node3D" unique_id=486367442]
 
 [node name="pivote" type="Node3D" parent="." unique_id=873776519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)

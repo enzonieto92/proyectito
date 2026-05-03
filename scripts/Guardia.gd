@@ -172,7 +172,7 @@ func dying_behavior() -> void:
 			area.monitoring = false
 
 		sonido_enemigo.stream = SONIDO_MUERTE
-		sonido_enemigo.volume_db = -10.0
+		sonido_enemigo.volume_db = -40.0
 		sonido_enemigo.pitch_scale = 0.6
 		sonido_enemigo.play()
 

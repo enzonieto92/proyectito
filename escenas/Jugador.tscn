@@ -370,7 +370,7 @@ tracks/3/path = NodePath("camara_controller:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.0017890669, 0.44887966, 0.6063175, 0.95339644, 1.1389958),
+"times": PackedFloat32Array(0.0017890669, 0.45066872, 0.6063175, 0.95339644, 1.1389958),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.095, -0.009, 0), Vector3(0.02, 0, 0), Vector3(0.05, 0, 0), Vector3(0, 0, 0)]
@@ -418,7 +418,7 @@ tracks/7/path = NodePath("pivote/posicion_arma:position")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.09822158, 0.6170519, 0.753021, 1.1372067),
+"times": PackedFloat32Array(0, 0.09822158, 0.5258095, 0.6617786, 1.0620658),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(-0.439, -0.192, -0.711), Vector3(0.003871195, -0.052450776, -0.85291666), Vector3(0.5502981, -0.052450776, -0.66960466), Vector3(0.5151274, -0.15985763, -0.80995387)]
@@ -430,7 +430,7 @@ tracks/8/path = NodePath("pivote/posicion_arma:rotation")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.09822158, 0.6170519, 0.753021, 1.1372067),
+"times": PackedFloat32Array(0, 0.09822158, 0.5258095, 0.6617786, 1.0620658),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-1.0960667, -0.07853982, 1.0367255), Vector3(-1.0485474, 0.5207188, -0.4456866), Vector3(-1.0485476, -1.1319509, -0.44568664), Vector3(-0.41190138, -0.66979253, 0.5032604)]
