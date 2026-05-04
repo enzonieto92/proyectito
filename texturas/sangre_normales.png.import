@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxfa6u0fos2ws"
-path.s3tc="res://.godot/imported/mesagrillete_texturamaderamesa.png-f7f34e7a591edda6e6f35fa71c1ae12b.s3tc.ctex"
+uid="uid://co52ol50p2hvw"
+path.s3tc="res://.godot/imported/sangre_normales.png-051b57aaea05964fde8fd566d66befc1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://objetos glb/mesagrillete_texturamaderamesa.png"
-dest_files=["res://.godot/imported/mesagrillete_texturamaderamesa.png-f7f34e7a591edda6e6f35fa71c1ae12b.s3tc.ctex"]
+source_file="res://texturas/sangre_normales.png"
+dest_files=["res://.godot/imported/sangre_normales.png-051b57aaea05964fde8fd566d66befc1.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://texturas/sangre_normales.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

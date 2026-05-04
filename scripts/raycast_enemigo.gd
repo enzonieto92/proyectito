@@ -1,6 +1,6 @@
 extends RayCast3D
 @onready var enemigo: CharacterBody3D = $".."
-@onready var player: CharacterBody3D = $"../../player"
+@onready var player = get_tree().get_first_node_in_group("jugador")
 var ya_golpeo: bool = false
 
 func _process(_delta: float) -> void:

@@ -57,7 +57,7 @@ var footstep_sounds = [
 var _ultimo_objeto: Object = null
 var _ultimo_texto: String = ""
 var _vida_muerto := false
-
+var muerto := false  # ← nueva
 func cambiar_pitch_swing():
 	sonido_arma.pitch_scale = randf_range(0.7, 1.3)  # ✅ usa onready
 
@@ -130,6 +130,8 @@ func _physics_process(delta):
 	if animaciones.spawning:
 		velocity += get_gravity() * delta
 		move_and_slide()
+		return
+	if muerto:  # ← agregar
 		return
 	objeto_actual = null
 	if raycast.is_colliding():
@@ -233,9 +235,12 @@ func _process(_delta):
 
 	if not _vida_muerto and vida <= 0:
 		_vida_muerto = true
+		muerto = true  # ← agregar
 		go_screen.visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # opcional
 		var tween = create_tween()
 		tween.tween_property(go_screen, "modulate:a", 1.0, 2)
+		
 func _calcular_texto_interaccion() -> String:
 	print(objeto_actual)
 	if objeto_actual.is_in_group("puertas"):

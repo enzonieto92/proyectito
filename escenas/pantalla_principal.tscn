@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7bkgvry1xmbs" path="res://scripts/pantalla_principal.gd" id="1_poj3a"]
 [ext_resource type="FontFile" uid="uid://deigckxeuy4rq" path="res://otros/nokiafc22.ttf" id="2_terxd"]
-[ext_resource type="Script" uid="uid://c6xmj80feuai2" path="res://escenas/titulo.gd" id="3_uw7aw"]
+[ext_resource type="Script" uid="uid://c6xmj80feuai2" path="res://scripts/titulo.gd" id="3_uw7aw"]
 [ext_resource type="FontFile" uid="uid://bbphv524e86v1" path="res://otros/GallaeciaForte.ttf" id="3_wnfxn"]
 
 [sub_resource type="Theme" id="Theme_3ofuu"]

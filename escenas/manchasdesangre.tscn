@@ -1,7 +1,20 @@
 [gd_scene format=3 uid="uid://s2c3rx2t25xx"]
 
 [ext_resource type="Texture2D" uid="uid://c3lcv2v46qwsa" path="res://texturas/sangre1.png" id="1_5nms2"]
+[ext_resource type="Texture2D" uid="uid://dj7waix36d2no" path="res://texturas/sangre1_normales.png" id="2_w57bb"]
 
-[node name="manchadesangre" type="Decal" unique_id=1041175977]
-size = Vector3(0.23483276, 2, 2)
-texture_albedo = ExtResource("1_5nms2")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f187r"]
+transparency = 1
+albedo_texture = ExtResource("1_5nms2")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_w57bb")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_m6vcd"]
+material = SubResource("StandardMaterial3D_f187r")
+size = Vector2(2, 2)
+orientation = 1
+
+[node name="manchadesangre" type="MeshInstance3D" unique_id=785953451]
+mesh = SubResource("QuadMesh_m6vcd")

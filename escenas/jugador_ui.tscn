@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dqrqprrqi2lc8" path="res://scripts/dialogo.gd" id="5_wndoy"]
 [ext_resource type="Script" uid="uid://xfxh6s2wuhij" path="res://scripts/texto_plano.gd" id="6_84h12"]
 [ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://scripts/menu_controller.gd" id="7_8ln1y"]
+[ext_resource type="Theme" uid="uid://baqqinsefei1k" path="res://otros/tema_fuente.tres" id="8_wndoy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wndoy"]
 atlas = ExtResource("1_6cur2")
@@ -161,16 +162,19 @@ theme_override_constants/v_separation = 32
 
 [node name="Button" type="Button" parent="panel_opciones/GridContainer" unique_id=1077837262]
 layout_mode = 2
+theme = ExtResource("8_wndoy")
 theme_override_font_sizes/font_size = 35
 text = "Opciones"
 
 [node name="reiniciar_escena" type="Button" parent="panel_opciones/GridContainer" unique_id=826909234]
 layout_mode = 2
+theme = ExtResource("8_wndoy")
 theme_override_font_sizes/font_size = 35
 text = "Reiniciar Escena"
 
 [node name="boton_salir" type="Button" parent="panel_opciones/GridContainer" unique_id=1794587381]
 layout_mode = 2
+theme = ExtResource("8_wndoy")
 theme_override_font_sizes/font_size = 35
 text = "Salir"
 

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bu6tsxgv5g21c"
+uid="uid://3u3mg3572nr7"
 path="res://.godot/imported/celda.glb-c190b5ba2894cfda052f23b28d39b6a7.scn"
 
 [deps]
@@ -35,8 +35,8 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 materials/extract=0
-materials/extract_format=2
+materials/extract_format=0
 materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
-gltf/embedded_image_handling=2
+gltf/embedded_image_handling=1

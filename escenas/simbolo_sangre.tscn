@@ -6,6 +6,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e40c2"]
 transparency = 1
+albedo_color = Color(1, 1, 1, 0.9019608)
 albedo_texture = ExtResource("1_eiqap")
 texture_filter = 0
 

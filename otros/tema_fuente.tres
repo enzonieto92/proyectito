@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://baqqinsefei1k"]
+
+[ext_resource type="FontFile" uid="uid://deigckxeuy4rq" path="res://otros/nokiafc22.ttf" id="1_2d1g0"]
+
+[resource]
+default_font = ExtResource("1_2d1g0")

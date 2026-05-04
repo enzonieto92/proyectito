@@ -5,12 +5,12 @@ const SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
 const SONIDO_ENEMIGO = preload("uid://dehsfh1pliac7")
 const SONIDO_MUERTE = preload("res://sonido/dying_enemigo.mp3")  # ✅ preload en vez de load
 
-@onready var player: CharacterBody3D = $"../player"
+@onready var player = get_tree().get_first_node_in_group("jugador")
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var sonido_enemigo: AudioStreamPlayer3D = $sonido_enemigo
-@onready var sonido_golpe: AudioStreamPlayer3D = $sonido_golpe  # ✅ nodo fijo en editor
+@onready var sonido_golpe: AudioStreamPlayer = $sonido_golpe  # ✅ nodo fijo en editor
 
 @export var atacando: bool = false
 @export var vida: float

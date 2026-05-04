@@ -8,9 +8,9 @@ var sonidos: Array[AudioStreamPlayer]
 
 func _ready():
 	sonidos = [
-		get_node("../../../../sonido_ambiente_1"),
-		get_node("../../../../sonido_ambiente_2"),
-		get_node("../../../../sonido_ambiente_3")
+		get_node("../../../../../sonido_ambiente_1"),
+		get_node("../../../../../sonido_ambiente_2"),
+		get_node("../../../../../sonido_ambiente_3")
 	]
 
 func _on_area_cambiar_musica_body_entered(_body: Node3D) -> void:

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxfa6u0fos2ws"
-path.s3tc="res://.godot/imported/mesagrillete_texturamaderamesa.png-f7f34e7a591edda6e6f35fa71c1ae12b.s3tc.ctex"
+uid="uid://ss1t676i1nks"
+path.s3tc="res://.godot/imported/celda_textura_celda_roughness.png-3ff79d90cf20fa0dd9527c2a4041de9b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "42ce08cd802809375236d4331a2ab61b"
+}
 
 [deps]
 
-source_file="res://objetos glb/mesagrillete_texturamaderamesa.png"
-dest_files=["res://.godot/imported/mesagrillete_texturamaderamesa.png-f7f34e7a591edda6e6f35fa71c1ae12b.s3tc.ctex"]
+source_file="res://objetos glb/celda_textura_celda_roughness.png"
+dest_files=["res://.godot/imported/celda_textura_celda_roughness.png-3ff79d90cf20fa0dd9527c2a4041de9b.s3tc.ctex"]
 
 [params]
 

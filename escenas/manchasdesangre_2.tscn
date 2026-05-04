@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://dak8keit137s5"]
 
-[ext_resource type="Texture2D" uid="uid://spabfnk3wo58" path="res://texturas/sangre2.png" id="1_q7ta8"]
+[ext_resource type="Texture2D" uid="uid://dmrmsedv66hsw" path="res://texturas/sangre2.png" id="1_q7ta8"]
 
-[node name="manchasdesangre2" type="Decal" unique_id=704931653]
-texture_albedo = ExtResource("1_q7ta8")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7ta8"]
+transparency = 1
+albedo_texture = ExtResource("1_q7ta8")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_icv4q"]
+material = SubResource("StandardMaterial3D_q7ta8")
+
+[node name="manchasdesangre2" type="MeshInstance3D" unique_id=17394194]
+mesh = SubResource("PlaneMesh_icv4q")

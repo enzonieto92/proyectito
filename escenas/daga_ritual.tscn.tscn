@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://mbuobsdhvxtp" path="res://texturas/Armas/daga_normales.png" id="4_4ki8j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sbege"]
-size = Vector3(1.3321342, 1.1784668, 0.987381)
+size = Vector3(1.3887956, 0.5802002, 1.1678562)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uwcph"]
 radius = 0.17626953
@@ -29,12 +29,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74638677, 0)
 collision_layer = 2
 
 [node name="colision_area" type="CollisionShape3D" parent="area_interaccion" unique_id=20989893]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20983887, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58771926, 0.24676514, 0.025617048)
 shape = SubResource("BoxShape3D_sbege")
 
 [node name="area_raycast" type="StaticBody3D" parent="area_interaccion" unique_id=1446903369 groups=["recogibles"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.74638677, 0)
-collision_layer = 3
+collision_layer = 2
 script = ExtResource("1_q7uc5")
 arma = ExtResource("2_nh3vm")
 

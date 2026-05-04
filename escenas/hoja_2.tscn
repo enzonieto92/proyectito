@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d3mt0ck4c64qt" path="res://texturas/textura_papel.png" id="2_r3fsj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ts7w"]
+size = Vector3(1.4466743, 1.1784363, 1.2062495)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_30hkp"]
 _surfaces = [{
@@ -49,18 +50,20 @@ script = ExtResource("1_7ts7w")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=446862915]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20923936, 0)
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1820932674]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16601563, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43764687, -0.38035583, -0.07402766)
 shape = SubResource("BoxShape3D_7ts7w")
 debug_color = Color(0, 0.60038817, 0.70000815, 1)
 
 [node name="Plano" type="MeshInstance3D" parent="." unique_id=1207151533]
+transform = Transform3D(0.2560194, 0, 0.96667165, 0, 1, 0, -0.96667165, 0, 0.2560194, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rigaf")
 surface_material_override/0 = SubResource("StandardMaterial3D_x0dtc")
 
 [node name="coll_hoja" type="StaticBody3D" parent="." unique_id=2033634473]
-collision_layer = 3
+collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="coll_hoja" unique_id=1287897170]

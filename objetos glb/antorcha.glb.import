@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://r1ih7dv6eqdi"
+uid="uid://d0lftvphp23oq"
 path="res://.godot/imported/antorcha.glb-d5b68a4bb89460ad5d9cc42a281203dd.scn"
 
 [deps]
@@ -39,4 +39,4 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
-gltf/embedded_image_handling=3
+gltf/embedded_image_handling=1

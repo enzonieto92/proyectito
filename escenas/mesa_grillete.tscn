@@ -1,12 +1,11 @@
 [gd_scene format=4 uid="uid://cewqj0crccxqy"]
 
-[ext_resource type="Texture2D" uid="uid://bxfa6u0fos2ws" path="res://objetos glb/mesagrillete_texturamaderamesa.png" id="1_prq7v"]
-[ext_resource type="Texture2D" uid="uid://yuspg1t3rqd1" path="res://objetos glb/mesagrillete_texturamaderamesaconsangre.png" id="2_bf3ix"]
+[ext_resource type="Texture2D" uid="uid://cbbndrwl05st1" path="res://texturas/mesagrillete_texturamaderamesa.png" id="1_hsige"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpn31"]
 resource_name = "Material.003"
 cull_mode = 2
-albedo_texture = ExtResource("1_prq7v")
+albedo_texture = ExtResource("1_hsige")
 roughness = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oadmm"]
@@ -17,7 +16,7 @@ albedo_color = Color(0.13923253, 0.13923253, 0.13923253, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcafl"]
 resource_name = "Material.002"
 cull_mode = 2
-albedo_texture = ExtResource("2_bf3ix")
+albedo_texture = ExtResource("1_hsige")
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xafci"]
