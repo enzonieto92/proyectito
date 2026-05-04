@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://48k12tldmh24"]
 
 [ext_resource type="Script" uid="uid://dkaoh02vyshq6" path="res://scripts/area_cambiar_musica.gd" id="1_0rh8l"]
+[ext_resource type="AudioStream" uid="uid://dtpij67hugyv5" path="res://sonido/ambientales/whispers.mp3" id="2_b1hkq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ue3ep"]
 size = Vector3(1, 4, 4)
 
 [node name="area_cambiar_tension" type="Node3D" unique_id=2115117697]
 script = ExtResource("1_0rh8l")
+audio = ExtResource("2_b1hkq")
 
 [node name="area_cambiar_musica" type="Area3D" parent="." unique_id=1450975317]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="area_cambiar_musica" unique_id=1108504590]
 shape = SubResource("BoxShape3D_ue3ep")
+
+[node name="ambientales" type="AudioStreamPlayer" parent="." unique_id=1837028689]
 
 [connection signal="body_entered" from="area_cambiar_musica" to="." method="_on_area_cambiar_musica_body_entered"]

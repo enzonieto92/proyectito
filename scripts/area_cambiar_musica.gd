@@ -1,12 +1,26 @@
 extends Node3D
+@export var pitch : float
+@export var audio: AudioStreamMP3
+@export var fade_in : bool
+@export_enum("sonido_ambiente_1", "sonido_ambiente_2", "sonido_ambiente_3") var sonido_elegido: int = 0
 
-const TENSION_1_INDEX = 1  # índice del clip en el AudioStreamInteractive
+var sonidos: Array[AudioStreamPlayer]
+
+func _ready():
+	sonidos = [
+		get_node("../../../../sonido_ambiente_1"),
+		get_node("../../../../sonido_ambiente_2"),
+		get_node("../../../../sonido_ambiente_3")
+	]
 
 func _on_area_cambiar_musica_body_entered(_body: Node3D) -> void:
-	pass#if body.is_in_group("jugador"):
-		#var musica = body.get_node("Musica")
-		#var playback = musica.get_stream_playback() as AudioStreamPlaybackInteractive
-		#playback.switch_to_clip_by_name("Tension 1")  # nombre del clip en el recurso
-		# o por índice:
-		# playback.switch_to_clip(1)
-		#queue_free()
+	if _body.is_in_group("jugador"):
+		sonidos[sonido_elegido].stream = audio
+		sonidos[sonido_elegido].pitch_scale = pitch
+		sonidos[sonido_elegido].play()
+		if fade_in:
+			sonidos[sonido_elegido].volume_db = -80.0
+			var tween = create_tween()
+			tween.tween_property(sonidos[sonido_elegido], "volume_db", -24.0, 3.0)
+			await tween.finished
+		queue_free()
