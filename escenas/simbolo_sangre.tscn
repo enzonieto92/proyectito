@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dabr5egkrvib4"]
 
-[ext_resource type="Texture2D" uid="uid://bpf3ni5pkrdib" path="res://texturas/simbolo-sangre2.png" id="1_eiqap"]
+[ext_resource type="Texture2D" uid="uid://ot8t5bdmlehu" path="res://texturas/simbolo-sangre.png" id="1_eiqap"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6rtt6"]
 
