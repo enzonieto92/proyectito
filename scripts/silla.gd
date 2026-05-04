@@ -9,7 +9,7 @@ func puede_interactuar():
 
 func interactuar(_player):
 	dialogo.visible = true
-	dialogo.show_text("alguien se sentó, y no arriba de esta")
+	dialogo.show_text("¿Qué ha pasado?")
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "player":

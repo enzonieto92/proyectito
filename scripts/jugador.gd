@@ -231,6 +231,7 @@ func _process(_delta):
 		var tween = create_tween()
 		tween.tween_property(go_screen, "modulate:a", 1.0, 2)
 func _calcular_texto_interaccion() -> String:
+	print(objeto_actual)
 	if objeto_actual.is_in_group("puertas"):
 		return "(E) Cerrar" if objeto_actual.abierta else "(E) Abrir"
 	elif objeto_actual.is_in_group("hoja_papel"):
@@ -238,7 +239,7 @@ func _calcular_texto_interaccion() -> String:
 	elif objeto_actual.is_in_group("silla"):
 		return "(E) Investigar"
 	elif objeto_actual.is_in_group("recogibles"):
-		return "(E) Recoger"
+		return "(E) Agarrar"
 	elif objeto_actual.is_in_group("estatua"):
 		if arma != null:
 			if arma.nombre == "Daga Ritual":
