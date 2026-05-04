@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends Node3D
 
 @onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
 

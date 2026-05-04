@@ -36,3 +36,5 @@ func stop_text():
 	visible_characters = 0
 	text = ""
 	visible = false
+func mostrar_todo():
+	visible_characters = -1

@@ -100,10 +100,15 @@ func _unhandled_input(event):
 	if event.is_action_pressed("interactuar"):
 		if inventario_abierto:
 			return
-		if dialogo.visible:
-			dialogo.visible = false
-			dialogo.stop_text()
-			return
+		
+		#if dialogo.visible:
+			
+			
+			#dialogo.visible=false
+			#dialogo.stop_text()
+			
+			#return
+		
 		if objeto_actual and objeto_actual.has_method("interactuar"):
 			objeto_actual.interactuar(self)
 
@@ -223,7 +228,7 @@ func _process(_delta):
 		_ultimo_objeto = null
 		_ultimo_texto = ""
 		if dialogo.visible and objeto_actual == null:
-			dialogo.stop_text()
+			dialogo.mostrar_todo()
 
 	if not _vida_muerto and vida <= 0:
 		_vida_muerto = true
