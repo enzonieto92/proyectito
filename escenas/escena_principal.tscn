@@ -17,13 +17,6 @@ texture_filter = 0
 [sub_resource type="PlaneMesh" id="PlaneMesh_hxpc2"]
 size = Vector2(6, 4)
 
-[sub_resource type="Environment" id="Environment_3tyi2"]
-background_mode = 3
-ambient_light_energy = 0.0
-fog_enabled = true
-fog_light_color = Color(0, 0, 0, 1)
-fog_density = 0.3
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hxpc2"]
 shader = ExtResource("4_uxd1d")
 shader_parameter/pixel_size = 7
@@ -48,9 +41,6 @@ fov = 90.7
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -2.0877042)
 material_override = SubResource("StandardMaterial3D_uxd1d")
 mesh = SubResource("PlaneMesh_hxpc2")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1175581305 groups=["world_environment"]]
-environment = SubResource("Environment_3tyi2")
 
 [node name="antorcha" parent="." unique_id=1834885261 instance=ExtResource("2_imiid")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.913, 0.213, -2.023)

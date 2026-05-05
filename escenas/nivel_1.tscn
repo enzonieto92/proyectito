@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dbpq4vpssk1m3" path="res://scripts/contenedor_ux.gd" id="2_61s06"]
 [ext_resource type="Script" uid="uid://dnt81ardpk8qq" path="res://scripts/spawn_animacion.gd" id="4_hvxa3"]
 [ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="6_78vvm"]
+[ext_resource type="Script" uid="uid://rc45tm4jsw5u" path="res://scripts/menu_controller.gd" id="7_70khi"]
+[ext_resource type="Theme" uid="uid://baqqinsefei1k" path="res://otros/tema_fuente.tres" id="8_hvxa3"]
 [ext_resource type="PackedScene" uid="uid://dikevgscd8vxt" path="res://escenas/dungeon.tscn" id="9_0lcy5"]
 [ext_resource type="PackedScene" uid="uid://iw1jjrm2qss1" path="res://escenas/jugador_ui.tscn" id="10_u4y7y"]
 [ext_resource type="PackedScene" uid="uid://ceyurw2moikg2" path="res://escenas/inventario_controller.tscn" id="11_4a01a"]
@@ -22,6 +24,9 @@ gradient = SubResource("Gradient_hytxr")
 fill_from = Vector2(0.5, 0.6)
 fill_to = Vector2(0.5, 1)
 metadata/_snap_enabled = true
+
+[sub_resource type="Theme" id="Theme_78vvm"]
+default_font_size = 0
 
 [node name="escena principal" type="Node3D" unique_id=1018523294]
 script = ExtResource("1_hvxa3")
@@ -89,6 +94,52 @@ flip_v = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
 
 [node name="Jugador_UI" parent="." unique_id=1673448679 instance=ExtResource("10_u4y7y")]
+
+[node name="Panel_Opciones" type="CanvasLayer" parent="." unique_id=2066475504]
+
+[node name="panel_opciones" type="Panel" parent="Panel_Opciones" unique_id=363395914]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_70khi")
+
+[node name="GridContainer" type="GridContainer" parent="Panel_Opciones/panel_opciones" unique_id=883733054]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -130.0
+offset_right = 100.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_78vvm")
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 32
+
+[node name="Button" type="Button" parent="Panel_Opciones/panel_opciones/GridContainer" unique_id=99233943]
+layout_mode = 2
+theme = ExtResource("8_hvxa3")
+theme_override_font_sizes/font_size = 35
+text = "Gracias por testear!"
+
+[node name="reiniciar_escena" type="Button" parent="Panel_Opciones/panel_opciones/GridContainer" unique_id=900528056]
+layout_mode = 2
+theme = ExtResource("8_hvxa3")
+theme_override_font_sizes/font_size = 35
+text = "Reiniciar"
+
+[node name="boton_salir" type="Button" parent="Panel_Opciones/panel_opciones/GridContainer" unique_id=220270150]
+layout_mode = 2
+theme = ExtResource("8_hvxa3")
+theme_override_font_sizes/font_size = 35
+text = "Salir"
 
 [node name="Inventario_Controller" parent="." unique_id=822035638 instance=ExtResource("11_4a01a")]
 

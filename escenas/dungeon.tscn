@@ -99,6 +99,15 @@ orientation = 0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7pjiq"]
 data = PackedVector3Array(0, -1.2099999, -1, 0, -1.2099999, 1, 0, 1.2099999, -1, 0, -1.2099999, 1, 0, 1.2099999, 1, 0, 1.2099999, -1)
 
+[sub_resource type="Environment" id="Environment_7pjiq"]
+background_mode = 3
+ambient_light_energy = 0.0
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.03
+fog_sky_affect = 0.242
+adjustment_enabled = true
+
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
@@ -514,3 +523,6 @@ transform = Transform3D(-0.69465846, 0.7193397, -3.144334e-08, 0, -4.371139e-08,
 
 [node name="Cadaver3" parent="cuerpos" unique_id=39231621 instance=ExtResource("28_lmhtd")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -19.43129, -1.0413293, -20.223583)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=785322954 groups=["world_environment"]]
+environment = SubResource("Environment_7pjiq")

@@ -2,8 +2,8 @@ extends Panel
 @onready var boton_salir: Button = $GridContainer/boton_salir
 @onready var reiniciar_escena: Button = $GridContainer/reiniciar_escena
 var mostrando_opciones: bool = false
-@onready var dialogo: RichTextLabel = $"../dialogo"
-@onready var texto_plano: RichTextLabel = $"../texto_plano"
+@onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
+@onready var texto_plano: RichTextLabel =get_tree().get_first_node_in_group("texto_plano")
 @onready var jugador : CharacterBody3D = get_tree().get_first_node_in_group("jugador")
 var inv_ui
 
