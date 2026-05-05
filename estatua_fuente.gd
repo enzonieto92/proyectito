@@ -1,5 +1,6 @@
 extends Node3D
 var dialogo 
+var texto_plano
 var sprite_arma
 var daga_colocada : bool = false
 @onready var daga_ritual: MeshInstance3D = $area_vision/daga_ritual
@@ -10,6 +11,7 @@ var daga_colocada : bool = false
 var player_entered = false
 func _ready() -> void:
 	dialogo = get_tree().get_first_node_in_group("dialogo")
+	texto_plano = get_tree().get_first_node_in_group("texto_plano")
 	sprite_arma = get_tree().get_first_node_in_group("sprite_arma")
 func puede_interactuar() -> bool:
 	return player_entered
@@ -19,8 +21,12 @@ func interactuar(player):
 		if material == null:
 			material = mujer.mesh.surface_get_material(1).duplicate()
 			mujer.set_surface_override_material(1, material)
+		const MAGICA = preload("uid://fabbshgqd5uo")
+		AudioManager.fade_out(1, 2)
 		var tween = create_tween()
 		tween.tween_property(material, "albedo_color", Color(0.43, 0.047, 0.086, 0.494), 3.0)
+		AudioManager.cambiar_ambiente(1, MAGICA, 1)
+		AudioManager.fade_in(1, -24, 3)
 		area_vision.disabled = true
 		area_interaccion.monitoring = false
 	if player.arma != null:

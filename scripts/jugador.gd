@@ -215,9 +215,10 @@ func _process(_delta):
 		armadura_total = armadura
 
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
-		if objeto_actual != _ultimo_objeto:
+		var nuevo_texto = _calcular_texto_interaccion()
+		if objeto_actual != _ultimo_objeto or nuevo_texto != _ultimo_texto:
 			_ultimo_objeto = objeto_actual
-			_ultimo_texto = _calcular_texto_interaccion()
+			_ultimo_texto = nuevo_texto
 			texto_plano.show_text(_ultimo_texto)
 		texto_plano.visible = true
 	else:
@@ -262,14 +263,12 @@ func _calcular_texto_interaccion() -> String:
 	elif objeto_actual.is_in_group("recogibles"):
 		return "(E) Agarrar"
 	elif objeto_actual.is_in_group("estatua"):
-		if arma != null:
-			if arma.nombre == "Daga Ritual":
-				return "(E) Colocar"
+		if objeto_actual.daga_colocada:
+			return "(E) Cortarse"
+		elif arma != null and arma.nombre == "Daga Ritual":
+			return "(E) Colocar"
 		else:
-			if objeto_actual.daga_colocada == true:
-				return "(E) Cortarse"
-			else:
-				return "(E) Inspeccionar"
+			return "(E) Inspeccionar"
 	return "(E) Interactuar"
 
 var last_step_time := 0.0
