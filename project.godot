@@ -51,6 +51,8 @@ jugador=""
 dialogo=""
 sprite_secundaria=""
 estatua=""
+efecto_magia=""
+world_environment=""
 
 [importer_defaults]
 

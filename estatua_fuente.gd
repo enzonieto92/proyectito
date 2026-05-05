@@ -33,6 +33,7 @@ func apagar_antorchas():
 	)
 func interactuar(player):
 	if daga_colocada == true:
+		get_tree().get_first_node_in_group("efecto_magia").activar(4.0)
 		apagar_antorchas()
 		var material = mujer.get_surface_override_material(1)
 		if material == null:
