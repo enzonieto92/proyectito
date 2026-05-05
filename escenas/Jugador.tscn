@@ -706,7 +706,6 @@ transitions = ["Start", "caminar", SubResource("AnimationNodeStateMachineTransit
 graph_offset = Vector2(-103, 55)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1udw8"]
-graph_offset = Vector2(-810.6199, 34.80165)
 nodes/output/position = Vector2(620, 100)
 nodes/movimiento/node = SubResource("AnimationNodeStateMachine_3wdqr")
 nodes/movimiento/position = Vector2(-560, 80)

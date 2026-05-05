@@ -132,16 +132,20 @@ func attack_behavior() -> void:
 	animation_player.play("attack")
 	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 
-func _on_attack_finished(_anim: String) -> void:
+func _on_attack_finished(anim: String) -> void:
+	if anim != "attack":
+		return
 	animation_vector = Vector3.ZERO
 	_en_cooldown = true
 	animation_player.play("chase")
-	get_tree().create_timer(1.0).timeout.connect(_on_cooldown_finished, CONNECT_ONE_SHOT)
-
+	get_tree().create_timer(3.0).timeout.connect(_on_cooldown_finished, CONNECT_ONE_SHOT)
+	
 func _on_cooldown_finished() -> void:
 	_en_cooldown = false
 	_atacando_cooldown = false
-
+	var raycast = get_node_or_null("raycast_enemigo")  # ajustá el nombre
+	if raycast:
+		raycast.ya_golpeo = false
 func _on_area_deteccion_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jugador"):
 		sonido_enemigo.stream = SONIDO_ENEMIGO

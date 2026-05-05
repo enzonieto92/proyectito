@@ -7,7 +7,6 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jugador"):
-		print ("entered")
 		audio.volume_db = 0
 		audio.attenuation_filter_db = 0
 

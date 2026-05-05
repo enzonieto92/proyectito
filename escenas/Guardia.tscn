@@ -422,7 +422,6 @@ autoplay = true
 max_distance = 12.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1064882854]
-debug_enabled = true
 
 [node name="raycast_vision" type="RayCast3D" parent="." unique_id=966443226]
 target_position = Vector3(0, 0, -6)

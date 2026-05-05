@@ -177,8 +177,3 @@ layout_mode = 2
 theme = ExtResource("8_wndoy")
 theme_override_font_sizes/font_size = 35
 text = "Salir"
-
-[node name="Label" type="Label" parent="." unique_id=386470719 groups=["label_ui"]]
-offset_right = 349.0
-offset_bottom = 121.0
-theme_override_font_sizes/font_size = 31

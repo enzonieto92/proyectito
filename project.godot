@@ -22,6 +22,10 @@ boot_splash/use_filter=false
 
 buses/default_bus_layout="uid://cirqksb6w5hpv"
 
+[autoload]
+
+AudioManager="*uid://c4wtq6lqbsc18"
+
 [display]
 
 window/size/mode=3

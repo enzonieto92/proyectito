@@ -13,7 +13,6 @@ extends CharacterBody3D
 @onready var texto_plano: RichTextLabel = get_tree().get_first_node_in_group("texto_plano")
 @onready var jugador_ui: CanvasLayer = get_tree().get_first_node_in_group("jugador_ui")
 @onready var animaciones: AnimationPlayer = $animaciones
-@onready var label_debug: Label = jugador_ui.get_node("Label")  # ✅ onready en vez de get_node cada frame
 @onready var blood_splash = jugador_ui.get_node("blood_splash")  # ✅ onready
 @onready var go_screen = jugador_ui.get_node("game_over_screen")  # ✅ onready
 @onready var camara_controller = $camara_controller  # ✅ onready para shake
@@ -25,7 +24,6 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @export var stamina: float
 @export var golpeando = false
 @export var recibiendo_damage = false
-@export var JUMP_VELOCITY = 3.5
 @export var vida_max: float
 @export var armadura: float
 @export var peso: float
@@ -39,6 +37,7 @@ var corriendo = false
 var puede_correr: bool = false
 var objeto_actual = null
 var SPEED: float = 2.5
+const JUMP_VELOCITY = 3.5
 const mouse_sensitivity = 0.002
 var pitch := 0.0
 var arma: Arma = null
@@ -215,9 +214,6 @@ func _process(_delta):
 	elif not bloqueando:
 		armadura_total = armadura
 
-	if arma != null:
-		label_debug.text = str(bloqueando) + " armadura total: " + str(armadura_total) + ", Armadura Arma: " + str(arma.armadura)
-
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		if objeto_actual != _ultimo_objeto:
 			_ultimo_objeto = objeto_actual
@@ -236,13 +232,27 @@ func _process(_delta):
 	if not _vida_muerto and vida <= 0:
 		_vida_muerto = true
 		muerto = true  # ← agregar
-		go_screen.visible = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # opcional
-		var tween = create_tween()
-		tween.tween_property(go_screen, "modulate:a", 1.0, 2)
+		pantalla_muerte()
 		
+func pantalla_muerte():
+	muerto = true
+	velocity = Vector3.ZERO
+	stop_footstep()
+	animaciones.stop()
+	go_screen.visible = true
+	const GAMEOVER = preload("uid://dxoideatl8kpi")
+	AudioManager.detener_todo()
+	AudioManager.cambiar_ambiente(1, GAMEOVER, 1)
+	AudioManager.fade_in(1, -20.0, 1)  # arranca en silencio y sube
+	
+	var tween = create_tween()
+	tween.tween_property(go_screen, "modulate:a", 1.0, 4)
+	tween.tween_property(go_screen, "modulate:v", 0.0, 4)
+	tween.tween_callback(func():
+		var fade = AudioManager.fade_out(1, 2)
+		fade.tween_callback(get_tree().change_scene_to_file.bind("res://escenas/escena_principal.tscn"))
+	)
 func _calcular_texto_interaccion() -> String:
-	print(objeto_actual)
 	if objeto_actual.is_in_group("puertas"):
 		return "(E) Cerrar" if objeto_actual.abierta else "(E) Abrir"
 	elif objeto_actual.is_in_group("hoja_papel"):

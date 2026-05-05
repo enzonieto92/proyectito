@@ -11,6 +11,7 @@ func _process(_delta: float) -> void:
 	if is_colliding() and not ya_golpeo:
 		var obj = get_collider()
 		if obj.is_in_group("jugador"):
+			print ("golpeando", ya_golpeo)
 			ya_golpeo = true        # ← bloquear inmediatamente
 			set_enabled(false)
 			obj.recibir_damage(enemigo.damage)

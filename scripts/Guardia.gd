@@ -1,11 +1,11 @@
 extends CharacterBody3D
 
 const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
-const SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
+var  SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
 const SONIDO_ENEMIGO = preload("uid://dehsfh1pliac7")
 const SONIDO_MUERTE = preload("res://sonido/muerte_guardia.mp3")
 
-@onready var player: CharacterBody3D = $"../player"
+@onready var player: CharacterBody3D = $"../../player"
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
@@ -152,7 +152,7 @@ func _on_attack_finished(_anim: String) -> void:
 func _on_cooldown_finished() -> void:
 	_en_cooldown = false
 	_atacando_cooldown = false
-	raycast_enemigo.ya_golpeo = false  # ← nombre del nodo que tengas
+	raycast_enemigo.ya_golpeo = false # ← nombre del nodo que tengas
 
 
 func dying_behavior() -> void:
@@ -216,7 +216,6 @@ func rastrear() -> void:
 		return
 
 	if coll.is_in_group("puertas") and not _puerta_cooldown:  # ← agregado
-		print("golpeando puerta (rastrear)")
 		golpear_puerta(coll)
 
 func chequear_puerta_en_camino() -> void:
@@ -230,7 +229,6 @@ func chequear_puerta_en_camino() -> void:
 		return
 	var coll = raycast_vision.get_collider()
 	if coll.is_in_group("puertas"):
-		print("golpeando puerta (persecucion)")
 		golpear_puerta(coll)
 
 func golpear_puerta(coll: Node) -> void:

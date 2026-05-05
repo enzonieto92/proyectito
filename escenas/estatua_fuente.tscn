@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://barttxo1dg4v8" path="res://objetos glb/Estatua-fuente_water-texture.png" id="4_ujmjx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gky2i"]
-radius = 0.13027285
+radius = 0.24972577
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujmjx"]
 transparency = 1

@@ -30,7 +30,9 @@ func interactuar(player):
 			sprite_arma.texture = null
 			player.inventario_controller.remover_item_de_weapon_slot()
 			daga_colocada = true
-		
+		else:
+			dialogo.visible = true
+			dialogo.show_text("Parece que esta rezando, o ¿rogando?")
 	else:
 		dialogo.visible = true
 		dialogo.show_text("Parece que esta rezando, o ¿rogando?")

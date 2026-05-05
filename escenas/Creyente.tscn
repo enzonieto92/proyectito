@@ -422,13 +422,13 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g7x46"]
 height = 1.2640686
-radius = 2.8930664
+radius = 6.765625
 
 [node name="Creyente" type="CharacterBody3D" unique_id=1587185498 groups=["enemigos"]]
 rotation_order = 0
 script = ExtResource("1_xebgr")
 vida = 40.0
-attack_range = 1.5
+attack_range = 2.0
 max_damage = 15.0
 min_damage = 9.0
 
@@ -480,7 +480,6 @@ autoplay = true
 max_distance = 12.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=616496208]
-debug_enabled = true
 
 [node name="sonido_golpe" type="AudioStreamPlayer" parent="." unique_id=876724776]
 
