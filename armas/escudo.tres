@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cd84ee4s24j4g" path="res://scripts/secundaria.gd" id="1_0l3y1"]
 [ext_resource type="Texture2D" uid="uid://crp5a4m4r0e1b" path="res://texturas/Armas/Escudoredondo_item.png" id="1_c27h7"]
-[ext_resource type="Texture2D" uid="uid://n27s04srqv1h" path="res://texturas/Armas/Escudoredondo.png" id="3_s7vih"]
+[ext_resource type="Texture2D" uid="uid://5oxtoeqbbsxy" path="res://texturas/Armas/Escudoredondo-agarre.png" id="3_c27h7"]
 
 [resource]
 script = ExtResource("1_0l3y1")
 nombre = "Escudo"
 icono = ExtResource("1_c27h7")
-textura = ExtResource("3_s7vih")
+textura = ExtResource("3_c27h7")
 size = Vector2i(2, 2)
 weight = 5.0
 armadura = 3

@@ -248,4 +248,7 @@ func _gui_input(event: InputEvent):
 
 func _intentar_equipar():
 	var inventario = get_tree().get_first_node_in_group("inventario_controller")
-	inventario.slot_mano_derecha.equipar(item)
+	if item.tipo == Arma.Tipo.ARMA:
+		inventario.slot_mano_derecha.equipar(item)
+	elif item.tipo == Arma.Tipo.SECUNDARIA:
+			inventario.slot_secundaria.equipar(item) 

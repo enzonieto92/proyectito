@@ -23,7 +23,36 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	if not ocupado or drag_activo: return
 	color_rect_2.modulate = Color.WHITE
+func equipar(nuevo_item) -> bool:
+	if ocupado:
+		return false
+	if nuevo_item.tipo != Arma.Tipo.SECUNDARIA:
+		return false
 
+	var inventario = get_tree().get_first_node_in_group("inventario_controller")
+	inventario.remover_item_sin_actualizar_peso(nuevo_item, nuevo_item.grid_pos)
+
+	if nuevo_item.visual_node:
+		nuevo_item.visual_node.queue_free()
+		nuevo_item.visual_node = null
+	if nuevo_item.visual_bg:
+		nuevo_item.visual_bg.queue_free()
+		nuevo_item.visual_bg = null
+
+	item = nuevo_item
+	ocupado = true
+
+	var jugador = get_tree().get_first_node_in_group("jugador")
+	jugador.secundaria = item
+	jugador.armadura += item.armadura
+
+	_mostrar_icono()
+
+	if sprite_secundaria:
+		sprite_secundaria.texture = item.textura
+
+	inventario.actualizar_label_peso()
+	return true
 func _get_drag_data(_at_position: Vector2):
 	if not ocupado:
 		return null

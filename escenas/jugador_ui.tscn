@@ -164,13 +164,13 @@ theme_override_constants/v_separation = 32
 layout_mode = 2
 theme = ExtResource("8_wndoy")
 theme_override_font_sizes/font_size = 35
-text = "Opciones"
+text = "Gracias por testear!"
 
 [node name="reiniciar_escena" type="Button" parent="panel_opciones/GridContainer" unique_id=826909234]
 layout_mode = 2
 theme = ExtResource("8_wndoy")
 theme_override_font_sizes/font_size = 35
-text = "Reiniciar Escena"
+text = "Reiniciar"
 
 [node name="boton_salir" type="Button" parent="panel_opciones/GridContainer" unique_id=1794587381]
 layout_mode = 2

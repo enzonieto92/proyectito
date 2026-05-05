@@ -16,8 +16,12 @@ func _ready() -> void:
 func salir():
 	get_tree().quit()
 
+
 func restart():
-	get_tree().reload_current_scene()
+	mostrando_opciones = false
+	_actualizar_ui()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://escenas/nivel_1.tscn")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") and not event.is_echo():

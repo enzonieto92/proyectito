@@ -10,8 +10,8 @@ var slot_size: Vector2 = Vector2.ZERO
 
 
 func _ready():
-	grid_width = 6
-	grid_height = 6
+	grid_width = 4
+	grid_height = 4
 	columns = grid_width
 	
 	for x in range(grid_width):

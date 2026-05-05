@@ -3,12 +3,6 @@ extends StaticBody3D
 @export var secundaria: Secundaria
 @onready var sprite: MeshInstance3D = $sprite
 
-func _ready() -> void:
-	var material = StandardMaterial3D.new()
-	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_texture = secundaria.textura
-	sprite.set_surface_override_material(0, material)
 var player_entered = false
 func puede_interactuar() -> bool:
 	return player_entered

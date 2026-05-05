@@ -4,6 +4,7 @@ extends Node
 @onready var label_peso: Label = $CanvasLayer/Inventario_UI/panel_mochila/label_peso
 @export var peso_maximo: float = 20.0
 @onready var slot_mano_derecha: WeaponSlot = $CanvasLayer/Inventario_UI/panel_equipo/slot_mano_derecha
+@onready var slot_secundaria: SecundarySlot = $CanvasLayer/Inventario_UI/panel_equipo/slot_mano_secundaria
 
 func _ready():
 	actualizar_label_peso()

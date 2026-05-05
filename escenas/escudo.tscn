@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgah05n5bn6mf" path="res://scripts/escudo.gd" id="1_jm0py"]
 [ext_resource type="Resource" uid="uid://cbfetsu1038cn" path="res://armas/escudo.tres" id="2_51k0r"]
+[ext_resource type="Texture2D" uid="uid://n27s04srqv1h" path="res://texturas/Armas/Escudoredondo.png" id="3_xbnqo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
 height = 1.1035156
@@ -10,7 +11,13 @@ height = 1.1035156
 height = 1.3969727
 radius = 1.1918945
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51k0r"]
+transparency = 1
+albedo_texture = ExtResource("3_xbnqo")
+texture_filter = 0
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
+material = SubResource("StandardMaterial3D_51k0r")
 size = Vector2(1, 1)
 
 [node name="escudo" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]
