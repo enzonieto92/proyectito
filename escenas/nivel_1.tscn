@@ -158,7 +158,7 @@ bus = &"Ambientales"
 playback_type = 1
 
 [node name="ambientales_stream2" type="AudioStreamPlayer" parent="." unique_id=1688710045]
-volume_db = -38.182
-pitch_scale = 0.6
+volume_db = -31.009
+pitch_scale = 0.7
 bus = &"Ambientales"
 playback_type = 1

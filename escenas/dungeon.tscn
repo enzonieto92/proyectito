@@ -48,7 +48,7 @@ detail_sample_distance = 1.0
 filter_ledge_spans = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7ta8"]
-render_priority = -1
+render_priority = -4
 transparency = 1
 albedo_texture = ExtResource("14_b064s")
 texture_filter = 0
@@ -63,6 +63,7 @@ load_path = "res://.godot/imported/sangre1.png-105c2bb327067a67c5a179ed9dd38b66.
 load_path = "res://.godot/imported/sangre1_normales.png-add2508e7413fa78dadc447c2fc98671.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffsro"]
+render_priority = -4
 transparency = 1
 albedo_texture = SubResource("CompressedTexture2D_61nbk")
 normal_texture = SubResource("CompressedTexture2D_b064s")
@@ -74,6 +75,7 @@ size = Vector2(2.5, 2.5)
 orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b064s"]
+render_priority = -4
 transparency = 1
 cull_mode = 2
 albedo_texture = ExtResource("13_61nbk")
@@ -104,10 +106,9 @@ background_mode = 3
 ambient_light_energy = 0.0
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
-fog_density = 0.03
+fog_density = 0.04
 fog_sky_affect = 0.242
 adjustment_enabled = true
-adjustment_brightness = 1.3
 
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
 

@@ -747,10 +747,10 @@ debug_shape_thickness = 1
 [node name="SpotLight3D" type="SpotLight3D" parent="camara_controller/camara_player" unique_id=2060468858]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022611976, 0.28595096)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.245
-light_volumetric_fog_energy = 9.065
-spot_range = 13.549277
-spot_angle = 45.55635
+light_energy = 0.5
+light_volumetric_fog_energy = 9.0
+spot_range = 12.7385435
+spot_angle = 83.9693
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881, 0)
