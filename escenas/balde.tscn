@@ -137,6 +137,7 @@ stream = ExtResource("4_to542")
 max_db = 0.0
 autoplay = true
 max_distance = 3.0
+bus = &"Ambientales"
 area_mask = 0
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

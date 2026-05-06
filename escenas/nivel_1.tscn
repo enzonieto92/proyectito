@@ -143,19 +143,22 @@ text = "Salir"
 
 [node name="Inventario_Controller" parent="." unique_id=822035638 instance=ExtResource("11_4a01a")]
 
-[node name="sonido_ambiente_1" type="AudioStreamPlayer" parent="." unique_id=1151365499]
+[node name="Musica_stream" type="AudioStreamPlayer" parent="." unique_id=1151365499]
 volume_db = -12.656
 pitch_scale = 0.2
 autoplay = true
+bus = &"Musica"
 playback_type = 1
 
-[node name="sonido_ambiente_2" type="AudioStreamPlayer" parent="." unique_id=1114678375]
+[node name="ambientales_stream" type="AudioStreamPlayer" parent="." unique_id=1114678375]
 volume_db = -24.212
 pitch_scale = 0.5
 autoplay = true
+bus = &"Ambientales"
 playback_type = 1
 
-[node name="sonido_ambiente_3" type="AudioStreamPlayer" parent="." unique_id=1688710045]
+[node name="ambientales_stream2" type="AudioStreamPlayer" parent="." unique_id=1688710045]
 volume_db = -38.182
 pitch_scale = 0.6
+bus = &"Ambientales"
 playback_type = 1

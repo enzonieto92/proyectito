@@ -478,6 +478,7 @@ stream = ExtResource("8_dhj0k")
 volume_db = 19.341
 autoplay = true
 max_distance = 12.0
+bus = &"Ambientales"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=616496208]
 

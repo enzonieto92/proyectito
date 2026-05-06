@@ -10,6 +10,7 @@ var daga_colocada : bool = false
 @onready var antorcha_16: Node3D = $"../antorchas/antorcha16"
 @onready var antorcha_17: Node3D = $"../antorchas/antorcha17"
 @onready var sfx_sonido: AudioStreamPlayer3D = $SFX_sonido
+@onready var sangre_particulas: GPUParticles3D = $sangre_particulas
 
 var player_entered = false
 func _ready() -> void:
@@ -33,6 +34,7 @@ func apagar_antorchas():
 	)
 func interactuar(player):
 	if daga_colocada == true:
+		sangre_particulas.emitting = true
 		get_tree().get_first_node_in_group("efecto_magia").activar(8.0)
 		apagar_antorchas()
 		var material = mujer.get_surface_override_material(1)
@@ -43,11 +45,14 @@ func interactuar(player):
 		AudioManager.fade_out(1, 2)
 		var tween = create_tween()
 		tween.tween_property(material, "albedo_color", Color(0.43, 0.047, 0.086, 0.494), 3.0)
-
 		AudioManager.cambiar_ambiente(1, MAGICA, 1)
 		AudioManager.fade_in(1, -24, 3)
 		area_vision.disabled = true
 		area_interaccion.monitoring = false
+		# apaga la sangre al final de la transicion, no inmediatamente
+		tween.tween_callback(func():
+			sangre_particulas.emitting = false
+		)
 	if player.arma != null:
 		if player.arma.nombre == "Daga Ritual":
 			player.arma = null
