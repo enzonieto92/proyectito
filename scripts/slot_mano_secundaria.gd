@@ -48,7 +48,6 @@ func equipar(nuevo_item) -> bool:
 	var jugador = get_tree().get_first_node_in_group("jugador")
 	jugador.secundaria = item
 	jugador.armadura_total = jugador.armadura +  item.armadura
-	print ("equipando ", item.armadura, "armadura total ", jugador.armadura_total )
 	_mostrar_icono()
 
 	if sprite_secundaria:

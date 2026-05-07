@@ -13,13 +13,13 @@ extends CharacterBody3D
 @onready var texto_plano: RichTextLabel = get_tree().get_first_node_in_group("texto_plano")
 @onready var jugador_ui: CanvasLayer = get_tree().get_first_node_in_group("jugador_ui")
 @onready var animaciones: AnimationPlayer = $animaciones
-@onready var blood_splash = jugador_ui.get_node("blood_splash")  # ✅ onready
-@onready var go_screen = jugador_ui.get_node("game_over_screen")  # ✅ onready
-@onready var camara_controller = $camara_controller  # ✅ onready para shake
+@onready var blood_splash = jugador_ui.get_node("blood_splash")
+@onready var go_screen = jugador_ui.get_node("game_over_screen")
+@onready var camara_controller = $camara_controller
+@onready var hit_sound: AudioStreamPlayer3D = $hit_sound
+@onready var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma
 
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
-@onready var hit_sound: AudioStreamPlayer3D = $hit_sound
-@onready var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma  # ✅ onready
 
 @export var stamina: float
 @export var golpeando = false
@@ -28,6 +28,7 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @export var armadura: float
 @export var peso: float
 @export var bloqueando = false
+var _ultima_armadura_debug: float = -1.0
 var stamina_agotada: bool = false
 var vida: float
 var rebotar_golpe = false
@@ -53,30 +54,40 @@ var footstep_sounds = [
 	preload("uid://cj0w3fingavab")
 ]
 
-# ✅ cache para evitar recalcular texto cada frame
 var _ultimo_objeto: Object = null
 var _ultimo_texto: String = ""
 var _vida_muerto := false
-var muerto := false  # ← nueva
+var muerto := false
+
 func cambiar_pitch_swing():
-	sonido_arma.pitch_scale = randf_range(0.7, 1.3)  # ✅ usa onready
+	sonido_arma.pitch_scale = randf_range(0.7, 1.3)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	total_damage.x = damage.x + damage_arma.x
 	total_damage.y = damage.y + damage_arma.y
 	vida = vida_max
-	animaciones.play_spawn()  # ← acá
+	animaciones.play_spawn()
+
 func recibir_damage(_damage):
 	recibiendo_damage = true
-	camara_controller.shake(0.05, 0.5, 60.0)
-	hit_sound.play()
 	var reduccion = armadura_total / (armadura_total + CONSTANTE_ARMADURA)
-	vida -= int(_damage * (1.0 - reduccion))
+	var damage_final = int(_damage * (1.0 - reduccion))
+	var damage_bloqueado = int(_damage - damage_final)
+	vida -= damage_final
+	
+	if bloqueando:
+		print("armadura al bloquear: ", armadura_total)
+		print("daño: ", _damage)
+		print("daño recibido: ", damage_final)
+		print("daño bloqueado: ", damage_bloqueado)
+	
 	animaciones.on_block_hit()
 	reaccion_ui()
+	if !bloqueando:
+		camara_controller.shake(0.05, 0.5, 60.0)
+		hit_sound.play()
 	recibiendo_damage = false
-
 func reaccion_ui():
 	if !blood_splash.visible:
 		blood_splash.visible = true
@@ -87,7 +98,6 @@ func reaccion_ui():
 	atlas.region = Rect2(frame_index * FRAME_WIDTH, 0, FRAME_WIDTH, atlas.region.size.y)
 
 func _unhandled_input(event):
-	
 	if event.is_action_pressed("Inventario"):
 		if inventario_ui.visible:
 			cerrar_inventario()
@@ -108,7 +118,6 @@ func _unhandled_input(event):
 			else:
 				dialogo.visible_characters = dialogo.get_total_character_count()
 				return
-		
 		if objeto_actual and objeto_actual.has_method("interactuar"):
 			objeto_actual.interactuar(self)
 
@@ -131,8 +140,9 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 		move_and_slide()
 		return
-	if muerto:  # ← agregar
+	if muerto:
 		return
+
 	objeto_actual = null
 	if raycast.is_colliding():
 		var obj = raycast.get_collider()
@@ -210,21 +220,24 @@ func _physics_process(delta):
 	moving = velocity.length_squared() > 0.01 and is_on_floor()
 
 func _process(_delta):
-	if arma != null and bloqueando:
-		armadura_total = armadura + arma.armadura
-	elif not bloqueando:
-		var bonus_secundaria = secundaria.armadura if secundaria != null else 0
-		armadura_total = armadura + bonus_secundaria
+	var armadura_pasiva_secundaria = secundaria.armadura if secundaria != null else 0
+	var armadura_bloqueo_secundaria = secundaria.armadura if secundaria != null else 0
+	var armadura_bloqueo_arma = arma.armadura if arma != null and bloqueando and secundaria == null else 0
+
+	armadura_total = armadura + armadura_pasiva_secundaria
+	if bloqueando:
+		armadura_total += armadura_bloqueo_secundaria + armadura_bloqueo_arma
+		if armadura_total != _ultima_armadura_debug:
+			_ultima_armadura_debug = armadura_total
+			print("armadura_total: ", armadura_total)
 
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
-		var nuevo_texto = _calcular_texto_interaccion()
-		if objeto_actual != _ultimo_objeto or nuevo_texto != _ultimo_texto:
+		if objeto_actual != _ultimo_objeto:
 			_ultimo_objeto = objeto_actual
-			_ultimo_texto = nuevo_texto
+			_ultimo_texto = _calcular_texto_interaccion()
 			texto_plano.show_text(_ultimo_texto)
 		texto_plano.visible = true
 	else:
-		# ✅ siempre ocultar si no hay objeto, sin importar el cache
 		texto_plano.ocultar()
 		_ultimo_objeto = null
 		_ultimo_texto = ""
@@ -234,9 +247,9 @@ func _process(_delta):
 
 	if not _vida_muerto and vida <= 0:
 		_vida_muerto = true
-		muerto = true  # ← agregar
+		muerto = true
 		pantalla_muerte()
-		
+
 func pantalla_muerte():
 	muerto = true
 	velocity = Vector3.ZERO
@@ -246,8 +259,7 @@ func pantalla_muerte():
 	const GAMEOVER = preload("uid://dxoideatl8kpi")
 	AudioManager.detener_todo()
 	AudioManager.cambiar_ambiente(1, GAMEOVER, 1)
-	AudioManager.fade_in(1, -20.0, 1)  # arranca en silencio y sube
-	
+	AudioManager.fade_in(1, -20.0, 1)
 	var tween = create_tween()
 	tween.tween_property(go_screen, "modulate:a", 1.0, 4)
 	tween.tween_property(go_screen, "modulate:v", 0.0, 4)
@@ -255,6 +267,7 @@ func pantalla_muerte():
 		var fade = AudioManager.fade_out(1, 2)
 		fade.tween_callback(get_tree().change_scene_to_file.bind("res://escenas/escena_principal.tscn"))
 	)
+
 func _calcular_texto_interaccion() -> String:
 	if objeto_actual.is_in_group("puertas"):
 		return "(E) Cerrar" if objeto_actual.abierta else "(E) Abrir"
@@ -302,3 +315,5 @@ func activar_bloqueo():
 		bloqueando = true
 		if arma != null:
 			raycast_arma.enabled = true
+
+		

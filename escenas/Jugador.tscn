@@ -537,9 +537,6 @@ animation = &"bloquear"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lctvp"]
 animation = &"bloqueo_arma"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_op6lh"]
-animation = &"hit_bloqueado"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ooj51"]
 animation = &"idle"
 
@@ -555,14 +552,8 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ooj51"]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ghhxw"]
-switch_mode = 1
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bxkub"]
 switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_orh7j"]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6rshw"]
 switch_mode = 2
@@ -590,12 +581,13 @@ states/bloquear/node = SubResource("AnimationNodeAnimation_pvtpb")
 states/bloquear/position = Vector2(517, 110)
 states/bloqueo_arma/node = SubResource("AnimationNodeAnimation_lctvp")
 states/bloqueo_arma/position = Vector2(517, 267)
-states/hit_bloqueado/node = SubResource("AnimationNodeAnimation_op6lh")
-states/hit_bloqueado/position = Vector2(517, 214)
 states/rebotar/node = SubResource("AnimationNodeAnimation_ooj51")
 states/rebotar/position = Vector2(496, -28)
-transitions = ["Start", "atacar", SubResource("AnimationNodeStateMachineTransition_op6lh"), "Start", "atacar_horizontal", SubResource("AnimationNodeStateMachineTransition_ko7k4"), "atacar", "End", SubResource("AnimationNodeStateMachineTransition_pvtpb"), "atacar_horizontal", "End", SubResource("AnimationNodeStateMachineTransition_ooj51"), "Start", "hit_bloqueado", SubResource("AnimationNodeStateMachineTransition_ghhxw"), "Start", "bloqueo_arma", SubResource("AnimationNodeStateMachineTransition_bxkub"), "hit_bloqueado", "End", SubResource("AnimationNodeStateMachineTransition_orh7j"), "bloqueo_arma", "End", SubResource("AnimationNodeStateMachineTransition_6rshw"), "Start", "bloquear", SubResource("AnimationNodeStateMachineTransition_dp2ub"), "bloquear", "End", SubResource("AnimationNodeStateMachineTransition_8ptv5"), "Start", "rebotar", SubResource("AnimationNodeStateMachineTransition_0ddfj"), "rebotar", "End", SubResource("AnimationNodeStateMachineTransition_um2n4")]
-graph_offset = Vector2(166, -97)
+transitions = ["Start", "atacar", SubResource("AnimationNodeStateMachineTransition_op6lh"), "Start", "atacar_horizontal", SubResource("AnimationNodeStateMachineTransition_ko7k4"), "atacar", "End", SubResource("AnimationNodeStateMachineTransition_pvtpb"), "atacar_horizontal", "End", SubResource("AnimationNodeStateMachineTransition_ooj51"), "Start", "bloqueo_arma", SubResource("AnimationNodeStateMachineTransition_bxkub"), "bloqueo_arma", "End", SubResource("AnimationNodeStateMachineTransition_6rshw"), "Start", "bloquear", SubResource("AnimationNodeStateMachineTransition_dp2ub"), "bloquear", "End", SubResource("AnimationNodeStateMachineTransition_8ptv5"), "Start", "rebotar", SubResource("AnimationNodeStateMachineTransition_0ddfj"), "rebotar", "End", SubResource("AnimationNodeStateMachineTransition_um2n4")]
+graph_offset = Vector2(-38, -135)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_op6lh"]
+animation = &"hit_bloqueado"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxkub"]
 animation = &"caminar"
@@ -641,20 +633,28 @@ states/spawn/position = Vector2(415, 280)
 transitions = ["Start", "caminar", SubResource("AnimationNodeStateMachineTransition_ehok7"), "Start", "correr", SubResource("AnimationNodeStateMachineTransition_c267k"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_wvgm1"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_pdj80"), "caminar", "End", SubResource("AnimationNodeStateMachineTransition_p05sv"), "correr", "End", SubResource("AnimationNodeStateMachineTransition_6ghc4"), "Start", "spawn", SubResource("AnimationNodeStateMachineTransition_3wdqr"), "spawn", "End", SubResource("AnimationNodeStateMachineTransition_1udw8")]
 graph_offset = Vector2(-103, 55)
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_lctvp"]
+filter_enabled = true
+filters = ["", "camara_controller/camara_player:position", "pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria:playing", "pivote_secundaria:position"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1udw8"]
-graph_offset = Vector2(-845, 202)
+graph_offset = Vector2(-915.5443, 204.26187)
 nodes/output/position = Vector2(620, 100)
 nodes/movimiento/node = SubResource("AnimationNodeStateMachine_3wdqr")
 nodes/movimiento/position = Vector2(-560, 80)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_lctvp")
 nodes/TimeScale/position = Vector2(313.17203, 158.71123)
 nodes/ataque/node = SubResource("AnimationNodeStateMachine_ghhxw")
-nodes/ataque/position = Vector2(-560, 380)
+nodes/ataque/position = Vector2(-860, 400)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_lctvp")
 nodes/Add2/position = Vector2(20.460232, 194.8934)
 nodes/TimeScale_ataque/node = SubResource("AnimationNodeTimeScale_475hk")
 nodes/TimeScale_ataque/position = Vector2(-240, 320)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2", 0, &"movimiento", &"Add2", 1, &"TimeScale_ataque", &"TimeScale_ataque", 0, &"ataque"]
+nodes/bloquear/node = SubResource("AnimationNodeAnimation_op6lh")
+nodes/bloquear/position = Vector2(-860, 640)
+nodes/shot_bloquear/node = SubResource("AnimationNodeOneShot_lctvp")
+nodes/shot_bloquear/position = Vector2(-480, 360)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2", 0, &"movimiento", &"Add2", 1, &"TimeScale_ataque", &"TimeScale_ataque", 0, &"shot_bloquear", &"shot_bloquear", 0, &"ataque", &"shot_bloquear", 1, &"bloquear"]
 
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
 script = ExtResource("1_hqtel")
@@ -778,3 +778,6 @@ anim_player = NodePath("../animaciones")
 parameters/TimeScale/scale = 1.0
 parameters/Add2/add_amount = 1.0
 parameters/TimeScale_ataque/scale = 1.0
+parameters/shot_bloquear/active = false
+parameters/shot_bloquear/internal_active = false
+parameters/shot_bloquear/request = 0

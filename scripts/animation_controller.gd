@@ -29,7 +29,7 @@ func _ready():
 func _on_bloqueo_listo():
 	if defendiendo:
 		player.activar_bloqueo()
-
+		await get_tree().process_frame
 func resetear_estado() -> void:
 	animacion_en_curso = false
 	defendiendo = false
@@ -205,7 +205,9 @@ func _iniciar_bloqueo():
 	estaba_bloqueando = true
 
 func play_block_attack():
-	if ataque_sm.get_current_node() == "hit_bloqueado" or ataque_sm.get_current_node() == "bloqueo_arma":
+	if anim_tree["parameters/shot_bloquear/active"]:
 		return
+	anim_tree["parameters/shot_bloquear/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	
 	animacion_en_curso = true
-	_iniciar_bloqueo()
+	player.puede_correr = false
