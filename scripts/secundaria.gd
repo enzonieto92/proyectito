@@ -7,9 +7,8 @@ class_name Secundaria
 @export var icono: CompressedTexture2D
 @export var textura: CompressedTexture2D
 @export var descripcion: String = ""
-
 @export var damage : Vector2
-
+@export var durabilidad: int
 @export var weapon_size: float    
 
 # tamaño en la grilla (ej: 2x2)
@@ -22,6 +21,7 @@ class_name Secundaria
 enum Tipo {
 	CONSUMIBLE,
 	ARMA,
+	ESCUDO,
 	SECUNDARIA,
 	EQUIPO,
 	LLAVE,

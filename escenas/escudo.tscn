@@ -13,6 +13,7 @@ radius = 1.1918945
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51k0r"]
 transparency = 1
+cull_mode = 2
 albedo_texture = ExtResource("3_xbnqo")
 texture_filter = 0
 

@@ -28,9 +28,9 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @export var armadura: float
 @export var peso: float
 @export var bloqueando = false
-var armadura_total: float
 var stamina_agotada: bool = false
 var vida: float
+var rebotar_golpe = false
 var inventario_abierto = false
 var moving = false
 var corriendo = false
@@ -44,6 +44,7 @@ var arma: Arma = null
 var secundaria: Secundaria = null
 var CONSTANTE_ARMADURA: float = 100
 var damage: Vector2
+var armadura_total: float
 var damage_arma: Vector2
 var total_damage: Vector2
 var footstep_sounds = [
@@ -212,7 +213,8 @@ func _process(_delta):
 	if arma != null and bloqueando:
 		armadura_total = armadura + arma.armadura
 	elif not bloqueando:
-		armadura_total = armadura
+		var bonus_secundaria = secundaria.armadura if secundaria != null else 0
+		armadura_total = armadura + bonus_secundaria
 
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		var nuevo_texto = _calcular_texto_interaccion()

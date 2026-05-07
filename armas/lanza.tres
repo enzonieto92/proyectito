@@ -11,6 +11,7 @@ icono = ExtResource("1_1g2sc")
 textura = ExtResource("3_p32ka")
 armadura = 1
 damage = Vector2(12, 17)
+durabilidad = 50
 weapon_size = 1.8
 size = Vector2i(1, 4)
 weight = 2.5

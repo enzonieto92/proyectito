@@ -124,7 +124,7 @@ arma = ExtResource("16_i6a64")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16197205, -0.04922986, -0.069676876)
 navigation_mesh = SubResource("NavigationMesh_ovxel")
 
-[node name="Mapa" type="GridMap" parent="NavigationRegion3D" unique_id=928146224]
+[node name="Mapa" type="GridMap" parent="NavigationRegion3D" unique_id=928146224 groups=["paredes"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495, 0)
 mesh_library = ExtResource("7_61nbk")
 cell_size = Vector3(1, 0.5, 1)
@@ -135,7 +135,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="compuerta" parent="NavigationRegion3D/Mapa" unique_id=1535462391 instance=ExtResource("15_81g75")]
+[node name="compuerta" parent="NavigationRegion3D/Mapa" unique_id=1535462391 groups=["paredes"] instance=ExtResource("15_81g75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.086, -1, 3.824)
 
 [node name="decoracion" type="Node3D" parent="NavigationRegion3D" unique_id=1009839208]
@@ -235,6 +235,9 @@ mesh = SubResource("PlaneMesh_icv4q")
 
 [node name="escudo" parent="NavigationRegion3D/decoracion/otros/sangre" unique_id=1679895985 instance=ExtResource("12_7pjiq")]
 transform = Transform3D(0.9749789, -0.07085232, 0.21070366, 0, 0.9478463, 0.31872776, -0.22229731, -0.31075284, 0.9241302, 9.977682, -1.9950004, -40.0933)
+
+[node name="escudo2" parent="NavigationRegion3D/decoracion/otros/sangre" unique_id=855687408 instance=ExtResource("12_7pjiq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.572075, -0.9950001, 3.3720086)
 
 [node name="sillas" type="Node3D" parent="NavigationRegion3D/decoracion" unique_id=124610059]
 
@@ -372,7 +375,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.400303, -1.4866694, -19.2
 [node name="mesa_tortura" parent="NavigationRegion3D/decoracion" unique_id=1964371390 instance=ExtResource("23_01jbd")]
 transform = Transform3D(-0.41921443, 0, 0.9078872, 0, 1, 0, -0.9078872, 0, -0.41921443, -16, -1.4596957, 5.5464444)
 
-[node name="marcos_puertas" type="Node3D" parent="NavigationRegion3D" unique_id=630666997]
+[node name="marcos_puertas" type="Node3D" parent="NavigationRegion3D" unique_id=630666997 groups=["paredes"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495, 0)
 
 [node name="marco" parent="NavigationRegion3D/marcos_puertas" unique_id=396552226 instance=ExtResource("9_lmhtd")]

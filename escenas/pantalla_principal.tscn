@@ -5,11 +5,12 @@
 [ext_resource type="Script" uid="uid://c6xmj80feuai2" path="res://scripts/titulo.gd" id="3_uw7aw"]
 [ext_resource type="FontFile" uid="uid://bbphv524e86v1" path="res://otros/GallaeciaForte.ttf" id="3_wnfxn"]
 
-[sub_resource type="Theme" id="Theme_3ofuu"]
-default_font = ExtResource("2_terxd")
-
 [sub_resource type="Theme" id="Theme_1ajdi"]
 default_font = ExtResource("3_wnfxn")
+
+[sub_resource type="Theme" id="Theme_3ofuu"]
+default_font = ExtResource("2_terxd")
+default_font_size = 0
 
 [node name="Pantalla Principal" type="Control" unique_id=384989241]
 layout_mode = 3
@@ -19,21 +20,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_poj3a")
-
-[node name="Label" type="Label" parent="." unique_id=1984717929]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -194.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_3ofuu")
-theme_override_font_sizes/font_size = 39
-text = "Presiona enter"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="titulo" type="Label" parent="." unique_id=1764761044]
 modulate = Color(0.4041827, 0.050209656, 0.08526274, 1)
@@ -55,3 +41,18 @@ text = "Antes del rojo"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_uw7aw")
+
+[node name="Label" type="Label" parent="." unique_id=1984717929]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -194.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_3ofuu")
+theme_override_font_sizes/font_size = 29
+text = "Presiona enter"
+horizontal_alignment = 1
+vertical_alignment = 1

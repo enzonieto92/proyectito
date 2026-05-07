@@ -12,11 +12,11 @@ var armadura : int
 func _ready() -> void:
 	vida = int(jugador.vida)
 	damage = jugador.total_damage
-	armadura = int(jugador.armadura)
+	armadura = int(jugador.armadura_total)
 func _process(_delta: float) -> void:
 	vida = int(jugador.vida)
 	damage  = jugador.total_damage
-	armadura = int(jugador.armadura)
+	armadura = int(jugador.armadura_total)
 	label_vida.text = "VIDA " +str(vida)
 	label_armadura.text = "ARMADURA " +str(armadura)
 	label_damage.text = "DAÑO " + str(int(damage.x))+"-" + str(int(damage.y))

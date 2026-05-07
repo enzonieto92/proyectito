@@ -30,6 +30,9 @@ func equipar(nuevo_item) -> bool:
 		return false
 
 	var inventario = get_tree().get_first_node_in_group("inventario_controller")
+		# ← apagar hover antes de remover, igual que WeaponSlot
+	var slot_origen = inventario.grid_container.grid[nuevo_item.grid_pos.x][nuevo_item.grid_pos.y]
+	slot_origen._hover_item(nuevo_item, nuevo_item.grid_pos, false)
 	inventario.remover_item_sin_actualizar_peso(nuevo_item, nuevo_item.grid_pos)
 
 	if nuevo_item.visual_node:
@@ -44,8 +47,8 @@ func equipar(nuevo_item) -> bool:
 
 	var jugador = get_tree().get_first_node_in_group("jugador")
 	jugador.secundaria = item
-	jugador.armadura += item.armadura
-
+	jugador.armadura_total = jugador.armadura +  item.armadura
+	print ("equipando ", item.armadura, "armadura total ", jugador.armadura_total )
 	_mostrar_icono()
 
 	if sprite_secundaria:
@@ -106,7 +109,7 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 func _drop_data(_at_position: Vector2, data):
 	_drop_exitoso = true
 	color_rect_2.modulate = Color.WHITE
-	var inventario = get_tree().get_first_node_in_group("inventario")
+	var inventario = get_tree().get_first_node_in_group("inventario_controller")
 	inventario.remover_item(data["item"], data["item"].grid_pos)
 	item = data["item"]
 	var jugador = get_tree().get_first_node_in_group("jugador")
@@ -114,12 +117,11 @@ func _drop_data(_at_position: Vector2, data):
 	jugador.total_damage.x = (jugador.damage.x + item.damage.x)
 	jugador.total_damage.y = (jugador.damage.y + item.damage.y)
 	jugador.secundaria = item
-	jugador.armadura = jugador.armadura + item.armadura
+	jugador.armadura_total = jugador.armadura + item.armadura
 	ocupado = true
 	_mostrar_icono()
 	if sprite_secundaria:
 		sprite_secundaria.texture = item.textura
-
 func _notification(what):
 	if what == NOTIFICATION_DRAG_END:
 		drag_activo = false
@@ -132,10 +134,10 @@ func _notification(what):
 			if sprite_secundaria:
 				sprite_secundaria.texture = item.textura
 			if jugador:
-				jugador.armadura = _armadura_antes_drag  # 👈 restaura exacto
+				jugador.armadura_total = _armadura_antes_drag  # 👈 restaura exacto
 		elif _drop_exitoso and _item_en_drag != null:
 			if jugador:
-				jugador.armadura -= _item_en_drag.armadura  # 👈 resta solo si fue exitoso
+				jugador.armadura_total -= _item_en_drag.armadura  # 👈 resta solo si fue exitoso
 		_item_en_drag = null
 		_drop_exitoso = false
 		_armadura_antes_drag = 0  # 👈
@@ -151,8 +153,12 @@ func _mostrar_icono():
 	add_child(icon)
 
 func vaciar():  # 👈 solo visual, sin tocar armadura
+	var jugador = get_tree().get_first_node_in_group("jugador")
 	ocupado = false
 	item = null
 	color_rect_2.modulate = Color.WHITE
+	jugador.secundaria = null
+	jugador.armadura_total = jugador.armadura
+	
 	var existing = get_node_or_null("ItemIcon")
 	if existing: existing.queue_free()
