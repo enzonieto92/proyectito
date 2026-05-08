@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var secundaria: Secundaria
+@export var secundaria: Item
 @onready var sprite: MeshInstance3D = $sprite
 
 var player_entered = false

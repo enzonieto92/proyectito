@@ -191,7 +191,7 @@ func _iniciar_bloqueo():
 				ataque_sm.start("bloqueo_arma")
 		else:
 			ataque_sm.travel("bloqueo_arma")
-	elif player.secundaria != null and player.secundaria.Tipo.ESCUDO:
+	elif player.secundaria != null and player.secundaria is Escudo:
 		var blend_actual = anim_tree["parameters/Add2/add_amount"]
 		var nodo_actual = ataque_sm.get_current_node()
 		if nodo_actual == "bloquear":

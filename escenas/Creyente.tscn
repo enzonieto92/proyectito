@@ -422,7 +422,7 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g7x46"]
 height = 1.2640686
-radius = 6.765625
+radius = 5.3740234
 
 [node name="Creyente" type="CharacterBody3D" unique_id=1587185498 groups=["enemigos"]]
 rotation_order = 0

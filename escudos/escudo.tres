@@ -1,17 +1,14 @@
-[gd_resource type="Resource" script_class="Secundaria" format=3 uid="uid://cbfetsu1038cn"]
+[gd_resource type="Resource" script_class="Escudo" format=3 uid="uid://tc5yiqhvux2b"]
 
-[ext_resource type="Script" uid="uid://cd84ee4s24j4g" path="res://scripts/secundaria.gd" id="1_0l3y1"]
 [ext_resource type="Texture2D" uid="uid://crp5a4m4r0e1b" path="res://texturas/Armas/Escudoredondo_item.png" id="1_c27h7"]
+[ext_resource type="Script" uid="uid://xup5cjpbmm60" path="res://scripts/Escudo.gd" id="2_c27h7"]
 [ext_resource type="Texture2D" uid="uid://5oxtoeqbbsxy" path="res://texturas/Armas/Escudoredondo-agarre.png" id="3_c27h7"]
 
 [resource]
-script = ExtResource("1_0l3y1")
+script = ExtResource("2_c27h7")
 nombre = "Escudo"
 icono = ExtResource("1_c27h7")
 textura = ExtResource("3_c27h7")
-durabilidad = 200
 size = Vector2i(2, 2)
-weight = 5.0
-armadura = 30
-tipo = 2
-metadata/_custom_type_script = "uid://cd84ee4s24j4g"
+stackable = true
+metadata/_custom_type_script = "uid://bw8ib7rq5xuw5"

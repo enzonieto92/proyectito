@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Consumable" format=3 uid="uid://dni0ouuswkjrm"]
+
+[ext_resource type="Script" uid="uid://pqhmtp55g28p" path="res://scripts/Consumible.gd" id="1_6am7n"]
+
+[resource]
+script = ExtResource("1_6am7n")
+metadata/_custom_type_script = "uid://bw8ib7rq5xuw5"

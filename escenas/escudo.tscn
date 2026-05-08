@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqvgrcqxl00ha"]
 
 [ext_resource type="Script" uid="uid://dgah05n5bn6mf" path="res://scripts/escudo.gd" id="1_jm0py"]
-[ext_resource type="Resource" uid="uid://cbfetsu1038cn" path="res://armas/escudo.tres" id="2_51k0r"]
+[ext_resource type="Resource" uid="uid://tc5yiqhvux2b" path="res://escudos/escudo.tres" id="2_xbnqo"]
 [ext_resource type="Texture2D" uid="uid://n27s04srqv1h" path="res://texturas/Armas/Escudoredondo.png" id="3_xbnqo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
@@ -26,7 +26,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_jm0py")
-secundaria = ExtResource("2_51k0r")
+secundaria = ExtResource("2_xbnqo")
 
 [node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=330304897]
 shape = SubResource("CapsuleShape3D_tcnuu")

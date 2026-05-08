@@ -34,7 +34,7 @@ func _remover_arma(jugador):
 func equipar(nuevo_item) -> bool:
 	if ocupado:
 		return false
-	if nuevo_item.tipo != Arma.Tipo.ARMA:
+	if not nuevo_item is Arma:
 		return false
 
 	var inventario = get_tree().get_first_node_in_group("inventario_controller")
@@ -117,7 +117,7 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 		return false
 	if data.get("desde_weapon_slot", false):
 		return false
-	if data["item"].tipo != Arma.Tipo.ARMA:
+	if data["item"] is not Arma:
 		color_rect_2.modulate = Color(1.0, 0.593, 0.533, 0.78)
 		return false
 	if ocupado:

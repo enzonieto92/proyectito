@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://deqebrtynhpca"]
 
 [ext_resource type="Texture2D" uid="uid://c22vlv4pf7j0g" path="res://texturas/mosca_spritesheet.png" id="1_03tb0"]
-[ext_resource type="Script" uid="uid://cy7m5a5k40hw5" path="res://mosca_sprite.gd" id="2_yjam3"]
+[ext_resource type="Script" uid="uid://cy7m5a5k40hw5" path="res://scripts/mosca_sprite.gd" id="2_yjam3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cq50o"]
 atlas = ExtResource("1_03tb0")

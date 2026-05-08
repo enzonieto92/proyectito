@@ -1,18 +1,6 @@
 [gd_resource type="Resource" script_class="Arma" format=3 uid="uid://dwx1jm2fn5mwq"]
 
-[ext_resource type="Texture2D" uid="uid://xkiyec67711j" path="res://texturas/Armas/Maza_item.png" id="1_lbv0y"]
-[ext_resource type="Script" uid="uid://bw8ib7rq5xuw5" path="res://scripts/Arma.gd" id="1_x6ta6"]
-[ext_resource type="Texture2D" uid="uid://bx46fcqurj6s1" path="res://texturas/Armas/Maza.png" id="3_2j6du"]
+[ext_resource type="Script" uid="uid://csdw68mlqynea" path="res://scripts/Arma.gd" id="2_lbv0y"]
 
 [resource]
-script = ExtResource("1_x6ta6")
-nombre = "Maza"
-icono = ExtResource("1_lbv0y")
-textura = ExtResource("3_2j6du")
-armadura = 1
-damage = Vector2(19, 28)
-durabilidad = 80
-weapon_size = 1.0
-size = Vector2i(1, 3)
-weight = 3.0
-tipo = 1
+script = ExtResource("2_lbv0y")

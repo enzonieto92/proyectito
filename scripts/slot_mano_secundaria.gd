@@ -26,7 +26,7 @@ func _on_mouse_exited():
 func equipar(nuevo_item) -> bool:
 	if ocupado:
 		return false
-	if nuevo_item.tipo != Arma.Tipo.SECUNDARIA:
+	if not (nuevo_item is Secundaria or nuevo_item is Escudo):
 		return false
 
 	var inventario = get_tree().get_first_node_in_group("inventario_controller")
@@ -96,7 +96,7 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 		return false
 	if data.get("desde_weapon_slot", false):
 		return false
-	if data["item"].tipo != Arma.Tipo.SECUNDARIA:
+	if not (data["item"] is Secundaria or data["item"] is Escudo):
 		color_rect_2.modulate = Color(1.0, 0.593, 0.533, 0.78)
 		return false
 	if ocupado:
@@ -112,9 +112,6 @@ func _drop_data(_at_position: Vector2, data):
 	inventario.remover_item(data["item"], data["item"].grid_pos)
 	item = data["item"]
 	var jugador = get_tree().get_first_node_in_group("jugador")
-	jugador.damage_arma = Vector2(item.damage.x, item.damage.y)
-	jugador.total_damage.x = (jugador.damage.x + item.damage.x)
-	jugador.total_damage.y = (jugador.damage.y + item.damage.y)
 	jugador.secundaria = item
 	jugador.armadura_total = jugador.armadura + item.armadura
 	ocupado = true

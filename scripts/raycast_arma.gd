@@ -1,26 +1,30 @@
 extends RayCast3D
 var golpeando_enemigo = false
+var sonido_reproducido := false
 @onready var jugador: CharacterBody3D = get_tree().get_first_node_in_group("jugador")
 @onready var sonido_swing: AudioStreamPlayer = $"../sonido_swing"
 @onready var animaciones: AnimationPlayer 
-
 const HIT_METAL = preload("uid://n3w8dyh66sy4")
 const HIT_MADERA = preload("uid://fvpedxsvhad8")
 
 func _ready() -> void:
 	animaciones = jugador.get_node("animaciones")
+
 func _process(_delta: float) -> void:
 	if not jugador.golpeando:
 		golpeando_enemigo = false
+		sonido_reproducido = false
 		enabled = false
 		return
 
-	enabled = true
-	sonido_swing.play()
+	if not sonido_reproducido:
+		sonido_reproducido = true
+		sonido_swing.play()
+		enabled = true
 		
 	if is_colliding():
-		var collider = get_collider()  # 👈 primero obtenés el collider
-		enabled = false              # 👈 después desactivás
+		var collider = get_collider()
+		enabled = false
 		if collider.is_in_group("enemigos") and not golpeando_enemigo:
 			golpeando_enemigo = true
 			jugador.golpeando = false

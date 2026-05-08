@@ -41,8 +41,8 @@ var SPEED: float = 2.5
 const JUMP_VELOCITY = 3.5
 const mouse_sensitivity = 0.002
 var pitch := 0.0
-var arma: Arma = null
-var secundaria: Secundaria = null
+var arma: Item = null
+var secundaria: Item = null
 var CONSTANTE_ARMADURA: float = 100
 var damage: Vector2
 var armadura_total: float

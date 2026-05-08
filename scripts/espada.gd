@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var arma: Arma
+@export var arma: Item
 var player_entered = false
 
 func puede_interactuar() -> bool:

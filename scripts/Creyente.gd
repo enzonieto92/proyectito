@@ -11,7 +11,7 @@ const SONIDO_MUERTE = preload("res://sonido/dying_enemigo.mp3")  # ✅ preload e
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var sonido_enemigo: AudioStreamPlayer3D = $sonido_enemigo
 @onready var sonido_golpe: AudioStreamPlayer = $sonido_golpe  # ✅ nodo fijo en editor
-
+@onready var item
 @export var atacando: bool = false
 @export var vida: float
 @export var attack_range: float
@@ -21,7 +21,7 @@ const SONIDO_MUERTE = preload("res://sonido/dying_enemigo.mp3")  # ✅ preload e
 @export var salto = false
 
 var speed := 2.5
-var player_entered_area: bool = false
+var player_entered: bool = false
 var _en_cooldown := false
 var _atacando_cooldown := false
 var damage: int
@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 			salto = false
 	elif dist < attack_range:
 		attack_behavior()  # ✅ damage movido adentro
-	elif player_entered_area and not _en_cooldown:
+	elif player_entered and not _en_cooldown:
 		look_at_target()
 		chase_behavior()
 	else:
@@ -92,12 +92,6 @@ func recibir_damage(_damage) -> void:
 func dying_behavior() -> void:
 	if is_on_floor() and !died:
 		died = true  # ✅ primero para evitar doble ejecución
-		var colision = get_node("CollisionShape3D")
-		colision.disabled = true
-
-		var area = get_node_or_null("area_deteccion")
-		if area and area.monitoring:
-			area.monitoring = false
 
 		sonido_enemigo.stream = SONIDO_MUERTE  # ✅ preload
 		sonido_enemigo.volume_db = 40.0
@@ -113,12 +107,22 @@ func dying_behavior() -> void:
 
 func _on_dying_finished(_anim: String) -> void:
 	animation_player.pause()
-	var area = get_node_or_null("area_deteccion")
-	if area:
-		area.queue_free()
+
 	var colision = get_node_or_null("CollisionShape3D")
-	if colision:
-		colision.queue_free()
+	
+	colision.shape.height = 0.4
+	colision.position.y = position.y - 0.4
+func puede_interactuar() -> bool:
+	if died:
+		return player_entered
+	return false
+
+func interactuar(_player):
+	_agregar.call_deferred(_player)  # ✅ no bloquea el frame actual
+
+func _agregar(_player) -> void:
+	if await _player.inventario_controller.agregar_item(item):
+		queue_free()
 
 func attack_behavior() -> void:
 	if _atacando_cooldown:
@@ -151,8 +155,8 @@ func _on_area_deteccion_body_entered(body: Node3D) -> void:
 		sonido_enemigo.stream = SONIDO_ENEMIGO
 		sonido_enemigo.volume_db = -30.0
 		sonido_enemigo.play()
-		player_entered_area = true
+		player_entered = true
 
 func _on_area_deteccion_body_exited(body: Node3D) -> void:
 	if body.is_in_group("jugador"):
-		player_entered_area = false
+		player_entered = false
