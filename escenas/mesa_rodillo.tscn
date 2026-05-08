@@ -142,7 +142,7 @@ radius = 0.14794922
 transform = Transform3D(-4.3711385e-08, -4.3711392e-08, 1, -4.3711392e-08, 1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -0.026810028, 0.5189741, 0.48646015)
 mesh = SubResource("ArrayMesh_g3j1f")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="mesatortura1" unique_id=1130307005]
+[node name="StaticBody3D" type="StaticBody3D" parent="mesatortura1" unique_id=1130307005 groups=["maderas"]]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="mesatortura1/StaticBody3D" unique_id=534609138]
 transform = Transform3D(1, 0, 0, 0, 1, -1.6420282e-15, 0, -1.6420282e-15, 1, 0.5515855, -0.10353485, -0.012927055)

@@ -54,7 +54,7 @@ size = Vector3(0.05, 2.4, 1.4)
 height = 2.3762207
 radius = 0.9355469
 
-[node name="puerta" type="StaticBody3D" unique_id=1549930125 groups=["puertas"]]
+[node name="puerta" type="StaticBody3D" unique_id=1549930125 groups=["maderas", "puertas"]]
 script = ExtResource("1_2el6h")
 
 [node name="puerta" type="MeshInstance3D" parent="." unique_id=2088896708]

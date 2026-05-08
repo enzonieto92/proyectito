@@ -1,19 +1,13 @@
 [gd_scene format=3 uid="uid://da3ceu1m6q62m"]
 
 [ext_resource type="Script" uid="uid://cludds3aonx0l" path="res://scripts/boton_compuerta.gd" id="1_0gopq"]
+[ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://texturas/walldungeon.png" id="1_07800"]
 [ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="2_07800"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b4tto"]
-load_path = "res://.godot/imported/paredes_dungeonglb_walldungeon.png-dcb59a4443367088cd30a96fba9be52a.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_531j8"]
-load_path = "res://.godot/imported/paredes_dungeonglb_walldungeon_specular (2).png-cb4a780e207444e110fac8b0dc34905f.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbelj"]
 albedo_color = Color(0.67894405, 0.6789436, 0.6789437, 1)
-albedo_texture = SubResource("CompressedTexture2D_b4tto")
+albedo_texture = ExtResource("1_07800")
 normal_enabled = true
-normal_texture = SubResource("CompressedTexture2D_531j8")
 uv1_scale = Vector3(0.419, 0.415, 0.512)
 uv1_offset = Vector3(0, -0.179, -2.218)
 uv1_triplanar = true

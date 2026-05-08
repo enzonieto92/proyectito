@@ -229,7 +229,6 @@ func _process(_delta):
 		armadura_total += armadura_bloqueo_secundaria + armadura_bloqueo_arma
 		if armadura_total != _ultima_armadura_debug:
 			_ultima_armadura_debug = armadura_total
-			print("armadura_total: ", armadura_total)
 
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		if objeto_actual != _ultimo_objeto:

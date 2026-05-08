@@ -230,7 +230,7 @@ tracks/5/path = NodePath("pivote/posicion_arma:position")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.41559023, 0.56065845, 0.7019093, 1.1584147),
+"times": PackedFloat32Array(0, 0.41559023, 0.48851648, 0.5878242, 1.1584147),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(0.562, 0.053, -0.621), Vector3(0, -0.088, -1.108), Vector3(-0.196, -0.267, -0.766), Vector3(0.5151274, -0.15985763, -0.80995387)]
@@ -242,7 +242,7 @@ tracks/6/path = NodePath("pivote/posicion_arma:rotation")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.41559023, 0.56256735, 0.7019093, 1.1584147),
+"times": PackedFloat32Array(0, 0.41559023, 0.49881396, 0.5878242, 1.1584147),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(0.15533431, -0.27401668, -0.35430184), Vector3(-0.7193, -0.7961691, 0.636213), Vector3(-0.7592666, -1.09351, 1.2705113), Vector3(-0.41190138, -0.66979253, 0.5032604)]
@@ -332,7 +332,7 @@ tracks/5/path = NodePath("pivote/posicion_arma:position")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.09822158, 0.5258095, 0.6617786, 1.0620658),
+"times": PackedFloat32Array(0, 0.09822158, 0.47808966, 0.5682477, 1.0620658),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(-0.439, -0.192, -0.711), Vector3(0.003871195, -0.052450776, -0.85291666), Vector3(0.5502981, -0.052450776, -0.66960466), Vector3(0.5151274, -0.15985763, -0.80995387)]
@@ -344,7 +344,7 @@ tracks/6/path = NodePath("pivote/posicion_arma:rotation")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.09822158, 0.5258095, 0.6617786, 1.0620658),
+"times": PackedFloat32Array(0, 0.09822158, 0.47808966, 0.5682477, 1.0620658),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-1.0960667, -0.07853982, 1.0367255), Vector3(-1.0485474, 0.5207188, -0.4456866), Vector3(-1.0485476, -1.1319509, -0.44568664), Vector3(-0.41190138, -0.66979253, 0.5032604)]

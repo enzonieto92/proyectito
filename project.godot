@@ -53,6 +53,8 @@ sprite_secundaria=""
 estatua=""
 efecto_magia=""
 world_environment=""
+maderas=""
+paredes=""
 
 [importer_defaults]
 

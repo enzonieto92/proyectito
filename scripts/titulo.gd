@@ -1,4 +1,4 @@
-extends Label
+extends TextureRect
 
 func _ready() -> void:
 	var tween = create_tween()

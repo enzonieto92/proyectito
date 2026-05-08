@@ -1,6 +1,5 @@
 extends Control
 
-@onready var titulo: Label = $titulo
 @onready var sonido_enter: AudioStreamPlayer = $"../../sonido_enter"
 @onready var musica_ambiente: AudioStreamPlayer = $"../../musica_ambiente"
 @onready var label: Label = $Label

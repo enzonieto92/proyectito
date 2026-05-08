@@ -13,6 +13,4 @@ script = ExtResource("1_0rh8l")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="area_cambiar_musica" unique_id=1108504590]
 shape = SubResource("BoxShape3D_ue3ep")
 
-[node name="ambientales" type="AudioStreamPlayer" parent="." unique_id=1837028689]
-
 [connection signal="body_entered" from="area_cambiar_musica" to="." method="_on_area_cambiar_musica_body_entered"]

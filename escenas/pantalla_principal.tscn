@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7bkgvry1xmbs" path="res://scripts/pantalla_principal.gd" id="1_poj3a"]
 [ext_resource type="FontFile" uid="uid://deigckxeuy4rq" path="res://otros/nokiafc22.ttf" id="2_terxd"]
+[ext_resource type="Texture2D" uid="uid://bly0e0me64yuy" path="res://texturas/titulopio.png" id="3_3ofuu"]
 [ext_resource type="Script" uid="uid://c6xmj80feuai2" path="res://scripts/titulo.gd" id="3_uw7aw"]
 [ext_resource type="FontFile" uid="uid://bbphv524e86v1" path="res://otros/GallaeciaForte.ttf" id="3_wnfxn"]
 
@@ -21,25 +22,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_poj3a")
 
-[node name="titulo" type="Label" parent="." unique_id=1764761044]
+[node name="titulo" type="TextureRect" parent="." unique_id=850981143]
 modulate = Color(0.4041827, 0.050209656, 0.08526274, 1)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.224
-anchor_top = 0.40600002
-anchor_right = 0.776
-anchor_bottom = 0.59400004
-offset_left = -0.04800415
-offset_top = -108.08801
-offset_right = 0.047973633
-offset_bottom = -107.91202
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -50.0
+offset_right = 350.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_1ajdi")
-theme_override_font_sizes/font_size = 62
-text = "Antes del rojo"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("3_3ofuu")
+expand_mode = 1
+stretch_mode = 4
 script = ExtResource("3_uw7aw")
 
 [node name="Label" type="Label" parent="." unique_id=1984717929]

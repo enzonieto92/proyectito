@@ -2,24 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg5dl07fj4oeb"
-path.s3tc="res://.godot/imported/paredes_dungeo_walldungeon.png-513fc271e04394f489bf9f22fed7ad4b.s3tc.ctex"
+uid="uid://dpkwn3w7kpsg6"
+path="res://.godot/imported/liquidodesconocido.png-9e4eb74de2da925e77c9daa4ff5e566a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "ee07ca02e92d27914c4dcac35f1d1269"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://objetos glb/paredes_dungeo_walldungeon.png"
-dest_files=["res://.godot/imported/paredes_dungeo_walldungeon.png-513fc271e04394f489bf9f22fed7ad4b.s3tc.ctex"]
+source_file="res://texturas/liquidodesconocido.png"
+dest_files=["res://.godot/imported/liquidodesconocido.png-9e4eb74de2da925e77c9daa4ff5e566a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -27,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -41,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

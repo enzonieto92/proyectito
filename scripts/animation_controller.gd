@@ -14,10 +14,10 @@ var blend_objetivo: float = 0.0
 var estaba_bloqueando: bool = false
 const BLEND_VELOCIDAD: float = 5.0
 const TIEMPO_ACTIVACION_BLOQUEO: float = 0.2  # ajustá este valor
-const HIT_METAL = preload("uid://n3w8dyh66sy4")
+
 @onready var sonido_swing: AudioStreamPlayer = $"../pivote/posicion_arma/sprite_arma/sonido_swing"
 @onready var sonido_arma: AudioStreamPlayer = $"../pivote/posicion_arma/sprite_arma/sonido_arma"
-
+@onready var sonido : AudioStreamMP3
 func _ready():
 	anim_tree.active = true
 	anim_tree["parameters/Add2/add_amount"] = 0.0
@@ -147,12 +147,10 @@ func _manejar_rebote(progreso: float) -> bool:
 		player.rebotar_golpe = false
 		blend_objetivo = 0.0
 		sonido_arma.stop()
-		sonido_arma.stream = HIT_METAL
+		sonido_arma.stream = sonido
 		sonido_arma.play()
 		anim_tree["parameters/TimeScale_ataque/scale"] = -1.0
 	if anim_tree["parameters/TimeScale_ataque/scale"] < 0.0 and progreso <= 0.05:
-		var anim_player = anim_tree.get_node(anim_tree.anim_player)
-		var anim = anim_player.get_animation(ataque_sm.get_current_node())
 		anim_tree["parameters/TimeScale_ataque/scale"] = 1.0
 		esperando_soltar = Input.is_action_pressed("atacar") 
 		_ataque_termino()

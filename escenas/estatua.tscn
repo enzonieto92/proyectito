@@ -133,7 +133,7 @@ shape = SubResource("CylinderShape3D_gky2i")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gky2i")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Mujer" unique_id=323205882]
+[node name="StaticBody3D" type="StaticBody3D" parent="Mujer" unique_id=323205882 groups=["paredes"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mujer/StaticBody3D" unique_id=1432364878]
 shape = SubResource("ConcavePolygonShape3D_xjjsc")

@@ -54,7 +54,7 @@ size = Vector3(1.9241941, 0.963432, 1.8242339)
 [node name="mesa" type="MeshInstance3D" parent="." unique_id=1515714678]
 mesh = SubResource("ArrayMesh_m84xx")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="mesa" unique_id=1975713465]
+[node name="StaticBody3D2" type="StaticBody3D" parent="mesa" unique_id=1975713465 groups=["maderas"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005246818, 0.47977713, -0.027475297)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mesa/StaticBody3D2" unique_id=1381387729]
