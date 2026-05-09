@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Consumible" format=3 uid="uid://d4gw3nu3068wh"]
+
+[ext_resource type="Script" uid="uid://pqhmtp55g28p" path="res://scripts/Consumible.gd" id="1_7xp2e"]
+[ext_resource type="Texture2D" uid="uid://btm5hts24hllw" path="res://texturas/pez.png" id="1_uk01a"]
+
+[resource]
+script = ExtResource("1_7xp2e")
+curacion = 20
+nombre = "Pescado Podrido"
+icono = ExtResource("1_uk01a")
+descripcion = "no se ve muy bien..."
+size = Vector2i(2, 2)
+metadata/_custom_type_script = "uid://pqhmtp55g28p"

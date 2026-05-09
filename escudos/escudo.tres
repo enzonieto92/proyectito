@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_c27h7")
+armadura = 30
 nombre = "Escudo"
 icono = ExtResource("1_c27h7")
 textura = ExtResource("3_c27h7")

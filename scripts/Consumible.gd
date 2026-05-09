@@ -1,4 +1,4 @@
 extends Item
-class_name Consumable
+class_name Consumible
 
 @export var curacion: int = 0

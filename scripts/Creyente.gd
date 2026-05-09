@@ -3,15 +3,16 @@ extends CharacterBody3D
 const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
 const SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
 const SONIDO_ENEMIGO = preload("uid://dehsfh1pliac7")
-const SONIDO_MUERTE = preload("res://sonido/dying_enemigo.mp3")  # ✅ preload en vez de load
+const SONIDO_MUERTE = preload("res://sonido/dying_enemigo.mp3") 
+const PAN = preload("uid://dni0ouuswkjrm")
+const PEZ = preload("uid://d4gw3nu3068wh")
 
 @onready var player = get_tree().get_first_node_in_group("jugador")
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var sonido_enemigo: AudioStreamPlayer3D = $sonido_enemigo
-@onready var sonido_golpe: AudioStreamPlayer = $sonido_golpe  # ✅ nodo fijo en editor
-@onready var item
+@onready var sonido_golpe: AudioStreamPlayer = $sonido_golpe 
 @export var atacando: bool = false
 @export var vida: float
 @export var attack_range: float
@@ -20,6 +21,7 @@ const SONIDO_MUERTE = preload("res://sonido/dying_enemigo.mp3")  # ✅ preload e
 @export var min_damage: float
 @export var salto = false
 
+var item
 var speed := 2.5
 var player_entered: bool = false
 var _en_cooldown := false
@@ -33,7 +35,9 @@ var repath_interval := 0.5
 func _ready() -> void:
 	sonido_enemigo.stream = SONIDO_ENEMIGO_PASIVO
 	sonido_enemigo.play()
-
+	randomize()
+	var colision = $CollisionShape3D
+	colision.shape = colision.shape.duplicate()
 func _physics_process(delta: float) -> void:
 	if vida <= 0.0:
 		dying_behavior()
@@ -88,16 +92,22 @@ func recibir_damage(_damage) -> void:
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE  # ✅ reutiliza nodo fijo
 	sonido_golpe.play()
-
+func dropear_item():
+	if Calculos.chance(50):
+		item = PEZ
+	else:
+		item = PAN
 func dying_behavior() -> void:
 	if is_on_floor() and !died:
 		died = true  # ✅ primero para evitar doble ejecución
-
+		if Calculos.chance(100):
+			dropear_item()
+		else:
+			pass
 		sonido_enemigo.stream = SONIDO_MUERTE  # ✅ preload
 		sonido_enemigo.volume_db = 40.0
 		sonido_enemigo.pitch_scale = 2.0
 		sonido_enemigo.play()
-
 		animation_player.play("dying")
 		animation_player.animation_finished.connect(_on_dying_finished, CONNECT_ONE_SHOT)
 
@@ -109,20 +119,22 @@ func _on_dying_finished(_anim: String) -> void:
 	animation_player.pause()
 
 	var colision = get_node_or_null("CollisionShape3D")
-	
 	colision.shape.height = 0.4
-	colision.position.y = position.y - 0.4
+	colision.position.y = - 0.4
 func puede_interactuar() -> bool:
-	if died:
+	if died and item != null:
 		return player_entered
-	return false
 
+	return false
 func interactuar(_player):
 	_agregar.call_deferred(_player)  # ✅ no bloquea el frame actual
 
 func _agregar(_player) -> void:
+	if item == null:
+		return
+
 	if await _player.inventario_controller.agregar_item(item):
-		queue_free()
+		pass
 
 func attack_behavior() -> void:
 	if _atacando_cooldown:

@@ -1,7 +1,13 @@
-[gd_resource type="Resource" script_class="Consumable" format=3 uid="uid://dni0ouuswkjrm"]
+[gd_resource type="Resource" script_class="Consumible" format=3 uid="uid://dni0ouuswkjrm"]
 
 [ext_resource type="Script" uid="uid://pqhmtp55g28p" path="res://scripts/Consumible.gd" id="1_6am7n"]
+[ext_resource type="Texture2D" uid="uid://dcnn8rhve5lay" path="res://texturas/panrancio.png" id="1_706m3"]
 
 [resource]
 script = ExtResource("1_6am7n")
+curacion = 10
+nombre = "Pan Rancio"
+icono = ExtResource("1_706m3")
+descripcion = "Algo huele mal..."
+size = Vector2i(2, 1)
 metadata/_custom_type_script = "uid://bw8ib7rq5xuw5"

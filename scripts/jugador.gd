@@ -231,9 +231,10 @@ func _process(_delta):
 			_ultima_armadura_debug = armadura_total
 
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
-		if objeto_actual != _ultimo_objeto:
+		var nuevo_texto = _calcular_texto_interaccion()
+		if objeto_actual != _ultimo_objeto or nuevo_texto != _ultimo_texto:
 			_ultimo_objeto = objeto_actual
-			_ultimo_texto = _calcular_texto_interaccion()
+			_ultimo_texto = nuevo_texto
 			texto_plano.show_text(_ultimo_texto)
 		texto_plano.visible = true
 	else:
