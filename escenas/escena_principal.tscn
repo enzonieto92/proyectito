@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://lqrljq7f42tm"]
 
 [ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://texturas/walldungeon.png" id="1_lgbs2"]
-[ext_resource type="PackedScene" uid="uid://7gh3p8jym6ec" path="res://escenas/antorcha_principal.tscn" id="2_imiid"]
 [ext_resource type="PackedScene" uid="uid://byaxxrdciuyp3" path="res://escenas/pantalla_principal.tscn" id="3_uxd1d"]
 [ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="4_uxd1d"]
 [ext_resource type="Script" uid="uid://bqcqy6suc85y6" path="res://scripts/inicio.gd" id="5_hxpc2"]
 [ext_resource type="AudioStream" uid="uid://cjxlxobyflnn8" path="res://sonido/deuslower-atmosphere-dark-fantasy-dungeon-synthpiano-verse-248215.mp3" id="6_arkap"]
 [ext_resource type="Script" uid="uid://clirk4j1qwbjo" path="res://scripts/tran_inicio.gd" id="6_lgbs2"]
 [ext_resource type="AudioStream" uid="uid://bj4iudl615ub2" path="res://sonido/sonido_enter.mp3" id="7_hytxr"]
+[ext_resource type="PackedScene" uid="uid://bf2k7mpqtk5jb" path="res://escenas/antorcha.tscn" id="8_lgbs2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxd1d"]
 albedo_texture = ExtResource("1_lgbs2")
@@ -41,12 +41,6 @@ fov = 54.1
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -2.0877042)
 material_override = SubResource("StandardMaterial3D_uxd1d")
 mesh = SubResource("PlaneMesh_hxpc2")
-
-[node name="antorcha" parent="." unique_id=1834885261 instance=ExtResource("2_imiid")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.913, 0.213, -2.023)
-
-[node name="antorcha2" parent="." unique_id=613621591 instance=ExtResource("2_imiid")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.93, 0.213, -2.018)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1191592789]
 
@@ -102,3 +96,9 @@ autoplay = true
 [node name="sonido_enter" type="AudioStreamPlayer" parent="." unique_id=1060599436]
 stream = ExtResource("7_hytxr")
 pitch_scale = 0.66
+
+[node name="antorcha" parent="." unique_id=1834885261 instance=ExtResource("8_lgbs2")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -2)
+
+[node name="antorcha2" parent="." unique_id=1113474715 instance=ExtResource("8_lgbs2")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, -2)
