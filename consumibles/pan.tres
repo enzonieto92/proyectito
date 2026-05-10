@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Consumible" format=3 uid="uid://dni0ouuswkjrm"]
 
-[ext_resource type="Script" uid="uid://pqhmtp55g28p" path="res://scripts/Consumible.gd" id="1_6am7n"]
+[ext_resource type="Script" uid="uid://pqhmtp55g28p" path="res://scripts/resources/Consumible.gd" id="1_6am7n"]
 [ext_resource type="Texture2D" uid="uid://dcnn8rhve5lay" path="res://texturas/panrancio.png" id="1_706m3"]
 
 [resource]

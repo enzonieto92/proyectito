@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Arma" format=3 uid="uid://b573ek7vl2aem"]
 
 [ext_resource type="Texture2D" uid="uid://psi7gjcffda4" path="res://texturas/Armas/Pica_item.png" id="1_1g2sc"]
-[ext_resource type="Script" uid="uid://csdw68mlqynea" path="res://scripts/Arma.gd" id="2_1g2sc"]
+[ext_resource type="Script" uid="uid://csdw68mlqynea" path="res://scripts/resources/Arma.gd" id="2_1g2sc"]
 [ext_resource type="Texture2D" uid="uid://doghknbtc1e3h" path="res://texturas/Armas/Pica.png" id="3_p32ka"]
 
 [resource]
