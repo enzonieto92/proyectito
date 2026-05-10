@@ -56,6 +56,8 @@ efecto_magia=""
 world_environment=""
 maderas=""
 paredes=""
+navigation_region=""
+navegable=""
 
 [importer_defaults]
 

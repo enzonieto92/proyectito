@@ -54,7 +54,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 [node name="mesa" type="MeshInstance3D" parent="." unique_id=1864933197]
 mesh = SubResource("ArrayMesh_rh5dt")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="mesa" unique_id=314217959]
+[node name="StaticBody3D" type="StaticBody3D" parent="mesa" unique_id=314217959 groups=["navegable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mesa/StaticBody3D" unique_id=1991135422]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3523915, 0)

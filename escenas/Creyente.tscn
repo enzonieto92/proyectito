@@ -10,8 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://dgjx3647oxucb" path="res://sonido/dying_enemigo.mp3" id="8_dhj0k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inx13"]
-radius = 0.2
-height = 1.17
+radius = 0.4
+height = 1.1748438
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inx13"]
 atlas = ExtResource("2_bo2su")
@@ -433,6 +433,7 @@ max_damage = 15.0
 min_damage = 9.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1173379334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0024219155, 0)
 shape = SubResource("CapsuleShape3D_inx13")
 
 [node name="sprite_enemy" type="AnimatedSprite3D" parent="." unique_id=1599092422]
@@ -481,6 +482,7 @@ max_distance = 12.0
 bus = &"Ambientales"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=616496208]
+debug_enabled = true
 
 [node name="sonido_golpe" type="AudioStreamPlayer" parent="." unique_id=876724776]
 

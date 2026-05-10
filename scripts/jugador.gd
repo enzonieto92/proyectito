@@ -2,22 +2,22 @@ extends CharacterBody3D
 
 @onready var inventario_ui: Control = get_tree().get_first_node_in_group("inventario_ui")
 @onready var inventario_controller: Node = get_tree().get_first_node_in_group("inventario_controller")
-@onready var camera: Camera3D = $camara_controller/camara_player
-@onready var footstep = $footstep
-@onready var footstep_player: AudioStreamPlayer3D = $footstep
-@onready var raycast: RayCast3D = $camara_controller/camara_player/raycast
-@onready var raycast_arma: RayCast3D = $pivote/posicion_arma/sprite_arma/raycast_arma
-@onready var shape = $CollisionShape3D.shape as CylinderShape3D
-@onready var collision = $CollisionShape3D
 @onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
 @onready var texto_plano: RichTextLabel = get_tree().get_first_node_in_group("texto_plano")
 @onready var jugador_ui: CanvasLayer = get_tree().get_first_node_in_group("jugador_ui")
-@onready var animaciones: AnimationPlayer = $animaciones
 @onready var blood_splash = jugador_ui.get_node("blood_splash")
 @onready var go_screen = jugador_ui.get_node("game_over_screen")
-@onready var camara_controller = $camara_controller
-@onready var hit_sound: AudioStreamPlayer3D = $hit_sound
+@onready var raycast_arma: RayCast3D = $pivote/posicion_arma/sprite_arma/raycast_arma
+@onready var raycast: RayCast3D = $camara_controller/camara_player/raycast
 @onready var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma
+@onready var camera: Camera3D = $camara_controller/camara_player
+@onready var shape = $CollisionShape3D.shape as CylinderShape3D
+@onready var footstep_player: AudioStreamPlayer3D = $footstep
+@onready var animaciones: AnimationPlayer = $animaciones
+@onready var hit_sound: AudioStreamPlayer3D = $hit_sound
+@onready var camara_controller = $camara_controller
+@onready var collision = $CollisionShape3D
+@onready var footstep = $footstep
 
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 

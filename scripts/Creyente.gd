@@ -20,6 +20,7 @@ const PEZ = preload("uid://d4gw3nu3068wh")
 @export var max_damage: float
 @export var min_damage: float
 @export var salto = false
+
 var _agregando := false  
 var item
 var speed := 2.5
