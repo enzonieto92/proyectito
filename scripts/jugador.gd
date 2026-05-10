@@ -30,7 +30,10 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @export var bloqueando = false
 var _ultima_armadura_debug: float = -1.0
 var stamina_agotada: bool = false
-var vida: float
+var vida: float:
+	set(value):
+		vida = clamp(value, 0, vida_max)
+		reaccion_ui()
 var rebotar_golpe = false
 var inventario_abierto = false
 var moving = false
@@ -83,20 +86,17 @@ func recibir_damage(_damage):
 		print("daño bloqueado: ", damage_bloqueado)
 	
 	animaciones.on_block_hit()
-	reaccion_ui()
 	if !bloqueando:
 		camara_controller.shake(0.05, 0.5, 60.0)
 		hit_sound.play()
 	recibiendo_damage = false
 func reaccion_ui():
-	if !blood_splash.visible:
-		blood_splash.visible = true
 	const FRAME_WIDTH = 144
 	const DAMAGE_FRAMES = 5
 	var atlas = blood_splash.texture as AtlasTexture
 	var frame_index = clamp(int((1.0 - vida / vida_max) * DAMAGE_FRAMES), 0, DAMAGE_FRAMES - 1)
 	atlas.region = Rect2(frame_index * FRAME_WIDTH, 0, FRAME_WIDTH, atlas.region.size.y)
-
+	blood_splash.visible = frame_index > 0
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
 		if inventario_ui.visible:

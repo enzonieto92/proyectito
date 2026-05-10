@@ -227,13 +227,76 @@ image = SubResource("Image_7f4t6")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_altyc"]
 data = PackedVector3Array(0.49999997, 3, 0.5, -0.5, 3, -0.5, -0.5, 3, 0.5, 0.49999997, 3, 0.5, 0.49999997, 3, -0.5, -0.5, 3, -0.5, 0.49999997, 3.01, 0.5, -0.5, 3.01, -0.5, 0.49999997, 3.01, -0.5, 0.49999997, 3.01, 0.5, -0.5, 3.01, 0.5, -0.5, 3.01, -0.5, -0.5, 3, 0.5, 0.49999997, 3.01, 0.5, 0.49999997, 3, 0.5, -0.5, 3, 0.5, -0.5, 3.01, 0.5, 0.49999997, 3.01, 0.5, -0.5, 3, -0.5, -0.5, 3.01, 0.5, -0.5, 3, 0.5, -0.5, 3, -0.5, -0.5, 3.01, -0.5, -0.5, 3.01, 0.5, 0.49999997, 3, -0.5, -0.5, 3.01, -0.5, -0.5, 3, -0.5, 0.49999997, 3, -0.5, 0.49999997, 3.01, -0.5, -0.5, 3.01, -0.5, 0.49999997, 3, 0.5, 0.49999997, 3.01, -0.5, 0.49999997, 3, -0.5, 0.49999997, 3, 0.5, 0.49999997, 3.01, 0.5, 0.49999997, 3.01, -0.5, 0.49999997, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.49999997, 0, -0.5, 0.49999997, 0, 0.5, -0.5, 0, 0.5, 0.49999997, -0.01, -0.5, -0.5, -0.01, 0.5, 0.49999997, -0.01, 0.5, 0.49999997, -0.01, -0.5, -0.5, -0.01, -0.5, -0.5, -0.01, 0.5, 0.49999997, 0, -0.5, 0.49999997, -0.01, 0.5, 0.49999997, 0, 0.5, 0.49999997, 0, -0.5, 0.49999997, -0.01, -0.5, 0.49999997, -0.01, 0.5, -0.5, 0, -0.5, 0.49999997, -0.01, -0.5, 0.49999997, 0, -0.5, -0.5, 0, -0.5, -0.5, -0.01, -0.5, 0.49999997, -0.01, -0.5, 0.49999997, 0, 0.5, -0.5, -0.01, 0.5, -0.5, 0, 0.5, 0.49999997, 0, 0.5, 0.49999997, -0.01, 0.5, -0.5, -0.01, 0.5, -0.5, 0, 0.5, -0.5, -0.01, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, -0.01, 0.5, -0.5, -0.01, -0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbffk"]
+[sub_resource type="Shader" id="Shader_223gu"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_nearest_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_nearest_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_nearest_mipmap, repeat_enable;
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+// Nuevo: seed y fuerza del tinte
+uniform vec2 tint_seed = vec2(0.0);
+uniform float tint_strength : hint_range(0.0, 0.3) = 0.15;
+
+// Las funciones van FUERA del fragment(), a nivel global
+vec2 hash2(vec2 p) {
+    p = vec2(dot(p, vec2(127.1, 311.7)),
+             dot(p, vec2(269.5, 183.3)));
+    return fract(sin(p) * 43758.5453);
+}
+
+void vertex() {
+    UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+    vec2 base_uv = UV;
+    vec4 albedo_tex = texture(texture_albedo, base_uv);
+
+    // Tinte random basado en seed
+    vec2 rnd = hash2(tint_seed);
+    float brightness = mix(1.0 - tint_strength, 1.0 + tint_strength, rnd.x);
+
+    ALBEDO = albedo.rgb * albedo_tex.rgb * brightness;
+
+    float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+    METALLIC = metallic_tex * metallic;
+    SPECULAR = specular;
+    vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+    float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+    ROUGHNESS = roughness_tex * roughness;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbffk"]
 resource_name = "Material.002"
-cull_mode = 2
-albedo_texture = ExtResource("1_7f4t6")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
-uv1_offset = Vector3(0, -0.41, 0)
-texture_filter = 2
+render_priority = 0
+shader = SubResource("Shader_223gu")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("1_7f4t6")
+shader_parameter/albedo_texture_size = Vector2i(64, 64)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/uv1_offset = Vector3(0, -0.41, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/tint_seed = Vector2(0, 0)
+shader_parameter/tint_strength = 0.15
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_q66hy"]
 _surfaces = [{
@@ -267,7 +330,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 60,
 "index_data": PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABQAGAAcACAAJAAoACQAIAAsACQALAAwADQAOAA8AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
-"material": SubResource("StandardMaterial3D_nbffk"),
+"material": SubResource("ShaderMaterial_nbffk"),
 "name": "Material.002",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

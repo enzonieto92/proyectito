@@ -110,6 +110,14 @@ func remover_item(item, origen: Vector2i):
 			var slot = grid_container.grid[origen.x + ix][origen.y + iy]
 			slot.ocupado = false
 			slot.item = null
+	
+	if item.visual_node:
+		item.visual_node.queue_free()
+		item.visual_node = null
+	if item.visual_bg:
+		item.visual_bg.queue_free()
+		item.visual_bg = null
+	
 	actualizar_label_peso()
 func mover_item(origen: Vector2i, destino: Vector2i, item):
 	if not puede_colocar_ignorando_origen(item, destino, origen):

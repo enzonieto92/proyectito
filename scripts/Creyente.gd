@@ -20,7 +20,7 @@ const PEZ = preload("uid://d4gw3nu3068wh")
 @export var max_damage: float
 @export var min_damage: float
 @export var salto = false
-
+var _agregando := false  
 var item
 var speed := 2.5
 var player_entered: bool = false
@@ -94,9 +94,9 @@ func recibir_damage(_damage) -> void:
 	sonido_golpe.play()
 func dropear_item():
 	if Calculos.chance(50):
-		item = PEZ
+		item = PEZ.duplicate()
 	else:
-		item = PAN
+		item = PAN.duplicate()
 func dying_behavior() -> void:
 	if is_on_floor() and !died:
 		died = true  # ✅ primero para evitar doble ejecución
@@ -126,15 +126,25 @@ func puede_interactuar() -> bool:
 		return player_entered
 
 	return false
+
 func interactuar(_player):
-	_agregar.call_deferred(_player)  # ✅ no bloquea el frame actual
+	if _agregando:
+		return
+	_agregando = true
+	_agregar.call_deferred(_player)
 
 func _agregar(_player) -> void:
 	if item == null:
+		_agregando = false
 		return
 
-	if await _player.inventario_controller.agregar_item(item):
+	var item_a_agregar = item
+	item = null
+
+	if await _player.inventario_controller.agregar_item(item_a_agregar):
 		pass
+
+	_agregando = false
 
 func attack_behavior() -> void:
 	if _atacando_cooldown:
