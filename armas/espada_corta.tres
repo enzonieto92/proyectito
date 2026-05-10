@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_ucrpv")
+armadura = 3.0
 nombre = "Espada Corta"
 icono = ExtResource("1_ucrpv")
 textura = ExtResource("3_3ei16")
