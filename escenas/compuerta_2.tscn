@@ -10,43 +10,43 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("wall_002:position")
+tracks/0/path = NodePath("posicion/wall_002/Antorcha:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.911, 0, -0.9)]
+"values": [Vector3(-2.5488239e-08, 1.5707964, 0.29433236)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("wall_003:position")
+tracks/1/path = NodePath("posicion/wall_002/GPUParticles3D2:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.089, 0, -0.9)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("wall_002/Antorcha:rotation")
+tracks/2/path = NodePath("posicion/wall_002/GPUParticles3D3:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-2.5488239e-08, 1.5707964, 0.29433236)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("wall_002/GPUParticles3D2:emitting")
+tracks/3/path = NodePath("posicion/wall_002/GPUParticles3D4:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -58,7 +58,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("wall_002/GPUParticles3D3:emitting")
+tracks/4/path = NodePath("sonido_compuerta:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -70,7 +70,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("wall_002/GPUParticles3D4:emitting")
+tracks/5/path = NodePath("posicion/wall_003/GPUParticles3D2:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -82,7 +82,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("sonido_compuerta:playing")
+tracks/6/path = NodePath("posicion/wall_003/GPUParticles3D3:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -94,7 +94,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("wall_003/GPUParticles3D2:emitting")
+tracks/7/path = NodePath("posicion/wall_003/GPUParticles3D4:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -106,75 +106,87 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("wall_003/GPUParticles3D3:emitting")
+tracks/8/path = NodePath("posicion:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("wall_003/GPUParticles3D4:emitting")
+tracks/9/path = NodePath("posicion/wall_002:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(-1.02, 0, -0.9)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("posicion/wall_003:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0, -0.9)]
 }
 
 [sub_resource type="Animation" id="Animation_c70qr"]
 resource_name = "abrir"
-length = 4.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("wall_002:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("posicion/wall_002/Antorcha:rotation")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.73333335, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.911, 0, -0.9), Vector3(-1.911, 0, -0.9)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("wall_003:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.73333335, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1.089, 0, -0.9), Vector3(2.089, 0, -0.9)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("wall_002/Antorcha:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.26666668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-2.5488239e-08, 1.5707964, 0.29433236), Vector3(0, 1.5707964, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("posicion/wall_002/GPUParticles3D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.73, 5.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("posicion/wall_002/GPUParticles3D3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.73, 5.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("wall_002/GPUParticles3D2:emitting")
+tracks/3/path = NodePath("posicion/wall_002/GPUParticles3D4:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.73, 4),
+"times": PackedFloat32Array(0.73, 5.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -182,23 +194,23 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("wall_002/GPUParticles3D3:emitting")
+tracks/4/path = NodePath("sonido_compuerta:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.73, 4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.8666667),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("wall_002/GPUParticles3D4:emitting")
+tracks/5/path = NodePath("posicion/wall_003/GPUParticles3D2:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.73, 4),
+"times": PackedFloat32Array(0.73333335, 5.8333335),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -206,23 +218,23 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("sonido_compuerta:playing")
+tracks/6/path = NodePath("posicion/wall_003/GPUParticles3D3:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.74),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.73333335, 5.8333335),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("wall_003/GPUParticles3D2:emitting")
+tracks/7/path = NodePath("posicion/wall_003/GPUParticles3D4:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.73333335, 4),
+"times": PackedFloat32Array(0.73333335, 5.8333335),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -230,26 +242,38 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("wall_003/GPUParticles3D3:emitting")
-tracks/8/interp = 1
+tracks/8/path = NodePath("posicion:position")
+tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.73333335, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(0, 2.31),
+"transitions": PackedFloat32Array(1, 0.05255608),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.4)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("wall_003/GPUParticles3D4:emitting")
-tracks/9/interp = 1
+tracks/9/path = NodePath("posicion/wall_002:position")
+tracks/9/interp = 2
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.73333335, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(2.3, 5.82),
+"transitions": PackedFloat32Array(1, 0.366021),
+"update": 0,
+"values": [Vector3(-1.02, 0, -0.9), Vector3(-2, 0, -0.9)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("posicion/wall_003:position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2.31, 5.8333335),
+"transitions": PackedFloat32Array(1, 0.42044812),
+"update": 0,
+"values": [Vector3(1, 0, -0.9), Vector3(2, 0, -0.9)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mrusr"]
@@ -262,11 +286,12 @@ _data = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhfrt"]
 resource_name = "Material.002"
-depth_draw_mode = 1
+cull_mode = 2
 albedo_texture = ExtResource("2_yijf5")
 normal_texture = SubResource("CompressedTexture2D_ug35h")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
-texture_filter = 2
+uv1_offset = Vector3(0.07, 0, 0)
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_svr7g"]
 _surfaces = [{
@@ -354,54 +379,54 @@ bus = &"Ambientales"
 [node name="animacion_compuerta_2" type="AnimationPlayer" parent="." unique_id=1182761337]
 libraries/ = SubResource("AnimationLibrary_mrusr")
 
-[node name="wall_002" type="MeshInstance3D" parent="." unique_id=1835078215]
-transform = Transform3D(-4.371139e-08, 0, 1.01, 0, 1, 0, -1, 0, -4.4148504e-08, -0.911, 0, -0.9)
-extra_cull_margin = 0.3
+[node name="posicion" type="Node3D" parent="." unique_id=1058522325]
+
+[node name="wall_002" type="MeshInstance3D" parent="posicion" unique_id=1835078215]
+transform = Transform3D(-4.371139e-08, 0, 1.01, 0, 1, 0, -1, 0, -4.4148504e-08, -1.02, 0, -0.9)
 mesh = SubResource("ArrayMesh_aqogj")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall_002" unique_id=1572833117]
+[node name="StaticBody3D" type="StaticBody3D" parent="posicion/wall_002" unique_id=1572833117]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_002/StaticBody3D" unique_id=1606408382]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="posicion/wall_002/StaticBody3D" unique_id=1606408382]
 shape = SubResource("ConcavePolygonShape3D_j6i8g")
 
-[node name="Antorcha" parent="wall_002" unique_id=1514166073 instance=ExtResource("2_xw3wd")]
+[node name="Antorcha" parent="posicion/wall_002" unique_id=1514166073 instance=ExtResource("2_xw3wd")]
 transform = Transform3D(-4.922579e-08, -1.17114265e-08, 1, 0.290101, 0.956996, 2.5488239e-08, -0.956996, 0.290101, -4.371139e-08, 0.1510554, 1.4491308, 0.85998666)
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="wall_002" unique_id=801935148]
-transform = Transform3D(0.9303651, 0, -0.3420858, 0, 1, 0, 0.33869883, 0, 0.9396687, 0.09905678, 0.60437703, 0.9118813)
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="posicion/wall_002" unique_id=801935148]
+transform = Transform3D(0.93036515, 0, -0.3420858, 0, 1, 0, 0.33869886, 0, 0.9396687, 0.09905672, 0.60437703, 0.9118814)
 emitting = false
 amount = 6
 randomness = 0.14
 process_material = SubResource("ParticleProcessMaterial_j6i8g")
 draw_pass_1 = SubResource("PlaneMesh_xub2a")
 
-[node name="GPUParticles3D3" type="GPUParticles3D" parent="wall_002" unique_id=1219101538]
-transform = Transform3D(0.9303651, 0, -0.3420858, 0, 1, 0, 0.33869883, 0, 0.9396687, 0.09905678, 1.6705232, 0.9118813)
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="posicion/wall_002" unique_id=1219101538]
+transform = Transform3D(0.93036515, 0, -0.3420858, 0, 1, 0, 0.33869886, 0, 0.9396687, 0.09905672, 1.6705232, 0.9118814)
 emitting = false
 amount = 6
 randomness = 0.14
 process_material = SubResource("ParticleProcessMaterial_j6i8g")
 draw_pass_1 = SubResource("PlaneMesh_xub2a")
 
-[node name="GPUParticles3D4" type="GPUParticles3D" parent="wall_002" unique_id=1552668439]
-transform = Transform3D(0.9303651, 0, -0.3420858, 0, 1, 0, 0.33869883, 0, 0.9396687, 0.09905672, 2.811014, 0.9118813)
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="posicion/wall_002" unique_id=1552668439]
+transform = Transform3D(0.93036515, 0, -0.3420858, 0, 1, 0, 0.33869886, 0, 0.9396687, 0.09905672, 2.811014, 0.9118814)
 emitting = false
 amount = 6
 randomness = 0.14
 process_material = SubResource("ParticleProcessMaterial_j6i8g")
 draw_pass_1 = SubResource("PlaneMesh_xub2a")
 
-[node name="wall_003" type="MeshInstance3D" parent="." unique_id=1330532084]
-transform = Transform3D(-4.371139e-08, 0, 1.01, 0, 1, 0, -1, 0, -4.4148504e-08, 1.089, 0, -0.9)
-extra_cull_margin = 0.3
+[node name="wall_003" type="MeshInstance3D" parent="posicion" unique_id=1330532084]
+transform = Transform3D(-4.371139e-08, 0, 1.01, 0, 1, 0, -1, 0, -4.4148504e-08, 1, 0, -0.9)
 mesh = SubResource("ArrayMesh_aqogj")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall_003" unique_id=426875952]
+[node name="StaticBody3D" type="StaticBody3D" parent="posicion/wall_003" unique_id=426875952]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_003/StaticBody3D" unique_id=952219631]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="posicion/wall_003/StaticBody3D" unique_id=952219631]
 shape = SubResource("ConcavePolygonShape3D_j6i8g")
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="wall_003" unique_id=1063560587]
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="posicion/wall_003" unique_id=1063560587]
 transform = Transform3D(0.9761471, 0, -0.167285, 0, 1, 0, 0.16562872, 0, 0.98590857, 0.09905672, 0.60437703, -1.1534702)
 emitting = false
 amount = 6
@@ -409,7 +434,7 @@ randomness = 0.14
 process_material = SubResource("ParticleProcessMaterial_j6i8g")
 draw_pass_1 = SubResource("PlaneMesh_xub2a")
 
-[node name="GPUParticles3D3" type="GPUParticles3D" parent="wall_003" unique_id=113649219]
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="posicion/wall_003" unique_id=113649219]
 transform = Transform3D(0.9761471, 0, -0.167285, 0, 1, 0, 0.16562872, 0, 0.98590857, 0.09905672, 1.6705232, -1.1534702)
 emitting = false
 amount = 6
@@ -417,7 +442,7 @@ randomness = 0.14
 process_material = SubResource("ParticleProcessMaterial_j6i8g")
 draw_pass_1 = SubResource("PlaneMesh_xub2a")
 
-[node name="GPUParticles3D4" type="GPUParticles3D" parent="wall_003" unique_id=1763877111]
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="posicion/wall_003" unique_id=1763877111]
 transform = Transform3D(0.9761471, 0, -0.167285, 0, 1, 0, 0.16562872, 0, 0.98590857, 0.09905672, 2.811014, -1.1534702)
 emitting = false
 amount = 6

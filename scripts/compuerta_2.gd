@@ -1,5 +1,7 @@
 extends Node3D
-@onready var animacion_compuerta_2: AnimationPlayer = $"../../../animacion_compuerta_2"
+
+@onready var animacion_compuerta_2: AnimationPlayer = $"../../../../animacion_compuerta_2"
+
 @onready var sonido_antorcha: AudioStreamPlayer3D = $"../sonido_antorcha"
 
 var player_entered = false
