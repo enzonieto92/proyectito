@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bqj35ebv4jmqj"]
+
+[ext_resource type="PackedScene" uid="uid://jamssb2coi1s" path="res://objetos glb/Busto.glb" id="1_mxpvq"]
+
+[node name="Busto" unique_id=315907746 instance=ExtResource("1_mxpvq")]

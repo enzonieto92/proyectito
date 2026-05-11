@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blqk57stjr01k"
-path.s3tc="res://.godot/imported/puerta.png-e5d736168efa51917f586ce55dbf40cd.s3tc.ctex"
+uid="uid://liih1d614ebr"
+path.s3tc="res://.godot/imported/Busto_textura-busto.png-aed2f1d84b319fae340c9cb299a93362.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "4474dd35924e14a962caad7e4a22a119"
+}
 
 [deps]
 
-source_file="res://texturas/puerta.png"
-dest_files=["res://.godot/imported/puerta.png-e5d736168efa51917f586ce55dbf40cd.s3tc.ctex"]
+source_file="res://objetos glb/Busto_textura-busto.png"
+dest_files=["res://.godot/imported/Busto_textura-busto.png-aed2f1d84b319fae340c9cb299a93362.s3tc.ctex"]
 
 [params]
 
