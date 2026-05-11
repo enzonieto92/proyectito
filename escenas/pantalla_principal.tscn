@@ -9,9 +9,9 @@
 [sub_resource type="Theme" id="Theme_1ajdi"]
 default_font = ExtResource("3_wnfxn")
 
-[sub_resource type="Theme" id="Theme_3ofuu"]
+[sub_resource type="Theme" id="Theme_wnfxn"]
 default_font = ExtResource("2_terxd")
-default_font_size = 0
+default_font_size = 40
 
 [node name="Pantalla Principal" type="Control" unique_id=384989241]
 layout_mode = 3
@@ -48,11 +48,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -194.0
+offset_top = -189.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = SubResource("Theme_3ofuu")
-theme_override_font_sizes/font_size = 29
-text = "Presiona enter"
+theme = SubResource("Theme_wnfxn")
+text = "Presiona entrar"
 horizontal_alignment = 1
 vertical_alignment = 1

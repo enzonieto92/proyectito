@@ -6,6 +6,8 @@ const SONIDO_ENEMIGO = preload("uid://dehsfh1pliac7")
 const SONIDO_MUERTE = preload("res://sonido/dying_enemigo.mp3") 
 const PAN = preload("uid://dni0ouuswkjrm")
 const PEZ = preload("uid://d4gw3nu3068wh")
+@onready var colision: CollisionShape3D = $CollisionShape3D
+@onready var area: CollisionShape3D = $area_deteccion/CollisionShape3D
 
 @onready var player = get_tree().get_first_node_in_group("jugador")
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
@@ -37,7 +39,6 @@ func _ready() -> void:
 	sonido_enemigo.stream = SONIDO_ENEMIGO_PASIVO
 	sonido_enemigo.play()
 	randomize()
-	var colision = $CollisionShape3D
 	colision.shape = colision.shape.duplicate()
 func _physics_process(delta: float) -> void:
 	if vida <= 0.0:
@@ -111,7 +112,7 @@ func dying_behavior() -> void:
 		sonido_enemigo.play()
 		animation_player.play("dying")
 		animation_player.animation_finished.connect(_on_dying_finished, CONNECT_ONE_SHOT)
-
+		nav_agent.queue_free()
 	elif !died:
 		velocity += get_gravity()
 		move_and_slide()
@@ -119,9 +120,8 @@ func dying_behavior() -> void:
 func _on_dying_finished(_anim: String) -> void:
 	animation_player.pause()
 
-	var colision = get_node_or_null("CollisionShape3D")
-	colision.shape.height = 0.4
-	colision.position.y = - 0.4
+	colision.shape.height = 0.5
+	colision.position.y = - 0.5
 func puede_interactuar() -> bool:
 	if died and item != null:
 		return player_entered
@@ -144,7 +144,8 @@ func _agregar(_player) -> void:
 
 	if await _player.inventario_controller.agregar_item(item_a_agregar):
 		pass
-
+	#colision.queue_free()
+	area.queue_free()
 	_agregando = false
 
 func attack_behavior() -> void:

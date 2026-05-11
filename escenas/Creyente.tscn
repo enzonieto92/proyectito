@@ -11,7 +11,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inx13"]
 radius = 0.4
-height = 1.1748438
+height = 1.2851758
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inx13"]
 atlas = ExtResource("2_bo2su")
@@ -433,7 +433,7 @@ max_damage = 15.0
 min_damage = 9.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1173379334]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0024219155, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045842737, 0.05758792, 0)
 shape = SubResource("CapsuleShape3D_inx13")
 
 [node name="sprite_enemy" type="AnimatedSprite3D" parent="." unique_id=1599092422]

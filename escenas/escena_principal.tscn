@@ -44,8 +44,6 @@ mesh = SubResource("PlaneMesh_hxpc2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1191592789]
 
-[node name="Pantalla Principal" parent="CanvasLayer" unique_id=384989241 instance=ExtResource("3_uxd1d")]
-
 [node name="pixelation" type="ColorRect" parent="CanvasLayer" unique_id=488630272]
 material = SubResource("ShaderMaterial_hxpc2")
 anchors_preset = 15
@@ -54,6 +52,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Pantalla Principal" parent="CanvasLayer" unique_id=384989241 instance=ExtResource("3_uxd1d")]
 
 [node name="inicio" type="TextureRect" parent="CanvasLayer" unique_id=2110204126]
 anchors_preset = 15

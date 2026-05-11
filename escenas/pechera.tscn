@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dvqv6odm45s26"]
+[gd_scene format=3 uid="uid://dgxu3evsqhf5d"]
 
-[ext_resource type="Script" uid="uid://dqwdiq7c2r7i2" path="res://scripts/espada.gd" id="1_m07ir"]
-[ext_resource type="Resource" uid="uid://b573ek7vl2aem" path="res://armas/lanza.tres" id="2_m07ir"]
-[ext_resource type="Texture2D" uid="uid://doghknbtc1e3h" path="res://texturas/Armas/Pica.png" id="2_mgsno"]
+[ext_resource type="Script" uid="uid://dgah05n5bn6mf" path="res://scripts/escudo.gd" id="1_ehmw2"]
+[ext_resource type="Resource" uid="uid://d3juvq21cvcql" path="res://equipamiento/pechera.tres" id="2_4b0gb"]
+[ext_resource type="Texture2D" uid="uid://ccrlal7mposok" path="res://texturas/pecheradecuero.png" id="3_ksson"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
 height = 1.1035156
@@ -11,26 +11,22 @@ height = 1.1035156
 height = 1.3969727
 radius = 1.1918945
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
-size = Vector2(1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
-transparency = 2
-alpha_scissor_threshold = 0.951
-alpha_antialiasing_mode = 0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51k0r"]
+transparency = 1
 cull_mode = 2
-albedo_texture = ExtResource("2_mgsno")
-roughness = 0.4
-emission_energy_multiplier = 5.63
-emission_on_uv2 = true
+albedo_texture = ExtResource("3_ksson")
 texture_filter = 0
 
-[node name="lanza" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]
+[sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
+material = SubResource("StandardMaterial3D_51k0r")
+size = Vector2(1, 1)
+
+[node name="escudo" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_m07ir")
-arma = ExtResource("2_m07ir")
+script = ExtResource("1_ehmw2")
+secundaria = ExtResource("2_4b0gb")
 
 [node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=330304897]
 shape = SubResource("CapsuleShape3D_tcnuu")
@@ -44,7 +40,6 @@ shape = SubResource("CylinderShape3D_tuemg")
 [node name="sprite" type="MeshInstance3D" parent="." unique_id=170180650]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("PlaneMesh_jsk3o")
-surface_material_override/0 = SubResource("StandardMaterial3D_4arys")
 
 [connection signal="body_entered" from="area_interaccion" to="." method="_on_area_interaccion_body_entered"]
 [connection signal="body_exited" from="area_interaccion" to="." method="_on_area_interaccion_body_exited"]

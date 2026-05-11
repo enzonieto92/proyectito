@@ -17,7 +17,11 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dk8b"]
-albedo_color = Color(0.15487596, 0.154876, 0.15487596, 1)
+albedo_texture = ExtResource("1_2boey")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0, 0.195, 0)
+uv1_triplanar = true
+texture_filter = 0
 
 [node name="marco" type="CSGCombiner3D" unique_id=396552226]
 use_collision = true

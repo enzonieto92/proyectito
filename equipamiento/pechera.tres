@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Equipo" format=3 uid="uid://d3juvq21cvcql"]
+
+[ext_resource type="Texture2D" uid="uid://ccrlal7mposok" path="res://texturas/pecheradecuero.png" id="1_l5d6c"]
+[ext_resource type="Script" uid="uid://d0hgfdewinou0" path="res://scripts/resources/Equipo.gd" id="1_pbjiy"]
+
+[resource]
+script = ExtResource("1_pbjiy")
+armadura = 40
+durabilidad = 200
+nombre = "Pechera de Cuero Estropeada"
+icono = ExtResource("1_l5d6c")
+size = Vector2i(2, 2)
+weight = 3.0
+metadata/_custom_type_script = "uid://d0hgfdewinou0"
