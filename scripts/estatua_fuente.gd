@@ -28,9 +28,9 @@ func apagar_antorchas():
 	tween.set_parallel(false)
 	tween.tween_callback(func():
 		antorcha_16.light.visible = false
-		antorcha_16.particles.emitting = false
-		antorcha_17.light.visible = false
-		antorcha_17.particles.emitting = false
+		print ("apagando antorchas")
+		antorcha_16.apagar()
+		antorcha_17.apagar()
 	)
 func interactuar(player):
 	if daga_colocada == true:

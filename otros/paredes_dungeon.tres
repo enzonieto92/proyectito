@@ -5,9 +5,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esx3n"]
 resource_name = "Material.002"
-cull_mode = 2
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_prg7t")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js3qy"]
 resource_name = "Material.004"
@@ -42,6 +42,7 @@ blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_prg7t"]
 resource_name = "wall-chunks_Plano_009"
+lightmap_size_hint = Vector2i(233, 113)
 _surfaces = [{
 "aabb": AABB(-0.5, -0.0035355338, -0.5, 1, 3.0085356, 1),
 "attribute_data": PackedByteArray("AAD/v////z8AAP8/////vwAA//8ys8xMAADMTDKz//9vavr/BAAEAG9qBAAEAPr/"),

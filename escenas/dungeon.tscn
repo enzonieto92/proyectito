@@ -157,7 +157,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.086, -1, 3.824)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
 
 [node name="altar_secreto" parent="NavigationRegion3D/decoracion" unique_id=934175357 instance=ExtResource("13_hc4sh")]
-transform = Transform3D(0.9999973, 6.52463e-06, -0.002320932, -6.4321916e-06, 1, 4.0013238e-05, 0.0023209325, -3.999827e-05, 0.9999973, -30.71371, -2.4950795, 3.9709992)
+transform = Transform3D(0.9999973, 6.52463e-06, -0.002320932, -6.4321916e-06, 1, 4.0013238e-05, 0.0023209325, -3.999827e-05, 0.9999973, -30.713501, -2.4950793, 3.968346)
 
 [node name="otros" type="Node3D" parent="NavigationRegion3D/decoracion" unique_id=1932275530]
 
