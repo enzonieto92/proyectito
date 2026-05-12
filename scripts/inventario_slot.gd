@@ -154,25 +154,21 @@ func _drop_data(_at_position: Vector2, data):
 		var weapon_slot = data.get("weapon_slot_ref")
 		if weapon_slot:
 			weapon_slot._drop_exitoso = true
-			weapon_slot.vaciar()
 	elif data.get("desde_secundary_slot", false):  # 👈 nuevo bloque
 		inventario._colocar_en(data["item"], destino)
 		var secundary_slot = data.get("secundary_slot_ref")
 		if secundary_slot:
 			secundary_slot._drop_exitoso = true
-			secundary_slot.vaciar()
 	elif data.get("desde_pechera_slot", false):
 		inventario._colocar_en(data["item"], destino)
 		var pechera_slot = data.get("pechera_slot_ref")
 		if pechera_slot:
 			pechera_slot._drop_exitoso = true
-			pechera_slot.vaciar()
 	elif data.get("desde_casco_slot", false):
 		inventario._colocar_en(data["item"], destino)
 		var casco_slot = data.get("casco_slot_ref")
 		if casco_slot:
 			casco_slot._drop_exitoso = true
-		casco_slot.vaciar()
 	else:
 		inventario.mover_item(data["origen"], destino, data["item"])
 
