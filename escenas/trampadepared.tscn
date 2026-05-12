@@ -1,0 +1,102 @@
+[gd_scene format=4 uid="uid://4ihqr7olpodp"]
+
+[ext_resource type="Texture2D" uid="uid://wg4kpwqxq13g" path="res://objetos glb/trampadepared_textura-antorcha.png" id="1_m7lma"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ordx"]
+resource_name = "textura-trampa"
+cull_mode = 2
+albedo_texture = ExtResource("1_m7lma")
+roughness = 0.9
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_up1w0"]
+_surfaces = [{
+"aabb": AABB(-0.15279263, 1.210855, -0.0010539629, 0.3057642, 0.29097092, 0.047644764),
+"format": 34896613377,
+"index_count": 216,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAEAAIAAgAEAAMAAQAAAAUAAQAFAAYAAAADAAcAAAAHAAUAAQAIAAQABgAIAAEABQAJAAYABgAJAAgABQAHAAkABAAKAAMACAALAAQABAALAAoACQAMAAgACAAMAAsABwANAAkACQANAAwAAwAOAAcAAwAKAA4ABwAOAA0ADAAPAAsACwAQAAoACwAPABAACgARAA4ACgAQABEADgASAA0ADgARABIADQATAAwADAATAA8ADQASABMAEAAUABEADwAVABAAEAAVABQAEwAWAA8ADwAWABUAEgAXABMAEwAXABYAEQAYABIAEQAUABgAEgAYABcAGQAVABYAGgAUABUAGgAVABkAGwAYABQAGwAUABoAHAAXABgAHAAYABsAHQAWABcAHQAXABwAGQAWAB0AGgAeABsAHgAcABsAGQAfABoAGgAfAB4AIAAZAB0AGQAgAB8AIQAdABwAHgAhABwAIAAdACEAIgAeAB8AIQAeACIAIwAfACAAIgAfACMAIQAiACQAIAAhACQAJAAiACMAIwAgACUAIAAkACUAJAAjACUA"),
+"name": "textura-trampa",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 38,
+"vertex_data": PackedByteArray("AACEngAAAAD//waeAAAAACqA//8AAAAAAACEntvLAAAqgP//28sAAJ0wTQAAAAAA1M4AAAAAAACdME0A28sAAP//Bp7bywAA1M4AANvLAADyF0qWy+oAAB+AheXL6gAABejklcvqAAAPwHIVy+oAAHY/sRXL6gAAHYDm4f7/AAA4GyqV/v8AAH5Bnhj+/wAACr5hGP7/AAC+5MeU/v8AAB5IKiL+/wAA6CV+kf7/AAAYgBXW//8AAAraJZH+/wAAcrfzIf//AAD7In+Sy+oAAE1GjB/L6gAAQLlUH8vqAAD53CSSy+oAABmAUtnL6gAAxZjZPsvqAAC0TnRYy+oAABJnSabL6gAAI7GujMvqAADFmNk+QQ8AALROdVhBDwAAI7GujEEPAAASZ0mmQQ8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cyuov"]
+resource_name = "trampadepared_Circle"
+_surfaces = [{
+"aabb": AABB(-0.15279263, 1.210855, -0.0010539629, 0.3057642, 0.29097092, 0.047644764),
+"attribute_data": PackedByteArray("fJoJ+tr+E67L5yb5xIGBr8y/j4Bz2/757eVHuY7wprXG1NTwPIPh6uTMQ9v2zIPqKYOh29aCspc/vyWIUr9ll8SCcogXg2HMrc3CvL/NAswEgyG9Ur9ll5D72Yej+xmXP78liCmDodvXzAPM6cxD2xeDYcxTiTO69Ldr3YubZvFQpvWnoX7ItoubZvELlbH6U4kzuo7wprVMt4SXMLccjO3lR7kLlbH6xtTU8HPb/vmLm2bxMLccjFOJM7qhfsi2TLeEl2Cga9DNwP//C4RC1I3Qxd92r2efdvy40iea9Iuk38Guk+QBi/DnHKke52KS8OelkR7nHKmT6YrAwujooJPpg6DC6O2/COyKwDbrZacI7LSmNutrwGXqisCT6SOhZeqFoJPpJcD//xGn4tJ1i9bSXoYWq3ypQPuwqFCm9adi797c27pF2Wbsx9j0t2vd8OeKwB7nHKnw5xypHufNv4ubZvFi797cxtTU8PS3a90264rAZeoDpDbrj6Nl6hXAwuiKwPDnoaDC6B6g8OcIwHrF4qypxDGTesUSk6nEMKy86GfICPw3nAj8Z8i86DecXLLK3ZzM6qCczMrdXLLqoAj8m/S86GfICPxnyLzom/SYrdzHTJodm5itHZtMmtzH4/hKisiIWfzIiEqK4/hZ/A=="),
+"format": 34896613399,
+"index_count": 216,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABQAGAAcABQAIAAYACQAKAAsACQAMAAoADQAOAA8ADQAQAA4AEQASABMAEQAUABIAFQAWABcAFQAYABYAGQAaABsAGQAcABoAHQAeAB8AHQAgAB4AIQAiACMAIQAkACIAJQAmACcAJQAoACYAKQAqACsAKQAsACoALQAuAC8ALQAwAC4AMQAyADMANAAyADEANQAxADMANAA2ADIANQAzADcANgA0ADgAOQA1ADcANgA4ADkAOQA4ADUAOgA7ADwAOgA9ADsAPgA/AEAAPgBBAD8AQgBDAEQAQgBFAEMARgBHAEgARgBJAEcASgBLAEwATABLAE0ASgBOAEsATABNAE8AUABOAEoATwBNAFEAUABSAE4ATwBRAFMAUwBSAFAAUwBRAFIAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZABlAGYAZABnAGUAaABpAGoAaABrAGkAbABtAG4AbABvAG0AcABxAHIAcABzAHEAdAB1AHYAdAB3AHUAeAB5AHoAeAB7AHkA"),
+"material": SubResource("StandardMaterial3D_2ordx"),
+"name": "textura-trampa",
+"primitive": 3,
+"uv_scale": Vector4(2.0176232, 1.9831169, 0, 0),
+"vertex_count": 124,
+"vertex_data": PackedByteArray("AACEngAA/////waeAAD//yqA//8AAP//nTBNAAAA///UzgAAAAD//50wTQDby7i0D8ByFcvquLTUzgAA28u4tHY/sRXL6ri0nTBNAAAA/7/UzgAA28v/v9TOAAAAAP+/nTBNANvL/78qgP//AAA17gAAhJ7byzXuAACEngAANe4qgP//28s17tTOAAAAADvO//8GntvLO87//waeAAA7ztTOAADbyzvOAACEngAAfM6dME0A28t8zp0wTQAAAHzOAACEntvLfM7//waeAADb7SqA///by9vtKoD//wAA2+3//wae28vb7R+AheXL6mDlOBsqlf7/YOXyF0qWy+pg5R2A5uH+/2DlKoD//9vLFrTyF0qWy+oWtAAAhJ7byxa0H4CF5cvqFrTUzgAA28vlswXo5JXL6uWz//8GntvL5bMPwHIVy+rlswAAhJ7by2y0dj+xFcvqbLSdME0A28tstPIXSpbL6my0//8GntvL77QfgIXly+rvtCqA///by++0Bejklcvq77Qjsa6My+pp/xmAUtnL6mn/+dwkksvqaf8SZ0mmy+pp/8WY2T7L6mn/+yJ/ksvqaf9AuVQfy+pp/7ROdFjL6mn/TUaMH8vqaf/7In+Sy+oW4xiAFdb//xbjGYBS2cvqFuPoJX6R/v8W4wXo5JXL6jm2HYDm4f7/ObYfgIXly+o5tr7kx5T+/zm2GYBS2cvqdvQK2iWR/v929PncJJLL6nb0GIAV1v//dvR2P7EVy+rXygq+YRj+/9fKD8ByFcvq18p+QZ4Y/v/Xygq+YRj+/6uzCtolkf7/q7O+5MeU/v+rsxiAFdb//6uzcrfzIf//q7MdgObh/v+rs35Bnhj+/6uz6CV+kf7/q7MeSCoi/v+rszgbKpX+/6uzTUaMH8vq89zoJX6R/v/z3Psif5LL6vPcHkgqIv7/89zyF0qWy+r1vH5Bnhj+//W8dj+xFcvq9bw4GyqV/v/1vPncJJLL6kv6crfzIf//S/pAuVQfy+pL+graJZH+/0v6D8ByFcvqkaW+5MeU/v+RpQXo5JXL6pGlCr5hGP7/kaVAuVQfy+od6h5IKiL+/x3qTUaMH8vqHepyt/Mh//8d6hJnSabL6indI7GujEEPKd0SZ0mmQQ8p3SOxrozL6indI7GujMvq2/bFmNk+QQ/b9iOxroxBD9v2xZjZPsvq2/bFmNk+QQ9LzrROdFjL6kvOtE51WEEPS87FmNk+y+pLzrROdVhBDwTBEmdJpsvqBMESZ0mmQQ8EwbROdFjL6gTBI7GujEEP8oy0TnVYQQ/yjBJnSaZBD/KMxZjZPkEP8ow64MSfOuDEnzrgxJ864MSfOuDEnypwTXQqcE10KnBNdCpwTXScAM5/nADOf5wAzn+cAM5/EG7+thBu/rYQbv62EG7+tgkmLjQJJi40CSYuNAkmLjTVS9Cl1UvQpdVL0KXVS9ClITfSESE30hEhN9IRITfSEah1H6aodR+mqHUfpqh1H6ZEhkqTRIZKk0SGSpNEhkqTPYaibD2Gomw9hqJsPYaibPVvjov1b46L9W+Oi/VvjovdlDiA3ZQ4gN2UOIDdlDiA////////////////////////////////////////////////ImrVLyJq1S8iatUvImrVLyHPzhUhz84VIc/OFSHPzhUqSDtYKkg7WCpIO1gqSDtYfmN5YH5jeWB+Y3lgfmN5YP9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//39GaEMFRmhCBUZoQgVGaEMFJllAnCZZQJwmWUCcJllAnKfzME2n8zBNp/MwTafzME1zctAqc3LQKnNy0CpzctAquMY5KrjGOSq4xjkquMY5KgFR/F0BUfxdAVH8XQFR/F2A9kA7gPZAO4D2QDuA9kA7ssvZJbLL2SWyy9klssvZJXZwER92cBEfdnARH3ZwER//f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_up1w0")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_aq11x"]
+_surfaces = [{
+"aabb": AABB(-0.04321823, 1.297859, -0.047325943, 0.08643441, 0.086434126, 2.4110677),
+"format": 34896613377,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAQAEAAIAAgAFAAAAAgAEAAUAAQAGAAQAAwAGAAEAAAAHAAMAAwAHAAYAAAAFAAcABgAIAAQABAAJAAUABAAIAAkABQAKAAcABQAJAAoABwALAAYABgALAAgABwAKAAsACQAMAAoACwANAAgACAAOAAkACQAOAAwACAANAA4ACgAMAA8ACgAPAAsADgAPAAwACwAPAA0ADgANAA8A"),
+"name": "textura-trampa",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("7H+AMQAAAAASgH7OAAAAAIAxEoAAAAAAfs7sfwAAAACAMRKALuMAAOx/gDEu4wAAEoB+zi7jAAB+zux/LuMAAAAAHoBD5AAA4H8AAEPkAAD//+B/Q+QAAB6A//9D5AAASYP+f///AAC1fACA//8AAP5/tXz//wAAAIBJg///AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wjpgi"]
+resource_name = "trampadepared_Plane"
+_surfaces = [{
+"aabb": AABB(-0.04321823, 1.297859, -0.047325943, 0.08643441, 0.086434126, 2.4110677),
+"attribute_data": PackedByteArray("HvxSvX/+E7t//lK9HvwTuz//CL7///3AP/9IwP//Ur389M1/m/L//5vyzX/89P//XffNf/z0///89M1/Xff//735zX9d9///XffNf735//8e/M1/vfn//735zX8e/P////8+8AH+//8e/D7wG/7//978SMAe/FK93vwIvh78/cDe/Ai+//9SvT//CL4e/FK9P/9IwB78/cDe/EjA///9wDf8E7se/Pu6N/z7uh78E7v//37gAf4+8B78fuAb/j7w//++0AH+fuAe/L7QG/5+4P///cAB/r7QHvz9wBv+vtA="),
+"format": 34896613399,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUA"),
+"material": SubResource("StandardMaterial3D_2ordx"),
+"name": "textura-trampa",
+"primitive": 3,
+"uv_scale": Vector4(1.8890121, 1.9969541, 0, 0),
+"vertex_count": 56,
+"vertex_data": PackedByteArray("7H+AMQAA//8SgH7OAAD//4AxEoAAAP//fs7sfwAA//8SgH7OLuNa5QAAHoBD5FrlgDESgC7jWuUegP//Q+Ra5YAxEoAAAKPp7H+AMS7jo+nsf4AxAACj6YAxEoAu46PpEoB+zgAA+MWAMRKALuP4xYAxEoAAAPjFEoB+zi7j+MXsf4AxAACx6X7O7H8u47Hpfs7sfwAAsensf4AxLuOx6X7O7H8AAP/FEoB+zi7j/8USgH7OAAD/xX7O7H8u4//F///gf0PkCsIAgEmD//8Kwh6A//9D5ArCSYP+f///CsLsf4AxLuNa5f//4H9D5Frlfs7sfy7jWuXgfwAAQ+Ra5X7O7H8u4xv1HoD//0PkG/USgH7OLuMb9f//4H9D5Bv1gDESgC7jG/XgfwAAQ+Qb9ex/gDEu4xv1AAAegEPkG/X+f7V8//8JoACASYP//wmgSYP+f///CaC1fACA//8JoAAAHoBD5GDo/n+1fP//X+jgfwAAQ+Rg6LV8AID//1/oHoD//0PkAsK1fACA//8CwgAAHoBD5ALCAIBJg///AsLgfwAAQ+Rt6EmD/n///23o///gf0Pkbej+f7V8//9t6IWleNqFpXjahaV42oWleNrXoZnR16GZ0dehmdHXoZnR/coC6v3KAur9ygLq/coC6gXj8rkF4/K5BePyuQXj8rnulfdK7pX3Su6V90rulfdK9cX6YvXF+mL1xfpi9cX6YhnEwGMZxMBjGcTAYxnEwGMnXmUuJ15lLideZS4mXmUurke7Ha5Hux2uR7sdrke7HVC4Q+JQuEPiULhD4lC4Q+IHgAKAB4ACgAeAAoAHgAKAgs0O64LNDuuCzQ7rgs0O68rjz7vK48+7yuPPu8rjz7vklH1N5JR9TeSUfU3klH1N")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_aq11x")
+
+[sub_resource type="Animation" id="Animation_83muc"]
+resource_name = "puaAction"
+length = 0.9583333
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("pua")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -1.8992777, 0.6666667, 1, 0, 0, -1.8992777, 0.7, 1, 0, 0, -1.7578375, 0.73333335, 1, 0, 0, -1.4695175, 0.76666665, 1, 0, 0, -1.099598, 0.8, 1, 0, 0, -0.7133579, 0.8333333, 1, 0, 0, -0.376078, 0.8666667, 1, 0, 0, -0.23463775, 0.9, 1, 0, 0, -0.2382777, 0.9583333, 1, 0, 0, -0.32927775)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lho42"]
+_data = {
+&"puaAction": SubResource("Animation_83muc")
+}
+
+[node name="trampadepared" type="Node3D" unique_id=959107981]
+
+[node name="base" type="MeshInstance3D" parent="." unique_id=685724512]
+mesh = SubResource("ArrayMesh_cyuov")
+
+[node name="pua" type="MeshInstance3D" parent="." unique_id=1259004766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.32927775)
+mesh = SubResource("ArrayMesh_wjpgi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=937339496]
+libraries/ = SubResource("AnimationLibrary_lho42")
