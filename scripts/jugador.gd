@@ -28,7 +28,7 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @export var armadura: float
 @export var peso: float
 @export var bloqueando = false
-var _ultima_armadura_debug: float = -1.0
+
 var stamina_agotada: bool = false
 var vida: float:
 	set(value):
@@ -46,9 +46,15 @@ const mouse_sensitivity = 0.002
 var pitch := 0.0
 var arma: Item = null
 var secundaria: Item = null
+var pechera: Pechera = null
+var casco: Casco = null
 var CONSTANTE_ARMADURA: float = 100
 var damage: Vector2
-var armadura_total: float
+var armadura_total: float = 0:
+	set(value):
+		if value != armadura_total:
+			armadura_total = value
+			print("armadura cambió a: ", value)
 var damage_arma: Vector2
 var total_damage: Vector2
 var footstep_sounds = [
@@ -62,6 +68,42 @@ var _ultimo_texto: String = ""
 var _vida_muerto := false
 var muerto := false
 
+# -------------------------
+# ARMADURA
+# -------------------------
+
+func recalcular_armadura() -> void:
+	var base = armadura
+	base += pechera.armadura if pechera != null else 0
+	base += casco.armadura if casco != null else 0
+	base += secundaria.armadura if secundaria != null else 0
+	if bloqueando:
+		base += secundaria.armadura if secundaria != null else 0
+		base += arma.armadura if arma != null and secundaria == null else 0
+	armadura_total = base
+
+# -------------------------
+# BLOQUEO
+# -------------------------
+
+func activar_bloqueo():
+	if not bloqueando:
+		bloqueando = true
+		if arma != null:
+			raycast_arma.enabled = true
+		recalcular_armadura()
+
+func desactivar_bloqueo():
+	if bloqueando:
+		bloqueando = false
+		if arma != null:
+			raycast_arma.enabled = false
+		recalcular_armadura()
+
+# -------------------------
+# INIT
+# -------------------------
+
 func cambiar_pitch_swing():
 	sonido_arma.pitch_scale = randf_range(0.7, 1.3)
 
@@ -72,24 +114,33 @@ func _ready():
 	vida = vida_max
 	animaciones.play_spawn()
 
+# -------------------------
+# COMBATE
+# -------------------------
+
 func recibir_damage(_damage):
 	recibiendo_damage = true
 	var reduccion = armadura_total / (armadura_total + CONSTANTE_ARMADURA)
 	var damage_final = int(_damage * (1.0 - reduccion))
 	var damage_bloqueado = int(_damage - damage_final)
 	vida -= damage_final
-	
+
 	if bloqueando:
 		print("armadura al bloquear: ", armadura_total)
 		print("daño: ", _damage)
 		print("daño recibido: ", damage_final)
 		print("daño bloqueado: ", damage_bloqueado)
-	
+
 	animaciones.on_block_hit()
 	if !bloqueando:
 		camara_controller.shake(0.05, 0.5, 60.0)
 		hit_sound.play()
 	recibiendo_damage = false
+
+# -------------------------
+# UI
+# -------------------------
+
 func reaccion_ui():
 	const FRAME_WIDTH = 144
 	const DAMAGE_FRAMES = 5
@@ -97,6 +148,11 @@ func reaccion_ui():
 	var frame_index = clamp(int((1.0 - vida / vida_max) * DAMAGE_FRAMES), 0, DAMAGE_FRAMES - 1)
 	atlas.region = Rect2(frame_index * FRAME_WIDTH, 0, FRAME_WIDTH, atlas.region.size.y)
 	blood_splash.visible = frame_index > 0
+
+# -------------------------
+# INPUT
+# -------------------------
+
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
 		if inventario_ui.visible:
@@ -134,6 +190,10 @@ func cerrar_inventario() -> void:
 	animaciones.resetear_estado()
 	if not get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+# -------------------------
+# PHYSICS
+# -------------------------
 
 func _physics_process(delta):
 	if animaciones.spawning:
@@ -219,17 +279,11 @@ func _physics_process(delta):
 	move_and_slide()
 	moving = velocity.length_squared() > 0.01 and is_on_floor()
 
+# -------------------------
+# PROCESS
+# -------------------------
+
 func _process(_delta):
-	var armadura_pasiva_secundaria = secundaria.armadura if secundaria != null else 0
-	var armadura_bloqueo_secundaria = secundaria.armadura if secundaria != null else 0
-	var armadura_bloqueo_arma = arma.armadura if arma != null and bloqueando and secundaria == null else 0
-
-	armadura_total = armadura + armadura_pasiva_secundaria
-	if bloqueando:
-		armadura_total += armadura_bloqueo_secundaria + armadura_bloqueo_arma
-		if armadura_total != _ultima_armadura_debug:
-			_ultima_armadura_debug = armadura_total
-
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		var nuevo_texto = _calcular_texto_interaccion()
 		if objeto_actual != _ultimo_objeto or nuevo_texto != _ultimo_texto:
@@ -250,6 +304,10 @@ func _process(_delta):
 		muerto = true
 		pantalla_muerte()
 
+# -------------------------
+# MUERTE
+# -------------------------
+
 func pantalla_muerte():
 	muerto = true
 	velocity = Vector3.ZERO
@@ -267,6 +325,10 @@ func pantalla_muerte():
 		var fade = AudioManager.fade_out(1, 2)
 		fade.tween_callback(get_tree().change_scene_to_file.bind("res://escenas/escena_principal.tscn"))
 	)
+
+# -------------------------
+# INTERACCION
+# -------------------------
 
 func _calcular_texto_interaccion() -> String:
 	if objeto_actual.is_in_group("puertas"):
@@ -286,6 +348,10 @@ func _calcular_texto_interaccion() -> String:
 			return "(E) Inspeccionar"
 	return "(E) Interactuar"
 
+# -------------------------
+# PASOS
+# -------------------------
+
 var last_step_time := 0.0
 var step_cooldown := 0.2
 
@@ -303,17 +369,3 @@ func play_footstep():
 func stop_footstep():
 	if footstep_player.is_playing():
 		footstep_player.stop()
-
-func desactivar_bloqueo():
-	if bloqueando:
-		bloqueando = false
-		if arma != null:
-			raycast_arma.enabled = false
-
-func activar_bloqueo():
-	if not bloqueando:
-		bloqueando = true
-		if arma != null:
-			raycast_arma.enabled = true
-
-		

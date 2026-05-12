@@ -38,6 +38,7 @@
 [ext_resource type="AudioStream" uid="uid://bpvtl2rls4cxu" path="res://sonido/ambientales/tension_1_suave.mp3" id="31_61nbk"]
 [ext_resource type="PackedScene" uid="uid://dvqv6odm45s26" path="res://escenas/lanza.tscn" id="31_i7cfy"]
 [ext_resource type="AudioStream" uid="uid://cinfu1xea6a0l" path="res://sonido/ambientales/metal_ambiente.mp3" id="32_b064s"]
+[ext_resource type="PackedScene" uid="uid://di0xcshsa8wr8" path="res://escenas/casco.tscn" id="32_ii87k"]
 [ext_resource type="AudioStream" uid="uid://b4ck8dc6ox868" path="res://sonido/Musica/epachill.mp3" id="33_b064s"]
 [ext_resource type="PackedScene" uid="uid://kqlong62cjln" path="res://escenas/Guardia.tscn" id="33_ffsro"]
 [ext_resource type="PackedScene" uid="uid://bqj35ebv4jmqj" path="res://escenas/busto.tscn" id="41_kc55g"]
@@ -122,10 +123,6 @@ data = PackedVector3Array(0, -1.2099999, -1, 0, -1.2099999, 1, 0, 1.2099999, -1,
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
 transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, -21.398312, -0.12303805, -23.016157)
 floor_stop_on_slope = false
-recibiendo_damage = false
-armadura = 0.0
-peso = 0.0
-bloqueando = false
 
 [node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_mnaqj")]
 transform = Transform3D(0.2510389, 0, -0.9679769, 0, 1, 0, 0.967977, 0, 0.25103888, -27.435768, -0.45350036, -4.6270237)
@@ -504,6 +501,9 @@ transform = Transform3D(0.82239234, 0, 0.5689208, 0, 1, 0, -0.5689208, 0, 0.8223
 
 [node name="lanza" parent="NavigationRegion3D" unique_id=221628938 instance=ExtResource("31_i7cfy")]
 transform = Transform3D(0.8571493, 0, 0.51506805, 0, 1, 0, -0.51506805, 0, 0.8571493, -20.467419, 0.004999578, -2.9060688)
+
+[node name="casco" parent="NavigationRegion3D" unique_id=1643686131 instance=ExtResource("32_ii87k")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.11655, 5.9604645e-08, -4.512371)
 
 [node name="areas_transicion" type="Node3D" parent="." unique_id=1525431747]
 

@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://deigckxeuy4rq" path="res://otros/nokiafc22.ttf" id="3_iwqyn"]
 [ext_resource type="Script" uid="uid://dvxyphx7ssdo0" path="res://scripts/slot_mano_secundaria.gd" id="4_yvvfg"]
 [ext_resource type="Texture2D" uid="uid://clqf4gv35w3jm" path="res://texturas/Personaje-inventario.png" id="5_5ftgr"]
+[ext_resource type="Script" uid="uid://csxu6ypox2bvm" path="res://scripts/slot_pecho.gd" id="8_u2bl6"]
+[ext_resource type="Script" uid="uid://ggl31t0qxb3c" path="res://scripts/slot_casco.gd" id="9_jfcjk"]
 [ext_resource type="Texture2D" uid="uid://btdtqksvrj1fw" path="res://texturas/mochila-inventario.png" id="10_5ftgr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7flxi"]
@@ -279,6 +281,7 @@ offset_left = 160.00002
 offset_top = 142.0
 offset_right = 256.00003
 offset_bottom = 274.0
+script = ExtResource("8_u2bl6")
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_pecho" unique_id=242797496]
 visible = false
@@ -306,6 +309,7 @@ offset_left = 162.00002
 offset_top = 50.0
 offset_right = 258.00003
 offset_bottom = 146.0
+script = ExtResource("9_jfcjk")
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza" unique_id=1214594237]
 visible = false

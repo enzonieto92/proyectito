@@ -121,6 +121,7 @@ func _on_dying_finished(_anim: String) -> void:
 	animation_player.pause()
 
 	colision.shape.height = 0.5
+	colision.shape.radius = 0.3
 	colision.position.y = - 0.5
 func puede_interactuar() -> bool:
 	if died and item != null:

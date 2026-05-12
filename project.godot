@@ -58,6 +58,7 @@ maderas=""
 paredes=""
 navigation_region=""
 navegable=""
+sfx_inventario=""
 
 [importer_defaults]
 

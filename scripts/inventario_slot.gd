@@ -1,6 +1,6 @@
 class_name InventarioSlot 
 extends Control
-
+@onready var sfx_inventario: AudioStreamPlayer3D = get_tree().get_first_node_in_group("sfx_inventario")
 var grid_pos : Vector2i = Vector2i.ZERO
 var ocupado: bool = false
 
@@ -8,7 +8,7 @@ var ocupado: bool = false
 @onready var slot_background: TextureRect = $slot_background
 
 var item = null
-var slot_size: Vector2 = Vector2.ZERO 
+var slot_size: Vector2 = Vector2.ZERO
 
 # 🔥 estado global de drag
 static var ultimo_highlight_pos: Vector2i = Vector2i(-1, -1)
@@ -161,6 +161,18 @@ func _drop_data(_at_position: Vector2, data):
 		if secundary_slot:
 			secundary_slot._drop_exitoso = true
 			secundary_slot.vaciar()
+	elif data.get("desde_pechera_slot", false):
+		inventario._colocar_en(data["item"], destino)
+		var pechera_slot = data.get("pechera_slot_ref")
+		if pechera_slot:
+			pechera_slot._drop_exitoso = true
+			pechera_slot.vaciar()
+	elif data.get("desde_casco_slot", false):
+		inventario._colocar_en(data["item"], destino)
+		var casco_slot = data.get("casco_slot_ref")
+		if casco_slot:
+			casco_slot._drop_exitoso = true
+		casco_slot.vaciar()
 	else:
 		inventario.mover_item(data["origen"], destino, data["item"])
 
@@ -255,4 +267,10 @@ func _intentar_equipar():
 	elif item is Consumible:
 		var jugador = get_tree().get_first_node_in_group("jugador")
 		jugador.vida = min(jugador.vida + item.curacion, jugador.vida_max)
+		sfx_inventario.play()
+		_hover_item(item, item.grid_pos, false)
 		inventario.remover_item(item, item.grid_pos)
+	elif item is Pechera:
+		inventario.slot_pecho.equipar(item)
+	elif item is Casco:
+		inventario.slot_cabeza.equipar(item)

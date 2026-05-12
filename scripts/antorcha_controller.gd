@@ -28,7 +28,7 @@ func _process(_delta):
 	if camera == null:
 		return
 	
-	var is_visible = _is_visible_with_margin(camera, 2.0)
+	var _is_visible = _is_visible_with_margin(camera, 2.0)
 
-	particles.emitting = is_visible
-	light.visible = is_visible
+	particles.emitting = _is_visible
+	light.visible = _is_visible

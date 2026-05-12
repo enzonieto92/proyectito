@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Casco" format=3 uid="uid://crde703xc3kk2"]
+
+[ext_resource type="Texture2D" uid="uid://dq4rqfh0cqxpn" path="res://texturas/cascocuero.png" id="1_57ri8"]
+[ext_resource type="Script" uid="uid://o0luv05rxdjy" path="res://scripts/resources/Casco.gd" id="1_mu27j"]
+
+[resource]
+script = ExtResource("1_mu27j")
+armadura = 10
+durabilidad = 35
+nombre = "Casco de Cuero"
+icono = ExtResource("1_57ri8")
+size = Vector2i(2, 2)
+metadata/_custom_type_script = "uid://o0luv05rxdjy"

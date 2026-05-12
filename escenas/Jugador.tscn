@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://2w1wkxecn551" path="res://scripts/raycast_arma.gd" id="9_w7fad"]
 [ext_resource type="AudioStream" uid="uid://ck6u42udbwsfj" path="res://sonido/block.mp3" id="10_meqng"]
 [ext_resource type="AudioStream" uid="uid://clxo03u4jxli7" path="res://sonido/hit_enemigo.mp3" id="13_475hk"]
+[ext_resource type="AudioStream" uid="uid://bieasjlwea40r" path="res://sonido/comiendo.mp3" id="13_ddw1h"]
 
 [sub_resource type="Animation" id="Animation_2hs0m"]
 length = 0.001
@@ -683,11 +684,7 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
 script = ExtResource("1_hqtel")
 stamina = 1000.0
-recibiendo_damage = null
 vida_max = 75.0
-armadura = null
-peso = null
-bloqueando = null
 
 [node name="animaciones" type="AnimationPlayer" parent="." unique_id=602970200]
 libraries/ = SubResource("AnimationLibrary_dw050")
@@ -808,3 +805,6 @@ parameters/TimeScale_ataque/scale = 1.0
 parameters/shot_bloquear/active = false
 parameters/shot_bloquear/internal_active = false
 parameters/shot_bloquear/request = 0
+
+[node name="SFX inventario" type="AudioStreamPlayer3D" parent="." unique_id=972488473 groups=["sfx_inventario"]]
+stream = ExtResource("13_ddw1h")
