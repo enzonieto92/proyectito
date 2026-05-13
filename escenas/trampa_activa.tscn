@@ -85,6 +85,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lj7hj")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uy8cs"]
+points = PackedVector3Array(0.50793654, 0.007936508, 0.50793654, -0.50793654, -0.007936508, -0.50793654, -0.50793654, 0.007936508, -0.50793654, 0.50793654, -0.007936508, -0.50793654, -0.50793654, -0.007936508, 0.50793654, -0.50793654, 0.007936508, 0.50793654, 0.50793654, 0.007936508, -0.50793654, 0.50793654, -0.007936508, 0.50793654)
+
 [sub_resource type="Animation" id="Animation_vbhep"]
 resource_name = "trampa_activada"
 tracks/0/type = "position_3d"
@@ -101,17 +104,23 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_spo2i"]
+size = Vector3(0.815, 0.4846338, 1)
 
 [node name="trampa_activa" type="Node3D" unique_id=662948501]
 script = ExtResource("1_uy8cs")
 
 [node name="Circle" type="MeshInstance3D" parent="." unique_id=1503080216]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06774062, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10277582, 0)
 mesh = SubResource("ArrayMesh_og0c4")
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=826713119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 mesh = SubResource("ArrayMesh_qiwbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane" unique_id=54096337]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D" unique_id=774113539]
+shape = SubResource("ConvexPolygonShape3D_uy8cs")
 
 [node name="animacion_pinchos" type="AnimationPlayer" parent="." unique_id=2108422669]
 libraries/ = SubResource("AnimationLibrary_c2ax5")
@@ -119,7 +128,7 @@ libraries/ = SubResource("AnimationLibrary_c2ax5")
 [node name="Area3D" type="Area3D" parent="." unique_id=851402408]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=61037018]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5165093, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26708126, 0)
 shape = SubResource("BoxShape3D_spo2i")
 
 [node name="sonido_pinchos" type="AudioStreamPlayer3D" parent="." unique_id=1943786968]
@@ -129,5 +138,6 @@ pitch_scale = 0.8
 
 [node name="sonido_switch" type="AudioStreamPlayer3D" parent="." unique_id=1740109225]
 stream = ExtResource("5_fdid8")
+pitch_scale = 1.5
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

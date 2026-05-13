@@ -540,6 +540,7 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lctvp"]
+radius = 0.4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_475hk"]
 height = 0.10913086
