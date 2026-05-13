@@ -71,6 +71,9 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_tsqw1"]
 radius = 0.121078506
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_6pvl3"]
+radius = 1.2374326
+
 [node name="bola_de_fuego" type="Area3D" unique_id=376177266]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_tsqw1")
@@ -118,3 +121,8 @@ transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12611383)
 light_color = Color(0.0039776214, 0.28760082, 0.40114617, 1)
 omni_range = 2.0
 omni_attenuation = 2.0
+
+[node name="area_de_damage" type="Area3D" parent="." unique_id=22168580]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="area_de_damage" unique_id=1526018263]
+shape = SubResource("SphereShape3D_6pvl3")
