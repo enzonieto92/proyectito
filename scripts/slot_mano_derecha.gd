@@ -22,7 +22,10 @@ func quitar_stats(jugador) -> void:
 	jugador.total_damage.x = jugador.damage.x
 	jugador.total_damage.y = jugador.damage.y
 	jugador.arma = null
-
+func romper_arma() -> void:
+	var spr = get_sprite()
+	if spr: spr.texture = null
+	vaciar()  # o el sprite de "sin arma"
 func get_drag_flags() -> Dictionary:
 	return {"desde_weapon_slot": true, "weapon_slot_ref": self}
 # En WeaponSlot:

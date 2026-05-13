@@ -25,16 +25,21 @@ func _process(_delta: float) -> void:
 	if is_colliding():
 		var collider = get_collider()
 		enabled = false
+		jugador.golpeando = false
 		if collider.is_in_group("enemigos") and not golpeando_enemigo:
+			jugador.arma.durabilidad -= 3
 			golpeando_enemigo = true
-			jugador.golpeando = false
 			collider.recibir_damage(jugador.total_damage)
-		elif collider.is_in_group("paredes"):
-			animaciones.sonido = HIT_METAL
-			jugador.rebotar_golpe = true
-			jugador.golpeando = false
-		elif collider.is_in_group("maderas"):
-			animaciones.sonido = HIT_MADERA
-			animaciones.sonido_arma.volume_db = -10
-			jugador.rebotar_golpe = true
-			jugador.golpeando = false
+		else:
+			if collider.is_in_group("paredes"):
+				jugador.arma.durabilidad -= 10
+				animaciones.sonido = HIT_METAL
+				jugador.rebotar_golpe = true
+			elif collider.is_in_group("maderas"):
+				animaciones.sonido = HIT_MADERA
+				jugador.arma.durabilidad -= 7
+				animaciones.sonido_arma.volume_db = -10
+				jugador.rebotar_golpe = true
+		if jugador.arma.durabilidad <= 0:
+			jugador.arma = null
+			jugador.romper_arma()

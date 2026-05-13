@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bfpe8djlt2dam" path="res://objetos glb/Estatua-fuente_Textura-estatua.png" id="3_iab8b"]
 [ext_resource type="Texture2D" uid="uid://barttxo1dg4v8" path="res://objetos glb/Estatua-fuente_water-texture.png" id="4_plbxa"]
 [ext_resource type="AudioStream" uid="uid://d38s30r6b526w" path="res://sonido/wosh_statua.mp3" id="5_41mbn"]
+[ext_resource type="AudioStream" uid="uid://bv7w16iqf8slc" path="res://sonido/fuego_antorchas.mp3" id="6_iab8b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gky2i"]
 radius = 0.24972577
@@ -140,6 +141,12 @@ shape = SubResource("ConcavePolygonShape3D_xjjsc")
 
 [node name="SFX_sonido" type="AudioStreamPlayer3D" parent="." unique_id=1996909747]
 stream = ExtResource("5_41mbn")
+volume_db = -20.0
+pitch_scale = 0.6
+bus = &"Ambientales"
+
+[node name="SFX_sonido_2" type="AudioStreamPlayer3D" parent="." unique_id=1191980834]
+stream = ExtResource("6_iab8b")
 volume_db = -20.0
 pitch_scale = 0.6
 bus = &"Ambientales"

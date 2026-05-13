@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://f631pjnibex5" path="res://scripts/bola_de_fuego.gd" id="1_tsqw1"]
 [ext_resource type="Texture2D" uid="uid://dpnciqkh1csph" path="res://texturas/bola_de_fuego_particula.png" id="2_k2vlo"]
 [ext_resource type="Script" uid="uid://b0j1i5vloou6f" path="res://scripts/particulas.gd" id="4_6pvl3"]
+[ext_resource type="AudioStream" uid="uid://biei4y38du5i6" path="res://sonido/impacto_magia.mp3" id="5_76wbg"]
+[ext_resource type="AudioStream" uid="uid://k0liwpgm1g8y" path="res://sonido/sonido_travel_magia.mp3" id="6_wk302"]
 
 [sub_resource type="Animation" id="Animation_k2vlo"]
 length = 0.001
@@ -109,12 +111,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04701315)
 script = ExtResource("4_6pvl3")
 textura = ExtResource("2_k2vlo")
 radio = 0.1
-velocidad_espiral = 10.0
+velocidad_espiral = 5.0
 curva_alpha = 1.0
 velocidad_avance = 2.0
 tamanio = 0.005
 largo_estela = 1.5
-cantidad = 4
+cantidad = 3
 
 [node name="SpotLight3D" type="OmniLight3D" parent="." unique_id=225905112]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12611383)
@@ -126,3 +128,11 @@ omni_attenuation = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="area_de_damage" unique_id=1526018263]
 shape = SubResource("SphereShape3D_6pvl3")
+
+[node name="sonido_impacto" type="AudioStreamPlayer3D" parent="." unique_id=652383727]
+stream = ExtResource("5_76wbg")
+volume_db = -20.0
+max_db = 0.0
+
+[node name="sonido_travel" type="AudioStreamPlayer3D" parent="." unique_id=1905963118]
+stream = ExtResource("6_wk302")

@@ -1,7 +1,10 @@
 [gd_scene format=4 uid="uid://ov5vb81irywf"]
 
+[ext_resource type="Script" uid="uid://cfms5gmfe8rf" path="res://scripts/trampa_activa.gd" id="1_uy8cs"]
 [ext_resource type="Texture2D" uid="uid://gx4fec1djpqj" path="res://objetos glb/trampa_activa_textura-antorcha.png" id="1_v8hb7"]
 [ext_resource type="Texture2D" uid="uid://bl8jkkfi1afoj" path="res://objetos glb/trampa_activa_texturasuelodepiedra.png" id="2_6pfd7"]
+[ext_resource type="AudioStream" uid="uid://dwv0u7c0yk2on" path="res://sonido/trampa_sonido.mp3" id="4_lrwv6"]
+[ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="5_fdid8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdum5"]
 resource_name = "Material.001"
@@ -84,29 +87,47 @@ shadow_mesh = SubResource("ArrayMesh_lj7hj")
 
 [sub_resource type="Animation" id="Animation_vbhep"]
 resource_name = "trampa_activada"
-length = 1.0416666
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
 tracks/0/path = NodePath("Circle")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.47362983, 0, 0.93333334, 1, 0, -0.47362983, 0, 0.96666664, 1, 0, -0.43304098, 0, 1.0416666, 1, 0, -0.06774062, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.47362983, 0, 0.16666667, 1, 0, -0.06774062, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c2ax5"]
 _data = {
 &"trampa_activada": SubResource("Animation_vbhep")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_spo2i"]
+
 [node name="trampa_activa" type="Node3D" unique_id=662948501]
+script = ExtResource("1_uy8cs")
 
 [node name="Circle" type="MeshInstance3D" parent="." unique_id=1503080216]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47362983, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06774062, 0)
 mesh = SubResource("ArrayMesh_og0c4")
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=826713119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 mesh = SubResource("ArrayMesh_qiwbu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2108422669]
+[node name="animacion_pinchos" type="AnimationPlayer" parent="." unique_id=2108422669]
 libraries/ = SubResource("AnimationLibrary_c2ax5")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=851402408]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=61037018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5165093, 0)
+shape = SubResource("BoxShape3D_spo2i")
+
+[node name="sonido_pinchos" type="AudioStreamPlayer3D" parent="." unique_id=1943786968]
+stream = ExtResource("4_lrwv6")
+volume_db = -20.0
+pitch_scale = 0.8
+
+[node name="sonido_switch" type="AudioStreamPlayer3D" parent="." unique_id=1740109225]
+stream = ExtResource("5_fdid8")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -28,7 +28,7 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @export var armadura: float
 @export var peso: float
 @export var bloqueando = false
-
+var ritual_completo = false
 var stamina_agotada: bool = false
 var vida: float:
 	set(value):
@@ -72,7 +72,8 @@ var muerto := false
 # -------------------------
 # ARMADURA
 # -------------------------
-
+func romper_arma():
+	inventario_controller.slot_mano_derecha.romper_arma()
 func recalcular_armadura() -> void:
 	var base = armadura
 	base += pechera.armadura if pechera != null else 0
@@ -178,8 +179,10 @@ func _unhandled_input(event):
 		if objeto_actual and objeto_actual.has_method("interactuar"):
 			objeto_actual.interactuar(self)
 	if event.is_action_pressed("lanzar_hechizo"):
-
-		lanzar_hechizo()
+		if ritual_completo:
+			lanzar_hechizo()
+			get_tree().get_first_node_in_group("efecto_magia").activar(2)
+		
 	if event is InputEventMouseMotion and not inventario_abierto:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		pitch -= event.relative.y * mouse_sensitivity
@@ -188,12 +191,11 @@ func _unhandled_input(event):
 func lanzar_hechizo():	
 	var hechizo_scene = preload("uid://ciho1ujuyxp5m")
 	var hechizo = hechizo_scene.instantiate()
-	
 	get_tree().root.add_child(hechizo)
+	hechizo.sonido_travel.play()
 	
 	# Dirección basada en la cámara, no en el jugador
 	var adelante = -camera.global_transform.basis.z
-	
 	hechizo.global_position = global_position + adelante * 1.5 + Vector3.UP * 1.0
 	hechizo.direccion = adelante
 	
