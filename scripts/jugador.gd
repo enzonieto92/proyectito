@@ -38,6 +38,7 @@ var rebotar_golpe = false
 var inventario_abierto = false
 var moving = false
 var corriendo = false
+var lanzando_hechizo = false
 var puede_correr: bool = false
 var objeto_actual = null
 var SPEED: float = 2.5
@@ -176,13 +177,28 @@ func _unhandled_input(event):
 				return
 		if objeto_actual and objeto_actual.has_method("interactuar"):
 			objeto_actual.interactuar(self)
+	if event.is_action_pressed("lanzar_hechizo"):
 
+		lanzar_hechizo()
 	if event is InputEventMouseMotion and not inventario_abierto:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		pitch -= event.relative.y * mouse_sensitivity
 		pitch = clamp(pitch, deg_to_rad(-50), deg_to_rad(50))
 		camera.rotation.x = pitch
-
+func lanzar_hechizo():	
+	var hechizo_scene = preload("uid://ciho1ujuyxp5m")
+	var hechizo = hechizo_scene.instantiate()
+	
+	get_tree().root.add_child(hechizo)
+	
+	# Dirección basada en la cámara, no en el jugador
+	var adelante = -camera.global_transform.basis.z
+	
+	hechizo.global_position = global_position + adelante * 1.5 + Vector3.UP * 1.0
+	hechizo.direccion = adelante
+	
+	# Rotación igual a la cámara
+	hechizo.global_transform.basis = camera.global_transform.basis
 func cerrar_inventario() -> void:
 	inventario_ui.visible = false
 	inventario_abierto = false

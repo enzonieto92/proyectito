@@ -47,6 +47,7 @@ shadow_mesh = SubResource("ArrayMesh_x120l")
 resource_name = "texturasuelotrampa"
 cull_mode = 2
 albedo_texture = ExtResource("2_6pfd7")
+uv1_scale = Vector3(-1, 1, 1)
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lj7hj"]
@@ -104,6 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47362983, 0)
 mesh = SubResource("ArrayMesh_og0c4")
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=826713119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 mesh = SubResource("ArrayMesh_qiwbu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2108422669]

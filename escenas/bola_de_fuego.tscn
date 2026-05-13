@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://ciho1ujuyxp5m"]
+
+[ext_resource type="Texture2D" uid="uid://cg4xcc5to1037" path="res://texturas/Boladefuego.png" id="1_6hw88"]
+[ext_resource type="Script" uid="uid://f631pjnibex5" path="res://scripts/bola_de_fuego.gd" id="1_tsqw1"]
+[ext_resource type="Texture2D" uid="uid://dpnciqkh1csph" path="res://texturas/bola_de_fuego_particula.png" id="2_k2vlo"]
+[ext_resource type="Script" uid="uid://b0j1i5vloou6f" path="res://scripts/particulas.gd" id="4_6pvl3"]
+
+[sub_resource type="Animation" id="Animation_k2vlo"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Node3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tsqw1"]
+resource_name = "fuego"
+length = 0.2267
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Node3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pvl3"]
+_data = {
+&"RESET": SubResource("Animation_k2vlo"),
+&"fuego": SubResource("Animation_tsqw1")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tsqw1"]
+radius = 0.121078506
+
+[node name="bola_de_fuego" type="Area3D" unique_id=376177266]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_tsqw1")
+velocidad = 3.0
+
+[node name="Node3D" type="Sprite3D" parent="." unique_id=832312098]
+transform = Transform3D(6.795298e-05, -0.018913036, 0.9998211, -0.0035945626, 0.9998147, 0.018913157, -0.99999356, -0.0035952048, -4.370357e-08, 0, 0, 0.21988855)
+modulate = Color(0.1784735, 0.60988706, 0.62648636, 1)
+pixel_size = 0.025
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("1_6hw88")
+hframes = 8
+
+[node name="Node3D2" type="Sprite3D" parent="." unique_id=496648709]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0.21988855)
+modulate = Color(0.1784735, 0.60988706, 0.62648636, 1)
+pixel_size = 0.025
+texture_filter = 0
+texture = ExtResource("1_6hw88")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D2" unique_id=1764151391]
+libraries/ = SubResource("AnimationLibrary_6pvl3")
+autoplay = &"fuego"
+speed_scale = 0.4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=770877148]
+shape = SubResource("SphereShape3D_tsqw1")
+
+[node name="particulas" type="Node3D" parent="." unique_id=1577027229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04701315)
+script = ExtResource("4_6pvl3")
+textura = ExtResource("2_k2vlo")
+radio = 0.1
+velocidad_espiral = 10.0
+curva_alpha = 1.0
+velocidad_avance = 2.0
+tamanio = 0.005
+largo_estela = 1.5
+cantidad = 4
+
+[node name="SpotLight3D" type="OmniLight3D" parent="." unique_id=225905112]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12611383)
+light_color = Color(0.0039776214, 0.28760082, 0.40114617, 1)
+omni_range = 2.0
+omni_attenuation = 2.0

@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blqk57stjr01k"
-path.s3tc="res://.godot/imported/Puerta.png-ad8a4b150cd4a39ef53d9f6b64585468.s3tc.ctex"
+uid="uid://bdf5b2gfetjw4"
+path.s3tc="res://.godot/imported/.png-3d0bf0835a7487298a7b8a6ad759858c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://texturas/Puerta.png"
-dest_files=["res://.godot/imported/Puerta.png-ad8a4b150cd4a39ef53d9f6b64585468.s3tc.ctex"]
+source_file="res://objetos glb/textures/.png"
+dest_files=["res://.godot/imported/.png-3d0bf0835a7487298a7b8a6ad759858c.s3tc.ctex"]
 
 [params]
 

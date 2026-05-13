@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blqk57stjr01k"
-path.s3tc="res://.godot/imported/Puerta.png-ad8a4b150cd4a39ef53d9f6b64585468.s3tc.ctex"
+uid="uid://cg4xcc5to1037"
+path.s3tc="res://.godot/imported/Boladefuego.png-4d4e0e5324d9f6492c606979056a5016.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://texturas/Puerta.png"
-dest_files=["res://.godot/imported/Puerta.png-ad8a4b150cd4a39ef53d9f6b64585468.s3tc.ctex"]
+source_file="res://texturas/Boladefuego.png"
+dest_files=["res://.godot/imported/Boladefuego.png-4d4e0e5324d9f6492c606979056a5016.s3tc.ctex"]
 
 [params]
 

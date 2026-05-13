@@ -75,14 +75,14 @@ shadow_mesh = SubResource("ArrayMesh_aq11x")
 
 [sub_resource type="Animation" id="Animation_83muc"]
 resource_name = "puaAction"
-length = 0.9583333
+length = 2.2533
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
 tracks/0/path = NodePath("pua")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -1.8992777, 0.6666667, 1, 0, 0, -1.8992777, 0.7, 1, 0, 0, -1.7578375, 0.73333335, 1, 0, 0, -1.4695175, 0.76666665, 1, 0, 0, -1.099598, 0.8, 1, 0, 0, -0.7133579, 0.8333333, 1, 0, 0, -0.376078, 0.8666667, 1, 0, 0, -0.23463775, 0.9, 1, 0, 0, -0.2382777, 0.9583333, 1, 0, 0, -0.32927775)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -2.419, 0.36, 1, 0, 0, -2.419, 0.53333336, 1, 0, 0, -0.7133579, 0.56666666, 1, 0, 0, -0.376078, 0.6, 1, 0, 0, -0.23463775, 0.6333333, 1, 0, 0, -0.2382777, 0.69166666, 1, 0, 0, -0.32927775, 0.922026, 1, 0, 0, -0.32927775, 1.8333334, 1, 0, 0, -2.419, 2.1933334, 1, 0, 0, -2.419)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lho42"]
 _data = {
@@ -92,10 +92,11 @@ _data = {
 [node name="trampadepared" type="Node3D" unique_id=959107981]
 
 [node name="base" type="MeshInstance3D" parent="." unique_id=685724512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040768683, -0.0005941391, 0.09194663)
 mesh = SubResource("ArrayMesh_cyuov")
 
 [node name="pua" type="MeshInstance3D" parent="." unique_id=1259004766]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.32927775)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.419)
 mesh = SubResource("ArrayMesh_wjpgi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=937339496]
