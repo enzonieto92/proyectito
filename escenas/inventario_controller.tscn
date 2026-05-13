@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://csxu6ypox2bvm" path="res://scripts/slot_pecho.gd" id="8_u2bl6"]
 [ext_resource type="Script" uid="uid://ggl31t0qxb3c" path="res://scripts/slot_casco.gd" id="9_jfcjk"]
 [ext_resource type="Texture2D" uid="uid://btdtqksvrj1fw" path="res://texturas/mochila-inventario.png" id="10_5ftgr"]
+[ext_resource type="Script" uid="uid://q205r57td3o7" path="res://scripts/slot_base.gd" id="13_qjymf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7flxi"]
 content_margin_left = 0.0
@@ -444,17 +445,18 @@ texture = ExtResource("10_5ftgr")
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventario_UI/panel_mochila" unique_id=1816532351 groups=["inventario"]]
 modulate = Color(1, 1, 1, 0.23921569)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.571831
-anchor_right = 0.5
-anchor_bottom = 0.571831
+anchor_left = 0.26102942
+anchor_top = 0.29859152
+anchor_right = 0.7352941
+anchor_bottom = 0.8647887
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
-columns = 6
+columns = 4
 script = ExtResource("1_is5u2")
 slot_scene = ExtResource("2_7flxi")
 bg_items_color = Color(0.21176471, 0.21176471, 0.21176471, 0)
@@ -476,3 +478,10 @@ text = "PESO: "
 label_settings = SubResource("LabelSettings_u2bl6")
 horizontal_alignment = 3
 vertical_alignment = 1
+
+[node name="slot_base" type="Control" parent="CanvasLayer/Inventario_UI/panel_mochila" unique_id=1648333984]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_qjymf")
+metadata/_custom_type_script = "uid://q205r57td3o7"

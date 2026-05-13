@@ -144,7 +144,8 @@ func _remover_item_drop(inventario, nuevo_item) -> void:
 func _notification(what):
 	if what == NOTIFICATION_DRAG_END:
 		drag_activo = false
-		get_color_rect().modulate = Color.WHITE
+		var cr = get_color_rect()
+		if cr: cr.modulate = Color.WHITE
 		var jugador = get_tree().get_first_node_in_group("jugador")
 		if not _drop_exitoso and _item_en_drag != null:
 			item = _item_en_drag
@@ -152,8 +153,7 @@ func _notification(what):
 			_mostrar_icono()
 			var spr = get_sprite()
 			if spr: spr.texture = item.textura
-			if jugador: _restaurar_stat(jugador)  # solo al cancelar drag
-		# 👈 sacar el elif de _restar_stat_drag completamente
+			if jugador: _restaurar_stat(jugador)
 		_item_en_drag = null
 		_drop_exitoso = false
 		_stat_antes_drag = 0

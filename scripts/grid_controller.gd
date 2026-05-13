@@ -1,3 +1,4 @@
+@tool
 extends GridContainer
 
 @export var slot_scene : PackedScene
@@ -26,12 +27,10 @@ func _ready():
 			add_child(slot)
 			grid[x][y] = slot
 	
-	# 🔥 CLAVE: inicializar tamaño real SIEMPRE
-	await get_tree().process_frame
-	await get_tree().process_frame
-	
-	slot_size = grid[0][0].size
-
+	if not Engine.is_editor_hint():
+		await get_tree().process_frame
+		await get_tree().process_frame
+		slot_size = grid[0][0].size
 func _on_inventario_ui_visibility_changed():
 	if slot_size == Vector2.ZERO:
 		await get_tree().process_frame

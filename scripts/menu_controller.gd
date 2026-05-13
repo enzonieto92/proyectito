@@ -25,8 +25,10 @@ func restart():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") and not event.is_echo():
-		mostrando_opciones = !mostrando_opciones
-		jugador.cerrar_inventario()
+		if inv_ui.visible:
+			jugador.cerrar_inventario()
+		else:
+			mostrando_opciones = !mostrando_opciones
 		if mostrando_opciones:
 			if inv_ui.visible:
 				var player = get_tree().get_first_node_in_group("player")
