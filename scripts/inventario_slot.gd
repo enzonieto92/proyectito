@@ -106,7 +106,8 @@ func _get_drag_data(at_position: Vector2):
 	return {
 		"item": item,
 		"origen": item.grid_pos,
-		"drag_offset": drag_offset
+		"drag_offset": drag_offset,
+		"inventario_slot_ref": self 
 	}
 
 

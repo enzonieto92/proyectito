@@ -12,7 +12,17 @@ func acepta_item(nuevo_item) -> bool:
 func aplicar_stats(jugador, nuevo_item) -> void:
 	jugador.pechera = nuevo_item
 	jugador.recalcular_armadura()
-
+func _can_drop_data(_at_position: Vector2, data) -> bool:
+	if not data is Dictionary or not data.has("item"): return false
+	var cr = get_color_rect()
+	if data["item"] is Consumible:
+		cr.modulate = Color(0.0, 1.0, 0.0, 1.0)
+		return true
+	if not acepta_item(data["item"]) or ocupado:
+		cr.modulate = Color(1.0, 0.593, 0.533, 0.78)
+		return false
+	cr.modulate = Color(0.0, 1.0, 0.0, 1.0)
+	return true
 func quitar_stats(jugador) -> void:
 	jugador.pechera = null
 	jugador.recalcular_armadura()

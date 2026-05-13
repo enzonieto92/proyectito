@@ -5,7 +5,17 @@ class_name CascoSlot extends slot_base
 
 func get_color_rect() -> ColorRect: return color_rect_2
 func get_sprite() -> Sprite3D: return sprite_casco
-
+func _can_drop_data(_at_position: Vector2, data) -> bool:
+	if not data is Dictionary or not data.has("item"): return false
+	var cr = get_color_rect()
+	if data["item"] is Consumible:
+		cr.modulate = Color(0.0, 1.0, 0.0, 1.0)
+		return true
+	if not acepta_item(data["item"]) or ocupado:
+		cr.modulate = Color(1.0, 0.593, 0.533, 0.78)
+		return false
+	cr.modulate = Color(0.0, 1.0, 0.0, 1.0)
+	return true
 func acepta_item(nuevo_item) -> bool:
 	return nuevo_item is Casco
 

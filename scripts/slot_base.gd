@@ -136,6 +136,12 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 func _drop_data(_at_position: Vector2, data):
 	_drop_exitoso = true
 	get_color_rect().modulate = Color.WHITE
+	
+	var slot_origen = data.get("inventario_slot_ref")
+	if slot_origen and data["item"] is Consumible:
+		slot_origen._intentar_equipar()
+		return
+	
 	equipar(data["item"])
 func _remover_item_drop(inventario, nuevo_item) -> void:
 	inventario.remover_item(nuevo_item, nuevo_item.grid_pos)  # comportamiento default
