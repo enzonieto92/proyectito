@@ -7,6 +7,8 @@ extends Node
 @onready var slot_secundaria: SecundarySlot = $CanvasLayer/Inventario_UI/panel_equipo/slot_mano_secundaria
 @onready var slot_pecho: PecheraSlot = $CanvasLayer/Inventario_UI/panel_equipo/slot_pecho
 @onready var slot_cabeza: Control = $CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza
+@onready var tooltip: Control = $CanvasLayer/Inventario_UI/tooltip
+@onready var tooltip_label: Label = $CanvasLayer/Inventario_UI/tooltip/tooltip_label
 
 func _ready():
 	actualizar_label_peso()
@@ -63,6 +65,10 @@ func agregar_item(item) -> bool:
 		inventario_ui.modulate.a = 1
 	
 	return false
+func mostrar_tooltip(it, mouse_pos: Vector2):
+	tooltip_label.text = it.descripcion
+	tooltip.global_position = mouse_pos + Vector2(10, -tooltip.size.y - 10)
+	tooltip.show()
 func puede_colocar(item, pos: Vector2i) -> bool:
 	if pos.x < 0 or pos.y < 0:
 		return false

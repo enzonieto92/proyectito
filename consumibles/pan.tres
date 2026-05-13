@@ -8,6 +8,6 @@ script = ExtResource("1_6am7n")
 curacion = 10
 nombre = "Pan Rancio"
 icono = ExtResource("1_706m3")
-descripcion = "Algo huele mal..."
+descripcion = "Preferiría que sea solo pan"
 size = Vector2i(2, 1)
 metadata/_custom_type_script = "uid://bw8ib7rq5xuw5"

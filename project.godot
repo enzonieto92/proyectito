@@ -59,6 +59,8 @@ paredes=""
 navigation_region=""
 navegable=""
 sfx_inventario=""
+background_inventario=""
+interruptor_hacha=""
 
 [importer_defaults]
 
@@ -178,7 +180,7 @@ lanzar_hechizo={
 
 [physics]
 
-3d/physics_engine="Jolt Physics"
+3d/physics_engine="GodotPhysics3D"
 3d/default_gravity=10.0
 
 [rendering]

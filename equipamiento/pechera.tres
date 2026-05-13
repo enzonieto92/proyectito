@@ -9,6 +9,7 @@ armadura = 40
 durabilidad = 200
 nombre = "Pechera de Cuero Estropeada"
 icono = ExtResource("1_l5d6c")
+descripcion = "Para el frio"
 size = Vector2i(2, 2)
 weight = 3.0
 metadata/_custom_type_script = "uid://d0hgfdewinou0"

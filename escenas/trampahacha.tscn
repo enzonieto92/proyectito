@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dcepbrc6ool6"]
 
+[ext_resource type="Script" uid="uid://bkummbew4s26e" path="res://scripts/trampahacha.gd" id="1_gqfsg"]
 [ext_resource type="Texture2D" uid="uid://btx37m2grkwfa" path="res://objetos glb/trampahacha_textura-antorcha.png" id="1_yd6at"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tk8yu"]
@@ -108,10 +109,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c3h3l")
 
+[sub_resource type="Animation" id="Animation_gqfsg"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_nnvlk"]
 resource_name = "hachaAction"
 length = 2.375
-loop_mode = 1
 tracks/0/type = "rotation_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -122,10 +125,15 @@ tracks/0/keys = PackedFloat32Array(0, 1, -0.008909806, 0, 0, 0.9999603, 0.566666
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4xgjl"]
 _data = {
+&"RESET": SubResource("Animation_gqfsg"),
 &"hachaAction": SubResource("Animation_nnvlk")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gqfsg"]
+size = Vector3(1, 0.9524536, 1)
+
 [node name="trampahacha" type="Node3D" unique_id=916795847]
+script = ExtResource("1_gqfsg")
 
 [node name="base" type="MeshInstance3D" parent="." unique_id=1621735507]
 mesh = SubResource("ArrayMesh_gqsok")
@@ -134,8 +142,22 @@ mesh = SubResource("ArrayMesh_gqsok")
 mesh = SubResource("ArrayMesh_bs2e7")
 
 [node name="hacha" type="MeshInstance3D" parent="." unique_id=1645685307]
-transform = Transform3D(1, 0, 0, 0, 0.999841, 0.0178189, 0, -0.0178189, 0.999841, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.99984086, 0.017818904, 0, -0.017818904, 0.99984086, 0, 0, 0)
 mesh = SubResource("ArrayMesh_u0ywg")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1320048772]
+[node name="animacion" type="AnimationPlayer" parent="." unique_id=1320048772]
 libraries/ = SubResource("AnimationLibrary_4xgjl")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=1001747614]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1038429086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023773193, -1.5362144)
+shape = SubResource("BoxShape3D_gqfsg")
+
+[node name="Area3D" type="Area3D" parent="AnimatableBody3D" unique_id=1776147550]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D/Area3D" unique_id=717822608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023773193, -1.5362144)
+shape = SubResource("BoxShape3D_gqfsg")
+
+[connection signal="body_entered" from="AnimatableBody3D/Area3D" to="." method="_on_area_3d_body_entered"]

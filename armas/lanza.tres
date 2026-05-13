@@ -13,6 +13,7 @@ weapon_size = 1.4
 nombre = "Lanza"
 icono = ExtResource("1_1g2sc")
 textura = ExtResource("3_p32ka")
+descripcion = "Es mas larga de lo que parece.."
 size = Vector2i(1, 4)
 weight = 2.5
 metadata/_custom_type_script = "uid://bw8ib7rq5xuw5"

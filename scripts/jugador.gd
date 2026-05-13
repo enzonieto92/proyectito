@@ -18,6 +18,7 @@ extends CharacterBody3D
 @onready var camara_controller = $camara_controller
 @onready var collision = $CollisionShape3D
 @onready var footstep = $footstep
+@onready var panel_blur: Control = get_tree().get_first_node_in_group("background_inventario")
 
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 
@@ -164,6 +165,8 @@ func _unhandled_input(event):
 			inventario_abierto = true
 			raycast.enabled = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			_animar_blur(true)  # 👈
+
 
 	if event.is_action_pressed("interactuar"):
 		if inventario_abierto:
@@ -206,9 +209,18 @@ func cerrar_inventario() -> void:
 	inventario_abierto = false
 	raycast.enabled = true
 	animaciones.resetear_estado()
+	_animar_blur(false)  # 👈
 	if not get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+func _animar_blur(activar: bool) -> void:
+	var material = panel_blur.material as ShaderMaterial
+	var tween = create_tween()
+	tween.tween_method(
+		func(v): material.set_shader_parameter("blur_progress", v),
+		0.0 if activar else 1.0,
+		1.0 if activar else 0.0,
+		0.3
+	)
 # -------------------------
 # PHYSICS
 # -------------------------

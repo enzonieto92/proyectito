@@ -36,17 +36,19 @@ func _ready():
 func _on_mouse_entered():
 	if not ocupado or drag_activo:
 		return
-	
 	_hover_item(item, item.grid_pos, true)
-
+	mostrar_tooltip(item)  # 👈 acá
 
 func _on_mouse_exited():
 	if not ocupado or drag_activo:
 		return
-	
 	_hover_item(item, item.grid_pos, false)
-
-
+	ocultar_tooltip()  # 👈 acá
+func mostrar_tooltip(_item):
+	var inventario = get_tree().get_first_node_in_group("inventario_controller")
+	inventario.mostrar_tooltip(_item, get_global_mouse_position())
+func ocultar_tooltip():
+	get_tree().get_first_node_in_group("inventario_controller").tooltip.hide()
 func _hover_item(it, pos: Vector2i, activo: bool):
 	var grid = get_parent()
 	var color = Color(0.57, 0.57, 0.57, 0.529) if activo else Color.WHITE
@@ -67,7 +69,7 @@ func _hover_item(it, pos: Vector2i, activo: bool):
 func _get_drag_data(at_position: Vector2):
 	if not ocupado:
 		return null
-	
+	ocultar_tooltip()
 	drag_activo = true
 	
 	var grid = get_parent()
@@ -140,7 +142,7 @@ func _can_drop_data(_at_position: Vector2, data) -> bool:
 
 func _drop_data(_at_position: Vector2, data):
 	var destino = grid_pos - data["drag_offset"]
-	
+
 	_limpiar_highlight(data["item"], destino)
 	
 	ultimo_highlight_item = null
@@ -250,6 +252,7 @@ func _gui_input(event: InputEvent):
 	if ahora - _ultimo_click_tiempo <= DOBLE_CLICK_UMBRAL:
 		# Es doble click — intentar equipar
 		_ultimo_click_tiempo = 0.0
+		ocultar_tooltip()
 		_intentar_equipar()
 	else:
 		_ultimo_click_tiempo = ahora

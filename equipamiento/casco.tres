@@ -9,5 +9,6 @@ armadura = 10
 durabilidad = 35
 nombre = "Casco de Cuero"
 icono = ExtResource("1_57ri8")
+descripcion = "Te llamare Wilson"
 size = Vector2i(2, 2)
 metadata/_custom_type_script = "uid://o0luv05rxdjy"
