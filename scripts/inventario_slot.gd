@@ -46,7 +46,7 @@ func _on_mouse_exited():
 	ocultar_tooltip()  # 👈 acá
 func mostrar_tooltip(_item):
 	var inventario = get_tree().get_first_node_in_group("inventario_controller")
-	inventario.mostrar_tooltip(_item, get_global_mouse_position())
+	inventario.mostrar_tooltip(_item)
 func ocultar_tooltip():
 	get_tree().get_first_node_in_group("inventario_controller").tooltip.hide()
 func _hover_item(it, pos: Vector2i, activo: bool):

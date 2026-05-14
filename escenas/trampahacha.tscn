@@ -151,10 +151,11 @@ libraries/ = SubResource("AnimationLibrary_4xgjl")
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=1001747614]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1038429086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023773193, -1.5362144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054187, -1.5362144)
 shape = SubResource("BoxShape3D_gqfsg")
 
 [node name="Area3D" type="Area3D" parent="AnimatableBody3D" unique_id=1776147550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07796019, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D/Area3D" unique_id=717822608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023773193, -1.5362144)

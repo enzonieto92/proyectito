@@ -182,7 +182,7 @@ func _unhandled_input(event):
 		if objeto_actual and objeto_actual.has_method("interactuar"):
 			objeto_actual.interactuar(self)
 	if event.is_action_pressed("lanzar_hechizo"):
-		if ritual_completo:
+		if ritual_completo and not inventario_abierto:
 			lanzar_hechizo()
 			get_tree().get_first_node_in_group("efecto_magia").activar(2)
 		
@@ -353,7 +353,10 @@ func pantalla_muerte():
 	tween.tween_property(go_screen, "modulate:v", 0.0, 4)
 	tween.tween_callback(func():
 		var fade = AudioManager.fade_out(1, 2)
-		fade.tween_callback(get_tree().change_scene_to_file.bind("res://escenas/escena_principal.tscn"))
+		fade.tween_callback(func():
+			AudioManager.detener_todo()
+			get_tree().change_scene_to_file("res://escenas/escena_principal.tscn")
+		)
 	)
 
 # -------------------------

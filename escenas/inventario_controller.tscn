@@ -492,13 +492,31 @@ script = ExtResource("13_qjymf")
 metadata/_custom_type_script = "uid://q205r57td3o7"
 
 [node name="tooltip" type="Control" parent="CanvasLayer/Inventario_UI" unique_id=1400808860]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -125.0
+offset_right = -230.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="tooltip_label" type="Label" parent="CanvasLayer/Inventario_UI/tooltip" unique_id=2045360358]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -11.5
+offset_right = 122.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("14_2anfp")
+horizontal_alignment = 1

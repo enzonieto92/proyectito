@@ -65,9 +65,9 @@ func agregar_item(item) -> bool:
 		inventario_ui.modulate.a = 1
 	
 	return false
-func mostrar_tooltip(it, mouse_pos: Vector2):
+func mostrar_tooltip(it):
 	tooltip_label.text = it.descripcion
-	tooltip.global_position = mouse_pos + Vector2(10, -tooltip.size.y - 10)
+
 	tooltip.show()
 func puede_colocar(item, pos: Vector2i) -> bool:
 	if pos.x < 0 or pos.y < 0:

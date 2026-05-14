@@ -600,17 +600,17 @@ switch_mode = 1
 states/End/position = Vector2(717, 100)
 states/Start/position = Vector2(249, 85)
 states/atacar/node = SubResource("AnimationNodeAnimation_475hk")
-states/atacar/position = Vector2(517, 49)
+states/atacar/position = Vector2(496, 35)
 states/atacar_horizontal/node = SubResource("AnimationNodeAnimation_ddw1h")
-states/atacar_horizontal/position = Vector2(517, 157)
+states/atacar_horizontal/position = Vector2(496, -75)
 states/bloquear/node = SubResource("AnimationNodeAnimation_pvtpb")
-states/bloquear/position = Vector2(517, 110)
+states/bloquear/position = Vector2(496, 100)
 states/bloqueo_arma/node = SubResource("AnimationNodeAnimation_lctvp")
-states/bloqueo_arma/position = Vector2(517, 267)
+states/bloqueo_arma/position = Vector2(496, 169)
 states/rebotar/node = SubResource("AnimationNodeAnimation_ooj51")
 states/rebotar/position = Vector2(496, -28)
 transitions = ["Start", "atacar", SubResource("AnimationNodeStateMachineTransition_op6lh"), "Start", "atacar_horizontal", SubResource("AnimationNodeStateMachineTransition_ko7k4"), "atacar", "End", SubResource("AnimationNodeStateMachineTransition_pvtpb"), "atacar_horizontal", "End", SubResource("AnimationNodeStateMachineTransition_ooj51"), "Start", "bloqueo_arma", SubResource("AnimationNodeStateMachineTransition_bxkub"), "bloqueo_arma", "End", SubResource("AnimationNodeStateMachineTransition_6rshw"), "Start", "bloquear", SubResource("AnimationNodeStateMachineTransition_dp2ub"), "bloquear", "End", SubResource("AnimationNodeStateMachineTransition_8ptv5"), "Start", "rebotar", SubResource("AnimationNodeStateMachineTransition_0ddfj"), "rebotar", "End", SubResource("AnimationNodeStateMachineTransition_um2n4")]
-graph_offset = Vector2(-38, -135)
+graph_offset = Vector2(-11, -158)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_op6lh"]
 animation = &"hit_bloqueado"
@@ -664,7 +664,7 @@ filter_enabled = true
 filters = ["", "camara_controller/camara_player:position", "pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria:playing", "pivote_secundaria:position"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1udw8"]
-graph_offset = Vector2(-915.5443, 204.26187)
+graph_offset = Vector2(-835.38464, 145.2458)
 nodes/output/position = Vector2(620, 100)
 nodes/movimiento/node = SubResource("AnimationNodeStateMachine_3wdqr")
 nodes/movimiento/position = Vector2(-560, 80)
