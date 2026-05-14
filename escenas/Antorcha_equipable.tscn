@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://bqvgrcqxl00ha"]
+[gd_scene format=3 uid="uid://d28hna3j2u6oj"]
 
-[ext_resource type="Script" uid="uid://dgah05n5bn6mf" path="res://scripts/escudo.gd" id="1_jm0py"]
-[ext_resource type="Texture2D" uid="uid://hm4eesk8dekj" path="res://texturas/Antorcha.png" id="2_uq7k6"]
-[ext_resource type="Resource" uid="uid://bfjuil2rutsqn" path="res://armas/Antorcha.tres" id="2_xbnqo"]
+[ext_resource type="Script" uid="uid://dgah05n5bn6mf" path="res://scripts/escudo.gd" id="1_voruo"]
+[ext_resource type="Resource" uid="uid://bfjuil2rutsqn" path="res://armas/Antorcha.tres" id="2_p5yv8"]
+[ext_resource type="Texture2D" uid="uid://hm4eesk8dekj" path="res://texturas/Antorcha.png" id="3_vx2vi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
 height = 1.1035156
@@ -14,19 +14,19 @@ radius = 1.1918945
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51k0r"]
 transparency = 1
 cull_mode = 2
-albedo_texture = ExtResource("2_uq7k6")
+albedo_texture = ExtResource("3_vx2vi")
 texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
 material = SubResource("StandardMaterial3D_51k0r")
 size = Vector2(1, 1)
 
-[node name="escudo" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]
+[node name="antorcha_equipable" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_jm0py")
-secundaria = ExtResource("2_xbnqo")
+script = ExtResource("1_voruo")
+secundaria = ExtResource("2_p5yv8")
 
 [node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=330304897]
 shape = SubResource("CapsuleShape3D_tcnuu")

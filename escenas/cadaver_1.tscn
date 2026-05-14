@@ -12,7 +12,7 @@ albedo_texture = ExtResource("1_tovt1")
 texture_filter = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wfmhs"]
-height = 0.5
+height = 0.381
 
 [node name="position" type="Node3D" unique_id=1096910596]
 script = ExtResource("2_wfmhs")
@@ -26,5 +26,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_unk1j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7454191, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=295165556]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11436558, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041201532, 0)
 shape = SubResource("CylinderShape3D_wfmhs")

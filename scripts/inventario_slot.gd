@@ -262,8 +262,8 @@ func _intentar_equipar():
 	var inventario = get_tree().get_first_node_in_group("inventario_controller")
 	if item is Arma:
 		inventario.slot_mano_derecha.equipar(item)
-	elif item is Secundaria or item is Escudo:
-		inventario.slot_secundaria.equipar(item) 
+	elif item is Antorcha or item is Escudo:
+		inventario.slot_secundaria.equipar(item)
 	elif item is Consumible:
 		var jugador = get_tree().get_first_node_in_group("jugador")
 		jugador.vida = min(jugador.vida + item.curacion, jugador.vida_max)

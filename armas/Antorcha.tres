@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Antorcha" format=3 uid="uid://bfjuil2rutsqn"]
+
+[ext_resource type="Script" uid="uid://dk6ooudb3g2ja" path="res://scripts/resources/Antorcha.gd" id="1_4vhb0"]
+[ext_resource type="Texture2D" uid="uid://dxauf1mkteqf6" path="res://texturas/Antorcha_item.png" id="1_6v6fm"]
+[ext_resource type="Texture2D" uid="uid://hm4eesk8dekj" path="res://texturas/Antorcha.png" id="3_6tc4i"]
+
+[resource]
+script = ExtResource("1_4vhb0")
+armadura = 3
+durabilidad = 200
+nombre = "Antorcha"
+icono = ExtResource("1_6v6fm")
+textura = ExtResource("3_6tc4i")
+size = Vector2i(2, 2)
+metadata/_custom_type_script = "uid://dk6ooudb3g2ja"

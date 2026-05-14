@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://deigckxeuy4rq" path="res://otros/nokiafc22.ttf" id="3_iwqyn"]
 [ext_resource type="Script" uid="uid://dvxyphx7ssdo0" path="res://scripts/slot_mano_secundaria.gd" id="4_yvvfg"]
 [ext_resource type="Texture2D" uid="uid://clqf4gv35w3jm" path="res://texturas/Personaje-inventario.png" id="5_5ftgr"]
+[ext_resource type="Script" uid="uid://b7sqtduvupwtm" path="res://scripts/panel_equipo.gd" id="5_hogph"]
 [ext_resource type="Script" uid="uid://csxu6ypox2bvm" path="res://scripts/slot_pecho.gd" id="8_u2bl6"]
 [ext_resource type="Script" uid="uid://ggl31t0qxb3c" path="res://scripts/slot_casco.gd" id="9_jfcjk"]
 [ext_resource type="Texture2D" uid="uid://btdtqksvrj1fw" path="res://texturas/mochila-inventario.png" id="10_5ftgr"]
@@ -194,6 +195,7 @@ offset_right = 691.664
 offset_bottom = 0.19195557
 scale = Vector2(-1, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_loeo7")
+script = ExtResource("5_hogph")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1918615826]
 layout_mode = 1
@@ -435,6 +437,7 @@ offset_bottom = 4.8079834
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jk7v")
+script = ExtResource("5_hogph")
 
 [node name="textura_mochila" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_mochila" unique_id=550749449]
 layout_mode = 1

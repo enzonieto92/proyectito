@@ -85,8 +85,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lj7hj")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uy8cs"]
-points = PackedVector3Array(0.50793654, 0.007936508, 0.50793654, -0.50793654, -0.007936508, -0.50793654, -0.50793654, 0.007936508, -0.50793654, 0.50793654, -0.007936508, -0.50793654, -0.50793654, -0.007936508, 0.50793654, -0.50793654, 0.007936508, 0.50793654, 0.50793654, 0.007936508, -0.50793654, 0.50793654, -0.007936508, 0.50793654)
+[sub_resource type="BoxShape3D" id="BoxShape3D_uy8cs"]
+size = Vector3(1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_uy8cs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.47362983, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_vbhep"]
 resource_name = "trampa_activada"
@@ -97,20 +112,33 @@ tracks/0/path = NodePath("Circle")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.47362983, 0, 0.16666667, 1, 0, -0.06774062, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.47362983, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c2ax5"]
 _data = {
+&"RESET": SubResource("Animation_uy8cs"),
 &"trampa_activada": SubResource("Animation_vbhep")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_spo2i"]
-size = Vector3(0.815, 0.4846338, 1)
+size = Vector3(0.815, 0.30362123, 0.85754395)
 
 [node name="trampa_activa" type="Node3D" unique_id=662948501]
 script = ExtResource("1_uy8cs")
 
 [node name="Circle" type="MeshInstance3D" parent="." unique_id=1503080216]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10277582, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47362983, 0)
 mesh = SubResource("ArrayMesh_og0c4")
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=826713119]
@@ -120,7 +148,7 @@ mesh = SubResource("ArrayMesh_qiwbu")
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane" unique_id=54096337]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D" unique_id=774113539]
-shape = SubResource("ConvexPolygonShape3D_uy8cs")
+shape = SubResource("BoxShape3D_uy8cs")
 
 [node name="animacion_pinchos" type="AnimationPlayer" parent="." unique_id=2108422669]
 libraries/ = SubResource("AnimationLibrary_c2ax5")
@@ -128,7 +156,7 @@ libraries/ = SubResource("AnimationLibrary_c2ax5")
 [node name="Area3D" type="Area3D" parent="." unique_id=851402408]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=61037018]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26708126, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17657498, 0.0056762695)
 shape = SubResource("BoxShape3D_spo2i")
 
 [node name="sonido_pinchos" type="AudioStreamPlayer3D" parent="." unique_id=1943786968]

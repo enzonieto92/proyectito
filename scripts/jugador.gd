@@ -19,6 +19,7 @@ extends CharacterBody3D
 @onready var collision = $CollisionShape3D
 @onready var footstep = $footstep
 @onready var panel_blur: Control = get_tree().get_first_node_in_group("background_inventario")
+@onready var luz_antorcha: Node3D = $pivote_secundaria/posicion_secundaria/luz_antorcha
 
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 
@@ -36,7 +37,10 @@ var vida: float:
 		vida = clamp(value, 0, vida_max)
 		reaccion_ui()
 var rebotar_golpe = false
-var inventario_abierto = false
+var inventario_abierto: bool = false:
+	set(value):
+		inventario_abierto = value
+		inventario_abierto_changed.emit(value)
 var moving = false
 var corriendo = false
 var lanzando_hechizo = false
@@ -69,7 +73,7 @@ var _ultimo_objeto: Object = null
 var _ultimo_texto: String = ""
 var _vida_muerto := false
 var muerto := false
-
+signal inventario_abierto_changed(abierto: bool)
 # -------------------------
 # ARMADURA
 # -------------------------
@@ -213,14 +217,17 @@ func cerrar_inventario() -> void:
 	if not get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _animar_blur(activar: bool) -> void:
-	var material = panel_blur.material as ShaderMaterial
+	var material_bg = panel_blur.material as ShaderMaterial
+
 	var tween = create_tween()
+	tween.set_parallel(true)
 	tween.tween_method(
-		func(v): material.set_shader_parameter("blur_progress", v),
+		func(v): material_bg.set_shader_parameter("blur_progress", v),
 		0.0 if activar else 1.0,
 		1.0 if activar else 0.0,
 		0.3
 	)
+
 # -------------------------
 # PHYSICS
 # -------------------------
