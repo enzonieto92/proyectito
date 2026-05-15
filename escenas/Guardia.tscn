@@ -402,9 +402,9 @@ sorting_offset = -1.0
 modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
 pixel_size = 0.015
 axis = 1
-double_sided = false
-alpha_cut = 2
+shaded = true
 texture_filter = 0
+render_priority = -3
 texture = ExtResource("8_0ymqe")
 
 [node name="area_deteccion" type="Area3D" parent="." unique_id=743734564]

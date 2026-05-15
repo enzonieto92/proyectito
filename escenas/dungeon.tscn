@@ -71,6 +71,7 @@ texture_filter = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7ta8"]
 render_priority = -4
 transparency = 1
+albedo_color = Color(0.5211406, 0.5211406, 0.5211405, 1)
 albedo_texture = ExtResource("14_b064s")
 texture_filter = 0
 

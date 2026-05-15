@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://6llqhxolhj1e"]
 
 [ext_resource type="Texture2D" uid="uid://cx50npxhalnnl" path="res://objetos glb/Jaulatortura_texturaaltar.png" id="1_1ows0"]
-[ext_resource type="Texture2D" uid="uid://cb2ci5yrrblp3" path="res://objetos glb/Jaulatortura_textura-antorcha.png" id="2_d8lui"]
+[ext_resource type="Texture2D" uid="uid://cb2ci5yrrblp3" path="res://texturas/Jaulatortura_textura-antorcha.png" id="2_d8lui"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ss81"]
 resource_name = "Material.002"

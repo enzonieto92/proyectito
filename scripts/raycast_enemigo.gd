@@ -13,4 +13,4 @@ func _process(_delta: float) -> void:
 		if obj.is_in_group("jugador"):
 			ya_golpeo = true        # ← bloquear inmediatamente
 			set_enabled(false)
-			obj.recibir_damage(enemigo.damage)
+			obj.recibir_damage(enemigo.damage, false)

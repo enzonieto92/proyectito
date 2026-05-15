@@ -138,7 +138,7 @@ func aplicar_golpe() -> void:
 		return
 	hit_applied = true
 	if global_position.distance_to(player.global_position) <= attack_range:
-		player.recibir_damage(Vector2(min_damage, max_damage))
+		player.recibir_damage(Vector2(min_damage, max_damage), true)
 
 
 

@@ -31,6 +31,10 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 @export var peso: float
 @export var bloqueando = false
 var ritual_completo = false
+var ralentizado: bool = false
+var _timer_ralentizacion: SceneTreeTimer = null
+var _tween_ralentizacion: Tween = null
+
 var stamina_agotada: bool = false
 var vida: float:
 	set(value):
@@ -125,18 +129,14 @@ func _ready():
 # COMBATE
 # -------------------------
 
-func recibir_damage(_damage):
+func recibir_damage(_damage, ralentizar):
 	recibiendo_damage = true
 	var reduccion = armadura_total / (armadura_total + CONSTANTE_ARMADURA)
 	var damage_final = int(_damage * (1.0 - reduccion))
-	var damage_bloqueado = int(_damage - damage_final)
 	vida -= damage_final
 
-	if bloqueando:
-		print("armadura al bloquear: ", armadura_total)
-		print("daño: ", _damage)
-		print("daño recibido: ", damage_final)
-		print("daño bloqueado: ", damage_bloqueado)
+	if ralentizar:
+		_aplicar_ralentizacion(1.5)  # duración en segundos
 
 	animaciones.on_block_hit()
 	if !bloqueando:
@@ -144,6 +144,15 @@ func recibir_damage(_damage):
 		hit_sound.play()
 	recibiendo_damage = false
 
+func _aplicar_ralentizacion(duracion: float):
+	if _tween_ralentizacion != null and _tween_ralentizacion.is_running():
+		_tween_ralentizacion.kill()
+
+	ralentizado = true
+	SPEED = 0.5
+	_timer_ralentizacion = get_tree().create_timer(duracion)
+	await _timer_ralentizacion.timeout
+	ralentizado = false
 # -------------------------
 # UI
 # -------------------------
@@ -263,7 +272,7 @@ func _physics_process(delta):
 	elif stamina >= 25:
 		stamina_agotada = false
 
-	if Input.is_action_pressed("correr") and stamina > 5 and not stamina_agotada and puede_correr:
+	if Input.is_action_pressed("correr") and not ralentizado and stamina > 5 and not stamina_agotada and puede_correr:
 		SPEED = 2.5
 		if moving:
 			stamina -= delta * SPEED * 4
@@ -273,7 +282,7 @@ func _physics_process(delta):
 			if stamina < 40:
 				stamina += delta * 3.0
 	else:
-		SPEED = 1
+		SPEED = 0.5 if ralentizado else 1.0
 		corriendo = false
 		if stamina < 40:
 			stamina += delta * 3.0

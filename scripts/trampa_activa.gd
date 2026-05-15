@@ -8,7 +8,7 @@ var max_damage = damage.y
 var activado := false
 var ya_golpeo := false
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if not body.is_in_group("jugador") or activado:
+	if not (body.is_in_group("jugador") or body.is_in_group("enemigos")) or activado:
 		return
 	activado = true
 	ya_golpeo = false
@@ -21,14 +21,14 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if $Area3D.overlaps_body(body) and not ya_golpeo:
 		ya_golpeo = true
 		var _damage = int(randf_range(min_damage, max_damage))
-		body.recibir_damage(_damage)
+		body.recibir_damage(_damage, true)
 	
 	await animacion_pinchos.animation_finished
 	
 	if $Area3D.overlaps_body(body) and not ya_golpeo:
 		ya_golpeo = true
 		var _damage = int(randf_range(min_damage, max_damage))
-		body.recibir_damage(_damage)
+		body.recibir_damage(_damage, true)
 	
 	animacion_pinchos.play_backwards("trampa_activada")
 	await animacion_pinchos.animation_finished

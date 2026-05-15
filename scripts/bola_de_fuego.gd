@@ -27,8 +27,8 @@ func _on_hit(_body):
 	$Node3D2.visible = false
 	$particulas.queue_free()
 	$SpotLight3D.queue_free()
-	set_process(false)          # detiene _process (movimiento)
-	set_deferred("monitoring", false)        # desactiva colisiones
+	set_process(false)
+	set_deferred("monitoring", false)
 	explotar()
 	sonido_impacto.play()
 	sonido_impacto.finished.connect(queue_free)

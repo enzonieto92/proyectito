@@ -575,9 +575,7 @@ color = Color(0.5890956, 0.5890956, 0.5890956, 1)
 color_ramp = SubResource("GradientTexture1D_8mb8e")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njpig"]
-cull_mode = 2
 shading_mode = 0
-diffuse_mode = 1
 vertex_color_use_as_albedo = true
 texture_filter = 0
 texture_repeat = false
@@ -735,7 +733,7 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
 script = ExtResource("1_hqtel")
 stamina = 1000.0
-vida_max = 75.0
+vida_max = 400.0
 
 [node name="animaciones" type="AnimationPlayer" parent="." unique_id=602970200]
 libraries/ = SubResource("AnimationLibrary_dw050")
@@ -786,7 +784,6 @@ transform = Transform3D(0.80662286, -0.16035499, -0.5688987, 0.44194645, 0.80274
 transform = Transform3D(0.9999997, 0, 0, 0, 0.99999875, 0, 0, 0, 0.99999976, 0, 0, 0)
 flip_h = true
 shaded = true
-no_depth_test = true
 alpha_cut = 1
 texture_filter = 0
 render_priority = 10
@@ -816,7 +813,7 @@ script = ExtResource("6_p52f3")
 transform = Transform3D(0.17364813, 0, 0.98480713, 0, 0.9999999, 0, -0.9848072, 0, 0.17364812, -0.46723223, -0.42968047, -0.69782907)
 
 [node name="luz_antorcha" type="Node3D" parent="pivote_secundaria/posicion_secundaria" unique_id=262527317]
-transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, -0.1325475, 0.21949923, 0.047487915)
+transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, -0.38958204, 0.30545914, 0.33599353)
 visible = false
 
 [node name="GPUParticlesAttractorVectorField3D" type="GPUParticlesAttractorVectorField3D" parent="pivote_secundaria/posicion_secundaria/luz_antorcha" unique_id=1936681915]
@@ -836,13 +833,13 @@ process_material = SubResource("ParticleProcessMaterial_ghhxw")
 draw_pass_1 = SubResource("PlaneMesh_bxkub")
 
 [node name="empty" type="Node3D" parent="pivote_secundaria/posicion_secundaria/luz_antorcha" unique_id=1440645351]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.048576176, 0.27450883, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.070538044, 0.2745093, 0.021003038)
 script = ExtResource("11_op6lh")
 
 [node name="SpotLight3D" type="OmniLight3D" parent="pivote_secundaria/posicion_secundaria/luz_antorcha/empty" unique_id=1451255691]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.06910809, 0, 0.011)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_size = 0.107
+light_size = 0.65
 shadow_enabled = true
 shadow_blur = 0.0
 shadow_caster_mask = 4294967287
@@ -860,13 +857,13 @@ max_distance = 3.5
 bus = &"Ambientales"
 
 [node name="sprite_secundaria" type="Sprite3D" parent="pivote_secundaria/posicion_secundaria" unique_id=79353298 groups=["sprite_secundaria"]]
-transform = Transform3D(1, 0, -5.9604638e-08, 0, 1, 0, 5.9604638e-08, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0, 0, 0)
 flip_h = true
 modulate = Color(0.5609549, 0.5609549, 0.5609549, 1)
 shaded = true
-no_depth_test = true
 alpha_cut = 1
 texture_filter = 0
+render_priority = 10
 
 [node name="sonido_secundaria" type="AudioStreamPlayer" parent="pivote_secundaria/posicion_secundaria/sprite_secundaria" unique_id=1987096980]
 stream = ExtResource("10_meqng")

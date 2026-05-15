@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cb2ci5yrrblp3"
-path.s3tc="res://.godot/imported/Jaulatortura_textura-antorcha.png-7196ca2f0672557afa3d9715969dae8a.s3tc.ctex"
+path.s3tc="res://.godot/imported/Jaulatortura_textura-antorcha.png-59fb6ff79164c66846204dcead580341.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://objetos glb/Jaulatortura_textura-antorcha.png"
-dest_files=["res://.godot/imported/Jaulatortura_textura-antorcha.png-7196ca2f0672557afa3d9715969dae8a.s3tc.ctex"]
+source_file="res://texturas/Jaulatortura_textura-antorcha.png"
+dest_files=["res://.godot/imported/Jaulatortura_textura-antorcha.png-59fb6ff79164c66846204dcead580341.s3tc.ctex"]
 
 [params]
 

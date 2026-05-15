@@ -1,8 +1,9 @@
 extends Node3D
 var interruptor
 @onready var animacion: AnimationPlayer = $animacion
-@onready var cuerpo: AnimatableBody3D = $AnimatableBody3D
-@onready var area: Area3D = $AnimatableBody3D/Area3D
+
+@onready var area_3d: Area3D = $hacha/Area3D
+
 @onready var hacha: MeshInstance3D = $hacha
 var damage = Vector2(17, 20)
 var ya_golpeo := false
@@ -18,10 +19,9 @@ func _process(_delta: float) -> void:
 	if interruptor.activado:
 		if !animacion.is_playing():
 			animacion.play("hachaAction")
-	cuerpo.global_transform = hacha.global_transform
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("jugador") and not ya_golpeo:
+	if (body.is_in_group("jugador") or body.is_in_group("enemigos")) and not ya_golpeo:
 		ya_golpeo = true
 		var _damage = int(randf_range(damage.x, damage.y))
-		body.recibir_damage(_damage)
+		body.recibir_damage(_damage, true)
