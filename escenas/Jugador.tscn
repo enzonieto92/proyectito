@@ -735,8 +735,9 @@ _data = {
 &"spawn": SubResource("Animation_op6lh")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op6lh"]
-radius = 0.32177734
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_op6lh"]
+height = 1.75
+radius = 0.3
 
 [sub_resource type="Gradient" id="Gradient_pvtpb"]
 offsets = PackedFloat32Array(0.10743801, 1)
@@ -983,7 +984,7 @@ spot_angle = 79.00263
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881, 0)
-shape = SubResource("CapsuleShape3D_op6lh")
+shape = SubResource("CylinderShape3D_op6lh")
 
 [node name="footstep" type="AudioStreamPlayer3D" parent="." unique_id=1255816085]
 transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 0)

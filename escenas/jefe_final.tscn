@@ -123,19 +123,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rq2hw")
 }, {
-"duration": 0.5,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_tq2ca")
 }, {
-"duration": 0.5,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_cf8sp")
 }, {
-"duration": 0.5,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_8kqyn")
 }, {
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_el4ua")
 }],
-"loop": true,
+"loop": false,
 "name": &"Ataque",
 "speed": 5.0
 }, {

@@ -11,7 +11,7 @@ extends CharacterBody3D
 @onready var raycast: RayCast3D = $camara_controller/camara_player/raycast
 @onready var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma
 @onready var camera: Camera3D = $camara_controller/camara_player
-@onready var shape = $CollisionShape3D.shape as CapsuleShape3D
+@onready var shape = $CollisionShape3D.shape as CylinderShape3D
 @onready var footstep_player: AudioStreamPlayer3D = $footstep
 @onready var animaciones: AnimationPlayer = $animaciones
 @onready var hit_sound: AudioStreamPlayer3D = $hit_sound
@@ -47,6 +47,7 @@ var inventario_abierto: bool = false:
 		inventario_abierto_changed.emit(value)
 var moving = false
 var corriendo = false
+var forzar_agachado := false
 var lanzando_hechizo = false
 var puede_correr: bool = false
 var objeto_actual = null
@@ -259,19 +260,35 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("agacharse"):
 		puede_correr = false
-		if shape.height > 1.05:
-			shape.height = lerp(shape.height, 0.2, 25 * delta)
-			collision.position.y = lerp(collision.position.y, 1.28, 25 * delta)
-	elif not test_move(global_transform, Vector3.UP * 0.5):
-		if shape.height < 1.75:
-			shape.height = lerp(shape.height, 1.8, 15 * delta)
-			collision.position.y = lerp(collision.position.y, 0.881, 25 * delta)
+		forzar_agachado = true
+		shape.height = lerp(shape.height, 0.75, 25 * delta)
+		collision.position.y = lerp(collision.position.y, 1.28, 25 * delta)
+	else:
+		if forzar_agachado:
+			var puede_pararse = true
+			var offsets = [
+				Vector3.ZERO,
+				Vector3(0.3, 0, 0),
+				Vector3(-0.3, 0, 0),
+				Vector3(0, 0, 0.3),
+				Vector3(0, 0, -0.3),
+			]
+			for offset in offsets:
+				var t = global_transform
+				t.origin += offset
+				if test_move(t, Vector3.UP * 1.0):
+					puede_pararse = false
+					break
+			if puede_pararse:
+				forzar_agachado = false
 
-	if stamina <= 5:
-		stamina_agotada = true
-	elif stamina >= 25:
-		stamina_agotada = false
-
+		if forzar_agachado:
+			shape.height = 0.75
+			collision.position.y = 1.28
+		else:
+			if shape.height < 1.75:
+				shape.height = lerp(shape.height, 1.8, 15 * delta)
+				collision.position.y = lerp(collision.position.y, 0.881, 25 * delta)
 	if Input.is_action_pressed("correr") and not ralentizado and stamina > 5 and not stamina_agotada and puede_correr:
 		SPEED = 2.5
 		if moving:
