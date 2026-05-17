@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://botuutr75c3c0"
-path="res://.godot/imported/Boss_final_idle.png-a89bc78e113408cfaeed757b3939d145.ctex"
+uid="uid://c4u4grn0ad0c7"
+path="res://.godot/imported/boss_final_attack_original.png-145a9a4c94ebaa5c580697ed56d6c01c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texturas/Boss_final_idle.png"
-dest_files=["res://.godot/imported/Boss_final_idle.png-a89bc78e113408cfaeed757b3939d145.ctex"]
+source_file="res://texturas/boss_final_attack_original.png"
+dest_files=["res://.godot/imported/boss_final_attack_original.png-145a9a4c94ebaa5c580697ed56d6c01c.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

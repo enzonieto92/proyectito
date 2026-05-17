@@ -8,7 +8,7 @@
 script = ExtResource("2_1g2sc")
 damage = Vector2(13, 20)
 armadura = 5.0
-durabilidad = 70
+durabilidad = 200
 weapon_size = 1.2
 tipo = 1
 nombre = "Lanza"

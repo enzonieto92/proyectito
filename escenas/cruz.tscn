@@ -139,6 +139,7 @@ data = PackedVector3Array(-0.035130758, 1.867559, 0.6403258, -0.03513076, 1.8535
 mesh = SubResource("ArrayMesh_g7727")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="cruz" unique_id=1089511415 groups=["maderas"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="cruz/StaticBody3D" unique_id=1510480248]
 shape = SubResource("ConcavePolygonShape3D_whpg3")

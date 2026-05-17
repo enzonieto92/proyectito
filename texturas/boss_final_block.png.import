@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://botuutr75c3c0"
-path="res://.godot/imported/Boss_final_idle.png-a89bc78e113408cfaeed757b3939d145.ctex"
+uid="uid://f11sa76uvrmc"
+path="res://.godot/imported/boss_final_block.png-d2d1bff887f1a901e1cb33e9d9dd730f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texturas/Boss_final_idle.png"
-dest_files=["res://.godot/imported/Boss_final_idle.png-a89bc78e113408cfaeed757b3939d145.ctex"]
+source_file="res://texturas/boss_final_block.png"
+dest_files=["res://.godot/imported/boss_final_block.png-d2d1bff887f1a901e1cb33e9d9dd730f.ctex"]
 
 [params]
 

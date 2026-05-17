@@ -105,7 +105,7 @@ func _get_drag_data(_at_position: Vector2):
 		_stat_antes_drag = _get_stat_actual(jugador)  # 👇 ver abajo
 	vaciar()
 	for spr in get_sprites():
-		if spr: spr.texture = item.textura
+		if spr: spr.texture = null
 
 	var preview = TextureRect.new()
 	preview.texture = _item_en_drag.icono

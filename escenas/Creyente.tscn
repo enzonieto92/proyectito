@@ -425,6 +425,7 @@ radius = 5.3740234
 
 [node name="Creyente" type="CharacterBody3D" unique_id=1587185498 groups=["enemigos"]]
 rotation_order = 0
+collision_layer = 8
 script = ExtResource("1_xebgr")
 vida = 40.0
 attack_range = 2.0

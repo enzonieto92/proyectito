@@ -143,6 +143,7 @@ transform = Transform3D(-4.3711385e-08, -4.3711392e-08, 1, -4.3711392e-08, 1, 4.
 mesh = SubResource("ArrayMesh_g3j1f")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="mesatortura1" unique_id=1130307005 groups=["maderas"]]
+collision_layer = 9
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="mesatortura1/StaticBody3D" unique_id=534609138]
 transform = Transform3D(1, 0, 0, 0, 1, -1.6420282e-15, 0, -1.6420282e-15, 1, 0.5515855, -0.10353485, -0.012927055)

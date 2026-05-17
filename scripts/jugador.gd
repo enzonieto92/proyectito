@@ -11,7 +11,7 @@ extends CharacterBody3D
 @onready var raycast: RayCast3D = $camara_controller/camara_player/raycast
 @onready var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma
 @onready var camera: Camera3D = $camara_controller/camara_player
-@onready var shape = $CollisionShape3D.shape as CylinderShape3D
+@onready var shape = $CollisionShape3D.shape as CapsuleShape3D
 @onready var footstep_player: AudioStreamPlayer3D = $footstep
 @onready var animaciones: AnimationPlayer = $animaciones
 @onready var hit_sound: AudioStreamPlayer3D = $hit_sound
@@ -260,7 +260,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("agacharse"):
 		puede_correr = false
 		if shape.height > 1.05:
-			shape.height = lerp(shape.height, 1.0, 25 * delta)
+			shape.height = lerp(shape.height, 0.2, 25 * delta)
 			collision.position.y = lerp(collision.position.y, 1.28, 25 * delta)
 	elif not test_move(global_transform, Vector3.UP * 0.5):
 		if shape.height < 1.75:

@@ -143,6 +143,7 @@ size = Vector3(1.6933441, 1.0532837, 1.1089554)
 mesh = SubResource("ArrayMesh_unjft")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="mesatortura3" unique_id=1917771819 groups=["maderas"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mesatortura3/StaticBody3D" unique_id=2021482879]
 transform = Transform3D(0.9022742, 0.43111548, -0.0063762106, -0.43112642, 0.9022915, -0.0003856296, 0.00558695, 0.003096897, 0.9999796, -0.5094705, -0.23565531, 0.009665606)
