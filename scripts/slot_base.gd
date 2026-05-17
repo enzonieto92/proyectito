@@ -13,8 +13,8 @@ var _stat_antes_drag := 0
 func get_color_rect() -> ColorRect:
 	return null  # override obligatorio
 
-func get_sprite() -> Sprite3D:
-	return null  # override obligatorio
+func get_sprites() -> Array:
+	return []  # override obligatorio
 
 func acepta_item(_nuevo_item) -> bool:
 	return false  # override obligatorio
@@ -83,8 +83,9 @@ func equipar(nuevo_item) -> bool:
 	aplicar_stats(jugador, item)
 	_mostrar_icono()
 
-	var spr = get_sprite()
-	if spr: spr.texture = item.textura
+	for spr in get_sprites():
+		if spr: spr.texture = item.textura
+	
 
 	inventario.actualizar_label_peso()
 	return true
@@ -103,8 +104,8 @@ func _get_drag_data(_at_position: Vector2):
 	if jugador:
 		_stat_antes_drag = _get_stat_actual(jugador)  # 👇 ver abajo
 	vaciar()
-	var spr = get_sprite()
-	if spr: spr.texture = null
+	for spr in get_sprites():
+		if spr: spr.texture = item.textura
 
 	var preview = TextureRect.new()
 	preview.texture = _item_en_drag.icono
@@ -157,8 +158,8 @@ func _notification(what):
 			item = _item_en_drag
 			ocupado = true
 			_mostrar_icono()
-			var spr = get_sprite()
-			if spr: spr.texture = item.textura
+			for spr in get_sprites():
+				if spr: spr.texture = item.textura
 			if jugador: _restaurar_stat(jugador)
 		_item_en_drag = null
 		_drop_exitoso = false

@@ -8,7 +8,13 @@ extends Node
 var spawning := false
 var defendiendo: bool = false
 var esperando_soltar := false
-var animaciones_arma = ["atacar", "atacar_horizontal"]
+const ANIMACIONES_POR_TIPO = {
+	Arma.TipoArma.ESPADA: ["atacar", "atacar_horizontal"],
+	Arma.TipoArma.LANZA:  ["atacar_lanza_1", "atacar_lanza_2"],
+	Arma.TipoArma.MAZA:   ["atacar", "atacar_horizontal"],
+	Arma.TipoArma.DAGA:   ["atacar", "atacar_horizontal"],
+}
+var animaciones_arma: Array = []
 var animacion_en_curso: bool = false
 var blend_objetivo: float = 0.0
 var estaba_bloqueando: bool = false
@@ -48,7 +54,7 @@ func _ataque_termino():
 	if defendiendo:
 		_iniciar_bloqueo()
 	elif Input.is_action_pressed("atacar") and is_instance_valid(player.arma):
-		play_random_animation()
+		play_attack_animation()
 
 func _actualizar_movimiento():
 	if spawning:       # ← no pisar la animación
@@ -134,7 +140,7 @@ func _process(_delta: float) -> void:
 
 	if atacando_input:
 		if not animacion_en_curso:
-			play_random_animation()
+			play_attack_animation()
 		return
 func _manejar_rebote(progreso: float) -> bool:
 	if player.rebotar_golpe:
@@ -157,7 +163,10 @@ func _manejar_rebote(progreso: float) -> bool:
 		return true
 
 	return false
-func play_random_animation():
+func play_attack_animation():
+	var tipo = player.arma.tipo
+	animaciones_arma = ANIMACIONES_POR_TIPO.get(tipo, ["atacar"])
+	
 	var current = ataque_sm.get_current_node()
 	var disponibles = animaciones_arma.filter(func(a): return a != current)
 	animacion_en_curso = true

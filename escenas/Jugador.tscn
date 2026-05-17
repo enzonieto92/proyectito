@@ -21,7 +21,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("pivote/posicion_arma/sprite_arma:position")
+tracks/0/path = NodePath("pivote/posicion_arma/sprite_arma:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +33,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivote/posicion_arma/sprite_arma:rotation")
+tracks/1/path = NodePath("camara_controller:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -45,7 +45,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("camara_controller:position")
+tracks/2/path = NodePath("camara_controller:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -57,118 +57,106 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("camara_controller:rotation")
+tracks/3/path = NodePath("pivote_secundaria/posicion_secundaria:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-0.46723223, -0.42968047, -0.69782907)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("pivote_secundaria/posicion_secundaria:position")
+tracks/4/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.46723223, -0.42968047, -0.69782907)]
+"values": [Vector3(0, 1.3962634, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
+tracks/5/path = NodePath("pivote_secundaria:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 1.3962634, 0)]
+"values": [Vector3(0, 1.475, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("pivote_secundaria:position")
+tracks/6/path = NodePath("pivote/posicion_arma:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 1.475, 0)]
+"values": [Vector3(0.5151274, -0.15985763, -0.80995387)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("pivote/posicion_arma:position")
+tracks/7/path = NodePath("pivote/posicion_arma:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.5151274, -0.15985763, -0.80995387)]
+"values": [Vector3(-0.41190138, -0.66979253, 0.5032604)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("pivote/posicion_arma:rotation")
+tracks/8/path = NodePath("pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.41190138, -0.66979253, 0.5032604)]
+"update": 1,
+"values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria:playing")
+tracks/9/path = NodePath("camara_controller/camara_player:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 1.47499, 0)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("camara_controller/camara_player:position")
+tracks/10/path = NodePath(".:golpeando")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.47499, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath(".:golpeando")
+tracks/11/path = NodePath("hit_sound:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("hit_sound:playing")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -350,7 +338,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.09822158, 0.47808966, 0.5682477, 1.0620658),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(-0.439, -0.192, -0.711), Vector3(0.003871195, -0.052450776, -0.85291666), Vector3(0.5502981, -0.052450776, -0.66960466), Vector3(0.5151274, -0.15985763, -0.80995387)]
+"values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(-0.439, -0.192, -0.051), Vector3(0.004, -0.052, -1.008), Vector3(0.5502981, -0.052450776, -0.66960466), Vector3(0.5151274, -0.15985763, -0.80995387)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -372,6 +360,210 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0.23943616),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_anticipacion_completa"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ko7k4"]
+resource_name = "atacar_lanza_1"
+length = 1.1933
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:golpeando")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.46666667, 0.74577034),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("camara_controller:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0017890669, 0.37123293, 0.5644522),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.15490341, -0.008605659, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("camara_controller:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.007635176, 0.37123293, 0.5644522),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.11986922), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivote_secundaria/posicion_secundaria:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.36405283, 0.6064695, 1.1584147),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.467, -0.535, -0.698), Vector3(-0.46723223, -0.42968047, -0.69782907), Vector3(-0.853, -0.456, -0.605), Vector3(-0.46723223, -0.42968047, -0.69782907)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0021762904, 0.36405283, 0.6064695, 1.1584147),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5114552, 0), Vector3(0, 0.9738937, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pivote/posicion_arma:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.56666666, 0.7, 1.1727135),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(0.5151274, -0.06328547, -0.41505122), Vector3(0.261, -0.035, -1.01), Vector3(0.261, -0.035, -1.7), Vector3(0.5151274, -0.15985763, -0.80995387)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("pivote/posicion_arma:rotation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.56666666, 0.7, 1.1727135),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-0.92222285, -0.8375699, 1.219214), Vector3(-0.87441, -1.0471976, 1.4084808), Vector3(-0.87441, -1.0471976, 1.4084808), Vector3(-0.41190138, -0.66979253, 0.5032604)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("animaciones")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_anticipacion_completa"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pvtpb"]
+resource_name = "atacar_lanza_2"
+length = 1.1933
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:golpeando")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.43333334, 0.7791037),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("camara_controller:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0017890669, 0.37123293, 0.5644522),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.15490341, -0.008605659, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("camara_controller:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.007635176, 0.37123293, 0.5644522),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.11986922), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivote_secundaria/posicion_secundaria:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.36405283, 0.73333335, 1.0023649, 1.1584147),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.467, -0.535, -0.698), Vector3(-0.46723223, -0.42968047, -0.69782907), Vector3(-0.853, -0.456, -0.435), Vector3(-0.853, -0.456, -0.165), Vector3(-0.46723223, -0.42968047, -0.69782907)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pivote_secundaria/posicion_secundaria:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0021762904, 0.36405283, 0.70646954, 1.1584147),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5114552, 0), Vector3(0, 0.9738937, 0), Vector3(0, 1.5114552, 0), Vector3(0, 1.5114552, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pivote/posicion_arma:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1.1727135),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5151274, -0.15985763, -0.80995387), Vector3(0.16, -0.063, -0.415), Vector3(0.017, -0.012, -1.7), Vector3(0.5151274, -0.15985763, -0.80995387)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("pivote/posicion_arma:rotation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1.1727135),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.41190138, -0.66979253, 0.5032604), Vector3(-1.0349803, -0.98611104, 1.2199851), Vector3(-0.87441, -1.3927728, 1.4084808), Vector3(-0.41190138, -0.66979253, 0.5032604)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("animaciones")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -532,6 +724,8 @@ _data = {
 &"RESET": SubResource("Animation_2hs0m"),
 &"atacar": SubResource("Animation_dw050"),
 &"atacar_horizontal": SubResource("Animation_meqng"),
+&"atacar_lanza_1": SubResource("Animation_ko7k4"),
+&"atacar_lanza_2": SubResource("Animation_pvtpb"),
 &"bloquear": SubResource("Animation_lctvp"),
 &"bloqueo_arma": SubResource("Animation_ddw1h"),
 &"caminar": ExtResource("3_475hk"),
@@ -569,7 +763,8 @@ orbit_velocity_max = 1.0000001
 gravity = Vector3(0, 0.1, 0)
 tangential_accel_min = -2.2351742e-06
 tangential_accel_max = -2.2351742e-06
-scale_max = 3.0
+scale_min = 0.5
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_vd02i")
 color = Color(0.5890956, 0.5890956, 0.5890956, 1)
 color_ramp = SubResource("GradientTexture1D_8mb8e")
@@ -604,6 +799,12 @@ animation = &"atacar"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ddw1h"]
 animation = &"atacar_horizontal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ghhxw"]
+animation = &"atacar_lanza_1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ehok7"]
+animation = &"atacar_lanza_2"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pvtpb"]
 animation = &"bloquear"
@@ -644,6 +845,18 @@ switch_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_um2n4"]
 switch_mode = 1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_orh7j"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_58lh0"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dk08l"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_exjmk"]
+switch_mode = 1
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ghhxw"]
 states/End/position = Vector2(717, 100)
 states/Start/position = Vector2(249, 85)
@@ -651,14 +864,18 @@ states/atacar/node = SubResource("AnimationNodeAnimation_475hk")
 states/atacar/position = Vector2(496, 35)
 states/atacar_horizontal/node = SubResource("AnimationNodeAnimation_ddw1h")
 states/atacar_horizontal/position = Vector2(496, -75)
+states/atacar_lanza_1/node = SubResource("AnimationNodeAnimation_ghhxw")
+states/atacar_lanza_1/position = Vector2(496, -120)
+states/atacar_lanza_2/node = SubResource("AnimationNodeAnimation_ehok7")
+states/atacar_lanza_2/position = Vector2(496, -175)
 states/bloquear/node = SubResource("AnimationNodeAnimation_pvtpb")
 states/bloquear/position = Vector2(496, 100)
 states/bloqueo_arma/node = SubResource("AnimationNodeAnimation_lctvp")
 states/bloqueo_arma/position = Vector2(496, 169)
 states/rebotar/node = SubResource("AnimationNodeAnimation_ooj51")
 states/rebotar/position = Vector2(496, -28)
-transitions = ["Start", "atacar", SubResource("AnimationNodeStateMachineTransition_op6lh"), "Start", "atacar_horizontal", SubResource("AnimationNodeStateMachineTransition_ko7k4"), "atacar", "End", SubResource("AnimationNodeStateMachineTransition_pvtpb"), "atacar_horizontal", "End", SubResource("AnimationNodeStateMachineTransition_ooj51"), "Start", "bloqueo_arma", SubResource("AnimationNodeStateMachineTransition_bxkub"), "bloqueo_arma", "End", SubResource("AnimationNodeStateMachineTransition_6rshw"), "Start", "bloquear", SubResource("AnimationNodeStateMachineTransition_dp2ub"), "bloquear", "End", SubResource("AnimationNodeStateMachineTransition_8ptv5"), "Start", "rebotar", SubResource("AnimationNodeStateMachineTransition_0ddfj"), "rebotar", "End", SubResource("AnimationNodeStateMachineTransition_um2n4")]
-graph_offset = Vector2(-11, -158)
+transitions = ["Start", "atacar", SubResource("AnimationNodeStateMachineTransition_op6lh"), "Start", "atacar_horizontal", SubResource("AnimationNodeStateMachineTransition_ko7k4"), "atacar", "End", SubResource("AnimationNodeStateMachineTransition_pvtpb"), "atacar_horizontal", "End", SubResource("AnimationNodeStateMachineTransition_ooj51"), "Start", "bloqueo_arma", SubResource("AnimationNodeStateMachineTransition_bxkub"), "bloqueo_arma", "End", SubResource("AnimationNodeStateMachineTransition_6rshw"), "Start", "bloquear", SubResource("AnimationNodeStateMachineTransition_dp2ub"), "bloquear", "End", SubResource("AnimationNodeStateMachineTransition_8ptv5"), "Start", "rebotar", SubResource("AnimationNodeStateMachineTransition_0ddfj"), "rebotar", "End", SubResource("AnimationNodeStateMachineTransition_um2n4"), "Start", "atacar_lanza_1", SubResource("AnimationNodeStateMachineTransition_orh7j"), "atacar_lanza_1", "End", SubResource("AnimationNodeStateMachineTransition_58lh0"), "Start", "atacar_lanza_2", SubResource("AnimationNodeStateMachineTransition_dk08l"), "atacar_lanza_2", "End", SubResource("AnimationNodeStateMachineTransition_exjmk")]
+graph_offset = Vector2(13, -204)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_op6lh"]
 animation = &"hit_bloqueado"
@@ -712,7 +929,7 @@ filter_enabled = true
 filters = ["", "camara_controller/camara_player:position", "pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria:playing", "pivote_secundaria:position"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1udw8"]
-graph_offset = Vector2(-835.38464, 145.2458)
+graph_offset = Vector2(-1326.3647, 427.80487)
 nodes/output/position = Vector2(620, 100)
 nodes/movimiento/node = SubResource("AnimationNodeStateMachine_3wdqr")
 nodes/movimiento/position = Vector2(-560, 80)
@@ -747,6 +964,7 @@ script = ExtResource("5_lctvp")
 
 [node name="camara_player" type="Camera3D" parent="camara_controller" unique_id=219131178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
+near = 0.001
 far = 30.0
 
 [node name="raycast" type="RayCast3D" parent="camara_controller/camara_player" unique_id=310805274]
@@ -761,7 +979,7 @@ light_color = Color(1, 0.6745098, 0.3254902, 1)
 light_energy = 0.3
 light_volumetric_fog_energy = 9.0
 spot_range = 16.20042
-spot_angle = 83.9693
+spot_angle = 79.00263
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881, 0)
@@ -778,7 +996,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
 script = ExtResource("6_p52f3")
 
 [node name="posicion_arma" type="Node3D" parent="pivote" unique_id=1760938995]
-transform = Transform3D(0.80662286, -0.16035499, -0.5688987, 0.44194645, 0.8027454, 0.40035257, 0.39248237, -0.5743558, 0.7183821, 0.5151274, -0.15985763, -0.80995387)
+transform = Transform3D(0.8066225, -0.16035499, -0.5688986, 0.44194627, 0.8027454, 0.4003525, 0.3924822, -0.5743558, 0.71838206, 0.5151274, -0.15985763, -0.80995387)
+
+[node name="sprite_arma2" type="Sprite3D" parent="pivote/posicion_arma" unique_id=854039426 groups=["sprite_arma_2"]]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9999987, 5.9604645e-08, 0, -2.9802322e-08, 0.99999976, 0, 0, 0)
+layers = 2
+flip_h = true
+modulate = Color(1, 0.6745098, 0.3254902, 1)
+no_depth_test = true
+alpha_cut = 1
+texture_filter = 0
+render_priority = 10
 
 [node name="sprite_arma" type="Sprite3D" parent="pivote/posicion_arma" unique_id=605076613 groups=["sprite_arma"]]
 transform = Transform3D(0.9999997, 0, 0, 0, 0.99999875, 0, 0, 0, 0.99999976, 0, 0, 0)
@@ -858,8 +1086,8 @@ bus = &"Ambientales"
 
 [node name="sprite_secundaria" type="Sprite3D" parent="pivote_secundaria/posicion_secundaria" unique_id=79353298 groups=["sprite_secundaria"]]
 transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0, 0, 0)
+layers = 3
 flip_h = true
-modulate = Color(0.5609549, 0.5609549, 0.5609549, 1)
 shaded = true
 alpha_cut = 1
 texture_filter = 0
@@ -870,6 +1098,15 @@ stream = ExtResource("10_meqng")
 volume_db = -26.302
 pitch_scale = 0.9
 bus = &"Ambientales"
+
+[node name="sprite_secundaria2" type="Sprite3D" parent="pivote_secundaria/posicion_secundaria" unique_id=196913720 groups=["sprite_secundaria_2"]]
+transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0, 0, 0)
+layers = 2
+flip_h = true
+no_depth_test = true
+alpha_cut = 1
+texture_filter = 0
+render_priority = 10
 
 [node name="area_escudo" type="Area3D" parent="pivote_secundaria/posicion_secundaria" unique_id=278590332]
 transform = Transform3D(1, 2.6542693e-08, -6.7055225e-08, -3.632158e-08, 1, 0, 5.9604645e-08, -7.450581e-09, 0.99999994, 5.9604645e-08, -0.11768806, 5.9604645e-08)

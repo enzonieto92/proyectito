@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bqvgrcqxl00ha"]
 
 [ext_resource type="Script" uid="uid://dgah05n5bn6mf" path="res://scripts/escudo.gd" id="1_jm0py"]
-[ext_resource type="Texture2D" uid="uid://hm4eesk8dekj" path="res://texturas/Antorcha.png" id="2_uq7k6"]
-[ext_resource type="Resource" uid="uid://bfjuil2rutsqn" path="res://armas/Antorcha.tres" id="2_xbnqo"]
+[ext_resource type="Resource" uid="uid://tc5yiqhvux2b" path="res://escudos/escudo.tres" id="2_xbnqo"]
+[ext_resource type="Texture2D" uid="uid://n27s04srqv1h" path="res://texturas/Armas/Escudoredondo.png" id="3_51k0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
 height = 1.1035156
@@ -14,7 +14,7 @@ radius = 1.1918945
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51k0r"]
 transparency = 1
 cull_mode = 2
-albedo_texture = ExtResource("2_uq7k6")
+albedo_texture = ExtResource("3_51k0r")
 texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]

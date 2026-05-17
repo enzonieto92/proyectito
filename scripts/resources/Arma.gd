@@ -6,4 +6,6 @@ class_name Arma
 @export var armadura: float
 @export var durabilidad: int
 @export var weapon_size: float
-@export var animacion: String
+enum TipoArma { ESPADA, LANZA, MAZA, DAGA }
+
+@export var tipo: TipoArma = TipoArma.ESPADA

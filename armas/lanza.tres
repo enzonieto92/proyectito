@@ -8,8 +8,9 @@
 script = ExtResource("2_1g2sc")
 damage = Vector2(13, 20)
 armadura = 5.0
-durabilidad = 35
-weapon_size = 1.4
+durabilidad = 70
+weapon_size = 1.2
+tipo = 1
 nombre = "Lanza"
 icono = ExtResource("1_1g2sc")
 textura = ExtResource("3_p32ka")

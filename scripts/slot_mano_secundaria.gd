@@ -1,11 +1,14 @@
 class_name SecundarySlot extends slot_base
 
 @onready var color_rect_2: ColorRect = $ColorRect2
-@onready var sprite_secundaria: Sprite3D = get_tree().get_first_node_in_group("sprite_secundaria")
+@onready var sprite_1 = get_tree().get_first_node_in_group("sprite_secundaria")
+@onready var sprite_2 = get_tree().get_first_node_in_group("sprite_secundaria_2")
+
 @onready var sonido_antorcha: AudioStreamPlayer3D = get_tree().get_first_node_in_group("antorcha_equipable")
 func get_color_rect() -> ColorRect: return color_rect_2
-func get_sprite() -> Sprite3D: return sprite_secundaria
 
+func get_sprites() -> Array:
+	return [sprite_1, sprite_2]
 func acepta_item(nuevo_item) -> bool:
 	return nuevo_item is Antorcha or nuevo_item is Escudo
 

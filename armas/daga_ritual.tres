@@ -10,6 +10,7 @@ damage = Vector2(9, 15)
 armadura = 3.0
 durabilidad = 30
 weapon_size = 0.5
+tipo = 3
 nombre = "Daga Ritual"
 icono = ExtResource("1_as0m3")
 textura = ExtResource("3_7b6re")
