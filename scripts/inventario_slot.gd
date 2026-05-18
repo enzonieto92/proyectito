@@ -40,10 +40,28 @@ func _on_mouse_entered():
 	mostrar_tooltip(item)  # 👈 acá
 
 func _on_mouse_exited():
-	if not ocupado or drag_activo:
+
+	# 🔥 si estamos arrastrando, limpiar highlights de drop
+	if drag_activo:
+
+		if ultimo_highlight_item != null:
+			_limpiar_highlight(
+				ultimo_highlight_item,
+				ultimo_highlight_pos
+			)
+
+			ultimo_highlight_item = null
+			ultimo_highlight_pos = Vector2i(-1, -1)
+
+		color_rect_2.modulate = Color.WHITE
 		return
+
+	# hover normal
+	if not ocupado:
+		return
+
 	_hover_item(item, item.grid_pos, false)
-	ocultar_tooltip()  # 👈 acá
+	ocultar_tooltip()
 func mostrar_tooltip(_item):
 	var inventario = get_tree().get_first_node_in_group("inventario_controller")
 	inventario.mostrar_tooltip(_item)

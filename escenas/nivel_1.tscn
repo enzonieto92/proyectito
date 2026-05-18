@@ -52,7 +52,6 @@ render_target_update_mode = 4
 layer = 2
 
 [node name="pixelation" type="ColorRect" parent="contenedor_UX/SubViewport/capa_pixelacion" unique_id=1464824116]
-visible = false
 material = SubResource("ShaderMaterial_xejmm")
 anchors_preset = 15
 anchor_right = 1.0

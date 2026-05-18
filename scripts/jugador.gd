@@ -11,7 +11,7 @@ extends CharacterBody3D
 @onready var raycast: RayCast3D = $camara_controller/camara_player/raycast
 @onready var sonido_arma: AudioStreamPlayer = $pivote/posicion_arma/sprite_arma/sonido_arma
 @onready var camera: Camera3D = $camara_controller/camara_player
-@onready var shape = $CollisionShape3D.shape as CylinderShape3D
+@onready var shape = $CollisionShape3D.shape as CapsuleShape3D
 @onready var footstep_player: AudioStreamPlayer3D = $footstep
 @onready var animaciones: AnimationPlayer = $animaciones
 @onready var hit_sound: AudioStreamPlayer3D = $hit_sound
@@ -20,9 +20,21 @@ extends CharacterBody3D
 @onready var footstep = $footstep
 @onready var panel_blur: Control = get_tree().get_first_node_in_group("background_inventario")
 @onready var luz_antorcha: Node3D = $pivote_secundaria/posicion_secundaria/luz_antorcha
+@onready var sonido_stamina: AudioStreamPlayer3D = $sonido_stamina
 
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
+const VELOCIDAD_DESGASTE: float = 1.0
+const JUMP_VELOCITY = 3.5
+const mouse_sensitivity = 0.002
+const SPEED_NORMAL: float = 1.0
+const SPEED_CORRIENDO: float = 2.5
+const SPEED_RALENTIZADO: float = 0.5
 
+const STAMINA_AGOTAMIENTO: float = 5.0    # se agota al llegar aquí
+const STAMINA_RECUPERACION: float = 20.0  # puede volver a correr desde aquí
+const STAMINA_MAX_REGEN: float = 40.0     # tope para regenerar
+const STAMINA_COSTO_CORRER: float = 4.0   # multiplicador de gasto (delta * SPEED * esto)
+const STAMINA_REGEN: float = 3.0   
 @export var stamina: float
 @export var golpeando = false
 @export var recibiendo_damage = false
@@ -52,8 +64,6 @@ var lanzando_hechizo = false
 var puede_correr: bool = false
 var objeto_actual = null
 var SPEED: float = 2.5
-const JUMP_VELOCITY = 3.5
-const mouse_sensitivity = 0.002
 var pitch := 0.0
 var arma: Item = null
 var secundaria: Item = null
@@ -289,20 +299,7 @@ func _physics_process(delta):
 			if shape.height < 1.75:
 				shape.height = lerp(shape.height, 1.8, 15 * delta)
 				collision.position.y = lerp(collision.position.y, 0.881, 25 * delta)
-	if Input.is_action_pressed("correr") and not ralentizado and stamina > 5 and not stamina_agotada and puede_correr:
-		SPEED = 2.5
-		if moving:
-			stamina -= delta * SPEED * 4
-			corriendo = true
-		else:
-			corriendo = false
-			if stamina < 40:
-				stamina += delta * 3.0
-	else:
-		SPEED = 0.5 if ralentizado else 1.0
-		corriendo = false
-		if stamina < 40:
-			stamina += delta * 3.0
+	_actualizar_velocidad(delta)
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not inventario_abierto:
 		velocity.y = JUMP_VELOCITY
@@ -346,7 +343,7 @@ func _physics_process(delta):
 # PROCESS
 # -------------------------
 
-func _process(_delta):
+func _process(delta):
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		var nuevo_texto = _calcular_texto_interaccion()
 		if objeto_actual != _ultimo_objeto or nuevo_texto != _ultimo_texto:
@@ -366,6 +363,7 @@ func _process(_delta):
 		_vida_muerto = true
 		muerto = true
 		pantalla_muerte()
+	_actualizar_antorcha(delta)
 
 # -------------------------
 # MUERTE
@@ -435,3 +433,36 @@ func play_footstep():
 func stop_footstep():
 	if footstep_player.is_playing():
 		footstep_player.stop()
+func _actualizar_antorcha(delta: float) -> void:
+	if secundaria == null or not secundaria is Antorcha:
+		return
+	var antorcha := secundaria as Antorcha
+	
+	antorcha.durabilidad -= delta * VELOCIDAD_DESGASTE
+	
+	if antorcha.durabilidad <= 0:
+		antorcha.durabilidad = 0
+		inventario_controller.slot_secundaria.romper_arma()
+
+func _actualizar_velocidad(delta: float) -> void:
+	if stamina <= STAMINA_AGOTAMIENTO:
+		stamina_agotada = true
+		sonido_stamina.play()
+
+	elif stamina >= STAMINA_RECUPERACION:
+		stamina_agotada = false	
+		sonido_stamina.stop()
+	if Input.is_action_pressed("correr") and not ralentizado and not stamina_agotada and puede_correr and not forzar_agachado:
+		SPEED = SPEED_CORRIENDO
+		if moving:
+			stamina -= delta * SPEED * STAMINA_COSTO_CORRER
+			corriendo = true
+		else:
+			corriendo = false
+			if stamina < STAMINA_MAX_REGEN:
+				stamina += delta * STAMINA_REGEN
+	else:
+		SPEED = SPEED_RALENTIZADO if ralentizado else SPEED_NORMAL
+		corriendo = false
+		if stamina < STAMINA_MAX_REGEN:
+			stamina += delta * STAMINA_REGEN

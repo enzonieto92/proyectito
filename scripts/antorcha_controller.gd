@@ -2,14 +2,15 @@ extends Node3D
 
 @onready var particles: GPUParticles3D = $GPUParticles3D
 @onready var light: OmniLight3D = $empty/SpotLight3D
+@onready var sonido_antorcha: AudioStreamPlayer3D = $sonido_antorcha
 
 var apagada := false
 
 func apagar():
-	print ("apagando antorcha")
 	apagada = true
 	particles.emitting = false
 	light.visible = false
+	sonido_antorcha.stop()
 
 func prender():
 	apagada = false

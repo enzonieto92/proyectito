@@ -28,6 +28,9 @@ font_size = 51
 default_font = ExtResource("4_6cur2")
 default_font_size = 16
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wndoy"]
+bg_color = Color(0, 0, 0, 0.3137255)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ln1y"]
 shader = ExtResource("9_84h12")
 shader_parameter/intensidad = 0.0
@@ -37,7 +40,6 @@ shader_parameter/radio_interno = 0.330000015675
 [node name="Jugador_UI" type="CanvasLayer" unique_id=1673448679 groups=["jugador_ui"]]
 
 [node name="blood_splash" type="TextureRect" parent="." unique_id=941195193]
-visible = false
 modulate = Color(1, 1, 1, 0.39607844)
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,11 +109,12 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -129.0
+offset_top = -164.0
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_1god3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wndoy")
 scroll_active = false
 scroll_following_visible_characters = true
 autowrap_trim_flags = 128
@@ -121,7 +124,6 @@ visible_characters_behavior = 1
 script = ExtResource("5_wndoy")
 
 [node name="texto_plano" type="RichTextLabel" parent="." unique_id=2014920056 groups=["texto_plano"]]
-visible = false
 z_index = 1
 custom_minimum_size = Vector2(600, 80)
 anchors_preset = 7
@@ -129,8 +131,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -0.5
-offset_right = 0.5
+offset_left = -300.0
+offset_top = -121.0
+offset_right = 300.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_1god3")

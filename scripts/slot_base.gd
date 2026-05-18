@@ -8,7 +8,7 @@ static var drag_activo := false
 var _item_en_drag = null
 var _drop_exitoso := false
 var _stat_antes_drag := 0
-
+static var ultimo_slot_hover: slot_base = null
 # ── Métodos abstractos que cada hijo sobreescribe ──────────────────
 func get_color_rect() -> ColorRect:
 	return null  # override obligatorio
@@ -38,8 +38,16 @@ func _on_mouse_entered():
 	get_color_rect().modulate = Color(0.57, 0.57, 0.57, 0.529)
 
 func _on_mouse_exited():
-	if not ocupado or drag_activo: return
-	get_color_rect().modulate = Color.WHITE
+
+	# 🔥 si estamos draggeando, SIEMPRE limpiar
+	if drag_activo:
+		get_color_rect().modulate = Color.WHITE
+		return
+
+	if not ocupado:
+		return
+
+	get_color_rect().modulate = Color.WHITE	
 
 func _mostrar_icono():
 	var existing = get_node_or_null("ItemIcon")
@@ -127,11 +135,25 @@ func _get_stat_actual(_jugador) -> int:
 	return 0  # override si necesitás guardar un stat específico
 
 func _can_drop_data(_at_position: Vector2, data) -> bool:
-	if not data is Dictionary or not data.has("item"): return false
+
+	if not data is Dictionary or not data.has("item"):
+		return false
+
+	# limpiar highlight anterior
+	if ultimo_slot_hover != null and ultimo_slot_hover != self:
+		var old_rect = ultimo_slot_hover.get_color_rect()
+
+		if old_rect:
+			old_rect.modulate = Color.WHITE
+
+	ultimo_slot_hover = self
+
 	var cr = get_color_rect()
+
 	if not acepta_item(data["item"]) or ocupado:
 		cr.modulate = Color(1.0, 0.593, 0.533, 0.78)
 		return false
+
 	cr.modulate = Color(0.0, 1.0, 0.0, 1.0)
 	return true
 func _drop_data(_at_position: Vector2, data):
@@ -143,30 +165,56 @@ func _drop_data(_at_position: Vector2, data):
 		slot_origen._intentar_equipar()
 		return
 	
-	equipar(data["item"])
+	on_item_dropped(data)
 func _remover_item_drop(inventario, nuevo_item) -> void:
 	inventario.remover_item(nuevo_item, nuevo_item.grid_pos)  # comportamiento default
 
 
 func _notification(what):
 	if what == NOTIFICATION_DRAG_END:
+
 		drag_activo = false
+
+		# 🔥 limpiar último slot highlight
+		if ultimo_slot_hover != null:
+			var old_rect = ultimo_slot_hover.get_color_rect()
+
+			if old_rect:
+				old_rect.modulate = Color.WHITE
+
+			ultimo_slot_hover = null
+
 		var cr = get_color_rect()
-		if cr: cr.modulate = Color.WHITE
+		if cr:
+			cr.modulate = Color.WHITE
+
 		var jugador = get_tree().get_first_node_in_group("jugador")
+
 		if not _drop_exitoso and _item_en_drag != null:
 			item = _item_en_drag
 			ocupado = true
 			_mostrar_icono()
+
 			for spr in get_sprites():
-				if spr: spr.texture = item.textura
-			if jugador: _restaurar_stat(jugador)
+				if spr:
+					spr.texture = item.textura
+
+			if jugador:
+				_restaurar_stat(jugador)
+		if ultimo_slot_hover != null:
+			var old_rect = ultimo_slot_hover.get_color_rect()
+
+			if old_rect:
+				old_rect.modulate = Color.WHITE
+
+			ultimo_slot_hover = null
 		_item_en_drag = null
 		_drop_exitoso = false
 		_stat_antes_drag = 0
-
 func _restaurar_stat(_jugador) -> void:
 	pass  # override
 
 func _restar_stat_drag(_jugador) -> void:
 	pass  # override
+func on_item_dropped(data) -> void:
+	equipar(data["item"])

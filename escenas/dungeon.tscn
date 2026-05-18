@@ -125,7 +125,7 @@ data = PackedVector3Array(0, -1.2099999, -1, 0, -1.2099999, 1, 0, 1.2099999, -1,
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
-transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, 0.83306, -0.12303817, -0.26930797)
+transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, 0.6006542, -0.12303817, -0.26497042)
 floor_stop_on_slope = false
 
 [node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_mnaqj")]

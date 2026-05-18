@@ -2,6 +2,7 @@ extends Node3D
 var dialogo 
 var texto_plano
 var sprite_arma
+var sprite_arma_2
 var daga_colocada : bool = false
 @onready var daga_ritual: MeshInstance3D = $area_vision/daga_ritual
 @onready var mujer: MeshInstance3D = $Mujer
@@ -18,6 +19,7 @@ func _ready() -> void:
 	dialogo = get_tree().get_first_node_in_group("dialogo")
 	texto_plano = get_tree().get_first_node_in_group("texto_plano")
 	sprite_arma = get_tree().get_first_node_in_group("sprite_arma")
+	sprite_arma_2 = get_tree().get_first_node_in_group("sprite_arma_2")
 func puede_interactuar() -> bool:
 	return player_entered
 func apagar_antorchas():
@@ -29,7 +31,6 @@ func apagar_antorchas():
 	sfx_sonido_2.play()
 	tween.set_parallel(false)
 	tween.tween_callback(func():
-		antorcha_16.light.visible = false
 		print ("apagando antorchas")
 		antorcha_16.apagar()
 		antorcha_17.apagar()
@@ -62,6 +63,7 @@ func interactuar(player):
 			player.arma = null
 			daga_ritual.visible = true
 			sprite_arma.texture = null
+			sprite_arma_2.texture = null
 			player.inventario_controller.remover_item_de_weapon_slot()
 			daga_colocada = true
 		else:

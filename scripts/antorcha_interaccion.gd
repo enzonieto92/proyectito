@@ -11,7 +11,8 @@ func puede_interactuar() -> bool:
 
 func interactuar(player):
 	print("interactuar llamado")
-	var resultado = await player.inventario_controller.agregar_item(secundaria)
+	var item_instancia = secundaria.duplicate()  
+	var resultado = await player.inventario_controller.agregar_item(item_instancia)
 	print("resultado agregar_item: ", resultado)
 	if resultado:
 		print("llamando apagar")

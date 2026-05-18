@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bv7w16iqf8slc" path="res://sonido/fuego_antorchas.mp3" id="6_iab8b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gky2i"]
-radius = 0.24972577
+radius = 0.36999947
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujmjx"]
 transparency = 1

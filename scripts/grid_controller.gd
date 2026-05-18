@@ -1,4 +1,3 @@
-@tool
 extends GridContainer
 
 @export var slot_scene : PackedScene

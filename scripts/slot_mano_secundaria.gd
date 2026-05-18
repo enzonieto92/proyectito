@@ -25,7 +25,10 @@ func quitar_stats(jugador) -> void:
 		jugador.get_node("pivote_secundaria/posicion_secundaria/luz_antorcha").visible = false
 	jugador.secundaria = null
 	jugador.armadura_total = jugador.armadura
-
+func romper_arma() -> void:
+	for spr in get_sprites():
+		if spr: spr.texture = null
+	vaciar()  # o el sprite de "sin arma"
 func get_drag_flags() -> Dictionary:
 	return {"desde_weapon_slot": false, "desde_secundary_slot": true, "secundary_slot_ref": self}
 

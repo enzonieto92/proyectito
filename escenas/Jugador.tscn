@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://b85yvwdf6vmsc" path="res://sonido/sonido_antorcha.mp3" id="12_ko7k4"]
 [ext_resource type="AudioStream" uid="uid://clxo03u4jxli7" path="res://sonido/hit_enemigo.mp3" id="13_475hk"]
 [ext_resource type="AudioStream" uid="uid://bieasjlwea40r" path="res://sonido/comiendo.mp3" id="13_ddw1h"]
+[ext_resource type="AudioStream" uid="uid://cjv6cjh0wdmoo" path="res://sonido/jadeo.mp3" id="16_ko7k4"]
 
 [sub_resource type="Animation" id="Animation_2hs0m"]
 length = 0.001
@@ -735,9 +736,9 @@ _data = {
 &"spawn": SubResource("Animation_op6lh")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_op6lh"]
-height = 1.75
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op6lh"]
 radius = 0.3
+height = 1.75
 
 [sub_resource type="Gradient" id="Gradient_pvtpb"]
 offsets = PackedFloat32Array(0.10743801, 1)
@@ -977,14 +978,14 @@ debug_shape_thickness = 1
 [node name="SpotLight3D" type="SpotLight3D" parent="camara_controller/camara_player" unique_id=2060468858]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022611976, 0.28595096)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.3
+light_energy = 0.4
 light_volumetric_fog_energy = 9.0
-spot_range = 16.20042
+spot_range = 4.0
 spot_angle = 79.00263
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881, 0)
-shape = SubResource("CylinderShape3D_op6lh")
+shape = SubResource("CapsuleShape3D_op6lh")
 
 [node name="footstep" type="AudioStreamPlayer3D" parent="." unique_id=1255816085]
 transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
@@ -1071,18 +1072,17 @@ script = ExtResource("11_op6lh")
 [node name="SpotLight3D" type="OmniLight3D" parent="pivote_secundaria/posicion_secundaria/luz_antorcha/empty" unique_id=1451255691]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.06910809, 0, 0.011)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_size = 0.65
+light_size = 0.2
 shadow_enabled = true
 shadow_blur = 0.0
 shadow_caster_mask = 4294967287
 distance_fade_enabled = true
 distance_fade_shadow = 0.5
-omni_range = 4.339
-omni_attenuation = 2.043
+omni_range = 7.0
 
 [node name="sonido_antorcha" type="AudioStreamPlayer3D" parent="pivote_secundaria/posicion_secundaria/luz_antorcha" unique_id=1169825943 groups=["antorcha_equipable"]]
 stream = ExtResource("12_ko7k4")
-volume_db = -22.55
+volume_db = -28.0
 unit_size = 23.41
 pitch_scale = 0.36
 max_distance = 3.5
@@ -1126,7 +1126,8 @@ current = true
 
 [node name="hit_sound" type="AudioStreamPlayer3D" parent="." unique_id=463426134]
 stream = ExtResource("13_475hk")
-max_db = -10.0
+unit_size = 1.0
+max_db = -11.0
 bus = &"Ambientales"
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1439636149]
@@ -1142,3 +1143,7 @@ parameters/shot_bloquear/request = 0
 
 [node name="SFX inventario" type="AudioStreamPlayer3D" parent="." unique_id=972488473 groups=["sfx_inventario"]]
 stream = ExtResource("13_ddw1h")
+
+[node name="sonido_stamina" type="AudioStreamPlayer3D" parent="." unique_id=1278198489]
+stream = ExtResource("16_ko7k4")
+pitch_scale = 0.8
