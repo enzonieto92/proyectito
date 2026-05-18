@@ -6,6 +6,7 @@ extends Node3D
 var apagada := false
 
 func apagar():
+	print ("apagando antorcha")
 	apagada = true
 	particles.emitting = false
 	light.visible = false
