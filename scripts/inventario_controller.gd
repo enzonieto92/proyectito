@@ -66,8 +66,10 @@ func agregar_item(item) -> bool:
 	
 	return false
 func mostrar_tooltip(it):
-	tooltip_label.text = it.descripcion
-
+	if it is String:
+		tooltip_label.text = it
+	else:
+		tooltip_label.text = it.descripcion
 	tooltip.show()
 func puede_colocar(item, pos: Vector2i) -> bool:
 	if pos.x < 0 or pos.y < 0:

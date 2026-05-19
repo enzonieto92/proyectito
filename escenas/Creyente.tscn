@@ -482,7 +482,6 @@ max_distance = 12.0
 bus = &"Ambientales"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=616496208]
-debug_enabled = true
 
 [node name="sonido_golpe" type="AudioStreamPlayer" parent="." unique_id=876724776]
 

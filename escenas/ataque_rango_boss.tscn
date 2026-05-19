@@ -105,19 +105,22 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lctkm"]
 render_priority = 0
 shader = ExtResource("2_0pn6h")
-shader_parameter/vortice_color = Color(0.41513053, 0.31627005, 0.42253867, 1)
+shader_parameter/vortice_color = Color(0.3269191, 0.24508193, 0.3335106, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_enb5h"]
+size = Vector2(6, 6)
 
 [node name="AtaqueRangoBoss" type="Node3D" unique_id=1270920383]
 
 [node name="tentaculos" type="AnimatedSprite3D" parent="." unique_id=1027074962]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64238703, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.2866446, 0)
 billboard = 2
 shaded = true
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_2e5j7")
 animation = &"AtaqueRango"
-frame_progress = 0.35234055
+autoplay = "AtaqueRango"
+frame_progress = 0.04104172
 
 [node name="vortice" type="MeshInstance3D" parent="." unique_id=85947032]
 transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 0, 0)

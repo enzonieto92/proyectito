@@ -13,9 +13,13 @@ func _ready():
 func acepta_item(_item) -> bool:
 	return true
 
+func _on_mouse_entered():
+	var inventario = get_tree().get_first_node_in_group("inventario_controller")
+	inventario.mostrar_tooltip("Eliminar")
+
 func _on_mouse_exited():
 	color_rect.modulate = Color.WHITE
-
+	get_tree().get_first_node_in_group("inventario_controller").tooltip.hide()
 func _can_drop_data(at_position: Vector2, data) -> bool:
 	# Dejamos que el base actualice ultimo_slot_hover y limpie highlights anteriores
 	super._can_drop_data(at_position, data)
