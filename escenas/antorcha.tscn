@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d28hna3j2u6oj" path="res://escenas/Antorcha_equipable.tscn" id="2_vd02i"]
 
 [sub_resource type="Gradient" id="Gradient_sfos5"]
-offsets = PackedFloat32Array(0.10743801, 1)
-colors = PackedColorArray(0.93333334, 0.6156863, 0, 1, 1, 0, 0, 0)
+offsets = PackedFloat32Array(0.10810811, 1)
+colors = PackedColorArray(2.800205, 1.8853682, 0, 1, 1, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8mb8e"]
 gradient = SubResource("Gradient_sfos5")

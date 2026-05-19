@@ -34,6 +34,11 @@ metadata/_snap_enabled = true
 [sub_resource type="Theme" id="Theme_78vvm"]
 default_font_size = 0
 
+[sub_resource type="Environment" id="Environment_70khi"]
+fog_light_color = Color(0, 0, 0, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.23
+
 [node name="escena principal" type="Node3D" unique_id=1018523294]
 script = ExtResource("1_hvxa3")
 
@@ -168,3 +173,6 @@ volume_db = -31.009
 pitch_scale = 0.7
 bus = &"Ambientales"
 playback_type = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2102706521]
+environment = SubResource("Environment_70khi")

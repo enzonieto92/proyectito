@@ -278,10 +278,10 @@ func _physics_process(delta):
 			var puede_pararse = true
 			var offsets = [
 				Vector3.ZERO,
-				Vector3(0.3, 0, 0),
-				Vector3(-0.3, 0, 0),
-				Vector3(0, 0, 0.3),
-				Vector3(0, 0, -0.3),
+				Vector3(0.2, 0, 0),
+				Vector3(-0.2, 0, 0),
+				Vector3(0, 0, 0.2),
+				Vector3(0, 0, -0.2),
 			]
 			for offset in offsets:
 				var t = global_transform
