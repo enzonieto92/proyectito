@@ -13,6 +13,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xejmm"]
 shader = ExtResource("6_78vvm")
 shader_parameter/pixel_size = 3
+shader_parameter/color_bits = 8
+shader_parameter/dither_strength = 0.4
+shader_parameter/vertex_jitter = 0.6
+shader_parameter/enable_dither = true
+shader_parameter/enable_color_crush = true
+shader_parameter/enable_jitter = true
 
 [sub_resource type="Gradient" id="Gradient_hytxr"]
 interpolation_mode = 2
