@@ -1,8 +1,9 @@
 extends StaticBody3D
 
 @export var secundaria: Item
-@onready var sprite: MeshInstance3D = $sprite
+
 @onready var antorcha: Node3D = $".."
+@onready var antorcha_malla: MeshInstance3D = $"../Antorcha"
 
 
 var player_entered = false
@@ -17,6 +18,7 @@ func interactuar(player):
 	if resultado:
 		print("llamando apagar")
 		antorcha.apagar()
+		antorcha_malla.queue_free()
 		queue_free()
 
 

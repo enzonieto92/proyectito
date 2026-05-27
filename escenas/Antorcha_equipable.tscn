@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://db2pbs1oocdvb" path="res://scripts/antorcha_interaccion.gd" id="1_n7vn5"]
 [ext_resource type="Resource" uid="uid://bfjuil2rutsqn" path="res://armas/Antorcha.tres" id="2_p5yv8"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
-height = 1.1035156
+[sub_resource type="SphereShape3D" id="SphereShape3D_n7vn5"]
+radius = 0.29264697
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tuemg"]
 height = 1.3969727
@@ -18,16 +18,13 @@ script = ExtResource("1_n7vn5")
 secundaria = ExtResource("2_p5yv8")
 
 [node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=330304897]
-shape = SubResource("CapsuleShape3D_tcnuu")
+shape = SubResource("SphereShape3D_n7vn5")
 
 [node name="area_interaccion" type="Area3D" parent="." unique_id=1519646548]
 collision_layer = 3
 
 [node name="colision_area" type="CollisionShape3D" parent="area_interaccion" unique_id=1641568912]
 shape = SubResource("CylinderShape3D_tuemg")
-
-[node name="sprite" type="MeshInstance3D" parent="." unique_id=170180650]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [connection signal="body_entered" from="area_interaccion" to="." method="_on_area_interaccion_body_entered"]
 [connection signal="body_exited" from="area_interaccion" to="." method="_on_area_interaccion_body_exited"]
