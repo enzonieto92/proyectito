@@ -18,8 +18,8 @@ content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
-bg_color = Color(0.62859356, 0.5299813, 0.2789413, 1)
-corner_detail = 6
+bg_color = Color(0.50980395, 0.4509804, 0.39607844, 1)
+corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_bt4of"]
 font_size = 51
@@ -82,14 +82,15 @@ theme_override_font_sizes/font_size = 100
 text = "HAS MUERTO"
 
 [node name="barra_stamina" type="ProgressBar" parent="." unique_id=1895136430]
-visible = false
 anchors_preset = -1
 anchor_right = 0.35200003
 anchor_bottom = 0.20400001
-offset_left = 11.0
-offset_top = 119.0
-offset_right = -201.50403
-offset_bottom = -0.19200134
+offset_left = 453.0
+offset_top = 614.0
+offset_right = 240.49597
+offset_bottom = 489.80798
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_a1kk6")
 max_value = 40.0
 show_percentage = false

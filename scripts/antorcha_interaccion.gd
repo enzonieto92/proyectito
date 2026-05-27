@@ -11,12 +11,9 @@ func puede_interactuar() -> bool:
 	return player_entered
 
 func interactuar(player):
-	print("interactuar llamado")
 	var item_instancia = secundaria.duplicate()  
 	var resultado = await player.inventario_controller.agregar_item(item_instancia)
-	print("resultado agregar_item: ", resultado)
 	if resultado:
-		print("llamando apagar")
 		antorcha.apagar()
 		antorcha_malla.queue_free()
 		queue_free()

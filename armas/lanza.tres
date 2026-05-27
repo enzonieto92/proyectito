@@ -8,6 +8,7 @@
 script = ExtResource("2_1g2sc")
 damage = Vector2(13, 20)
 armadura = 5.0
+gasto_stamina = 20.0
 durabilidad = 200
 weapon_size = 1.2
 tipo = 1

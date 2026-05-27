@@ -27,17 +27,25 @@ extends CharacterBody3D
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 const VELOCIDAD_DESGASTE: float = 1.0
 const JUMP_VELOCITY = 3.5
+var gasto_stamina_salto :float = 30.0
 const mouse_sensitivity = 0.002
 const SPEED_NORMAL: float = 1.0
 const SPEED_CORRIENDO: float = 2.5
 const SPEED_RALENTIZADO: float = 0.5
-
-const STAMINA_AGOTAMIENTO: float = 5.0    # se agota al llegar aquí
-const STAMINA_RECUPERACION: float = 20.0  # puede volver a correr desde aquí
-const STAMINA_MAX_REGEN: float = 40.0     # tope para regenerar
-const STAMINA_COSTO_CORRER: float = 4.0   # multiplicador de gasto (delta * SPEED * esto)
-const STAMINA_REGEN: float = 3.0   
-@export var stamina: float
+const STAMINA_REGEN_QUIETO: float = 30.0  # más rápido que STAMINA_REGEN normal
+const STAMINA_AGOTAMIENTO: float = 15.0    # se agota al llegar aquí
+const STAMINA_RECUPERACION: float = 40.0  # puede volver a correr desde aquí
+var STAMINA_MAX_REGEN: float     # tope para regenerar
+const STAMINA_COSTO_CORRER: float = 10.0   # multiplicador de gasto (delta * SPEED * esto)
+const STAMINA_REGEN: float = 10.0   
+const STAMINA_REGEN_AGOTADA_QUIETO: float = 5.0
+const STAMINA_REGEN_AGOTADA_MOVING: float = 2.0  # muy lenta cuando se agotó
+@export var stamina: float:
+	set(value):
+		if STAMINA_MAX_REGEN > 0.0:
+			stamina = clamp(value, 0.0, STAMINA_MAX_REGEN)
+		else:
+			stamina = value
 @export var golpeando = false
 @export var recibiendo_damage = false
 @export var vida_max: float
@@ -133,6 +141,7 @@ func cambiar_pitch_swing():
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	STAMINA_MAX_REGEN = stamina 
 	total_damage.x = damage.x + damage_arma.x
 	total_damage.y = damage.y + damage_arma.y
 	vida = vida_max
@@ -303,9 +312,10 @@ func _physics_process(delta):
 				collision.position.y = lerp(collision.position.y, 0.881, 25 * delta)
 	_actualizar_velocidad(delta)
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not inventario_abierto:
+	if Input.is_action_just_pressed("saltar") and is_on_floor() and not inventario_abierto and stamina > 30:
 		velocity.y = JUMP_VELOCITY
-
+		stamina -= gasto_stamina_salto
+		actualizar_estado_stamina()
 	if inventario_abierto:
 		if footstep.playing:
 			footstep.stop()
@@ -444,25 +454,39 @@ func _actualizar_antorcha(delta: float) -> void:
 		antorcha.durabilidad = 0
 		inventario_controller.slot_secundaria.romper_arma()
 
-func _actualizar_velocidad(delta: float) -> void:
-	if stamina <= STAMINA_AGOTAMIENTO:
+func actualizar_estado_stamina():
+	if stamina <= STAMINA_AGOTAMIENTO and not stamina_agotada:
 		stamina_agotada = true
 		sonido_stamina.play()
 
-	elif stamina >= STAMINA_RECUPERACION:
-		stamina_agotada = false	
+	elif stamina >= STAMINA_RECUPERACION and stamina_agotada:
+		stamina_agotada = false
 		sonido_stamina.stop()
+func _actualizar_velocidad(delta: float) -> void:
+	actualizar_estado_stamina()
+
 	if Input.is_action_pressed("correr") and not ralentizado and not stamina_agotada and puede_correr and not forzar_agachado:
 		SPEED = SPEED_CORRIENDO
 		if moving:
 			stamina -= delta * SPEED * STAMINA_COSTO_CORRER
+			actualizar_estado_stamina()
 			corriendo = true
 		else:
 			corriendo = false
 			if stamina < STAMINA_MAX_REGEN:
 				stamina += delta * STAMINA_REGEN
+				
 	else:
 		SPEED = SPEED_RALENTIZADO if ralentizado else SPEED_NORMAL
 		corriendo = false
 		if stamina < STAMINA_MAX_REGEN:
-			stamina += delta * STAMINA_REGEN
+			var en_piso = is_on_floor()
+			var regen: float
+			if stamina_agotada:
+				regen = STAMINA_REGEN_AGOTADA_QUIETO if (not moving and en_piso) else STAMINA_REGEN_AGOTADA_MOVING
+			elif not moving and en_piso:
+				regen = STAMINA_REGEN_QUIETO
+			else:
+				regen = STAMINA_REGEN
+			stamina += delta * regen
+			actualizar_estado_stamina()

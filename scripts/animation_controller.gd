@@ -53,7 +53,7 @@ func _ataque_termino():
 	blend_objetivo = 0.0
 	if defendiendo:
 		_iniciar_bloqueo()
-	elif Input.is_action_pressed("atacar") and is_instance_valid(player.arma):
+	elif Input.is_action_pressed("atacar") and is_instance_valid(player.arma) and player.stamina >= player.arma.gasto_stamina and not player.stamina_agotada:
 		play_attack_animation()
 
 func _actualizar_movimiento():
@@ -78,6 +78,8 @@ func on_anticipacion_completa():
 	if Input.is_action_pressed("atacar"):
 		esperando_soltar = true
 		anim_tree["parameters/TimeScale_ataque/scale"] = 0.0
+	else:
+		player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)
 
 func _process(_delta: float) -> void:
 	var blend_actual = anim_tree["parameters/Add2/add_amount"]
@@ -117,9 +119,9 @@ func _process(_delta: float) -> void:
 		return
 	if esperando_soltar:
 		if not Input.is_action_pressed("atacar"):
-			
 			esperando_soltar = false
 			anim_tree["parameters/TimeScale_ataque/scale"] = 1.0
+			player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)  # ← gasto al soltar
 		return
 
 	var bloqueando = Input.is_action_pressed("bloquear")
@@ -139,7 +141,7 @@ func _process(_delta: float) -> void:
 		player.desactivar_bloqueo()
 
 	if atacando_input:
-		if not animacion_en_curso:
+		if not animacion_en_curso and player.stamina >= player.arma.gasto_stamina and not player.stamina_agotada:
 			play_attack_animation()
 		return
 func _manejar_rebote(progreso: float) -> bool:
@@ -165,6 +167,7 @@ func _manejar_rebote(progreso: float) -> bool:
 	return false
 func play_attack_animation():
 	var tipo = player.arma.tipo
+
 	animaciones_arma = ANIMACIONES_POR_TIPO.get(tipo, ["atacar"])
 	
 	var current = ataque_sm.get_current_node()

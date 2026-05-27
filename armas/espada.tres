@@ -8,6 +8,7 @@
 script = ExtResource("2_rfoht")
 damage = Vector2(6, 12)
 armadura = 4.0
+gasto_stamina = 15.0
 durabilidad = 40
 weapon_size = 0.8
 nombre = "Espada"

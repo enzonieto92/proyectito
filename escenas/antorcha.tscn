@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dnnpg7wv7fkaj" path="res://scripts/rrotacion_fuego.gd" id="2_5sr84"]
 [ext_resource type="AudioStream" uid="uid://b85yvwdf6vmsc" path="res://sonido/sonido_antorcha.mp3" id="2_rvi3i"]
 [ext_resource type="PackedScene" uid="uid://d28hna3j2u6oj" path="res://escenas/Antorcha_equipable.tscn" id="2_vd02i"]
-[ext_resource type="Texture2D" uid="uid://d0etpcktw3n4n" path="res://objetos glb/antorcha_textura-antorcha.png" id="5_njpig"]
+[ext_resource type="Texture2D" uid="uid://cb2ci5yrrblp3" path="res://texturas/Jaulatortura_textura-antorcha.png" id="5_njpig"]
 
 [sub_resource type="Gradient" id="Gradient_sfos5"]
 offsets = PackedFloat32Array(0.10810811, 1)
