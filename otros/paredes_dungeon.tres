@@ -6,7 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esx3n"]
 resource_name = "Material.002"
 albedo_texture = ExtResource("1_prg7t")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js3qy"]
 resource_name = "Material.004"

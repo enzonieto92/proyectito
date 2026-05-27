@@ -20,6 +20,12 @@ size = Vector2(6, 4)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hxpc2"]
 shader = ExtResource("4_uxd1d")
 shader_parameter/pixel_size = 7
+shader_parameter/color_bits = 4
+shader_parameter/dither_strength = 0.4
+shader_parameter/vertex_jitter = 0.6
+shader_parameter/enable_dither = false
+shader_parameter/enable_color_crush = true
+shader_parameter/enable_jitter = false
 
 [sub_resource type="Gradient" id="Gradient_hytxr"]
 offsets = PackedFloat32Array(0, 0.35555556, 1)

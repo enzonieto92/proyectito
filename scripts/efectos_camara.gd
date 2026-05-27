@@ -1,4 +1,5 @@
 extends Node3D
+@onready var camara: Camera3D = $camara_player
 
 var _tiempo := 0.0
 var _shake_intensidad := 0.0
@@ -18,3 +19,5 @@ func shake(intensidad: float, duracion: float, freq: float) -> void:
 	_shake_intensidad = intensidad
 	_shake_duracion = duracion
 	frecuencia = freq
+
+	

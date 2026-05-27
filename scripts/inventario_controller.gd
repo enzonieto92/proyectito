@@ -32,39 +32,55 @@ func agregar_item(item) -> bool:
 	if not is_instance_valid(item):
 		push_error("agregar_item: item es null o inválido")
 		return false
-	
+
 	var inventario_ui = grid_container.get_parent().get_parent()
 	var era_visible = inventario_ui.visible
-	
-	# FORZAR LAYOUT
+
 	if not era_visible:
 		inventario_ui.visible = true
 		inventario_ui.modulate.a = 0
-	
-	# 🔥 CLAVE: esperar 2 frames
-	await get_tree().process_frame
-	await get_tree().process_frame
+		if inventario_ui is Control:
+			inventario_ui.update_minimum_size()
+		if grid_container is Control:
+			grid_container.update_minimum_size()
 
 	if not is_instance_valid(grid_container):
+		if not era_visible:
+			inventario_ui.visible = false
+			inventario_ui.modulate.a = 1
 		return false
+
 	for y in range(grid_container.grid_height):
 		for x in range(grid_container.grid_width):
 			var pos = Vector2i(x, y)
-			
 			if puede_colocar(item, pos):
-				_colocar_en(item, pos)
+				_colocar_en(item, pos, era_visible)  # ← pasamos era_visible
 				actualizar_label_peso()
 				if not era_visible:
 					inventario_ui.visible = false
 					inventario_ui.modulate.a = 1
-				
 				return true
-	
+
 	if not era_visible:
 		inventario_ui.visible = false
 		inventario_ui.modulate.a = 1
-	
 	return false
+
+func _colocar_en(item, pos: Vector2i, era_visible: bool = true):
+	item.grid_pos = pos
+
+	for ix in range(item.size.x):
+		for iy in range(item.size.y):
+			var slot = grid_container.grid[pos.x + ix][pos.y + iy]
+			slot.ocupado = true
+			slot.item = item
+
+	if item.visual_node:
+		item.visual_node.queue_free()
+	if item.visual_bg:
+		item.visual_bg.queue_free()
+
+	grid_container.mostrar_item_visual(item, pos, era_visible)  # ← pasamos era_visible
 func mostrar_tooltip(it):
 	if it is String:
 		tooltip_label.text = it
@@ -140,27 +156,15 @@ func mover_item(origen: Vector2i, destino: Vector2i, item):
 			slot.item = null
 	
 	_colocar_en(item, destino)
-func _colocar_en(item, pos: Vector2i):
-	item.grid_pos = pos
-	
-	for ix in range(item.size.x):
-		for iy in range(item.size.y):
-			var slot = grid_container.grid[pos.x + ix][pos.y + iy]
-			slot.ocupado = true
-			slot.item = item
-	
-	if item.visual_node:
-		item.visual_node.queue_free()
-	if item.visual_bg:
-		item.visual_bg.queue_free()
-	
-	grid_container.mostrar_item_visual(item, pos)
+
 func tiene_item(item_buscado) -> bool:
+	if not is_instance_valid(item_buscado):
+		return false
 	for x in range(grid_container.grid_width):
 		for y in range(grid_container.grid_height):
 			var slot = grid_container.grid[x][y]
-			if not slot.esta_vacio() and slot.item != null:
-				if slot.item.get_instance_id() == item_buscado.get_instance_id():
+			if slot.item != null and is_instance_valid(slot.item):
+				if slot.item.nombre == item_buscado.nombre:
 					return true
 	return false
 func remover_item_de_weapon_slot() -> void:

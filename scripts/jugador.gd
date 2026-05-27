@@ -21,7 +21,9 @@ extends CharacterBody3D
 @onready var panel_blur: Control = get_tree().get_first_node_in_group("background_inventario")
 @onready var luz_antorcha: Node3D = $pivote_secundaria/posicion_secundaria/luz_antorcha
 @onready var sonido_stamina: AudioStreamPlayer3D = $sonido_stamina
-
+@export var fov_normal: float = 75.0
+@export var fov_zoom: float = 25.0
+@export var zoom_velocidad: float = 4.0
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 const VELOCIDAD_DESGASTE: float = 1.0
 const JUMP_VELOCITY = 3.5
@@ -339,9 +341,6 @@ func _physics_process(delta):
 	move_and_slide()
 	moving = velocity.length_squared() > 0.01 and is_on_floor()
 
-# -------------------------
-# PROCESS
-# -------------------------
 
 func _process(delta):
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
@@ -364,7 +363,8 @@ func _process(delta):
 		muerto = true
 		pantalla_muerte()
 	_actualizar_antorcha(delta)
-
+	var fov_objetivo = fov_zoom if Input.is_action_pressed("zoom") else fov_normal
+	camera.fov = lerp(camera.fov, fov_objetivo, zoom_velocidad * delta)
 # -------------------------
 # MUERTE
 # -------------------------

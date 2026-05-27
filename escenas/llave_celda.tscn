@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cteb0n0rla1d8"]
+
+[ext_resource type="Script" uid="uid://bcvrbqc5h5fcq" path="res://escenas/llave_celda.gd" id="1_piqad"]
+[ext_resource type="Texture2D" uid="uid://b2gyy8l4eqqph" path="res://texturas/Llave.png" id="2_i3kuw"]
+[ext_resource type="Resource" uid="uid://km4a5126hx08" path="res://utilidad/Llave Celda.tres" id="2_sjx8w"]
+[ext_resource type="Script" uid="uid://bucg0xwjmobfc" path="res://scripts/plano.gd" id="3_sjx8w"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tcnuu"]
+height = 1.1035156
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gc15v"]
+radius = 1.4492372
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
+transparency = 2
+alpha_scissor_threshold = 0.951
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_i3kuw")
+roughness = 0.4
+emission_energy_multiplier = 5.63
+emission_on_uv2 = true
+normal_enabled = true
+texture_filter = 0
+
+[node name="Llave Celda" type="StaticBody3D" unique_id=86986954 groups=["recogibles"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_piqad")
+llave = ExtResource("2_sjx8w")
+
+[node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=330304897]
+shape = SubResource("CapsuleShape3D_tcnuu")
+
+[node name="area_interaccion" type="Area3D" parent="." unique_id=1519646548]
+collision_layer = 3
+
+[node name="colision_area" type="CollisionShape3D" parent="area_interaccion" unique_id=1641568912]
+shape = SubResource("SphereShape3D_gc15v")
+
+[node name="sprite" type="MeshInstance3D" parent="." unique_id=170180650]
+mesh = SubResource("PlaneMesh_jsk3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_4arys")
+script = ExtResource("3_sjx8w")
+
+[connection signal="body_entered" from="area_interaccion" to="." method="_on_area_interaccion_body_entered"]
+[connection signal="body_exited" from="area_interaccion" to="." method="_on_area_interaccion_body_exited"]

@@ -21,7 +21,7 @@ func setup(pos: Vector2i):
 
 
 func esta_vacio() -> bool:
-	return not ocupado
+	return not ocupado and item == null
 
 
 func _ready():

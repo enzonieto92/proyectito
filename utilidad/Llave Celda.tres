@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Llave" format=3 uid="uid://km4a5126hx08"]
+
+[ext_resource type="Texture2D" uid="uid://cucj4jlt41325" path="res://texturas/Llave_item.png" id="1_41a3p"]
+[ext_resource type="Texture2D" uid="uid://b2gyy8l4eqqph" path="res://texturas/Llave.png" id="1_eyo3u"]
+[ext_resource type="Script" uid="uid://ds8stt1lbb72a" path="res://scripts/resources/Llave.gd" id="2_41a3p"]
+
+[resource]
+script = ExtResource("2_41a3p")
+llave_id = "1"
+id = "1"
+nombre = "Llave de la Celda"
+icono = ExtResource("1_41a3p")
+textura = ExtResource("1_eyo3u")
+size = Vector2i(1, 2)
+metadata/_custom_type_script = "uid://ds8stt1lbb72a"

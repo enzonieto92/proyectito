@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://ctvlbe882v53o"]
 
+[ext_resource type="Script" uid="uid://nvvesw0nuegg" path="res://scripts/celda_escena.gd" id="1_wg28v"]
 [ext_resource type="Script" uid="uid://bu25pwaga80wg" path="res://scripts/celda.gd" id="2_5kwsi"]
 [ext_resource type="Texture2D" uid="uid://iai6r10aw5rf" path="res://texturas/textura_celda_roughness.png" id="3_ifla1"]
 [ext_resource type="AudioStream" uid="uid://bcl8wn168vhyt" path="res://sonido/ambientales/celda_puerta.mp3" id="3_tuuuo"]
@@ -112,6 +113,7 @@ height = 2.1035156
 radius = 1.0649414
 
 [node name="celda" type="Node3D" unique_id=594511101]
+script = ExtResource("1_wg28v")
 
 [node name="celda_barras" type="MeshInstance3D" parent="." unique_id=272673848]
 mesh = SubResource("ArrayMesh_5kwsi")
