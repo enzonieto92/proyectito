@@ -22,9 +22,13 @@ func interactuar(_player):
 
 	if requiere_llave:
 		if inventario.tiene_item(llave_celda):
+			var dialogo = get_tree().get_first_node_in_group("dialogo")
+			dialogo.show_text("Cerradura desbloqueada")
 			requiere_llave = false
+
 		else:
-			print("no tiene la llave el pete")
+			var dialogo = get_tree().get_first_node_in_group("dialogo")
+			dialogo.show_text("La cerradura no permite abrirla...")
 	else:
 		var tween = create_tween()
 		if !abierta:

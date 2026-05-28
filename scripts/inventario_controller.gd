@@ -29,6 +29,7 @@ func actualizar_label_peso():
 	var peso = calcular_peso_total()
 	label_peso.text = "Peso: %.1f/%.0f kg" % [peso, peso_maximo]
 func agregar_item(item) -> bool:
+
 	if not is_instance_valid(item):
 		push_error("agregar_item: item es null o inválido")
 		return false
@@ -56,6 +57,9 @@ func agregar_item(item) -> bool:
 			if puede_colocar(item, pos):
 				_colocar_en(item, pos, era_visible)  # ← pasamos era_visible
 				actualizar_label_peso()
+				var texto_notificacion = get_tree().get_first_node_in_group("texto_notificacion")
+				if texto_notificacion:
+					texto_notificacion.show_text(item.nombre + " añadida/o al inventario")
 				if not era_visible:
 					inventario_ui.visible = false
 					inventario_ui.modulate.a = 1

@@ -66,6 +66,8 @@ panel_equipo=""
 antorcha_equipable=""
 sprite_arma_2=""
 sprite_secundaria_2=""
+texto_notificacion=""
+texto_plano=""
 
 [importer_defaults]
 
