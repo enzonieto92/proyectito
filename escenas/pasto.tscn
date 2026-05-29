@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://ppawdlx4crpm"]
+
+[ext_resource type="Texture2D" uid="uid://b6gmnwjure5q4" path="res://objetos glb/pasto_yuyo.png" id="1_gxdmx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wah8q"]
+resource_name = "pasto"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.47788018, 0.47788012, 0.47788012, 1)
+albedo_texture = ExtResource("1_gxdmx")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_17kk1"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"name": "pasto",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP9/AAAAAP///38AAAAAAAD/fwAA///+//9/AAD/fwAA//8AAP9///8AAAAA/38AAAAAAAD/f/7///8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qrt3n"]
+resource_name = "pasto_Plano_001"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAA="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_wah8q"),
+"name": "pasto",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP9///8AAP///3///wAAAAD/f//////+//9/////fwAA////v/9///8AAP+//38AAAAA/7//f/7/////v/9/////f////3////9/////fwAA/38AAP9/AAD/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_17kk1")
+
+[node name="pasto" type="Node3D" unique_id=1788539422]
+
+[node name="Plano_001" type="MeshInstance3D" parent="." unique_id=112113657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("ArrayMesh_qrt3n")

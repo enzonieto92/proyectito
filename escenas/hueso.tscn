@@ -23,7 +23,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ut2eg"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rhrh8"]
 resource_name = "hueso_Cube"
 _surfaces = [{
 "aabb": AABB(-0.06870084, -0.18080938, -0.046148878, 0.11230202, 0.42172188, 0.062233195),
@@ -43,16 +43,16 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hhm1f")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rhrh8"]
-radius = 0.033691406
-height = 0.41345215
+radius = 0.05615101
+height = 0.42172188
 
 [node name="hueso" type="RigidBody3D" unique_id=1086495316]
 mass = 0.2
 can_sleep = false
 
-[node name="Hueso" type="MeshInstance3D" parent="." unique_id=23322436]
-mesh = SubResource("ArrayMesh_ut2eg")
+[node name="Hueso" type="MeshInstance3D" parent="." unique_id=440984525]
+mesh = SubResource("ArrayMesh_rhrh8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=26862988]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0050354004, 0.03363037, -0.014728546)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1415237724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012549832, 0.03005156, -0.01503228)
 shape = SubResource("CapsuleShape3D_rhrh8")

@@ -1,6 +1,7 @@
 extends Node3D
 var dialogo 
 var texto_plano
+var texto_notificacion
 var sprite_arma
 var sprite_arma_2
 var daga_colocada : bool = false
@@ -18,6 +19,7 @@ var player_entered = false
 func _ready() -> void:
 	dialogo = get_tree().get_first_node_in_group("dialogo")
 	texto_plano = get_tree().get_first_node_in_group("texto_plano")
+	texto_notificacion = get_tree().get_first_node_in_group("texto_notificacion")
 	sprite_arma = get_tree().get_first_node_in_group("sprite_arma")
 	sprite_arma_2 = get_tree().get_first_node_in_group("sprite_arma_2")
 func puede_interactuar() -> bool:
@@ -66,6 +68,7 @@ func interactuar(player):
 			sprite_arma_2.texture = null
 			player.inventario_controller.remover_item_de_weapon_slot()
 			daga_colocada = true
+			texto_notificacion.show_text("daga colocada")
 		else:
 			dialogo.visible = true
 			dialogo.show_text("Parece que esta rezando, o ¿rogando?")

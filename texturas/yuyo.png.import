@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq85y8smsyhq4"
-path.s3tc="res://.godot/imported/hueso_hueso.png-41dcbcb6da74955ad547b1e6e8dd9c74.s3tc.ctex"
+uid="uid://o58dtfndj8wb"
+path.s3tc="res://.godot/imported/yuyo.png-0cde28fc7b4925a07dc9a2dfb0a2e5e4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "7ff86c4e14b2468b608da87d747fa058"
-}
 
 [deps]
 
-source_file="res://objetos glb/hueso_hueso.png"
-dest_files=["res://.godot/imported/hueso_hueso.png-41dcbcb6da74955ad547b1e6e8dd9c74.s3tc.ctex"]
+source_file="res://texturas/yuyo.png"
+dest_files=["res://.godot/imported/yuyo.png-0cde28fc7b4925a07dc9a2dfb0a2e5e4.s3tc.ctex"]
 
 [params]
 

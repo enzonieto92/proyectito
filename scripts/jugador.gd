@@ -362,7 +362,8 @@ func _empujar_rigidos():
 			var normal = colision.get_normal()
 			if normal.y < 0.7:  # si la normal apunta mucho hacia arriba, es el piso
 				var direccion = velocity.normalized()
-				var fuerza = 5.0
+				var fuerza = 1.0
+				direccion.y = 0  # ignorar eje Y
 				cuerpo.apply_central_impulse(direccion * fuerza)
 func _process(delta):
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
