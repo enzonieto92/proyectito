@@ -107,7 +107,6 @@ func dying_behavior() -> void:
 		else:
 			pass
 		sonido_enemigo.stream = SONIDO_MUERTE  # ✅ preload
-		sonido_enemigo.volume_db = 40.0
 		sonido_enemigo.pitch_scale = 2.0
 		sonido_enemigo.play()
 		animation_player.play("dying")
@@ -119,7 +118,7 @@ func dying_behavior() -> void:
 
 func _on_dying_finished(_anim: String) -> void:
 	animation_player.pause()
-
+	sonido_enemigo.queue_free()
 	colision.shape.height = 0.5
 	colision.shape.radius = 0.3
 	colision.position.y = - 0.5

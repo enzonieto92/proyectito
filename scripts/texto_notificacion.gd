@@ -21,4 +21,3 @@ func ocultar():
 	text = ""
 	visible_characters = 0
 	visible = false
-	modulate.a = 1.0

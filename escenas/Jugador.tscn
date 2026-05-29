@@ -951,8 +951,15 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2
 
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
 script = ExtResource("1_hqtel")
+fov_normal = null
+fov_zoom = null
+zoom_velocidad = null
 stamina = 150.0
+recibiendo_damage = null
 vida_max = 75.0
+armadura = null
+peso = null
+bloqueando = null
 
 [node name="animaciones" type="AnimationPlayer" parent="." unique_id=602970200]
 libraries/ = SubResource("AnimationLibrary_dw050")

@@ -349,9 +349,21 @@ func _physics_process(delta):
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	_empujar_rigidos()
 	moving = velocity.length_squared() > 0.01 and is_on_floor()
 
-
+func _empujar_rigidos():
+	for i in get_slide_collision_count():
+		var colision = get_slide_collision(i)
+		var cuerpo = colision.get_collider()
+		
+		if cuerpo is RigidBody3D:
+			# Solo empujar si el contacto es lateral, no desde abajo
+			var normal = colision.get_normal()
+			if normal.y < 0.7:  # si la normal apunta mucho hacia arriba, es el piso
+				var direccion = velocity.normalized()
+				var fuerza = 5.0
+				cuerpo.apply_central_impulse(direccion * fuerza)
 func _process(delta):
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		var nuevo_texto = _calcular_texto_interaccion()

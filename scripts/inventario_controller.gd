@@ -59,7 +59,16 @@ func agregar_item(item) -> bool:
 				actualizar_label_peso()
 				var texto_notificacion = get_tree().get_first_node_in_group("texto_notificacion")
 				if texto_notificacion:
-					texto_notificacion.show_text(item.nombre + " añadida/o al inventario")
+					if item is Arma:
+						texto_notificacion.show_text( "Arma añadida")
+					if item is Consumible:
+						texto_notificacion.show_text("Agarraste Comida")
+					if item is Antorcha:
+						texto_notificacion.show_text("Agarraste una Antorcha")
+					if item is Pechera or item is Casco:
+						texto_notificacion.show_text("Agarraste Equipo")
+
+						
 				if not era_visible:
 					inventario_ui.visible = false
 					inventario_ui.modulate.a = 1
