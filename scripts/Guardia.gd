@@ -4,6 +4,7 @@ const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
 var  SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
 const SONIDO_ENEMIGO = preload("uid://dehsfh1pliac7")
 const SONIDO_MUERTE = preload("res://sonido/muerte_guardia.mp3")
+@onready var colision_muerto: CollisionShape3D = $colision_muerto
 
 @onready var player: CharacterBody3D = $"../../player"
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
@@ -199,7 +200,7 @@ func _on_dying_finished(_anim: String) -> void:
 	var colision = get_node_or_null("CollisionShape3D")
 	if colision:
 		colision.queue_free()
-
+	colision_muerto.disabled = false
 
 func rastrear() -> void:
 	raycast_vision.target_position = to_local(player.global_position)

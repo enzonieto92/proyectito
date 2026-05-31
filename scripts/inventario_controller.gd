@@ -29,7 +29,6 @@ func actualizar_label_peso():
 	var peso = calcular_peso_total()
 	label_peso.text = "Peso: %.1f/%.0f kg" % [peso, peso_maximo]
 func agregar_item(item) -> bool:
-
 	if not is_instance_valid(item):
 		push_error("agregar_item: item es null o inválido")
 		return false
@@ -51,13 +50,13 @@ func agregar_item(item) -> bool:
 			inventario_ui.modulate.a = 1
 		return false
 
+	var texto_notificacion = get_tree().get_first_node_in_group("texto_notificacion")
 	for y in range(grid_container.grid_height):
 		for x in range(grid_container.grid_width):
 			var pos = Vector2i(x, y)
 			if puede_colocar(item, pos):
 				_colocar_en(item, pos, era_visible)  # ← pasamos era_visible
 				actualizar_label_peso()
-				var texto_notificacion = get_tree().get_first_node_in_group("texto_notificacion")
 				if texto_notificacion:
 					if item is Arma:
 						texto_notificacion.show_text( "Arma añadida")
@@ -68,7 +67,6 @@ func agregar_item(item) -> bool:
 					if item is Pechera or item is Casco:
 						texto_notificacion.show_text("Agarraste Equipo")
 
-						
 				if not era_visible:
 					inventario_ui.visible = false
 					inventario_ui.modulate.a = 1
@@ -77,6 +75,7 @@ func agregar_item(item) -> bool:
 	if not era_visible:
 		inventario_ui.visible = false
 		inventario_ui.modulate.a = 1
+	texto_notificacion.show_text("No puedo cargar mas")
 	return false
 
 func _colocar_en(item, pos: Vector2i, era_visible: bool = true):

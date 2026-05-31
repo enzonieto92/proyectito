@@ -39,11 +39,11 @@ script = ExtResource("1_q7uc5")
 arma = ExtResource("2_nh3vm")
 
 [node name="colision_objeto" type="CollisionShape3D" parent="area_interaccion/area_raycast" unique_id=1280504304]
-transform = Transform3D(0.9186396, 0, 0.39509663, 0, 1, 0, -0.39509663, 0, 0.9186396, 0.14382486, 1.0606759, -0.19872043)
+transform = Transform3D(0.9186396, 0, 0.39509663, 0, 1, 0, -0.39509663, 0, 0.9186396, 0.14229888, 1.0606759, -0.17970747)
 shape = SubResource("CapsuleShape3D_uwcph")
 
 [node name="sprite" type="MeshInstance3D" parent="area_interaccion/area_raycast" unique_id=1799775419]
-transform = Transform3D(0.8703451, 0.29393542, 0.39509663, -0.3199682, 0.9474283, 0, -0.37432572, -0.12641835, 0.9186396, 0.09344356, 1.0606759, -0.35172662)
+transform = Transform3D(0.70247614, 0, 0.71170735, 0, 1, 0, -0.71170735, 0, 0.70247614, 0.006505929, 1.0518835, -0.31386733)
 mesh = SubResource("PlaneMesh_5foml")
 surface_material_override/0 = SubResource("StandardMaterial3D_nilqj")
 

@@ -9,7 +9,7 @@ albedo_color = Color(0.67894405, 0.6789436, 0.6789437, 1)
 albedo_texture = ExtResource("1_07800")
 normal_enabled = true
 uv1_scale = Vector3(0.419, 0.415, 0.512)
-uv1_offset = Vector3(0, -0.179, -2.218)
+uv1_offset = Vector3(0, 0.306, -1.718)
 uv1_triplanar = true
 texture_filter = 0
 
@@ -75,7 +75,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.037, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0.037, 0, 0), Vector3(0.01, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_igwts"]
