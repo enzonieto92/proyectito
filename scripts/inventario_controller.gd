@@ -158,6 +158,15 @@ func remover_item(item, origen: Vector2i):
 		item.visual_bg = null
 	
 	actualizar_label_peso()
+func remover_item_buscando(item) -> bool:
+	for x in range(grid_container.grid_width):
+		for y in range(grid_container.grid_height):
+			var slot = grid_container.grid[x][y]
+			if slot.item != null and is_instance_valid(slot.item):
+				if slot.item.nombre == item.nombre:  # igual que tiene_item
+					remover_item(slot.item, Vector2i(x, y))  # usamos slot.item, no item
+					return true
+	return false
 func mover_item(origen: Vector2i, destino: Vector2i, item):
 	if not puede_colocar_ignorando_origen(item, destino, origen):
 		return

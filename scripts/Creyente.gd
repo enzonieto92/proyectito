@@ -8,6 +8,7 @@ const PAN = preload("uid://dni0ouuswkjrm")
 const PEZ = preload("uid://d4gw3nu3068wh")
 @onready var colision: CollisionShape3D = $CollisionShape3D
 @onready var area: CollisionShape3D = $area_deteccion/CollisionShape3D
+@onready var colision_muerto: CollisionShape3D = $colision_muerto
 
 @onready var player = get_tree().get_first_node_in_group("jugador")
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
@@ -119,9 +120,9 @@ func dying_behavior() -> void:
 func _on_dying_finished(_anim: String) -> void:
 	animation_player.pause()
 	sonido_enemigo.queue_free()
-	colision.shape.height = 0.5
-	colision.shape.radius = 0.3
-	colision.position.y = - 0.5
+	colision.disabled = true
+	area.queue_free()
+	colision_muerto.disabled = false
 func puede_interactuar() -> bool:
 	if died and item != null:
 		return player_entered

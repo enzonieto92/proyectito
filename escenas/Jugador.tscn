@@ -950,11 +950,13 @@ nodes/shot_bloquear/position = Vector2(-480, 360)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2", 0, &"movimiento", &"Add2", 1, &"TimeScale_ataque", &"TimeScale_ataque", 0, &"shot_bloquear", &"shot_bloquear", 0, &"ataque", &"shot_bloquear", 1, &"bloquear"]
 
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
+floor_stop_on_slope = false
+floor_max_angle = 1.1274827
 script = ExtResource("1_hqtel")
 fov_normal = null
 fov_zoom = null
 zoom_velocidad = null
-stamina = 150.0
+stamina = 1500.0
 recibiendo_damage = null
 vida_max = 75.0
 armadura = null

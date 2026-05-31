@@ -12,5 +12,5 @@ nombre = "Antorcha"
 icono = ExtResource("1_6v6fm")
 textura = ExtResource("3_6tc4i")
 descripcion = "No creo que dure mucho encendida..."
-size = Vector2i(1, 2)
+size = Vector2i(1, 3)
 metadata/_custom_type_script = "uid://dk6ooudb3g2ja"

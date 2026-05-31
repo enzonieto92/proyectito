@@ -34,7 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.40392157)
+color = Color(0.96474224, 0.96474224, 0.9647421, 1)
 
 [node name="slot_background" type="TextureRect" parent="." unique_id=1295073857]
 self_modulate = Color(0.59717613, 0.59717613, 0.5971761, 1)

@@ -23,8 +23,10 @@ func interactuar(_player):
 	if requiere_llave:
 		if inventario.tiene_item(llave_celda):
 			var dialogo = get_tree().get_first_node_in_group("dialogo")
+			inventario.remover_item_buscando(llave_celda)
 			dialogo.show_text("Cerradura desbloqueada")
-			requiere_llave = false
+			requiere_llave = false	
+
 
 		else:
 			var dialogo = get_tree().get_first_node_in_group("dialogo")
