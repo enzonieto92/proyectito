@@ -116,12 +116,15 @@ func dying_behavior() -> void:
 	elif !died:
 		velocity += get_gravity()
 		move_and_slide()
-
+var _ya_murio := false
 func _on_dying_finished(_anim: String) -> void:
+	if _ya_murio:
+		return
+	_ya_murio = true
 	animation_player.pause()
-	sonido_enemigo.queue_free()
+	if is_instance_valid(sonido_enemigo):
+		sonido_enemigo.queue_free()
 	colision.disabled = true
-	area.queue_free()
 	colision_muerto.disabled = false
 func puede_interactuar() -> bool:
 	if died and item != null:
@@ -145,8 +148,8 @@ func _agregar(_player) -> void:
 
 	if await _player.inventario_controller.agregar_item(item_a_agregar):
 		pass
-	#colision.queue_free()
-	area.queue_free()
+	if is_instance_valid(area):  # ← mismo fix acá
+		area.queue_free()
 	_agregando = false
 
 func attack_behavior() -> void:
@@ -177,9 +180,10 @@ func _on_cooldown_finished() -> void:
 		raycast.ya_golpeo = false
 func _on_area_deteccion_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jugador"):
-		sonido_enemigo.stream = SONIDO_ENEMIGO
-		sonido_enemigo.volume_db = -30.0
-		sonido_enemigo.play()
+		if !died:
+			sonido_enemigo.stream = SONIDO_ENEMIGO
+			sonido_enemigo.volume_db = -30.0
+			sonido_enemigo.play()
 		player_entered = true
 
 func _on_area_deteccion_body_exited(body: Node3D) -> void:

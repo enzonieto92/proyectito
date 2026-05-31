@@ -452,7 +452,6 @@ scale = Vector2(0.685, 0.685)
 texture = ExtResource("10_5ftgr")
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventario_UI/panel_mochila" unique_id=1816532351 groups=["inventario"]]
-modulate = Color(1, 1, 1, 0.23921569)
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 1
 anchors_preset = -1

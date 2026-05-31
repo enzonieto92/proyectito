@@ -481,6 +481,7 @@ shape = SubResource("CylinderShape3D_g7x46")
 
 [node name="sonido_enemigo" type="AudioStreamPlayer3D" parent="." unique_id=415566684]
 stream = ExtResource("8_dhj0k")
+max_db = -10.0
 autoplay = true
 max_distance = 12.0
 bus = &"Ambientales"

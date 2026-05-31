@@ -24,7 +24,7 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 1.0
 offset_bottom = 1.0
-color = Color(0.30692264, 0.3069227, 0.30692258, 1)
+color = Color(0.41960785, 0.41960785, 0.41960785, 0.27058825)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=783412410]
 custom_minimum_size = Vector2(32, 32)
@@ -34,10 +34,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.96474224, 0.96474224, 0.9647421, 1)
+color = Color(0, 0, 0, 0.30588236)
 
 [node name="slot_background" type="TextureRect" parent="." unique_id=1295073857]
-self_modulate = Color(0.59717613, 0.59717613, 0.5971761, 1)
+self_modulate = Color(0.6, 0.6, 0.6, 1)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
