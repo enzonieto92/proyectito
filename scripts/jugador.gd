@@ -22,14 +22,16 @@ extends CharacterBody3D
 @onready var luz_antorcha: Node3D = $pivote_secundaria/posicion_secundaria/luz_antorcha
 @onready var sonido_stamina: AudioStreamPlayer3D = $sonido_stamina
 @export var fov_normal: float = 75.0
-@export var fov_zoom: float = 25.0
+@export var fov_zoom: float = 35.0
 @export var zoom_velocidad: float = 4.0
+@export var corrupcion : int
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 const VELOCIDAD_DESGASTE: float = 1.0
 const JUMP_VELOCITY = 3.5
+const HECHIZO_COOLDOWN = 3
 var gasto_stamina_salto :float = 30.0
 const mouse_sensitivity = 0.002
-const SPEED_NORMAL: float = 1.0
+const SPEED_NORMAL: float = 1.2
 const SPEED_CORRIENDO: float = 2.5
 const SPEED_RALENTIZADO: float = 0.5
 const STAMINA_REGEN_QUIETO: float = 30.0  # más rápido que STAMINA_REGEN normal
@@ -52,7 +54,7 @@ const STAMINA_REGEN_AGOTADA_MOVING: float = 2.0  # muy lenta cuando se agotó
 @export var armadura: float
 @export var peso: float
 @export var bloqueando = false
-var ritual_completo = false
+@export var ritual_completo: bool
 var ralentizado: bool = false
 var _timer_ralentizacion: SceneTreeTimer = null
 var _tween_ralentizacion: Tween = null
@@ -217,28 +219,44 @@ func _unhandled_input(event):
 		if objeto_actual and objeto_actual.has_method("interactuar"):
 			objeto_actual.interactuar(self)
 	if event.is_action_pressed("lanzar_hechizo"):
-		if ritual_completo and not inventario_abierto:
+		if ritual_completo and not inventario_abierto and puede_lanzar:
 			lanzar_hechizo()
-			get_tree().get_first_node_in_group("efecto_magia").activar(2)
-		
+
 	if event is InputEventMouseMotion and not inventario_abierto:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		pitch -= event.relative.y * mouse_sensitivity
 		pitch = clamp(pitch, deg_to_rad(-50), deg_to_rad(50))
 		camera.rotation.x = pitch
-func lanzar_hechizo():	
-	var hechizo_scene = preload("uid://ciho1ujuyxp5m")
-	var hechizo = hechizo_scene.instantiate()
-	get_tree().root.add_child(hechizo)
-	hechizo.sonido_travel.play()
-	
-	# Dirección basada en la cámara, no en el jugador
-	var adelante = -camera.global_transform.basis.z
-	hechizo.global_position = global_position + adelante * 1.5 + Vector3.UP * 1.0
-	hechizo.direccion = adelante
-	
-	# Rotación igual a la cámara
-	hechizo.global_transform.basis = camera.global_transform.basis
+var puede_lanzar = true
+func lanzar_hechizo():
+		if not puede_lanzar:
+			return
+		puede_lanzar = false
+		await get_tree().create_timer(0.6).timeout
+		corrupcion -= 1
+		if corrupcion < 2:
+			$sonido_latidos.play()
+		var efecto_magia = get_tree().get_first_node_in_group("efecto_magia")
+		efecto_magia.activar(6 - corrupcion)
+		var hechizo_scene = preload("uid://ciho1ujuyxp5m")
+		var hechizo = hechizo_scene.instantiate()
+		get_tree().root.add_child(hechizo)
+		hechizo.sonido_travel.play()
+		
+		# Dirección basada en la cámara, no en el jugador
+		var adelante = -camera.global_transform.basis.z
+		hechizo.global_position = global_position + adelante * 1.5 + Vector3.UP * 1.0
+		hechizo.direccion = adelante
+		
+		# Rotación igual a la cámara
+		hechizo.global_transform.basis = camera.global_transform.basis
+		await get_tree().create_timer(HECHIZO_COOLDOWN).timeout
+		while efecto_magia._activo:
+			await get_tree().process_frame
+		if corrupcion > 0:
+			puede_lanzar = true  # sacale la condición por ahora
+		else:
+			vida = 0
 func cerrar_inventario() -> void:
 	inventario_ui.visible = false
 	inventario_abierto = false

@@ -195,7 +195,7 @@ func _iniciar_bloqueo():
 	blend_objetivo = 1.0 # resetear por si estaba activo
 	timer_bloqueo.stop()
 	timer_bloqueo.start(TIEMPO_ACTIVACION_BLOQUEO)
-	if player.arma != null and player.secundaria == null:
+	if player.arma != null and player.secundaria != Escudo:
 		var blend_actual = anim_tree["parameters/Add2/add_amount"]
 		var nodo_actual = ataque_sm.get_current_node()
 		if nodo_actual == "bloqueo_arma":

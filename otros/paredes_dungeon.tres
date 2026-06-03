@@ -6,7 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esx3n"]
 resource_name = "Material.002"
 albedo_texture = ExtResource("1_prg7t")
-texture_filter = 0
+texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js3qy"]
 resource_name = "Material.004"
@@ -147,7 +147,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_aeqn7"]
+[sub_resource type="ImageTexture" id="ImageTexture_jp6tf"]
 image = SubResource("Image_223gu")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4i31m"]
@@ -177,7 +177,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_vcoo4"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_aeqn7"]
 resource_name = "wall-chunks_Plano_011"
 _surfaces = [{
 "aabb": AABB(-0.5, 2.4, -0.5, 1, 1e-05, 1),
@@ -216,7 +216,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_qsvvv"]
+[sub_resource type="ImageTexture" id="ImageTexture_wj727"]
 image = SubResource("Image_nbffk")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lgmj5"]
@@ -246,7 +246,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_6p1em"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_62qtb"]
 resource_name = "wall-chunks_Plano_012"
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 2.4, 1),
@@ -285,7 +285,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_asngs"]
+[sub_resource type="ImageTexture" id="ImageTexture_6p1em"]
 image = SubResource("Image_7f4t6")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5ke6s"]
@@ -343,7 +343,7 @@ image = SubResource("Image_xhsgp")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tqcox"]
 data = PackedVector3Array(0.49999997, 3.005, 0.5, -0.5, 3.005, -0.5, -0.5, 3.005, 0.5, 0.49999997, 3.005, 0.5, 0.49999997, 3.005, -0.5, -0.5, 3.005, -0.5)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_5shsw"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_asngs"]
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 3, 1),
 "format": 34896613377,
@@ -367,7 +367,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_i5qsg"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_5shsw"]
 resource_name = "wall-chunks_Plano_013"
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 3, 1),
@@ -395,7 +395,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAAqioAAAAA//+qKgAAAAAAAKoq//8AAP//qiqqqqqqqqqqqqqqqqqqqqqq")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_5shsw")
+shadow_mesh = SubResource("ArrayMesh_asngs")
 
 [sub_resource type="Image" id="Image_jp6tf"]
 data = {
@@ -406,10 +406,10 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_xinet"]
+[sub_resource type="ImageTexture" id="ImageTexture_js7xh"]
 image = SubResource("Image_jp6tf")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oj7wo"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xinet"]
 data = PackedVector3Array(-0.5, 0, -0.5, 0.5, 1.2, -0.5, 0.5, 0, -0.5, 0.5, 1.2, -0.5, -0.5, 2.4, -0.5, 0.5, 2.4, -0.5, -0.5, 1.2, -0.5, 0.5, 1.2, -0.5, -0.5, 0, -0.5, 0.5, 1.2, -0.5, -0.5, 1.2, -0.5, -0.5, 2.4, -0.5, 0.5, 2.4, 0.5, 0, 3, 0, 0, 3, 0.5, 0.5, 2.4, 0.5, 0.5, 2.4, -0.5, 0, 3, 0, 0.5, 2.4, -0.5, -0.5, 3, 0, 0, 3, 0, 0.5, 2.4, -0.5, -0.5, 2.4, -0.5, -0.5, 3, 0, 0, 3, 0.5, -0.5, 3, 0, -0.5, 3, 0.5, 0, 3, 0.5, 0, 3, 0, -0.5, 3, 0, 0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_02j20"]
@@ -437,7 +437,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_wtaq7"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_oj7wo"]
 resource_name = "wall-chunks_Plano_015"
 _surfaces = [{
 "aabb": AABB(-2.5000002, 0, -0.5, 3.0000002, 3, 5),
@@ -477,7 +477,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_k0uwb"]
+[sub_resource type="ImageTexture" id="ImageTexture_vqf0i"]
 image = SubResource("Image_aeqn7")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kvjsc"]
@@ -820,7 +820,7 @@ data = {
 image = SubResource("Image_6p1em")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v2cug"]
-data = PackedVector3Array(0, 2.5, 0.5, -0.5, 3, -0.5, -0.5, 2.5, 0.5, 0, 2.5, 0.5, 0, 3, -0.5, -0.5, 3, -0.5, 0.5, 1.9, 0.5, 0, 3, -0.5, 0, 2.5, 0.5, 0.5, 1.9, 0.5, 0.5, 2.4, -0.5, 0, 3, -0.5, 0.5, -0.5, 0.5, 0.5, 2.4, -0.5, 0.5, 1.9, 0.5, 0.5, -0.5, 0.5, 0.5, 0, -0.5, 0.5, 2.4, -0.5, 0.5, 0, -0.5, -0.5, -0.5, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
+data = PackedVector3Array(0, 2.5, 0.5, -0.5, 3, -0.5, -0.5, 2.5, 0.5, 0, 2.5, 0.5, 0, 3, -0.5, -0.5, 3, -0.5, 0.5, 1.9000001, 0.5, 0, 3, -0.5, 0, 2.5, 0.5, 0.5, 1.9000001, 0.5, 0.5, 2.4, -0.5, 0, 3, -0.5, 0.5, -0.5, 0.5, 0.5, 2.4, -0.5, 0.5, 1.9000001, 0.5, 0.5, -0.5, 0.5, 0.5, 0, -0.5, 0.5, 2.4, -0.5, 0.5, 0, -0.5, -0.5, -0.5, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_dv3oq"]
 _surfaces = [{
@@ -889,7 +889,7 @@ data = {
 image = SubResource("Image_gf3r2")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vruqj"]
-data = PackedVector3Array(0, 3, 0.5, -0.5, 2.5, -0.5, -0.5, 3, 0.5, 0, 3, 0.5, 0, 2.5, -0.5, -0.5, 2.5, -0.5, 0.5, 2.4, 0.5, 0, 2.5, -0.5, 0, 3, 0.5, 0.5, 2.4, 0.5, 0.5, 1.9, -0.5, 0, 2.5, -0.5, 0.5, 0, 0.5, 0.5, 1.9, -0.5, 0.5, 2.4, 0.5, 0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, 1.9, -0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5)
+data = PackedVector3Array(0, 3, 0.5, -0.5, 2.5, -0.5, -0.5, 3, 0.5, 0, 3, 0.5, 0, 2.5, -0.5, -0.5, 2.5, -0.5, 0.5, 2.4, 0.5, 0, 2.5, -0.5, 0, 3, 0.5, 0.5, 2.4, 0.5, 0.5, 1.9000001, -0.5, 0, 2.5, -0.5, 0.5, 0, 0.5, 0.5, 1.9000001, -0.5, 0.5, 2.4, 0.5, 0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, 1.9000001, -0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ocmit"]
 _surfaces = [{
@@ -1183,7 +1183,7 @@ item/1/mesh_cast_shadow = 1
 item/1/shapes = [SubResource("ConcavePolygonShape3D_4i31m"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/1/navigation_layers = 1
-item/1/preview = SubResource("ImageTexture_aeqn7")
+item/1/preview = SubResource("ImageTexture_jp6tf")
 item/2/name = "ground"
 item/2/mesh = SubResource("ArrayMesh_jqaia")
 item/2/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -1249,21 +1249,21 @@ item/9/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 
 item/9/navigation_layers = 1
 item/9/preview = SubResource("ImageTexture_2geqv")
 item/10/name = "falsa-wall-techo"
-item/10/mesh = SubResource("ArrayMesh_vcoo4")
+item/10/mesh = SubResource("ArrayMesh_aeqn7")
 item/10/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/10/mesh_cast_shadow = 1
 item/10/shapes = [SubResource("ConcavePolygonShape3D_lgmj5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/10/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/10/navigation_layers = 1
-item/10/preview = SubResource("ImageTexture_qsvvv")
+item/10/preview = SubResource("ImageTexture_wj727")
 item/11/name = "wall-baja"
-item/11/mesh = SubResource("ArrayMesh_6p1em")
+item/11/mesh = SubResource("ArrayMesh_62qtb")
 item/11/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/11/mesh_cast_shadow = 1
 item/11/shapes = [SubResource("ConcavePolygonShape3D_5ke6s"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/11/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/11/navigation_layers = 1
-item/11/preview = SubResource("ImageTexture_asngs")
+item/11/preview = SubResource("ImageTexture_6p1em")
 item/12/name = "falso-techo"
 item/12/mesh = SubResource("ArrayMesh_gf3r2")
 item/12/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -1273,21 +1273,21 @@ item/12/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0,
 item/12/navigation_layers = 1
 item/12/preview = SubResource("ImageTexture_5shsw")
 item/13/name = "corner-falsa"
-item/13/mesh = SubResource("ArrayMesh_i5qsg")
+item/13/mesh = SubResource("ArrayMesh_5shsw")
 item/13/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/13/mesh_cast_shadow = 1
-item/13/shapes = [SubResource("ConcavePolygonShape3D_oj7wo"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/13/shapes = [SubResource("ConcavePolygonShape3D_xinet"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/13/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/13/navigation_layers = 1
-item/13/preview = SubResource("ImageTexture_xinet")
+item/13/preview = SubResource("ImageTexture_js7xh")
 item/14/name = "wall-agujero"
-item/14/mesh = SubResource("ArrayMesh_wtaq7")
+item/14/mesh = SubResource("ArrayMesh_oj7wo")
 item/14/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/14/mesh_cast_shadow = 1
 item/14/shapes = [SubResource("ConcavePolygonShape3D_kvjsc"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/14/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/14/navigation_layers = 1
-item/14/preview = SubResource("ImageTexture_k0uwb")
+item/14/preview = SubResource("ImageTexture_vqf0i")
 item/15/name = "tunel"
 item/15/mesh = SubResource("ArrayMesh_k0uwb")
 item/15/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

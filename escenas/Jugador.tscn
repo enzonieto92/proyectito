@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://clxo03u4jxli7" path="res://sonido/hit_enemigo.mp3" id="13_475hk"]
 [ext_resource type="AudioStream" uid="uid://bieasjlwea40r" path="res://sonido/comiendo.mp3" id="13_ddw1h"]
 [ext_resource type="AudioStream" uid="uid://cjv6cjh0wdmoo" path="res://sonido/jadeo.mp3" id="16_ko7k4"]
+[ext_resource type="AudioStream" uid="uid://c6rfe3h4ca6mh" path="res://sonido/latidos.mp3" id="17_pvtpb"]
 
 [sub_resource type="Animation" id="Animation_2hs0m"]
 length = 0.001
@@ -953,15 +954,11 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2
 floor_stop_on_slope = false
 floor_max_angle = 1.1274827
 script = ExtResource("1_hqtel")
-fov_normal = null
-fov_zoom = null
-zoom_velocidad = null
+zoom_velocidad = 8.0
+corrupcion = 5
 stamina = 1500.0
-recibiendo_damage = null
 vida_max = 75.0
-armadura = null
-peso = null
-bloqueando = null
+ritual_completo = true
 
 [node name="animaciones" type="AnimationPlayer" parent="." unique_id=602970200]
 libraries/ = SubResource("AnimationLibrary_dw050")
@@ -1157,3 +1154,9 @@ stream = ExtResource("13_ddw1h")
 [node name="sonido_stamina" type="AudioStreamPlayer3D" parent="." unique_id=1278198489]
 stream = ExtResource("16_ko7k4")
 pitch_scale = 0.8
+
+[node name="sonido_latidos" type="AudioStreamPlayer3D" parent="." unique_id=999029104]
+stream = ExtResource("17_pvtpb")
+volume_db = 20.0
+unit_size = 1.0
+panning_strength = 1.11

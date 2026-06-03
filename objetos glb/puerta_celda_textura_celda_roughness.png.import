@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvp4ht0157f4g"
-path.s3tc="res://.godot/imported/Boss_final_attack2.png-bb3b98ec9e8c70b6e03b28afa4c6ce9b.s3tc.ctex"
+uid="uid://icek4iyg1cbu"
+path.s3tc="res://.godot/imported/puerta_celda_textura_celda_roughness.png-0dc03b9fa5f793e3faf10508e3886ef3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "42ce08cd802809375236d4331a2ab61b"
+}
 
 [deps]
 
-source_file="res://texturas/Boss_final_attack2.png"
-dest_files=["res://.godot/imported/Boss_final_attack2.png-bb3b98ec9e8c70b6e03b28afa4c6ce9b.s3tc.ctex"]
+source_file="res://objetos glb/puerta_celda_textura_celda_roughness.png"
+dest_files=["res://.godot/imported/puerta_celda_textura_celda_roughness.png-0dc03b9fa5f793e3faf10508e3886ef3.s3tc.ctex"]
 
 [params]
 

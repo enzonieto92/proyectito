@@ -378,7 +378,7 @@ attack_range = 3.0
 max_damage = 19.0
 min_damage = 21.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2015585413]
+[node name="coll_guardia" type="CollisionShape3D" parent="." unique_id=2015585413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062083483, -0.03152466, 0)
 shape = SubResource("CylinderShape3D_u3e3u")
 
@@ -433,7 +433,7 @@ target_position = Vector3(0, 0, -6)
 [node name="sonido_golpe" type="AudioStreamPlayer" parent="." unique_id=1065348469]
 
 [node name="colision_muerto" type="CollisionShape3D" parent="." unique_id=1318387807]
-transform = Transform3D(1.665, 0, 0, 0, 1.665, 0, 0, 0, 1.665, 0, -0.8565078, 0)
+transform = Transform3D(3.045, 0, 0, 0, 3.045, 0, 0, 0, 3.045, 0.029814482, -0.84955066, 0)
 shape = SubResource("ConcavePolygonShape3D_huxnx")
 disabled = true
 

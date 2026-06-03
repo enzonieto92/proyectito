@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ibc1q5x2q0j4"]
 
-[ext_resource type="Script" uid="uid://d1ue2c2yujin0" path="res://scripts/Guardia.gd" id="1_h6tmt"]
+[ext_resource type="Script" uid="uid://kqmd7odogpbf" path="res://scripts/jefe_final.gd" id="1_mscpk"]
 [ext_resource type="Texture2D" uid="uid://cinw6op5yrnlw" path="res://texturas/boss_final_attack.png" id="2_mscpk"]
+[ext_resource type="Texture2D" uid="uid://dvp4ht0157f4g" path="res://texturas/Boss_final_attack2.png" id="3_mscpk"]
 [ext_resource type="Texture2D" uid="uid://f11sa76uvrmc" path="res://texturas/boss_final_block.png" id="3_ui0lo"]
 [ext_resource type="Texture2D" uid="uid://dnsxgduqperx" path="res://texturas/Boss_final_walk.png" id="4_bxnfr"]
 [ext_resource type="Texture2D" uid="uid://18yxljccgv2e" path="res://texturas/azotador-dead.png" id="5_yn7sn"]
@@ -12,31 +13,51 @@
 [ext_resource type="AudioStream" uid="uid://cjv6cjh0wdmoo" path="res://sonido/jadeo.mp3" id="10_b5851"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u3e3u"]
-height = 2.3036132
+height = 2.317334
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_47bjo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui0lo"]
 atlas = ExtResource("2_mscpk")
 region = Rect2(0, 0, 128, 138)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rq2hw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxnfr"]
 atlas = ExtResource("2_mscpk")
 region = Rect2(128, 0, 128, 138)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tq2ca"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn7sn"]
 atlas = ExtResource("2_mscpk")
 region = Rect2(256, 0, 128, 138)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cf8sp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_11l1n"]
 atlas = ExtResource("2_mscpk")
 region = Rect2(384, 0, 128, 138)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8kqyn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mntvc"]
 atlas = ExtResource("2_mscpk")
 region = Rect2(512, 0, 128, 138)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_el4ua"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0cb3"]
 atlas = ExtResource("2_mscpk")
 region = Rect2(640, 0, 128, 138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scr45"]
+atlas = ExtResource("2_mscpk")
+region = Rect2(768, 0, 128, 138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5851"]
+atlas = ExtResource("3_mscpk")
+region = Rect2(0, 0, 190, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47bjo"]
+atlas = ExtResource("3_mscpk")
+region = Rect2(190, 0, 190, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq2hw"]
+atlas = ExtResource("3_mscpk")
+region = Rect2(380, 0, 190, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq2ca"]
+atlas = ExtResource("3_mscpk")
+region = Rect2(570, 0, 190, 226)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvtc7"]
 atlas = ExtResource("3_ui0lo")
@@ -118,25 +139,45 @@ region = Rect2(512, 0, 128, 138)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ui0lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxnfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn7sn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11l1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mntvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0cb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scr45")
+}],
+"loop": false,
+"name": &"Ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5851")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_47bjo")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rq2hw")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tq2ca")
-}, {
-"duration": 0.7,
-"texture": SubResource("AtlasTexture_cf8sp")
-}, {
-"duration": 0.7,
-"texture": SubResource("AtlasTexture_8kqyn")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_el4ua")
 }],
-"loop": false,
-"name": &"Ataque",
+"loop": true,
+"name": &"Ataque_2",
 "speed": 5.0
 }, {
 "frames": [{
@@ -456,16 +497,19 @@ _data = {
 height = 0.87900543
 radius = 6.309082
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mscpk"]
+data = PackedVector3Array(0.08736573, 0.0365377, 0.2688888, 0.056442287, 0.09618159, 0.17371444, 0.21753544, 0.061356585, 0.1580482, -0.22873111, 0.036537595, 0.1661809, -0.14777078, 0.096181504, 0.1073605, -0.08309245, 0.06135704, 0.25572723, -0.22873111, 0.036537595, -0.1661809, -0.14777078, 0.096181504, -0.1073605, -0.26888844, 0.061356496, -2.8014624e-10, 0.08736573, 0.0365377, -0.2688888, 0.056442287, 0.09618159, -0.17371444, -0.08309245, 0.06135704, -0.25572723, 0.2827266, 0.03653636, -2.8014624e-10, 0.18265544, 0.09618063, 0, 0.21753544, 0.061356585, -0.1580482, 0.18265544, 0.09618063, 0, 0, 0.12654692, 0, 0.056442287, 0.09618159, -0.17371444, 0.18265544, 0.09618063, 0, 0.056442287, 0.09618159, -0.17371444, 0.21753544, 0.061356585, -0.1580482, 0.21753544, 0.061356585, -0.1580482, 0.056442287, 0.09618159, -0.17371444, 0.08736573, 0.0365377, -0.2688888, 0.056442287, 0.09618159, -0.17371444, 0, 0.12654692, 0, -0.14777078, 0.096181504, -0.1073605, 0.056442287, 0.09618159, -0.17371444, -0.14777078, 0.096181504, -0.1073605, -0.08309245, 0.06135704, -0.25572723, -0.08309245, 0.06135704, -0.25572723, -0.14777078, 0.096181504, -0.1073605, -0.22873111, 0.036537595, -0.1661809, -0.14777078, 0.096181504, -0.1073605, 0, 0.12654692, 0, -0.14777078, 0.096181504, 0.1073605, -0.14777078, 0.096181504, -0.1073605, -0.14777078, 0.096181504, 0.1073605, -0.26888844, 0.061356496, -2.8014624e-10, -0.26888844, 0.061356496, -2.8014624e-10, -0.14777078, 0.096181504, 0.1073605, -0.22873111, 0.036537595, 0.1661809, -0.14777078, 0.096181504, 0.1073605, 0, 0.12654692, 0, 0.056442287, 0.09618159, 0.17371444, -0.14777078, 0.096181504, 0.1073605, 0.056442287, 0.09618159, 0.17371444, -0.08309245, 0.06135704, 0.25572723, -0.08309245, 0.06135704, 0.25572723, 0.056442287, 0.09618159, 0.17371444, 0.08736573, 0.0365377, 0.2688888, 0.056442287, 0.09618159, 0.17371444, 0, 0.12654692, 0, 0.18265544, 0.09618063, 0, 0.056442287, 0.09618159, 0.17371444, 0.18265544, 0.09618063, 0, 0.21753544, 0.061356585, 0.1580482, 0.21753544, 0.061356585, 0.1580482, 0.18265544, 0.09618063, 0, 0.2827266, 0.03653636, -2.8014624e-10, 0.3304281, 0, -0.10736092, 0.2827266, 0.03653636, -2.8014624e-10, 0.21753544, 0.061356585, -0.1580482, 0.3304281, 0, -0.10736092, 0.21753544, 0.061356585, -0.1580482, 0.20421563, 0, -0.28107843, 0.20421563, 0, -0.28107843, 0.21753544, 0.061356585, -0.1580482, 0.08736573, 0.0365377, -0.2688888, 0, 0, -0.34743214, 0.08736573, 0.0365377, -0.2688888, -0.08309245, 0.06135704, -0.25572723, 0, 0, -0.34743214, -0.08309245, 0.06135704, -0.25572723, -0.20421563, 0, -0.28107843, -0.20421563, 0, -0.28107843, -0.08309245, 0.06135704, -0.25572723, -0.22873111, 0.036537595, -0.1661809, -0.3304281, 0, -0.10736092, -0.22873111, 0.036537595, -0.1661809, -0.26888844, 0.061356496, -2.8014624e-10, -0.3304281, 0, -0.10736092, -0.26888844, 0.061356496, -2.8014624e-10, -0.3304281, 0, 0.10736092, -0.3304281, 0, 0.10736092, -0.26888844, 0.061356496, -2.8014624e-10, -0.22873111, 0.036537595, 0.1661809, -0.20421563, 0, 0.28107843, -0.22873111, 0.036537595, 0.1661809, -0.08309245, 0.06135704, 0.25572723, -0.20421563, 0, 0.28107843, -0.08309245, 0.06135704, 0.25572723, 0, 0, 0.34743214, 0, 0, 0.34743214, -0.08309245, 0.06135704, 0.25572723, 0.08736573, 0.0365377, 0.2688888, 0.20421563, 0, 0.28107843, 0.08736573, 0.0365377, 0.2688888, 0.21753544, 0.061356585, 0.1580482, 0.20421563, 0, 0.28107843, 0.21753544, 0.061356585, 0.1580482, 0.3304281, 0, 0.10736092, 0.3304281, 0, 0.10736092, 0.21753544, 0.061356585, 0.1580482, 0.2827266, 0.03653636, -2.8014624e-10, 0.20421563, 0, -0.28107843, 0.08736573, 0.0365377, -0.2688888, 0, 0, -0.34743214, -0.20421563, 0, -0.28107843, -0.22873111, 0.036537595, -0.1661809, -0.3304281, 0, -0.10736092, -0.3304281, 0, 0.10736092, -0.22873111, 0.036537595, 0.1661809, -0.20421563, 0, 0.28107843, 0, 0, 0.34743214, 0.08736573, 0.0365377, 0.2688888, 0.20421563, 0, 0.28107843, 0.3304281, 0, 0.10736092, 0.2827266, 0.03653636, -2.8014624e-10, 0.3304281, 0, -0.10736092)
+
 [node name="jefe_final" type="CharacterBody3D" unique_id=834906040 groups=["enemigos"]]
 collision_layer = 9
-script = ExtResource("1_h6tmt")
-vida = 75.0
-attack_range = 3.0
-max_damage = 19.0
-min_damage = 21.0
+script = ExtResource("1_mscpk")
+vida = 120.0
+attack_range = 2.0
+max_damage = 25.0
+min_damage = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2015585413]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30914772, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46540666, 0)
 shape = SubResource("CylinderShape3D_u3e3u")
 
 [node name="sprite_enemy" type="AnimatedSprite3D" parent="." unique_id=464011000]
@@ -517,6 +561,11 @@ bus = &"Ambientales"
 target_position = Vector3(0, 0, -6)
 
 [node name="sonido_golpe" type="AudioStreamPlayer" parent="." unique_id=1065348469]
+
+[node name="colision_muerto" type="CollisionShape3D" parent="." unique_id=1406638843]
+transform = Transform3D(3.33, 0, 0, 0, 3.33, 0, 0, 0, 3.33, 0, -0.6978545, 0)
+shape = SubResource("ConcavePolygonShape3D_mscpk")
+disabled = true
 
 [connection signal="body_entered" from="area_deteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="body_exited" from="area_deteccion" to="." method="_on_area_deteccion_body_exited"]

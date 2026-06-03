@@ -3,12 +3,9 @@ extends CharacterBody3D
 const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
 var  SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
 const SONIDO_ENEMIGO = preload("uid://dehsfh1pliac7")
-const PAN = preload("uid://dni0ouuswkjrm")
-const PEZ = preload("uid://d4gw3nu3068wh")
 const SONIDO_MUERTE = preload("res://sonido/muerte_guardia.mp3")
 @onready var colision_muerto: CollisionShape3D = $colision_muerto
-var _agregando := false  
-@onready var player: CharacterBody3D = $"../../player"
+@onready var player: CharacterBody3D 
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
@@ -24,7 +21,7 @@ var _agregando := false
 @export var max_damage: float
 @export var min_damage: float
 @export var salto = false
-var item
+
 var avistado = false
 var speed := 2.5
 var player_entered_area: bool = false
@@ -41,27 +38,18 @@ var repath_timer := 0.0
 var repath_interval := 0.5
 
 var hit_applied := false
-func puede_interactuar() -> bool:
-	return died and item != null 
-func interactuar(_player):
-	if _agregando:
-		return
-	_agregando = true
-	_agregar.call_deferred(_player)
+
+
 func _ready() -> void:
 	sonido_enemigo.stream = SONIDO_ENEMIGO_PASIVO
 	sonido_enemigo.play()
-
+	player = get_tree().get_first_node_in_group("jugador")
 	raycast_vision.target_position = Vector3(0, 0, -1)
 	raycast_vision.force_raycast_update()
 
 	var _precarga = SONIDO_ENEMIGO
 
-func dropear_item():
-	if Calculos.chance(50):
-		item = PEZ.duplicate()
-	else:
-		item = PAN.duplicate()
+
 func _physics_process(delta: float) -> void:
 	if vida <= 0.0:
 		dying_behavior()
@@ -166,19 +154,7 @@ func _on_cooldown_finished() -> void:
 	_atacando_cooldown = false
 	raycast_enemigo.ya_golpeo = false # ← nombre del nodo que tengas
 
-func _agregar(_player) -> void:
-	if item == null:
-		_agregando = false
-		return
 
-	var item_a_agregar = item
-	item = null
-
-	if await _player.inventario_controller.agregar_item(item_a_agregar):
-		pass
-	var area = get_node_or_null("area_deteccion")
-	area.queue_free()
-	_agregando = false
 func dying_behavior() -> void:
 	if dying_started:
 		return
@@ -186,10 +162,14 @@ func dying_behavior() -> void:
 	if is_on_floor():
 		dying_started = true
 		died = true
-		if Calculos.chance(100):
-			dropear_item()
-		else:
-			pass
+
+		var colision = get_node_or_null("CollisionShape3D")
+		if colision:
+			colision.disabled = true
+
+		var area = get_node_or_null("area_deteccion")
+		if area and area.monitoring:
+			area.monitoring = false
 
 		sonido_enemigo.stream = SONIDO_MUERTE
 		sonido_enemigo.volume_db = -40.0
@@ -211,8 +191,14 @@ func dying_behavior() -> void:
 
 func _on_dying_finished(_anim: String) -> void:
 	animation_player.pause()
-	var colision = get_node("coll_guardia")
-	colision.disabled = true
+
+	var area = get_node_or_null("area_deteccion")
+	if area:
+		area.queue_free()
+
+	var colision = get_node_or_null("CollisionShape3D")
+	if colision:
+		colision.queue_free()
 	colision_muerto.disabled = false
 
 func rastrear() -> void:
@@ -269,6 +255,9 @@ func golpear_puerta(coll: Node) -> void:
 func _confirmar_avistado() -> void:
 	if not avistado:
 		avistado = true
+		var area = get_node_or_null("area_deteccion")
+		if area:
+			area.queue_free()
 		sonido_enemigo.stream = SONIDO_ENEMIGO
 		sonido_enemigo.volume_db = -30.0
 		sonido_enemigo.play()
