@@ -192,28 +192,30 @@ func play_spawn():
 	movimiento_sm.travel("spawn")
 
 func _iniciar_bloqueo():
-	blend_objetivo = 1.0 # resetear por si estaba activo
+	blend_objetivo = 1.0
 	timer_bloqueo.stop()
 	timer_bloqueo.start(TIEMPO_ACTIVACION_BLOQUEO)
-	if player.arma != null and player.secundaria != Escudo:
-		var blend_actual = anim_tree["parameters/Add2/add_amount"]
-		var nodo_actual = ataque_sm.get_current_node()
-		if nodo_actual == "bloqueo_arma":
-			if blend_actual < 0.01:
-				ataque_sm.start("bloqueo_arma")
-		else:
-			ataque_sm.travel("bloqueo_arma")
-	elif player.secundaria != null and player.secundaria is Escudo:
-		var blend_actual = anim_tree["parameters/Add2/add_amount"]
+
+	var tiene_escudo = player.secundaria != null and player.secundaria is Escudo
+
+	if tiene_escudo:
 		var nodo_actual = ataque_sm.get_current_node()
 		if nodo_actual == "bloquear":
-			if blend_actual < 0.01:
+			if anim_tree["parameters/Add2/add_amount"] < 0.01:
 				ataque_sm.start("bloquear")
 		else:
 			ataque_sm.travel("bloquear")
-	else:return
-	estaba_bloqueando = true
+	elif player.arma != null:
+		var nodo_actual = ataque_sm.get_current_node()
+		if nodo_actual == "bloqueo_arma":
+			if anim_tree["parameters/Add2/add_amount"] < 0.01:
+				ataque_sm.start("bloqueo_arma")
+		else:
+			ataque_sm.travel("bloqueo_arma")
+	else:
+		return
 
+	estaba_bloqueando = true
 func play_block_attack():
 	if anim_tree["parameters/shot_bloquear/active"]:
 		return

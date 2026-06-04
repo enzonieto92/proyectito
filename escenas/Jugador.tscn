@@ -1121,7 +1121,6 @@ render_priority = 10
 
 [node name="area_escudo" type="Area3D" parent="pivote_secundaria/posicion_secundaria" unique_id=278590332]
 transform = Transform3D(1, 2.6542693e-08, -6.7055225e-08, -3.632158e-08, 1, 0, 5.9604645e-08, -7.450581e-09, 0.99999994, 5.9604645e-08, -0.11768806, 5.9604645e-08)
-visible = false
 collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pivote_secundaria/posicion_secundaria/area_escudo" unique_id=827036023]
