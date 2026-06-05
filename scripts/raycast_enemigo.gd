@@ -3,7 +3,7 @@ extends RayCast3D
 @onready var player = get_tree().get_first_node_in_group("jugador")
 var ya_golpeo: bool = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if enabled:
 		intentar_golpe()
 func intentar_golpe() -> void:
