@@ -11,9 +11,7 @@ func intentar_golpe() -> void:
 
 	if is_colliding() and not ya_golpeo:
 		var obj = get_collider()
-		print ("coll: ", obj)
 		if obj.is_in_group("jugador"):
 			enabled = false
-			print ("hitting")
 			obj.recibir_damage(Vector2(enemigo.min_damage, enemigo.max_damage), false)
 			ya_golpeo = true

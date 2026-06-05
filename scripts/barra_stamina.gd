@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	value = jugador.stamina
 	var porcentaje = jugador.stamina / jugador.STAMINA_MAX_REGEN
-	if porcentaje < 0.8:
+	if porcentaje < 0.3:
 		_animar_alpha(1.0)
 	else:
 		_animar_alpha(0.0)

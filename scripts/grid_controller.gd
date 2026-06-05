@@ -78,11 +78,6 @@ func _posicionar_visual(item, pos: Vector2i, era_visible: bool):
 
 	var panel = get_parent()
 	var inventario_ui = panel.get_parent()
-	print("=== _posicionar_visual ===")
-	print("era_visible: ", era_visible)
-	print("inventario_ui.visible ahora: ", inventario_ui.visible)
-	print("slot global_pos: ", grid[pos.x][pos.y].global_position)
-	print("panel global_pos: ", panel.global_position)
 	if not era_visible:
 		item.visual_node.visible = false
 		item.visual_bg.visible = false

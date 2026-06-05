@@ -33,7 +33,6 @@ func apagar_antorchas():
 	sfx_sonido_2.play()
 	tween.set_parallel(false)
 	tween.tween_callback(func():
-		print ("apagando antorchas")
 		antorcha_16.apagar()
 		antorcha_17.apagar()
 	)
@@ -58,7 +57,6 @@ func interactuar(player):
 		tween.tween_callback(func():
 			sangre_particulas.emitting = false
 			player.ritual_completo = true
-			print (player.ritual_completo)
 		)
 	if player.arma != null:
 		if player.arma.nombre == "Daga Ritual":

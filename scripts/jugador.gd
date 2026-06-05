@@ -14,9 +14,9 @@ extends CharacterBody3D
 @onready var shape = $CollisionShape3D.shape as CapsuleShape3D
 @onready var footstep_player: AudioStreamPlayer3D = $footstep
 @onready var animaciones: AnimationPlayer = $animaciones
-@onready var hit_sound: AudioStreamPlayer3D = $hit_sound
 @onready var camara_controller = $camara_controller
 @onready var collision = $CollisionShape3D
+@onready var col_caja: CollisionShape3D = $col_caja
 @onready var footstep = $footstep
 @onready var panel_blur: Control = get_tree().get_first_node_in_group("background_inventario")
 @onready var luz_antorcha: Node3D = $pivote_secundaria/posicion_secundaria/luz_antorcha
@@ -29,19 +29,20 @@ const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 const VELOCIDAD_DESGASTE: float = 1.0
 const JUMP_VELOCITY = 3.5
 const HECHIZO_COOLDOWN = 3
-var gasto_stamina_salto :float = 30.0
+var gasto_stamina_salto :float = 50.0
 const mouse_sensitivity = 0.002
 const SPEED_NORMAL: float = 1.2
 const SPEED_CORRIENDO: float = 2.5
 const SPEED_RALENTIZADO: float = 0.5
-const STAMINA_REGEN_QUIETO: float = 30.0  # más rápido que STAMINA_REGEN normal
+const STAMINA_REGEN_QUIETO: float = 45.0  # más rápido que STAMINA_REGEN normal
 const STAMINA_AGOTAMIENTO: float = 15.0    # se agota al llegar aquí
 const STAMINA_RECUPERACION: float = 40.0  # puede volver a correr desde aquí
 var STAMINA_MAX_REGEN: float     # tope para regenerar
 const STAMINA_COSTO_CORRER: float = 10.0   # multiplicador de gasto (delta * SPEED * esto)
-const STAMINA_REGEN: float = 10.0   
-const STAMINA_REGEN_AGOTADA_QUIETO: float = 5.0
-const STAMINA_REGEN_AGOTADA_MOVING: float = 2.0  # muy lenta cuando se agotó
+const STAMINA_REGEN: float = 20.0   
+const STAMINA_REGEN_AGOTADA_QUIETO: float = 10.0
+const STAMINA_REGEN_AGOTADA_MOVING: float = 5.0  # muy lenta cuando se agotó
+var rb_muerte: RigidBody3D
 @export var stamina: float:
 	set(value):
 		if STAMINA_MAX_REGEN > 0.0:
@@ -87,7 +88,6 @@ var armadura_total: float = 0:
 	set(value):
 		if value != armadura_total:
 			armadura_total = value
-			print("armadura cambió a: ", value)
 var damage_arma: Vector2
 var total_damage: Vector2
 var footstep_sounds = [
@@ -157,16 +157,31 @@ func recibir_damage(_damage, ralentizar):
 	recibiendo_damage = true
 	var reduccion = armadura_total / (armadura_total + CONSTANTE_ARMADURA)
 	var damage_final = int(randf_range(_damage.x, _damage.y) * (1.0 - reduccion))
-	vida -= damage_final
 	if ralentizar:
-		_aplicar_ralentizacion(1.5)  # duración en segundos
-
+		_aplicar_ralentizacion(1.5)
 	animaciones.on_block_hit()
 	if !bloqueando:
 		camara_controller.shake(0.05, 0.5, 60.0)
-		hit_sound.play()
-	recibiendo_damage = false
+		print("RECIBI DAMAGE")
 
+		sonido_hit()
+	vida -= damage_final
+	recibiendo_damage = false
+	
+func sonido_hit():
+	print("SONANDO HIT")
+	var s := AudioStreamPlayer3D.new()
+	get_tree().root.add_child(s)
+
+	s.stream = preload("uid://clxo03u4jxli7")
+	s.global_position = camera.global_position
+	s.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
+	s.volume_db = -10
+	s.play()
+
+	await s.finished
+	print("TERMINO HIT")
+	s.queue_free()
 func _aplicar_ralentizacion(duracion: float):
 	if _tween_ralentizacion != null and _tween_ralentizacion.is_running():
 		_tween_ralentizacion.kill()
@@ -285,9 +300,6 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 		move_and_slide()
 		return
-	if muerto:
-		return
-
 	objeto_actual = null
 	if raycast.is_colliding():
 		var obj = raycast.get_collider()
@@ -383,6 +395,17 @@ func _empujar_rigidos():
 				direccion.y = 0  # ignorar eje Y
 				cuerpo.apply_central_impulse(direccion * fuerza)
 func _process(delta):
+	if is_instance_valid(rb_muerte) and _vida_muerto:
+		global_transform = rb_muerte.global_transform
+	if not _vida_muerto and vida <= 0:
+		_vida_muerto = true
+		muerto = true
+		animar_muerte()
+		pantalla_muerte()
+		return
+	if muerto:
+		return
+
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		var nuevo_texto = _calcular_texto_interaccion()
 		if objeto_actual != _ultimo_objeto or nuevo_texto != _ultimo_texto:
@@ -398,24 +421,83 @@ func _process(delta):
 			dialogo.stop_text()
 			dialogo.visible = false
 
-	if not _vida_muerto and vida <= 0:
-		_vida_muerto = true
-		muerto = true
-		pantalla_muerte()
 	_actualizar_antorcha(delta)
 	var fov_objetivo = fov_zoom if Input.is_action_pressed("zoom") else fov_normal
 	camera.fov = lerp(camera.fov, fov_objetivo, zoom_velocidad * delta)
 # -------------------------
 # MUERTE
 # -------------------------
+func animar_muerte() -> void:
 
+	muerto = true
+	set_physics_process(false)
+	# Guardar velocidad antes de frenarlo
+	var velocidad_muerte = velocity
+
+	# Limpiar estados de movimiento
+	moving = false
+	corriendo = false
+	puede_correr = false
+	forzar_agachado = false
+
+	stop_footstep()
+
+	# Resetear animaciones
+	animaciones.resetear_estado()
+
+	# Forzar salida de correr/caminar
+	animaciones.movimiento_sm.travel("idle")
+
+	velocity = Vector3.ZERO
+
+	camara_controller.set_process(false)
+	camara_controller.set_physics_process(false)
+
+	animaciones.stop()
+	animaciones.set_process(false)
+	animaciones.set_physics_process(false)
+
+	var rb = RigidBody3D.new()
+	rb_muerte = rb
+
+	var col_capsula = collision.duplicate()
+	var col_caja_copia = col_caja.duplicate()
+
+	rb.add_child(col_capsula)
+	rb.add_child(col_caja_copia)
+
+	get_tree().root.add_child(rb)
+
+	rb.global_transform = camera.global_transform
+	rb.add_collision_exception_with(self)
+
+	rb.mass = 1
+
+	# Heredar la velocidad real
+	rb.linear_velocity = velocidad_muerte
+
+	var atras = camera.global_transform.basis.z
+	var costado = camera.global_transform.basis.x * (1.0 if randf() > 0.5 else -1.0)
+
+	rb.apply_impulse(
+		atras * randf_range(2.0, 4.0) +
+		costado * randf_range(1.5, 3.0) +
+		Vector3(0, randf_range(0.5, 1.5), 0)
+	)
+
+	rb.apply_torque_impulse(Vector3(
+		randf_range(4.0, 6.0),
+		randf_range(-1.5, 1.5),
+		costado.x * randf_range(3.0, 5.0)
+	))
 func pantalla_muerte():
 	muerto = true
 	velocity = Vector3.ZERO
 	stop_footstep()
-	animaciones.stop()
 	go_screen.visible = true
 	const GAMEOVER = preload("uid://dxoideatl8kpi")
+	animaciones.stop()
+	await get_tree().create_timer(0.2).timeout
 	AudioManager.detener_todo()
 	AudioManager.cambiar_ambiente(1, GAMEOVER, 1)
 	AudioManager.fade_in(1, -20.0, 1)
@@ -429,7 +511,6 @@ func pantalla_muerte():
 			get_tree().change_scene_to_file("res://escenas/escena_principal.tscn")
 		)
 	)
-
 # -------------------------
 # INTERACCION
 # -------------------------
@@ -504,7 +585,7 @@ func _actualizar_velocidad(delta: float) -> void:
 		else:
 			corriendo = false
 			if stamina < STAMINA_MAX_REGEN:
-				stamina += delta * STAMINA_REGEN
+				stamina += delta * STAMINA_REGEN_QUIETO
 				
 	else:
 		SPEED = SPEED_RALENTIZADO if ralentizado else SPEED_NORMAL

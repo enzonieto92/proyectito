@@ -110,7 +110,7 @@ func chase_behavior() -> void:
 	velocity.z = dir.z * speed
 
 
-func recibir_damage(_damage) -> void:
+func recibir_damage(_damage, _relentizacion) -> void:
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE
 	sonido_golpe.play()

@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://ck6u42udbwsfj" path="res://sonido/block.mp3" id="10_meqng"]
 [ext_resource type="Script" uid="uid://dnnpg7wv7fkaj" path="res://scripts/rrotacion_fuego.gd" id="11_op6lh"]
 [ext_resource type="AudioStream" uid="uid://b85yvwdf6vmsc" path="res://sonido/sonido_antorcha.mp3" id="12_ko7k4"]
-[ext_resource type="AudioStream" uid="uid://clxo03u4jxli7" path="res://sonido/hit_enemigo.mp3" id="13_475hk"]
 [ext_resource type="AudioStream" uid="uid://bieasjlwea40r" path="res://sonido/comiendo.mp3" id="13_ddw1h"]
 [ext_resource type="AudioStream" uid="uid://cjv6cjh0wdmoo" path="res://sonido/jadeo.mp3" id="16_ko7k4"]
 [ext_resource type="AudioStream" uid="uid://c6rfe3h4ca6mh" path="res://sonido/latidos.mp3" id="17_pvtpb"]
@@ -147,18 +146,6 @@ tracks/10/path = NodePath(".:golpeando")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("hit_sound:playing")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -680,18 +667,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("hit_sound:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.16666667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_op6lh"]
 resource_name = "spawn"
@@ -787,9 +762,6 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_njpig")
 size = Vector2(0.05, 0.05)
 orientation = 2
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_475hk"]
-height = 0.10913086
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_lctvp"]
 
@@ -950,6 +922,9 @@ nodes/shot_bloquear/node = SubResource("AnimationNodeOneShot_lctvp")
 nodes/shot_bloquear/position = Vector2(-480, 360)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2", 0, &"movimiento", &"Add2", 1, &"TimeScale_ataque", &"TimeScale_ataque", 0, &"shot_bloquear", &"shot_bloquear", 0, &"ataque", &"shot_bloquear", 1, &"bloquear"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ko7k4"]
+size = Vector3(0.5, 0.5, 0.5)
+
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
 floor_stop_on_slope = false
 floor_max_angle = 1.1274827
@@ -957,7 +932,7 @@ script = ExtResource("1_hqtel")
 fov_normal = 80.0
 zoom_velocidad = 8.0
 corrupcion = 5
-stamina = 500.0
+stamina = 400.0
 vida_max = 75.0
 ritual_completo = true
 
@@ -1120,22 +1095,8 @@ alpha_cut = 1
 texture_filter = 0
 render_priority = 10
 
-[node name="area_escudo" type="Area3D" parent="pivote_secundaria/posicion_secundaria" unique_id=278590332]
-transform = Transform3D(1, 2.6542693e-08, -6.7055225e-08, -3.632158e-08, 1, 0, 5.9604645e-08, -7.450581e-09, 0.99999994, 5.9604645e-08, -0.11768806, 5.9604645e-08)
-collision_layer = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pivote_secundaria/posicion_secundaria/area_escudo" unique_id=827036023]
-transform = Transform3D(1.0000002, -5.9604645e-08, 2.4868996e-14, 0, -4.371139e-08, -1.0000002, 0, 1.0000002, -4.3711424e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_475hk")
-
 [node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=281302950]
 current = true
-
-[node name="hit_sound" type="AudioStreamPlayer3D" parent="." unique_id=463426134]
-stream = ExtResource("13_475hk")
-unit_size = 1.0
-max_db = -11.0
-bus = &"Ambientales"
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1439636149]
 callback_mode_discrete = 0
@@ -1160,3 +1121,7 @@ stream = ExtResource("17_pvtpb")
 volume_db = 20.0
 unit_size = 1.0
 panning_strength = 1.11
+
+[node name="col_caja" type="CollisionShape3D" parent="." unique_id=2098620592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4378171, -0.15899348)
+shape = SubResource("BoxShape3D_ko7k4")

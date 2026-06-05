@@ -33,7 +33,6 @@ func activar(duracion: float = 5.0):
 	_tween_principal.tween_interval(duracion * 0.5)
 	_tween_principal.tween_method(_set_intensidad, 1.0, 0.0, duracion * 0.5)
 	_tween_principal.tween_callback(func(): 
-		print("tween terminó, poniendo _activo = false")
 		_activo = false
 )
 

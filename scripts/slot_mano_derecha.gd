@@ -17,7 +17,6 @@ func aplicar_stats(jugador, nuevo_item) -> void:
 	jugador.total_damage.y = jugador.damage.y + nuevo_item.damage.y
 	jugador.arma = nuevo_item
 	jugador.raycast_arma.target_position.y = nuevo_item.weapon_size
-	print (jugador.raycast_arma.target_position.y)
 func _remover_item_drop(inventario, nuevo_item) -> void:
 	inventario.remover_item_sin_actualizar_peso(nuevo_item, nuevo_item.grid_pos)
 func quitar_stats(jugador) -> void:

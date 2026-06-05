@@ -122,7 +122,7 @@ func chase_behavior() -> void:
 	velocity.z = dir.z * speed
 
 
-func recibir_damage(_damage, reletizacion) -> void:
+func recibir_damage(_damage, _reletizacion) -> void:
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE
 	sonido_golpe.play()
@@ -146,7 +146,7 @@ func attack_behavior() -> void:
 
 
 func aplicar_golpe() -> void:
-	if hit_applied or vida <= 0.0:
+	if hit_applied:
 		return
 	hit_applied = true
 	if global_position.distance_to(player.global_position) <= attack_range:
@@ -229,7 +229,6 @@ func rastrear() -> void:
 	var coll = raycast_vision.get_collider()
 
 	if coll.is_in_group("jugador"):
-		print ("col con jugador")
 		_confirmar_avistado()
 		return
 

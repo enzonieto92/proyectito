@@ -5,7 +5,6 @@ func _ready():
 
 func _on_inventario_changed(abierto: bool):
 	if abierto:
-		print ("modificando alfa")
 		modulate.a = 0
 		var tween = create_tween()
 		tween.tween_property(self, "modulate:a", 1.0, .3)

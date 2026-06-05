@@ -31,7 +31,9 @@ func _ready():
 	add_child(timer_bloqueo)
 	timer_bloqueo.one_shot = true
 	timer_bloqueo.timeout.connect(_on_bloqueo_listo)
-
+func stop() -> void:
+	anim_tree.active = false
+	timer_bloqueo.stop()
 func _on_bloqueo_listo():
 	if defendiendo:
 		player.activar_bloqueo()
@@ -41,12 +43,17 @@ func resetear_estado() -> void:
 	defendiendo = false
 	esperando_soltar = false
 	estaba_bloqueando = false
-	player.puede_correr = true
+
+	player.puede_correr = false
+	player.moving = false
+	player.corriendo = false
+
 	blend_objetivo = 0.0
+
 	timer_bloqueo.stop()
 	player.desactivar_bloqueo()
-	movimiento_sm.travel("idle")
 
+	movimiento_sm.travel("idle")
 func _ataque_termino():
 	animacion_en_curso = false
 	player.puede_correr = true
@@ -82,6 +89,8 @@ func on_anticipacion_completa():
 		player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)
 
 func _process(_delta: float) -> void:
+	if player.muerto:  # ← cortar todo si está muerto
+		return
 	var blend_actual = anim_tree["parameters/Add2/add_amount"]
 	anim_tree["parameters/Add2/add_amount"] = lerp(blend_actual, blend_objetivo, _delta * BLEND_VELOCIDAD)
 
