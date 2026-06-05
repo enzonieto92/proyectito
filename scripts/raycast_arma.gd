@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 
 	# Primero procesás el hit, DESPUÉS desactivás
 	if collider.is_in_group("enemigos") and not golpeando_enemigo:
-		collider.recibir_damage(jugador.total_damage)
+		collider.recibir_damage(jugador.total_damage, false)
 		golpeando_enemigo = true
 		jugador.arma.durabilidad -= 3
 
