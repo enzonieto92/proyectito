@@ -37,4 +37,4 @@ func explotar():
 		if not cuerpo.has_method("recibir_damage"):
 			cuerpo = cuerpo.get_parent()
 		if cuerpo.has_method("recibir_damage") and cuerpo.is_in_group("enemigos"):
-			cuerpo.recibir_damage(damage)
+			cuerpo.recibir_damage(damage, false)
