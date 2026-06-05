@@ -156,9 +156,8 @@ func _ready():
 func recibir_damage(_damage, ralentizar):
 	recibiendo_damage = true
 	var reduccion = armadura_total / (armadura_total + CONSTANTE_ARMADURA)
-	var damage_final = int(_damage * (1.0 - reduccion))
+	var damage_final = int(randf_range(_damage.x, _damage.y) * (1.0 - reduccion))
 	vida -= damage_final
-
 	if ralentizar:
 		_aplicar_ralentizacion(1.5)  # duración en segundos
 

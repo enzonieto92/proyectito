@@ -150,4 +150,3 @@ max_db = -0.237
 pitch_scale = 1.03
 
 [connection signal="body_entered" from="pua/area_colision" to="." method="_on_area_colision_body_entered"]
-[connection signal="body_exited" from="pua/area_colision" to="." method="_on_area_colision_body_exited"]

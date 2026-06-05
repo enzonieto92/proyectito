@@ -23,9 +23,4 @@ func _process(_delta: float) -> void:
 func _on_area_colision_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jugador") or body.is_in_group("enemigos")  and not ya_golpeo:
 		ya_golpeo = true
-		var _damage = int(randf_range(damage.x, damage.y))
-		body.recibir_damage(_damage, true)
-
-
-func _on_area_colision_body_exited(body: Node3D) -> void:
-	pass # Replace with function body.
+		body.recibir_damage(damage, true)
