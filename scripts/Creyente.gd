@@ -160,7 +160,7 @@ func attack_behavior() -> void:
 	damage = int(randf_range(min_damage, max_damage))  # ✅ movido acá
 	attack_dir = (player.global_position - global_position).normalized()
 	attack_dir.y = 0
-
+	
 	animation_player.play("attack")
 	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 

@@ -287,7 +287,7 @@ tracks/5/path = NodePath("raycast_enemigo:enabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.5048243, 0.9715294),
+"times": PackedFloat32Array(0.36666667, 0.9715294),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -431,7 +431,7 @@ data = PackedVector3Array(0.08736573, 0.0365377, 0.2688888, 0.056442287, 0.09618
 rotation_order = 0
 collision_layer = 8
 floor_stop_on_slope = false
-floor_max_angle = 0.0
+floor_max_angle = 0.6963864
 script = ExtResource("1_xebgr")
 vida = 40.0
 attack_range = 3.0
@@ -456,9 +456,11 @@ speed_scale = 0.65
 script = ExtResource("5_7ekco")
 
 [node name="raycast_enemigo" type="RayCast3D" parent="." unique_id=2015702599]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20152152, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.024430484, 0)
 enabled = false
-target_position = Vector3(0, 0, -1)
+target_position = Vector3(0, 0, -1.5)
+hit_back_faces = false
+debug_shape_custom_color = Color(0.14924803, 0.32635894, 0.10455655, 1)
 script = ExtResource("6_rvmq6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1991871366]

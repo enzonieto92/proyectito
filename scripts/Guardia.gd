@@ -146,12 +146,12 @@ func attack_behavior() -> void:
 
 
 func aplicar_golpe() -> void:
-	if hit_applied:
+	if hit_applied or vida <= 0.0:
 		return
 	hit_applied = true
 	if global_position.distance_to(player.global_position) <= attack_range:
 		player.recibir_damage(Vector2(min_damage, max_damage), true)
-
+		raycast_enemigo.intentar_golpe()  
 
 
 func _on_attack_finished(_anim: String) -> void:
@@ -162,6 +162,8 @@ func _on_attack_finished(_anim: String) -> void:
 
 
 func _on_cooldown_finished() -> void:
+	if vida <= 0.0:
+		return
 	_en_cooldown = false
 	_atacando_cooldown = false
 	raycast_enemigo.ya_golpeo = false # ← nombre del nodo que tengas
@@ -182,7 +184,8 @@ func _agregar(_player) -> void:
 func dying_behavior() -> void:
 	if dying_started:
 		return
-
+	raycast_enemigo.queue_free()
+	
 	if is_on_floor():
 		dying_started = true
 		died = true
@@ -226,6 +229,7 @@ func rastrear() -> void:
 	var coll = raycast_vision.get_collider()
 
 	if coll.is_in_group("jugador"):
+		print ("col con jugador")
 		_confirmar_avistado()
 		return
 
