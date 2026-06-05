@@ -7,7 +7,6 @@ func _process(_delta: float) -> void:
 	if enabled:
 		intentar_golpe()
 func intentar_golpe() -> void:
-	look_at(player.position + Vector3(0,1, 0), Vector3.UP)
 	force_raycast_update()
 
 	if is_colliding() and not ya_golpeo:

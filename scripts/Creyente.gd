@@ -9,6 +9,7 @@ const PEZ = preload("uid://d4gw3nu3068wh")
 @onready var colision: CollisionShape3D = $CollisionShape3D
 @onready var area: CollisionShape3D = $area_deteccion/CollisionShape3D
 @onready var colision_muerto: CollisionShape3D = $colision_muerto
+@onready var raycast_enemigo: RayCast3D = $raycast_enemigo
 
 @onready var player = get_tree().get_first_node_in_group("jugador")
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
@@ -163,7 +164,6 @@ func attack_behavior() -> void:
 	
 	animation_player.play("attack")
 	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
-
 func _on_attack_finished(anim: String) -> void:
 	if anim != "attack":
 		return
