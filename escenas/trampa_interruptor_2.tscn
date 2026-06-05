@@ -1,22 +1,22 @@
-[gd_scene format=3 uid="uid://c7rdniocif66q"]
+[gd_scene format=3 uid="uid://ci8731rwktuv"]
 
-[ext_resource type="Texture2D" uid="uid://b56na47sdsc6l" path="res://texturas/texturasuelodepiedra.png" id="1_5f5bw"]
-[ext_resource type="Script" uid="uid://d3hqa4ig6pu6v" path="res://scripts/trampa_interruptor.gd" id="1_70vpw"]
-[ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="3_6boa6"]
+[ext_resource type="Script" uid="uid://d3hqa4ig6pu6v" path="res://scripts/trampa_interruptor.gd" id="1_tapcv"]
+[ext_resource type="Texture2D" uid="uid://b56na47sdsc6l" path="res://texturas/texturasuelodepiedra.png" id="2_kawqm"]
+[ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="3_ixolm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6boa6"]
-albedo_texture = ExtResource("1_5f5bw")
+albedo_texture = ExtResource("2_kawqm")
+uv1_scale = Vector3(4, 4, 4)
 uv1_offset = Vector3(0, 0.18, 0)
 texture_filter = 0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6boa6"]
 material = SubResource("StandardMaterial3D_6boa6")
 top_radius = 0.2
-bottom_radius = 0.3
-height = 0.11
+bottom_radius = 0.2
+radial_segments = 6
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7vtxg"]
-height = 0.16101563
 radius = 0.22021484
 
 [sub_resource type="Animation" id="Animation_6boa6"]
@@ -56,24 +56,24 @@ _data = {
 &"activar_interruptor": SubResource("Animation_7vtxg")
 }
 
-[node name="trampa_interruptor" type="Node3D" unique_id=17877286 groups=["interruptor_hacha"]]
-script = ExtResource("1_70vpw")
+[node name="trampa_interruptor2" type="Node3D" unique_id=17877286 groups=["interruptor_hacha"]]
+script = ExtResource("1_tapcv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1801769998]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_6boa6")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=232151072]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1170290366]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016462676, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.016462676, 0)
 shape = SubResource("CylinderShape3D_7vtxg")
 
 [node name="animacion" type="AnimationPlayer" parent="." unique_id=1916279835]
 libraries/ = SubResource("AnimationLibrary_xwuav")
 
 [node name="sonido_interruptor" type="AudioStreamPlayer3D" parent="." unique_id=710868765]
-stream = ExtResource("3_6boa6")
+stream = ExtResource("3_ixolm")
 pitch_scale = 2.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

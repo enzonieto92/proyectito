@@ -1,5 +1,5 @@
 extends Node3D
-var activado = false
+@export var activado = false
 @onready var animacion: AnimationPlayer = $animacion
 @onready var sonido_interruptor: AudioStreamPlayer3D = $sonido_interruptor
 

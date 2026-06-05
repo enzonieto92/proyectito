@@ -954,6 +954,7 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2
 floor_stop_on_slope = false
 floor_max_angle = 1.1274827
 script = ExtResource("1_hqtel")
+fov_normal = 80.0
 zoom_velocidad = 8.0
 corrupcion = 5
 stamina = 500.0
