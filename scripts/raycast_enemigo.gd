@@ -5,6 +5,7 @@ var ya_golpeo: bool = false
 
 func _process(_delta: float) -> void:
 	if enabled:
+		look_at(player.global_position + Vector3(0,1.0, 0))
 		intentar_golpe()
 func intentar_golpe() -> void:
 	force_raycast_update()

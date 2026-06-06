@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://oskq5pw6e0uk"]
 
+[ext_resource type="Texture2D" uid="uid://lleyrog7r1d6" path="res://texturas/walldungeon-completo.png" id="2_22cer"]
 [ext_resource type="PackedScene" uid="uid://cxu6d4ku3q087" path="res://escenas/antorcha_compuerta.tscn" id="2_xw3wd"]
-[ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://texturas/walldungeon.png" id="2_yijf5"]
 [ext_resource type="Texture2D" uid="uid://dyboj3kxmv7v0" path="res://texturas/smoke.png" id="3_22cer"]
 [ext_resource type="AudioStream" uid="uid://dqvbomqywusbp" path="res://sonido/compuerta_abierta.mp3" id="4_c70qr"]
 
@@ -287,7 +287,9 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhfrt"]
 resource_name = "Material.002"
 cull_mode = 2
-albedo_texture = ExtResource("2_yijf5")
+albedo_color = Color(0.84313726, 0.84313726, 0.84313726, 1)
+albedo_texture = ExtResource("2_22cer")
+metallic_specular = 0.0
 normal_texture = SubResource("CompressedTexture2D_ug35h")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_offset = Vector3(0.07, 0, 0)

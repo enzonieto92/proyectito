@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lqrljq7f42tm"]
 
-[ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://texturas/walldungeon.png" id="1_lgbs2"]
+[ext_resource type="Texture2D" uid="uid://lleyrog7r1d6" path="res://texturas/walldungeon-completo.png" id="1_lgbs2"]
 [ext_resource type="PackedScene" uid="uid://byaxxrdciuyp3" path="res://escenas/pantalla_principal.tscn" id="3_uxd1d"]
 [ext_resource type="Shader" uid="uid://dlye5lwb4si41" path="res://otros/pixel_camera.gdshader" id="4_uxd1d"]
 [ext_resource type="Script" uid="uid://bqcqy6suc85y6" path="res://scripts/inicio.gd" id="5_hxpc2"]

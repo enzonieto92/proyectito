@@ -988,7 +988,6 @@ layers = 2
 flip_h = true
 modulate = Color(1, 0.6745098, 0.3254902, 1)
 no_depth_test = true
-alpha_cut = 1
 texture_filter = 0
 render_priority = 10
 
@@ -1091,7 +1090,6 @@ layers = 2
 flip_h = true
 modulate = Color(1, 0.6745098, 0.3254902, 1)
 no_depth_test = true
-alpha_cut = 1
 texture_filter = 0
 render_priority = 10
 

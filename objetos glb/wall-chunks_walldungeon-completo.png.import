@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lleyrog7r1d6"
-path.s3tc="res://.godot/imported/walldungeon-completo.png-f1309594189c786a3a73ac35229b966e.s3tc.ctex"
+uid="uid://cdcfferxwehog"
+path.s3tc="res://.godot/imported/wall-chunks_walldungeon-completo.png-3884a3ccc6212ee0ce18f0597b4876aa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "8afca3b29271c0a5f3626a713039609b"
+}
 
 [deps]
 
-source_file="res://texturas/walldungeon-completo.png"
-dest_files=["res://.godot/imported/walldungeon-completo.png-f1309594189c786a3a73ac35229b966e.s3tc.ctex"]
+source_file="res://objetos glb/wall-chunks_walldungeon-completo.png"
+dest_files=["res://.godot/imported/wall-chunks_walldungeon-completo.png-3884a3ccc6212ee0ce18f0597b4876aa.s3tc.ctex"]
 
 [params]
 

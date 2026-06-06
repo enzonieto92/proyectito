@@ -12,10 +12,13 @@ height = 1.3969727
 radius = 1.1918945
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51k0r"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("3_ksson")
 texture_filter = 0
+texture_repeat = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
 material = SubResource("StandardMaterial3D_51k0r")

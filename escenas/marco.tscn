@@ -1,23 +1,22 @@
 [gd_scene format=3 uid="uid://dp5ylecmw6mcv"]
 
-[ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://texturas/walldungeon.png" id="1_2boey"]
-[ext_resource type="Texture2D" uid="uid://cfa750iu8o0in" path="res://texturas/walldungeon_specular (2).png" id="2_8wini"]
+[ext_resource type="Texture2D" uid="uid://lleyrog7r1d6" path="res://texturas/walldungeon-completo.png" id="1_8wini"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uaae8"]
-transparency = 2
-alpha_scissor_threshold = 0.0
-alpha_antialiasing_mode = 0
+transparency = 1
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_2boey")
+albedo_color = Color(0.84313726, 0.84313726, 0.84313726, 1)
+albedo_texture = ExtResource("1_8wini")
 metallic_specular = 0.0
-normal_texture = ExtResource("2_8wini")
 uv1_scale = Vector3(0.426, 0.426, 0.426)
 uv1_offset = Vector3(0, 0.623, 0)
 uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dk8b"]
-albedo_texture = ExtResource("1_2boey")
+albedo_color = Color(0.84313726, 0.84313726, 0.84313726, 1)
+albedo_texture = ExtResource("1_8wini")
+metallic_specular = 0.0
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_offset = Vector3(0, 0.195, 0)
 uv1_triplanar = true

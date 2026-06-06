@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://da3ceu1m6q62m"]
 
 [ext_resource type="Script" uid="uid://cludds3aonx0l" path="res://scripts/boton_compuerta.gd" id="1_0gopq"]
-[ext_resource type="Texture2D" uid="uid://c83jmub1fb5fm" path="res://texturas/walldungeon.png" id="1_07800"]
+[ext_resource type="Texture2D" uid="uid://lleyrog7r1d6" path="res://texturas/walldungeon-completo.png" id="1_07800"]
 [ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="2_07800"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbelj"]
-albedo_color = Color(0.67894405, 0.6789436, 0.6789437, 1)
+albedo_color = Color(0.84313726, 0.84313726, 0.84313726, 1)
 albedo_texture = ExtResource("1_07800")
+metallic_specular = 0.0
 normal_enabled = true
 uv1_scale = Vector3(0.419, 0.415, 0.512)
 uv1_offset = Vector3(0, 0.306, -1.718)
