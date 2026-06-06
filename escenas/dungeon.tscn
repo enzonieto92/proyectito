@@ -503,11 +503,11 @@ frame_progress = 0.9737097
 
 [node name="moho" type="Node3D" parent="NavigationRegion3D/decoracion" unique_id=1973326427]
 
-[node name="moho" type="MeshInstance3D" parent="NavigationRegion3D/decoracion/moho" unique_id=1960665526]
+[node name="vegetacion" type="MeshInstance3D" parent="NavigationRegion3D/decoracion/moho" unique_id=1960665526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113817215, 0, -1.9959908)
 mesh = SubResource("QuadMesh_egvud")
 
-[node name="moho2" type="MeshInstance3D" parent="NavigationRegion3D/decoracion/moho" unique_id=390338372]
+[node name="vegetacion2" type="MeshInstance3D" parent="NavigationRegion3D/decoracion/moho" unique_id=390338372]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9892064, -0.29613364, 4.0218477)
 mesh = SubResource("QuadMesh_egvud")
 
