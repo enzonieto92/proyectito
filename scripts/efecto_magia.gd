@@ -18,7 +18,7 @@ func _process(delta):
 var _tween_principal: Tween = null
 var _tween_env: Tween = null
 
-func activar(duracion: float = 5.0):
+func activar(duracion, _valor):
 	# Cancelar tweens anteriores
 	if _tween_principal and _tween_principal.is_running():
 		_tween_principal.kill()
@@ -37,7 +37,7 @@ func activar(duracion: float = 5.0):
 )
 
 	var env = get_tree().get_first_node_in_group("world_environment")
-	if env and env is WorldEnvironment:
+	if env and env is WorldEnvironment and _valor:
 		_tween_env = create_tween()
 		_tween_env.tween_method(
 			func(v): env.environment.adjustment_saturation = v,

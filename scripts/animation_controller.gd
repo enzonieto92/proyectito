@@ -85,7 +85,7 @@ func on_anticipacion_completa():
 	if Input.is_action_pressed("atacar"):
 		esperando_soltar = true
 		anim_tree["parameters/TimeScale_ataque/scale"] = 0.0
-	else:
+	elif player.arma != null:
 		player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)
 
 func _process(_delta: float) -> void:

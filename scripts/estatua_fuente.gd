@@ -26,6 +26,8 @@ func puede_interactuar() -> bool:
 	return player_entered
 func apagar_antorchas():
 	var tween = create_tween()
+	antorcha_16.antorcha_equipable.queue_free()
+	antorcha_17.antorcha_equipable.queue_free()
 	tween.set_parallel(true)
 	tween.tween_property(antorcha_16.light, "light_energy", 0.0, 0.3)
 	tween.tween_property(antorcha_17.light, "light_energy", 0.0, 0.3)
@@ -39,7 +41,7 @@ func apagar_antorchas():
 func interactuar(player):
 	if daga_colocada == true:
 		sangre_particulas.emitting = true
-		get_tree().get_first_node_in_group("efecto_magia").activar(8.0)
+		get_tree().get_first_node_in_group("efecto_magia").activar(8.0,false)
 		apagar_antorchas()
 		var material = mujer.get_surface_override_material(1)
 		if material == null:

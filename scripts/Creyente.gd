@@ -170,7 +170,7 @@ func _on_attack_finished(anim: String) -> void:
 	animation_vector = Vector3.ZERO
 	_en_cooldown = true
 	animation_player.play("chase")
-	get_tree().create_timer(3.0).timeout.connect(_on_cooldown_finished, CONNECT_ONE_SHOT)
+	get_tree().create_timer(2.0).timeout.connect(_on_cooldown_finished, CONNECT_ONE_SHOT)
 	
 func _on_cooldown_finished() -> void:
 	_en_cooldown = false

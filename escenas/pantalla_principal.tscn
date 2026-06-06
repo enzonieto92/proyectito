@@ -2,18 +2,17 @@
 
 [ext_resource type="Script" uid="uid://b7bkgvry1xmbs" path="res://scripts/pantalla_principal.gd" id="1_poj3a"]
 [ext_resource type="FontFile" uid="uid://deigckxeuy4rq" path="res://otros/nokiafc22.ttf" id="2_terxd"]
+[ext_resource type="Script" uid="uid://bdj4r2llixk1v" path="res://scripts/luz_canvas.gd" id="3_1ajdi"]
 [ext_resource type="Texture2D" uid="uid://bly0e0me64yuy" path="res://texturas/titulopio.png" id="3_3ofuu"]
 [ext_resource type="Script" uid="uid://c6xmj80feuai2" path="res://scripts/titulo.gd" id="3_uw7aw"]
-[ext_resource type="FontFile" uid="uid://bbphv524e86v1" path="res://otros/GallaeciaForte.ttf" id="3_wnfxn"]
-
-[sub_resource type="Theme" id="Theme_1ajdi"]
-default_font = ExtResource("3_wnfxn")
+[ext_resource type="Texture2D" uid="uid://drdgqbe6pqdoo" path="res://texturas/circle_texture.png" id="5_wnfxn"]
 
 [sub_resource type="Theme" id="Theme_wnfxn"]
 default_font = ExtResource("2_terxd")
 default_font_size = 40
 
 [node name="Pantalla Principal" type="Control" unique_id=384989241]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,8 +21,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_poj3a")
 
+[node name="luz_canvas" type="PointLight2D" parent="." unique_id=704857118]
+position = Vector2(234, 277)
+color = Color(0.55132216, 0.3247457, 1.92523e-07, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("5_wnfxn")
+texture_scale = 0.3
+script = ExtResource("3_1ajdi")
+
+[node name="luz_canvas2" type="PointLight2D" parent="." unique_id=837269090]
+position = Vector2(899, 269)
+color = Color(0.55132216, 0.3247457, 1.92523e-07, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+texture = ExtResource("5_wnfxn")
+texture_scale = 0.3
+script = ExtResource("3_1ajdi")
+
 [node name="titulo" type="TextureRect" parent="." unique_id=850981143]
 modulate = Color(0.4041827, 0.050209656, 0.08526274, 1)
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,12 +51,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -350.0
-offset_top = -50.0
+offset_top = -47.0
 offset_right = 350.0
-offset_bottom = 50.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_1ajdi")
 texture = ExtResource("3_3ofuu")
 expand_mode = 1
 stretch_mode = 4
@@ -52,6 +71,7 @@ offset_top = -189.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_wnfxn")
+theme_override_colors/font_color = Color(0.54497427, 0.5449743, 0.5449741, 1)
 text = "Presiona entrar"
 horizontal_alignment = 1
 vertical_alignment = 1

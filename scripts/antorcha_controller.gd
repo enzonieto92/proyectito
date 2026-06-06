@@ -3,6 +3,7 @@ extends Node3D
 @onready var particles: GPUParticles3D = $GPUParticles3D
 @onready var light: OmniLight3D = $empty/SpotLight3D
 @onready var sonido_antorcha: AudioStreamPlayer3D = $sonido_antorcha
+@onready var antorcha_equipable: StaticBody3D = $antorcha_equipable
 
 var apagada := false
 

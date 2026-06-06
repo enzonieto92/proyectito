@@ -166,6 +166,14 @@ func remover_item_buscando(item) -> bool:
 					remover_item(slot.item, Vector2i(x, y))  # usamos slot.item, no item
 					return true
 	return false
+func remover_equipado() -> void:
+	var slots_equipados = [
+		slot_mano_derecha,
+		slot_secundaria,
+	]
+	for slot in slots_equipados:
+		if slot.item != null and is_instance_valid(slot.item):
+			slot.romper_arma()
 func mover_item(origen: Vector2i, destino: Vector2i, item):
 	if not puede_colocar_ignorando_origen(item, destino, origen):
 		return

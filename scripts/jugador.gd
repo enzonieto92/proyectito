@@ -21,10 +21,14 @@ extends CharacterBody3D
 @onready var panel_blur: Control = get_tree().get_first_node_in_group("background_inventario")
 @onready var luz_antorcha: Node3D = $pivote_secundaria/posicion_secundaria/luz_antorcha
 @onready var sonido_stamina: AudioStreamPlayer3D = $sonido_stamina
+@onready var efecto_magia = get_tree().get_first_node_in_group("efecto_magia")
+var _efecto_activo_anterior: bool = false
 @export var fov_normal: float = 75.0
 @export var fov_zoom: float = 35.0
 @export var zoom_velocidad: float = 4.0
 @export var corrupcion : int
+var corrupcion_max: int
+var _timer_corrupcion: float = 0.0
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
 const VELOCIDAD_DESGASTE: float = 1.0
 const JUMP_VELOCITY = 3.5
@@ -142,6 +146,7 @@ func cambiar_pitch_swing():
 	sonido_arma.pitch_scale = randf_range(0.7, 1.3)
 
 func _ready():
+	corrupcion_max = corrupcion 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	STAMINA_MAX_REGEN = stamina 
 	total_damage.x = damage.x + damage_arma.x
@@ -187,10 +192,11 @@ func _aplicar_ralentizacion(duracion: float):
 		_tween_ralentizacion.kill()
 
 	ralentizado = true
-	SPEED = 0.5
+	SPEED = SPEED_RALENTIZADO  # ← usar la constante, no hardcodear 0.5
 	_timer_ralentizacion = get_tree().create_timer(duracion)
 	await _timer_ralentizacion.timeout
 	ralentizado = false
+	SPEED = SPEED_NORMAL  # ← restaurar explícitamente al terminar
 # -------------------------
 # UI
 # -------------------------
@@ -243,15 +249,14 @@ func _unhandled_input(event):
 		camera.rotation.x = pitch
 var puede_lanzar = true
 func lanzar_hechizo():
-		if not puede_lanzar:
+		if not puede_lanzar:  # ← solo este chequeo
 			return
 		puede_lanzar = false
-		await get_tree().create_timer(0.6).timeout
-		corrupcion -= 1
+		await get_tree().create_timer(0.2).timeout
+		corrupcion = max(0, corrupcion - 1)
 		if corrupcion < 2:
 			$sonido_latidos.play()
-		var efecto_magia = get_tree().get_first_node_in_group("efecto_magia")
-		efecto_magia.activar(6 - corrupcion)
+		efecto_magia.activar(6 - corrupcion, true)
 		var hechizo_scene = preload("uid://ciho1ujuyxp5m")
 		var hechizo = hechizo_scene.instantiate()
 		get_tree().root.add_child(hechizo)
@@ -267,10 +272,15 @@ func lanzar_hechizo():
 		await get_tree().create_timer(HECHIZO_COOLDOWN).timeout
 		while efecto_magia._activo:
 			await get_tree().process_frame
-		if corrupcion > 0:
-			puede_lanzar = true  # sacale la condición por ahora
-		else:
-			vida = 0
+		puede_lanzar = true
+		if corrupcion <= 0:
+			ralentizado = true
+			SPEED = SPEED_RALENTIZADO
+			camara_controller.shake(0.022, 8, 100.0)
+			while corrupcion < 2:
+				await get_tree().process_frame
+			ralentizado = false
+			SPEED = SPEED_NORMAL
 func cerrar_inventario() -> void:
 	inventario_ui.visible = false
 	inventario_abierto = false
@@ -406,6 +416,20 @@ func _process(delta):
 	if muerto:
 		return
 
+	# regen corrupcion
+	var efecto_activo = is_instance_valid(efecto_magia) and efecto_magia._activo
+	if _efecto_activo_anterior and not efecto_activo:
+		_timer_corrupcion = 0.0  # ← termino el efecto, resetear timer
+	_efecto_activo_anterior = efecto_activo
+
+	if corrupcion < corrupcion_max and not efecto_activo:
+		_timer_corrupcion += delta
+		if _timer_corrupcion >= 3.0:
+			_timer_corrupcion = 0.0
+			corrupcion += 1
+			if corrupcion >= 2 and $sonido_latidos.playing:
+				$sonido_latidos.stop()
+
 	if objeto_actual and not dialogo.visible and not inventario_abierto:
 		var nuevo_texto = _calcular_texto_interaccion()
 		if objeto_actual != _ultimo_objeto or nuevo_texto != _ultimo_texto:
@@ -427,8 +451,14 @@ func _process(delta):
 # -------------------------
 # MUERTE
 # -------------------------
+func desequipar_items():
+	arma = null
+	luz_antorcha.visible = false
+	secundaria = null
+	inventario_controller.remover_equipado()
+	
 func animar_muerte() -> void:
-
+	desequipar_items()
 	muerto = true
 	set_physics_process(false)
 	# Guardar velocidad antes de frenarlo
@@ -462,7 +492,8 @@ func animar_muerte() -> void:
 
 	var col_capsula = collision.duplicate()
 	var col_caja_copia = col_caja.duplicate()
-
+	col_caja.disabled = false
+	col_caja_copia.disabled = false
 	rb.add_child(col_capsula)
 	rb.add_child(col_caja_copia)
 
