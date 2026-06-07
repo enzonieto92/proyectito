@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://t6yjlmuk0nk8"]
+
+[ext_resource type="PackedScene" uid="uid://x1hbp73yt066" path="res://objetos glb/mesita-simple.glb" id="1_jqc77"]
+
+[node name="mesita-simple" unique_id=1502902183 instance=ExtResource("1_jqc77")]
