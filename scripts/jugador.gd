@@ -1,4 +1,8 @@
 extends CharacterBody3D
+@onready var sonido_secundaria: AudioStreamPlayer = $pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria
+const HIT_METAL = preload("uid://n3w8dyh66sy4")
+const BLOCK = preload("uid://ck6u42udbwsfj")
+
 
 @onready var inventario_ui: Control = get_tree().get_first_node_in_group("inventario_ui")
 @onready var inventario_controller: Node = get_tree().get_first_node_in_group("inventario_controller")
@@ -131,7 +135,10 @@ func activar_bloqueo():
 		if arma != null:
 			raycast_arma.enabled = true
 		recalcular_armadura()
-
+	if secundaria is not Escudo:
+		sonido_secundaria.stream = HIT_METAL
+	else:
+		sonido_secundaria.stream = BLOCK
 func desactivar_bloqueo():
 	if bloqueando:
 		bloqueando = false

@@ -904,7 +904,7 @@ filter_enabled = true
 filters = ["", "camara_controller/camara_player:position", "pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria:playing", "pivote_secundaria:position"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1udw8"]
-graph_offset = Vector2(-1326.3647, 427.80487)
+graph_offset = Vector2(-816.3435, 140.02048)
 nodes/output/position = Vector2(620, 100)
 nodes/movimiento/node = SubResource("AnimationNodeStateMachine_3wdqr")
 nodes/movimiento/position = Vector2(-560, 80)
@@ -1081,7 +1081,6 @@ render_priority = 10
 [node name="sonido_secundaria" type="AudioStreamPlayer" parent="pivote_secundaria/posicion_secundaria/sprite_secundaria" unique_id=1987096980]
 stream = ExtResource("10_meqng")
 volume_db = -26.302
-pitch_scale = 0.9
 bus = &"Ambientales"
 
 [node name="sprite_secundaria2" type="Sprite3D" parent="pivote_secundaria/posicion_secundaria" unique_id=196913720 groups=["sprite_secundaria_2"]]

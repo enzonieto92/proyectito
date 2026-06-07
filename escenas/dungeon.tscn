@@ -187,7 +187,7 @@ data = PackedVector3Array(0, -1.2099999, -1, 0, -1.2099999, 1, 0, 1.2099999, -1,
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
-transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, 2.4066164, 0.35650814, -48.19584)
+transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, 0.5032414, 0, -0.6287702)
 ritual_completo = false
 
 [node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_mnaqj")]
@@ -605,25 +605,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.13504, -1.12754, 3.027624
 mesh = SubResource("QuadMesh_g3xkf")
 
 [node name="moho2" parent="NavigationRegion3D/decoracion" unique_id=2017309189 instance=ExtResource("35_7vto2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -34.993004, -0.70344675, -15.7220335)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -34.978374, -0.70344675, -15.7220335)
 
 [node name="moho3" parent="NavigationRegion3D/decoracion" unique_id=1937883421 instance=ExtResource("35_7vto2")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -34.995472, -0.5332556, -19.072458)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -34.96987, -0.5332556, -19.072458)
 
 [node name="moho4" parent="NavigationRegion3D/decoracion" unique_id=1539578439 instance=ExtResource("35_7vto2")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -34.995472, -0.5332556, -23.00464)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -34.97414, -0.5332556, -23.00464)
 
 [node name="vegetacion4" parent="NavigationRegion3D/decoracion" unique_id=1814441441 instance=ExtResource("34_0r45r")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -34.974174, -0.6490328, -16.890799)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -34.997593, -0.6490328, -16.890799)
 
 [node name="vegetacion5" parent="NavigationRegion3D/decoracion" unique_id=1440346548 instance=ExtResource("34_0r45r")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -34.974174, -0.6490328, -20.330627)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -34.99448, -0.6490328, -20.330627)
 
 [node name="manchadesangre" parent="NavigationRegion3D/decoracion" unique_id=1100908461 instance=ExtResource("16_egvud")]
 transform = Transform3D(0.70710677, -0.70710677, 3.090862e-08, 0, -4.371139e-08, -1, 0.70710677, 0.70710677, -3.090862e-08, -33.223072, -0.9540083, -12.235776)
 
 [node name="manchasdesangre1" parent="NavigationRegion3D/decoracion" unique_id=292346214 instance=ExtResource("61_f2k2h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5002527, -1.5, -10.998308)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5002527, -1.4889681, -10.998308)
 
 [node name="position" parent="NavigationRegion3D/decoracion" unique_id=1096910596 instance=ExtResource("27_5wt16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9900532, -0.50000024, -11.21848)
@@ -659,7 +659,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20.9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.184431, -0.97781134, -47.00792)
 
 [node name="position3" parent="NavigationRegion3D/decoracion" unique_id=604444196 instance=ExtResource("27_5wt16")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0861387, -0.50000024, -46.85926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0861387, -0.50000024, -46.63631)
 
 [node name="position4" parent="NavigationRegion3D/decoracion" unique_id=1757445512 instance=ExtResource("27_5wt16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.531063, -0.5, -55.92464)
@@ -705,6 +705,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.187956, 0.34932804, -56.9
 
 [node name="manchasdesangre5" parent="NavigationRegion3D/decoracion" unique_id=233228537 instance=ExtResource("61_f2k2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.097937, -1.4947064, -53.471817)
+
+[node name="manchasdesangre6" parent="NavigationRegion3D/decoracion" unique_id=566158278 instance=ExtResource("61_f2k2h")]
+transform = Transform3D(0.14021336, 0, 0.65005016, 0, 0.665, 0, -0.65005016, 0, 0.14021336, -7.536983, -1.4947064, -56.01526)
 
 [node name="puertas" type="Node3D" parent="NavigationRegion3D" unique_id=1176219373]
 
@@ -906,13 +909,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4055123, -1.0782332, 4.8636
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.43129, -1.0413293, -20.223583)
 
 [node name="vegetacion" parent="cuerpos" unique_id=1431031075 instance=ExtResource("34_egvud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.894756, -0.9296299, -24.973093)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.894756, -0.9296299, -24.896645)
 
 [node name="vegetacion2" parent="cuerpos" unique_id=1954290509 instance=ExtResource("34_egvud")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -30.58186, 0.851284, -24.973093)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -30.58186, 0.851284, -24.873417)
 
 [node name="vegetacion3" parent="cuerpos" unique_id=244955691 instance=ExtResource("34_egvud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.098228, 0.23396182, -24.973093)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.098228, 0.27872992, -24.887924)
 
 [node name="manchasdesangre1" parent="cuerpos" unique_id=1337300923 instance=ExtResource("61_f2k2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8686905, -1.4923564, -21.984312)
@@ -972,13 +975,13 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.87
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.1265836, 0.89785624, -0.32598394)
 
 [node name="manchadesangre" parent="." unique_id=790362701 instance=ExtResource("16_egvud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18270755, -0.54181314, -26.417444)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18270755, -0.54075813, -26.417444)
 
 [node name="manchasdesangre1" parent="." unique_id=959578926 instance=ExtResource("61_f2k2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8772306, -1.5195132, -35.35009)
 
 [node name="manchadesangre2" parent="." unique_id=1666661960 instance=ExtResource("16_egvud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2864017, -1.5418131, -32.319786)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2864017, -1.5367775, -32.319786)
 
 [node name="vegetacion" parent="." unique_id=465019817 instance=ExtResource("39_mtgmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.745758, 0.4280932, -1.1116793)
