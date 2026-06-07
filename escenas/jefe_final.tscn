@@ -341,7 +341,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_qivbk"]
@@ -395,19 +395,33 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.74128306),
+
+[sub_resource type="Animation" id="Animation_mscpk"]
+resource_name = "attack_2"
+length = 2.5323
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_enemy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0044),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"look_at_target"
-}]
+"update": 1,
+"values": [&"Ataque_2"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite_enemy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.23333333, 0.8, 1.1666666, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_fvkq1"]
@@ -489,6 +503,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("raycast_enemigo:enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ak8l5"]
 resource_name = "idle"
@@ -523,6 +549,7 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_t45al"),
 &"attack": SubResource("Animation_qivbk"),
+&"attack_2": SubResource("Animation_mscpk"),
 &"chase": SubResource("Animation_fvkq1"),
 &"dying": SubResource("Animation_5oyv7"),
 &"idle": SubResource("Animation_ak8l5")
@@ -530,7 +557,7 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8wui7"]
 height = 0.87900543
-radius = 6.309082
+radius = 9.561035
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mscpk"]
 data = PackedVector3Array(0.08736573, 0.0365377, 0.2688888, 0.056442287, 0.09618159, 0.17371444, 0.21753544, 0.061356585, 0.1580482, -0.22873111, 0.036537595, 0.1661809, -0.14777078, 0.096181504, 0.1073605, -0.08309245, 0.06135704, 0.25572723, -0.22873111, 0.036537595, -0.1661809, -0.14777078, 0.096181504, -0.1073605, -0.26888844, 0.061356496, -2.8014624e-10, 0.08736573, 0.0365377, -0.2688888, 0.056442287, 0.09618159, -0.17371444, -0.08309245, 0.06135704, -0.25572723, 0.2827266, 0.03653636, -2.8014624e-10, 0.18265544, 0.09618063, 0, 0.21753544, 0.061356585, -0.1580482, 0.18265544, 0.09618063, 0, 0, 0.12654692, 0, 0.056442287, 0.09618159, -0.17371444, 0.18265544, 0.09618063, 0, 0.056442287, 0.09618159, -0.17371444, 0.21753544, 0.061356585, -0.1580482, 0.21753544, 0.061356585, -0.1580482, 0.056442287, 0.09618159, -0.17371444, 0.08736573, 0.0365377, -0.2688888, 0.056442287, 0.09618159, -0.17371444, 0, 0.12654692, 0, -0.14777078, 0.096181504, -0.1073605, 0.056442287, 0.09618159, -0.17371444, -0.14777078, 0.096181504, -0.1073605, -0.08309245, 0.06135704, -0.25572723, -0.08309245, 0.06135704, -0.25572723, -0.14777078, 0.096181504, -0.1073605, -0.22873111, 0.036537595, -0.1661809, -0.14777078, 0.096181504, -0.1073605, 0, 0.12654692, 0, -0.14777078, 0.096181504, 0.1073605, -0.14777078, 0.096181504, -0.1073605, -0.14777078, 0.096181504, 0.1073605, -0.26888844, 0.061356496, -2.8014624e-10, -0.26888844, 0.061356496, -2.8014624e-10, -0.14777078, 0.096181504, 0.1073605, -0.22873111, 0.036537595, 0.1661809, -0.14777078, 0.096181504, 0.1073605, 0, 0.12654692, 0, 0.056442287, 0.09618159, 0.17371444, -0.14777078, 0.096181504, 0.1073605, 0.056442287, 0.09618159, 0.17371444, -0.08309245, 0.06135704, 0.25572723, -0.08309245, 0.06135704, 0.25572723, 0.056442287, 0.09618159, 0.17371444, 0.08736573, 0.0365377, 0.2688888, 0.056442287, 0.09618159, 0.17371444, 0, 0.12654692, 0, 0.18265544, 0.09618063, 0, 0.056442287, 0.09618159, 0.17371444, 0.18265544, 0.09618063, 0, 0.21753544, 0.061356585, 0.1580482, 0.21753544, 0.061356585, 0.1580482, 0.18265544, 0.09618063, 0, 0.2827266, 0.03653636, -2.8014624e-10, 0.3304281, 0, -0.10736092, 0.2827266, 0.03653636, -2.8014624e-10, 0.21753544, 0.061356585, -0.1580482, 0.3304281, 0, -0.10736092, 0.21753544, 0.061356585, -0.1580482, 0.20421563, 0, -0.28107843, 0.20421563, 0, -0.28107843, 0.21753544, 0.061356585, -0.1580482, 0.08736573, 0.0365377, -0.2688888, 0, 0, -0.34743214, 0.08736573, 0.0365377, -0.2688888, -0.08309245, 0.06135704, -0.25572723, 0, 0, -0.34743214, -0.08309245, 0.06135704, -0.25572723, -0.20421563, 0, -0.28107843, -0.20421563, 0, -0.28107843, -0.08309245, 0.06135704, -0.25572723, -0.22873111, 0.036537595, -0.1661809, -0.3304281, 0, -0.10736092, -0.22873111, 0.036537595, -0.1661809, -0.26888844, 0.061356496, -2.8014624e-10, -0.3304281, 0, -0.10736092, -0.26888844, 0.061356496, -2.8014624e-10, -0.3304281, 0, 0.10736092, -0.3304281, 0, 0.10736092, -0.26888844, 0.061356496, -2.8014624e-10, -0.22873111, 0.036537595, 0.1661809, -0.20421563, 0, 0.28107843, -0.22873111, 0.036537595, 0.1661809, -0.08309245, 0.06135704, 0.25572723, -0.20421563, 0, 0.28107843, -0.08309245, 0.06135704, 0.25572723, 0, 0, 0.34743214, 0, 0, 0.34743214, -0.08309245, 0.06135704, 0.25572723, 0.08736573, 0.0365377, 0.2688888, 0.20421563, 0, 0.28107843, 0.08736573, 0.0365377, 0.2688888, 0.21753544, 0.061356585, 0.1580482, 0.20421563, 0, 0.28107843, 0.21753544, 0.061356585, 0.1580482, 0.3304281, 0, 0.10736092, 0.3304281, 0, 0.10736092, 0.21753544, 0.061356585, 0.1580482, 0.2827266, 0.03653636, -2.8014624e-10, 0.20421563, 0, -0.28107843, 0.08736573, 0.0365377, -0.2688888, 0, 0, -0.34743214, -0.20421563, 0, -0.28107843, -0.22873111, 0.036537595, -0.1661809, -0.3304281, 0, -0.10736092, -0.3304281, 0, 0.10736092, -0.22873111, 0.036537595, 0.1661809, -0.20421563, 0, 0.28107843, 0, 0, 0.34743214, 0.08736573, 0.0365377, 0.2688888, 0.20421563, 0, 0.28107843, 0.3304281, 0, 0.10736092, 0.2827266, 0.03653636, -2.8014624e-10, 0.3304281, 0, -0.10736092)
@@ -538,8 +565,8 @@ data = PackedVector3Array(0.08736573, 0.0365377, 0.2688888, 0.056442287, 0.09618
 [node name="jefe_final" type="CharacterBody3D" unique_id=834906040 groups=["enemigos"]]
 collision_layer = 9
 script = ExtResource("1_mscpk")
-vida = 120.0
-attack_range = 2.0
+vida = 150.0
+attack_range = 7.0
 max_damage = 25.0
 min_damage = 20.0
 
@@ -558,7 +585,10 @@ script = ExtResource("7_mntvc")
 
 [node name="raycast_enemigo" type="RayCast3D" parent="." unique_id=1319847300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058597535, 0)
-target_position = Vector3(0, 0, -1.3)
+enabled = false
+target_position = Vector3(0, 0, -2)
+debug_shape_custom_color = Color(0.7423421, 0.3045298, 0.49894416, 1)
+debug_shape_thickness = 3
 script = ExtResource("8_a0cb3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1026104812]
@@ -593,7 +623,7 @@ bus = &"Ambientales"
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1064882854]
 
 [node name="raycast_vision" type="RayCast3D" parent="." unique_id=966443226]
-target_position = Vector3(0, 0, -6)
+target_position = Vector3(0, 0, -10)
 
 [node name="sonido_golpe" type="AudioStreamPlayer" parent="." unique_id=1065348469]
 

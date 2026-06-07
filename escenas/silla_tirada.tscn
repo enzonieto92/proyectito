@@ -24,6 +24,7 @@ resource_name = "Material"
 cull_mode = 2
 albedo_color = Color(0.4627451, 0.4627451, 0.4627451, 1)
 albedo_texture = SubResource("ImageTexture_xxmxy")
+metallic_specular = 0.0
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_od0wv"]

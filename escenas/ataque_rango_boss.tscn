@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dcvxkm2ads3i4"]
 
+[ext_resource type="Script" uid="uid://yl37trx55u3c" path="res://scripts/ataque_rango_boss.gd" id="1_0pn6h"]
 [ext_resource type="Texture2D" uid="uid://clseyseqs1n6x" path="res://texturas/Boss_ataqueRango.png" id="1_3wpoc"]
 [ext_resource type="Shader" uid="uid://bc41edh6cgdj3" path="res://vorticeefecto.tres" id="2_0pn6h"]
 
@@ -58,6 +59,9 @@ region = Rect2(768, 0, 64, 128)
 [sub_resource type="SpriteFrames" id="SpriteFrames_2e5j7"]
 animations = [{
 "frames": [{
+"duration": 3.0,
+"texture": null
+}, {
 "duration": 0.3,
 "texture": SubResource("AtlasTexture_r26wm")
 }, {
@@ -96,8 +100,11 @@ animations = [{
 }, {
 "duration": 0.3,
 "texture": SubResource("AtlasTexture_1m0oi")
+}, {
+"duration": 1.0,
+"texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"AtaqueRango",
 "speed": 5.0
 }]
@@ -110,19 +117,34 @@ shader_parameter/vortice_color = Color(0.3269191, 0.24508193, 0.3335106, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_enb5h"]
 size = Vector2(6, 6)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r26wm"]
+height = 1.5593262
+
 [node name="AtaqueRangoBoss" type="Node3D" unique_id=1270920383]
+script = ExtResource("1_0pn6h")
+damage = Vector2(20, 25)
 
 [node name="tentaculos" type="AnimatedSprite3D" parent="." unique_id=1027074962]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.2866446, 0)
 billboard = 2
 shaded = true
+alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_2e5j7")
 animation = &"AtaqueRango"
 autoplay = "AtaqueRango"
-frame_progress = 0.04104172
 
 [node name="vortice" type="MeshInstance3D" parent="." unique_id=85947032]
 transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_lctkm")
 mesh = SubResource("PlaneMesh_enb5h")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=500717048]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=152054810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86807305, 0)
+shape = SubResource("CylinderShape3D_r26wm")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

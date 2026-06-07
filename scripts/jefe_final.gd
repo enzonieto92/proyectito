@@ -4,6 +4,8 @@ const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
 var  SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
 const SONIDO_ENEMIGO = preload("uid://dehsfh1pliac7")
 const SONIDO_MUERTE = preload("res://sonido/muerte_guardia.mp3")
+const ATAQUE_RANGO_BOSS = preload("uid://dcvxkm2ads3i4")
+
 @onready var colision_muerto: CollisionShape3D = $colision_muerto
 @onready var player: CharacterBody3D 
 @onready var sprite_enemy: AnimatedSprite3D = $sprite_enemy
@@ -49,7 +51,11 @@ func _ready() -> void:
 
 	var _precarga = SONIDO_ENEMIGO
 
-
+func lanzar_hechizo():
+	animation_player.play("attack_2")
+	var ataque = ATAQUE_RANGO_BOSS.instantiate()
+	get_tree().root.add_child(ataque)
+	ataque.global_position = player.global_position + Vector3(0,0.01,0)
 func _physics_process(delta: float) -> void:
 	if vida <= 0.0:
 		dying_behavior()
@@ -70,13 +76,18 @@ func _physics_process(delta: float) -> void:
 		repath_timer = repath_interval
 
 	if _atacando_cooldown:
+		elegir_ataque()
+		look_at_target()  # ← agregar
 		velocity.x = attack_dir.x * animation_vector.z
 		velocity.z = attack_dir.z * animation_vector.z
 		if salto:
 			velocity.y = animation_vector.y
 			salto = false
 	elif dist < attack_range:
-		attack_behavior()
+		if attack_range  < 5:
+			attack_behavior_2()
+		else:
+			attack_behavior()
 	elif avistado and not _en_cooldown:
 		look_at_target()
 		chequear_puerta_en_camino()
@@ -86,7 +97,11 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 
 	move_and_slide()
-
+func elegir_ataque():
+	if Calculos.chance(50):
+		attack_range = 4
+	else:
+		attack_range = 8
 
 func look_at_target() -> void:
 	var target_position = player.global_position
@@ -123,6 +138,14 @@ func attack_behavior() -> void:
 	_atacando_cooldown = true
 	hit_applied = false
 
+	lanzar_hechizo()
+	_on_attack_finished("idle")
+func attack_behavior_2() -> void:
+	if _atacando_cooldown:
+		return
+
+	_atacando_cooldown = true
+	hit_applied = false
 	damage = int(randf_range(min_damage, max_damage))
 	attack_dir = (player.global_position - global_position).normalized()
 	attack_dir.y = 0
@@ -131,7 +154,6 @@ func attack_behavior() -> void:
 	if animation_player.animation_finished.is_connected(_on_attack_finished):
 		animation_player.animation_finished.disconnect(_on_attack_finished)
 	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
-
 
 func aplicar_golpe() -> void:
 	if hit_applied:
@@ -202,7 +224,7 @@ func _on_dying_finished(_anim: String) -> void:
 	colision_muerto.disabled = false
 
 func rastrear() -> void:
-	raycast_vision.target_position = to_local(player.global_position)
+	raycast_vision.target_position = to_local(player.global_position + Vector3(0,2,0))
 	raycast_vision.force_raycast_update()
 
 	if not raycast_vision.is_colliding():
@@ -222,7 +244,7 @@ func chequear_puerta_en_camino() -> void:
 	if _puerta_cooldown:  # ← salir antes del raycast incluso
 		return
 
-	raycast_vision.target_position = to_local(player.global_position)
+	raycast_vision.target_position = to_local(player.global_position) 
 	raycast_vision.force_raycast_update()
 
 	if not raycast_vision.is_colliding():
