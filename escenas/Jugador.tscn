@@ -923,7 +923,7 @@ nodes/shot_bloquear/position = Vector2(-480, 360)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Add2", &"Add2", 0, &"movimiento", &"Add2", 1, &"TimeScale_ataque", &"TimeScale_ataque", 0, &"shot_bloquear", &"shot_bloquear", 0, &"ataque", &"shot_bloquear", 1, &"bloquear"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ko7k4"]
-size = Vector3(0.25, 0.5, 0.7336426)
+size = Vector3(0.4744873, 0.5, 0.7336426)
 
 [node name="Jugador" type="CharacterBody3D" unique_id=349492156 groups=["jugador"]]
 floor_stop_on_slope = false
@@ -1121,6 +1121,6 @@ unit_size = 1.0
 panning_strength = 1.11
 
 [node name="col_caja" type="CollisionShape3D" parent="." unique_id=2098620592]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0009765625, 1.4378171, -0.27581477)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018920898, 1.4378171, -0.27581477)
 shape = SubResource("BoxShape3D_ko7k4")
 disabled = true

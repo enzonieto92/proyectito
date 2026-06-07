@@ -6,6 +6,7 @@ extends Node
 @onready var player: CharacterBody3D = $".."
 @onready var timer_bloqueo: Timer = Timer.new()
 var spawning := false
+var instruccion : RichTextLabel
 var defendiendo: bool = false
 var esperando_soltar := false
 const ANIMACIONES_POR_TIPO = {
@@ -25,6 +26,7 @@ const TIEMPO_ACTIVACION_BLOQUEO: float = 0.2  # ajustá este valor
 @onready var sonido_arma: AudioStreamPlayer = $"../pivote/posicion_arma/sprite_arma/sonido_arma"
 @onready var sonido : AudioStreamMP3
 func _ready():
+	instruccion = get_tree().get_first_node_in_group("texto_instruccion")
 	anim_tree.active = true
 	anim_tree["parameters/Add2/add_amount"] = 0.0
 	movimiento_sm.travel("idle")
@@ -150,6 +152,9 @@ func _process(_delta: float) -> void:
 		player.desactivar_bloqueo()
 
 	if atacando_input:
+		if instruccion.visible:
+			instruccion.ocultar()
+			instruccion.show_text("(Click Der) para Bloquear", 4)
 		if not animacion_en_curso and player.stamina >= player.arma.gasto_stamina and not player.stamina_agotada:
 			play_attack_animation()
 		return
@@ -204,7 +209,8 @@ func _iniciar_bloqueo():
 	blend_objetivo = 1.0
 	timer_bloqueo.stop()
 	timer_bloqueo.start(TIEMPO_ACTIVACION_BLOQUEO)
-
+	if instruccion.visible:
+		instruccion.ocultar()
 	var tiene_escudo = player.secundaria != null and player.secundaria is Escudo
 
 	if tiene_escudo:

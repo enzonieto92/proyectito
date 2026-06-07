@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b2dixrbthpje7"]
+
+[ext_resource type="Texture2D" uid="uid://upo8jyweuwoc" path="res://texturas/vegetacion.png" id="1_ys7rv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa86f"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_ys7rv")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_egvud"]
+material = SubResource("StandardMaterial3D_oa86f")
+size = Vector2(4, 4)
+
+[node name="vegetacion" type="MeshInstance3D" unique_id=1082762158]
+mesh = SubResource("QuadMesh_egvud")

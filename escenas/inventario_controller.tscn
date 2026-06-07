@@ -198,7 +198,7 @@ scale = Vector2(-1, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_loeo7")
 script = ExtResource("5_hogph")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1918615826]
+[node name="textura_jugador" type="TextureRect" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=1918615826 groups=["textura_jugador"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.938
@@ -216,9 +216,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 266.0
-offset_top = 83.0
+offset_top = 66.0
 offset_right = -107.0
-offset_bottom = -140.0
+offset_bottom = -157.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_loeo7")
@@ -250,9 +250,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 59.0
-offset_top = 143.0
+offset_top = 202.0
 offset_right = -314.0
-offset_bottom = -80.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_yvvfg")
@@ -282,6 +282,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 6.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_0jk7v")
@@ -317,9 +319,9 @@ texture = ExtResource("2_0jk7v")
 [node name="slot_cabeza" type="Control" parent="CanvasLayer/Inventario_UI/panel_equipo" unique_id=653974450]
 anchors_preset = 0
 offset_left = 162.00002
-offset_top = 50.0
+offset_top = 39.0
 offset_right = 258.00003
-offset_bottom = 146.0
+offset_bottom = 135.0
 script = ExtResource("9_jfcjk")
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza" unique_id=1214594237]

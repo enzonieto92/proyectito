@@ -3,7 +3,7 @@ class_name WeaponSlot extends slot_base
 @onready var color_rect_2: ColorRect = $ColorRect2
 @onready var sprite_1 = get_tree().get_first_node_in_group("sprite_arma")
 @onready var sprite_2 = get_tree().get_first_node_in_group("sprite_arma_2")
-
+var primer_arma_equipada: bool = false
 func get_sprites() -> Array:
 	return [sprite_1, sprite_2]
 func get_color_rect() -> ColorRect: return color_rect_2
@@ -17,6 +17,9 @@ func aplicar_stats(jugador, nuevo_item) -> void:
 	jugador.total_damage.y = jugador.damage.y + nuevo_item.damage.y
 	jugador.arma = nuevo_item
 	jugador.raycast_arma.target_position.y = nuevo_item.weapon_size
+	if not primer_arma_equipada:
+		primer_arma_equipada = true
+		get_tree().get_first_node_in_group("texto_instruccion").show_text("Presiona (Click) para atacar", 1)
 func _remover_item_drop(inventario, nuevo_item) -> void:
 	inventario.remover_item_sin_actualizar_peso(nuevo_item, nuevo_item.grid_pos)
 func quitar_stats(jugador) -> void:

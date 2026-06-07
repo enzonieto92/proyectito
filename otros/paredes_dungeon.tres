@@ -28,7 +28,7 @@ texture_repeat = false
 resource_name = "techo"
 albedo_texture = ExtResource("3_223gu")
 metallic_specular = 0.0
-uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_scale = Vector3(0.675, 0.675, 0.675)
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0p6al"]

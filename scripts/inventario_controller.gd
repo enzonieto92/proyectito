@@ -9,7 +9,7 @@ extends Node
 @onready var slot_cabeza: Control = $CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza
 @onready var tooltip: Control = $CanvasLayer/Inventario_UI/tooltip
 @onready var tooltip_label: Label = $CanvasLayer/Inventario_UI/tooltip/tooltip_label
-
+var primer_item_agregado: bool = false
 func _ready():
 	actualizar_label_peso()
 func calcular_peso_total() -> float:
@@ -70,6 +70,9 @@ func agregar_item(item) -> bool:
 				if not era_visible:
 					inventario_ui.visible = false
 					inventario_ui.modulate.a = 1
+				if not primer_item_agregado:
+					primer_item_agregado = true
+					get_tree().get_first_node_in_group("texto_instruccion").show_text("Presiona (TAB)", 1)
 				return true
 
 	if not era_visible:

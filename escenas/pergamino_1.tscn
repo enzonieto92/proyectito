@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://bc15gcaj4y8fe"]
+
+[ext_resource type="Texture2D" uid="uid://hc3bhnl1q8nx" path="res://texturas/PergaminoMenu.png" id="1_ud8pp"]
+[ext_resource type="Theme" uid="uid://baqqinsefei1k" path="res://otros/tema_fuente.tres" id="2_q5ntm"]
+[ext_resource type="Texture2D" uid="uid://cq22kxcphnqia" path="res://texturas/wasd.png" id="3_22lsb"]
+[ext_resource type="Texture2D" uid="uid://n70ttuvpmgbc" path="res://texturas/e.png" id="4_dosku"]
+[ext_resource type="Texture2D" uid="uid://bvtdlqh6icfb6" path="res://texturas/shift.png" id="5_dhgyx"]
+[ext_resource type="Texture2D" uid="uid://b4feds3wg6pfm" path="res://texturas/ctrl.png" id="6_phm3t"]
+[ext_resource type="Texture2D" uid="uid://cjaucwd80vxq2" path="res://texturas/tab.png" id="7_kfebt"]
+
+[node name="Control" type="Panel" unique_id=1788989948]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_right = -210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=902123094]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -280.0
+offset_right = 280.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ud8pp")
+
+[node name="Label" type="Label" parent="." unique_id=452391900]
+modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.5
+offset_top = 94.0
+offset_right = 175.5
+offset_bottom = 511.0
+grow_horizontal = 2
+theme = ExtResource("2_q5ntm")
+text = "--
+
+Si llegaste hasta acá con:
+
+
+
+y leíste con
+
+Podrías probar otras teclas como 
+
+
+
+Para abrir el inventario o huir..
+
+El resto deberás probarlo y aprenderlo por la fuerza, que la luz te guie .. 
+
+Recuerda que la observación, exploración y paciencia son esenciales para terminar la demo, gracias por jugar ❤️
+--"
+autowrap_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=511089128]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 107.0
+offset_right = 536.0
+offset_bottom = 171.0
+texture = ExtResource("3_22lsb")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=179981581]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 188.0
+offset_right = 383.0
+offset_bottom = 228.0
+texture = ExtResource("4_dosku")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1214515709]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 260.0
+offset_right = 412.0
+offset_bottom = 300.0
+texture = ExtResource("5_dhgyx")
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=12185819]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 260.0
+offset_right = 468.0
+offset_bottom = 300.0
+texture = ExtResource("6_phm3t")
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=1752300173]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 260.0
+offset_right = 356.0
+offset_bottom = 300.0
+texture = ExtResource("7_kfebt")

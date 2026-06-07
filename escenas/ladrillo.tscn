@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="2_07800"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbelj"]
-albedo_color = Color(0.84313726, 0.84313726, 0.84313726, 1)
+albedo_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
 albedo_texture = ExtResource("1_07800")
 metallic_specular = 0.0
 normal_enabled = true

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://caukwf41mmdgq"]
+
+[ext_resource type="Texture2D" uid="uid://cknjcxf6gmkf3" path="res://texturas/mugre2.png" id="1_oe3tb"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_2ue4h"]
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8llqg"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_oe3tb")
+metallic_specular = 0.0
+texture_filter = 0
+
+[node name="mugre" type="MeshInstance3D" unique_id=1961897607]
+mesh = SubResource("QuadMesh_2ue4h")
+surface_material_override/0 = SubResource("StandardMaterial3D_8llqg")

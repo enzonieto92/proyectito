@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg7sw545xyu7u"
-path.s3tc="res://.godot/imported/moho.png-a7642ed36a03841d54eda0e57bc9e245.s3tc.ctex"
+uid="uid://bx1t6k0kwqb7q"
+path="res://.godot/imported/Botones-Todos.png-6dc10fb470487740f2568bfcad5b0847.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://texturas/moho.png"
-dest_files=["res://.godot/imported/moho.png-a7642ed36a03841d54eda0e57bc9e245.s3tc.ctex"]
+source_file="res://texturas/Botones-Todos.png"
+dest_files=["res://.godot/imported/Botones-Todos.png-6dc10fb470487740f2568bfcad5b0847.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

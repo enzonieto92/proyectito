@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c7rdniocif66q"]
 
-[ext_resource type="Texture2D" uid="uid://b56na47sdsc6l" path="res://texturas/texturasuelodepiedra.png" id="1_5f5bw"]
 [ext_resource type="Script" uid="uid://d3hqa4ig6pu6v" path="res://scripts/trampa_interruptor.gd" id="1_70vpw"]
+[ext_resource type="Texture2D" uid="uid://bpyvfgs4m3o7f" path="res://texturas/piso_mazmorra.png" id="2_6boa6"]
 [ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="3_6boa6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6boa6"]
-albedo_texture = ExtResource("1_5f5bw")
+albedo_texture = ExtResource("2_6boa6")
 uv1_offset = Vector3(0, 0.18, 0)
 texture_filter = 0
 

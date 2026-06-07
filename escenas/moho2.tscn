@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://tpbrafhnrait"]
+
+[ext_resource type="Texture2D" uid="uid://3muw76r8uk27" path="res://texturas/moho2.png" id="1_teefp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa86f"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_teefp")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_egvud"]
+material = SubResource("StandardMaterial3D_oa86f")
+size = Vector2(4, 4)
+
+[node name="moho" type="MeshInstance3D" unique_id=1082762158]
+mesh = SubResource("QuadMesh_egvud")

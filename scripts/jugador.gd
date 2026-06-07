@@ -27,6 +27,7 @@ var _efecto_activo_anterior: bool = false
 @export var fov_zoom: float = 35.0
 @export var zoom_velocidad: float = 4.0
 @export var corrupcion : int
+var instruccion : RichTextLabel
 var corrupcion_max: int
 var _timer_corrupcion: float = 0.0
 const HIT_ENEMIGO = preload("uid://clxo03u4jxli7")
@@ -146,6 +147,7 @@ func cambiar_pitch_swing():
 	sonido_arma.pitch_scale = randf_range(0.7, 1.3)
 
 func _ready():
+	instruccion = get_tree().get_first_node_in_group("texto_instruccion")
 	corrupcion_max = corrupcion 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	STAMINA_MAX_REGEN = stamina 
@@ -215,6 +217,8 @@ func reaccion_ui():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
+		if instruccion.visible:
+			instruccion.ocultar()
 		if inventario_ui.visible:
 			cerrar_inventario()
 		else:
@@ -240,6 +244,8 @@ func _unhandled_input(event):
 			objeto_actual.interactuar(self)
 	if event.is_action_pressed("lanzar_hechizo"):
 		if ritual_completo and not inventario_abierto and puede_lanzar:
+			if instruccion.visible:
+				instruccion.ocultar()
 			lanzar_hechizo()
 
 	if event is InputEventMouseMotion and not inventario_abierto:
@@ -248,6 +254,7 @@ func _unhandled_input(event):
 		pitch = clamp(pitch, deg_to_rad(-50), deg_to_rad(50))
 		camera.rotation.x = pitch
 var puede_lanzar = true
+
 func lanzar_hechizo():
 		if not puede_lanzar:  # ← solo este chequeo
 			return
@@ -491,6 +498,7 @@ func animar_muerte() -> void:
 	rb_muerte = rb
 
 	var col_capsula = collision.duplicate()
+	col_capsula.shape.height = 1.75
 	var col_caja_copia = col_caja.duplicate()
 	col_caja.disabled = false
 	col_caja_copia.disabled = false

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cfms5gmfe8rf" path="res://scripts/trampa_activa.gd" id="1_uy8cs"]
 [ext_resource type="Texture2D" uid="uid://gx4fec1djpqj" path="res://objetos glb/trampa_activa_textura-antorcha.png" id="1_v8hb7"]
-[ext_resource type="Texture2D" uid="uid://bl8jkkfi1afoj" path="res://objetos glb/trampa_activa_texturasuelodepiedra.png" id="2_6pfd7"]
+[ext_resource type="Texture2D" uid="uid://bpyvfgs4m3o7f" path="res://texturas/piso_mazmorra.png" id="3_uy8cs"]
+[ext_resource type="Texture2D" uid="uid://cv7sp4h6oe30b" path="res://texturas/piso_mazmorra-normales.png" id="4_fdid8"]
 [ext_resource type="AudioStream" uid="uid://dwv0u7c0yk2on" path="res://sonido/trampa_sonido.mp3" id="4_lrwv6"]
 [ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="5_fdid8"]
-[ext_resource type="Texture2D" uid="uid://cb2ci5yrrblp3" path="res://texturas/Jaulatortura_textura-antorcha.png" id="5_spo2i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdum5"]
 resource_name = "Material.001"
@@ -50,7 +50,10 @@ shadow_mesh = SubResource("ArrayMesh_x120l")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r24ee"]
 resource_name = "texturasuelotrampa"
 cull_mode = 2
-albedo_texture = ExtResource("2_6pfd7")
+albedo_texture = ExtResource("3_uy8cs")
+metallic_specular = 0.0
+normal_enabled = true
+normal_texture = ExtResource("4_fdid8")
 uv1_scale = Vector3(-1, 1, 1)
 texture_filter = 2
 
@@ -90,7 +93,8 @@ shadow_mesh = SubResource("ArrayMesh_lj7hj")
 size = Vector3(1, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrwv6"]
-albedo_texture = ExtResource("5_spo2i")
+albedo_texture = ExtResource("3_uy8cs")
+texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_yk5qb"]
 material = SubResource("StandardMaterial3D_lrwv6")
@@ -151,6 +155,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47362983, 0)
 mesh = SubResource("ArrayMesh_og0c4")
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=826713119]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_qiwbu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane" unique_id=54096337]

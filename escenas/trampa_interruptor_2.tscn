@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://ci8731rwktuv"]
 
 [ext_resource type="Script" uid="uid://d3hqa4ig6pu6v" path="res://scripts/trampa_interruptor.gd" id="1_tapcv"]
-[ext_resource type="Texture2D" uid="uid://b56na47sdsc6l" path="res://texturas/texturasuelodepiedra.png" id="2_kawqm"]
+[ext_resource type="Texture2D" uid="uid://bpyvfgs4m3o7f" path="res://texturas/piso_mazmorra.png" id="2_tapcv"]
 [ext_resource type="AudioStream" uid="uid://ewgax7q5g7j" path="res://sonido/sonido_boton.mp3" id="3_ixolm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6boa6"]
-albedo_texture = ExtResource("2_kawqm")
+albedo_texture = ExtResource("2_tapcv")
 uv1_scale = Vector3(4, 4, 4)
 uv1_offset = Vector3(0, 0.18, 0)
 texture_filter = 0
@@ -60,7 +60,7 @@ _data = {
 script = ExtResource("1_tapcv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1801769998]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(0.86602545, 5.856215e-09, 0.49999997, 0.49999997, -2.1855692e-08, -0.86602545, 5.856215e-09, 1, -2.1855692e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_6boa6")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=232151072]

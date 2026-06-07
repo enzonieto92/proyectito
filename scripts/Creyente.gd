@@ -46,7 +46,6 @@ func _physics_process(delta: float) -> void:
 	if vida <= 0.0:
 		dying_behavior()
 		return
-
 	var dist = global_position.distance_to(player.global_position)
 	velocity += get_gravity() * delta
 
@@ -71,7 +70,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 
 	move_and_slide()
-
+	_resolver_colision_jugador()
 func look_at_target() -> void:
 	var target_position = player.global_position
 	target_position.y = global_position.y
@@ -138,7 +137,19 @@ func interactuar(_player):
 		return
 	_agregando = true
 	_agregar.call_deferred(_player)
-
+func _resolver_colision_jugador():
+	for i in get_slide_collision_count():
+		var col = get_slide_collision(i)
+		var cuerpo = col.get_collider()
+		if cuerpo.is_in_group("jugador"):
+			var direccion = (global_position - cuerpo.global_position).normalized()
+			# si está muy encima, forzar separación lateral fuerte
+			if direccion.y > 0.5:
+				direccion.y = 0
+				direccion = direccion.normalized()
+				global_position += direccion * 0.1  # ← mover directamente la posición
+			velocity.x += direccion.x * 8.0
+			velocity.z += direccion.z * 8.0
 func _agregar(_player) -> void:
 	if item == null:
 		_agregando = false

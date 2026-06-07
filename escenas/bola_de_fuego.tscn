@@ -80,7 +80,7 @@ radius = 1.2374326
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_tsqw1")
 velocidad = 3.0
-damage = Vector2(30, 45)
+damage = Vector2(19, 35)
 
 [node name="Node3D" type="Sprite3D" parent="." unique_id=832312098]
 transform = Transform3D(6.795298e-05, -0.018913036, 0.9998211, -0.0035945626, 0.9998147, 0.018913157, -0.99999356, -0.0035952048, -4.370357e-08, 0, 0, 0.21988855)
