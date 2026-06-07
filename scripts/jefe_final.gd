@@ -224,15 +224,14 @@ func dying_behavior() -> void:
 
 func _on_dying_finished(_anim: String) -> void:
 	animation_player.pause()
-
 	var area = get_node_or_null("area_deteccion")
 	if area:
 		area.queue_free()
-
 	var colision = get_node_or_null("CollisionShape3D")
 	if colision:
 		colision.queue_free()
 	colision_muerto.disabled = false
+	player.pantalla_final()
 
 func rastrear() -> void:
 	raycast_vision.target_position = to_local(player.global_position + Vector3(0,2,0))

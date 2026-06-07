@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dixe7qhq4prcs" path="res://scripts/blood_splash.gd" id="2_wndoy"]
 [ext_resource type="Script" uid="uid://1exwuqcr3xqp" path="res://scripts/barra_stamina.gd" id="3_bt4of"]
 [ext_resource type="FontFile" uid="uid://deigckxeuy4rq" path="res://otros/nokiafc22.ttf" id="4_6cur2"]
+[ext_resource type="Texture2D" uid="uid://bly0e0me64yuy" path="res://texturas/titulopio.png" id="4_xejkj"]
+[ext_resource type="Script" uid="uid://c6xmj80feuai2" path="res://scripts/titulo.gd" id="5_ovia2"]
 [ext_resource type="Script" uid="uid://dqrqprrqi2lc8" path="res://scripts/dialogo.gd" id="5_wndoy"]
 [ext_resource type="Script" uid="uid://xfxh6s2wuhij" path="res://scripts/texto_plano.gd" id="6_84h12"]
 [ext_resource type="Script" uid="uid://dx3j6jvacrs0y" path="res://scripts/texto_notificacion.gd" id="7_84h12"]
@@ -32,6 +34,10 @@ default_font_size = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wndoy"]
 bg_color = Color(0, 0, 0, 0.3137255)
+border_width_top = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 0.26666668)
+border_blend = true
 
 [sub_resource type="Theme" id="Theme_84h12"]
 default_font = ExtResource("4_6cur2")
@@ -87,6 +93,59 @@ theme_override_fonts/font = ExtResource("4_6cur2")
 theme_override_font_sizes/font_size = 100
 text = "HAS MUERTO"
 
+[node name="end_screen" type="ColorRect" parent="." unique_id=1603556889]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+
+[node name="Label" type="Label" parent="end_screen" unique_id=1659127161]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -562.0
+offset_top = -264.0
+offset_right = 563.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_6cur2")
+theme_override_font_sizes/font_size = 20
+text = "Gracias por Jugar!
+Fin de la Demo"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="titulo" type="TextureRect" parent="end_screen" unique_id=290570204]
+modulate = Color(0.4041827, 0.050209656, 0.08526274, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -47.0
+offset_right = 350.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_xejkj")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("5_ovia2")
+
 [node name="barra_stamina" type="ProgressBar" parent="." unique_id=1895136430]
 anchors_preset = -1
 anchor_right = 0.35200003
@@ -117,8 +176,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -164.0
-offset_bottom = -49.0
+offset_top = -174.0
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_1god3")

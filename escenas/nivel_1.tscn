@@ -140,7 +140,14 @@ theme_override_constants/v_separation = 32
 layout_mode = 2
 theme = ExtResource("8_hvxa3")
 theme_override_font_sizes/font_size = 35
-text = "Gracias por testear!"
+text = "Gracias por Testear ❤️"
+
+[node name="boton_Controles" type="Button" parent="Panel_Opciones/panel_opciones/GridContainer" unique_id=1352554430]
+visible = false
+layout_mode = 2
+theme = ExtResource("8_hvxa3")
+theme_override_font_sizes/font_size = 35
+text = "Controles"
 
 [node name="reiniciar_escena" type="Button" parent="Panel_Opciones/panel_opciones/GridContainer" unique_id=900528056]
 layout_mode = 2
@@ -153,6 +160,58 @@ layout_mode = 2
 theme = ExtResource("8_hvxa3")
 theme_override_font_sizes/font_size = 35
 text = "Salir"
+
+[node name="panel_controles" type="Panel" parent="Panel_Opciones" unique_id=1118610970]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel_Opciones/panel_controles" unique_id=495159680]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 57.0
+offset_right = 121.0
+offset_bottom = 109.0
+grow_horizontal = 2
+theme = ExtResource("8_hvxa3")
+text = "Controles"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel_Opciones/panel_controles" unique_id=1291818644]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -511.0
+offset_right = 393.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Moverse : 
+
+
+Correr:
+
+
+Agacharse:
+
+
+Atacar: 
+
+
+Bloquear:
+
+
+Zoom:
+"
 
 [node name="Inventario_Controller" parent="." unique_id=822035638 instance=ExtResource("11_4a01a")]
 

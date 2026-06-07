@@ -2,8 +2,8 @@ extends CharacterBody3D
 @onready var sonido_secundaria: AudioStreamPlayer = $pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria
 const HIT_METAL = preload("uid://n3w8dyh66sy4")
 const BLOCK = preload("uid://ck6u42udbwsfj")
-
-
+var primer_movimiento := false 
+var primer_zoom := false
 @onready var inventario_ui: Control = get_tree().get_first_node_in_group("inventario_ui")
 @onready var inventario_controller: Node = get_tree().get_first_node_in_group("inventario_controller")
 @onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
@@ -43,12 +43,12 @@ const mouse_sensitivity = 0.002
 const SPEED_NORMAL: float = 1.2
 const SPEED_CORRIENDO: float = 2.5
 const SPEED_RALENTIZADO: float = 0.5
-const STAMINA_REGEN_QUIETO: float = 45.0  # más rápido que STAMINA_REGEN normal
 const STAMINA_AGOTAMIENTO: float = 15.0    # se agota al llegar aquí
 const STAMINA_RECUPERACION: float = 40.0  # puede volver a correr desde aquí
 var STAMINA_MAX_REGEN: float     # tope para regenerar
 const STAMINA_COSTO_CORRER: float = 10.0   # multiplicador de gasto (delta * SPEED * esto)
-const STAMINA_REGEN: float = 20.0   
+const STAMINA_REGEN_QUIETO: float = 50.0  # más rápido que STAMINA_REGEN normal
+const STAMINA_REGEN: float = 25.0   
 const STAMINA_REGEN_AGOTADA_QUIETO: float = 10.0
 const STAMINA_REGEN_AGOTADA_MOVING: float = 5.0  # muy lenta cuando se agotó
 var rb_muerte: RigidBody3D
@@ -155,6 +155,7 @@ func cambiar_pitch_swing():
 
 func _ready():
 	instruccion = get_tree().get_first_node_in_group("texto_instruccion")
+	instruccion.show_text("Usa WASD para moverte", 4)
 	corrupcion_max = corrupcion 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	STAMINA_MAX_REGEN = stamina 
@@ -221,20 +222,22 @@ func reaccion_ui():
 # -------------------------
 # INPUT
 # -------------------------
-
+var instruccion_visible_antes := false
+var instruccion_texto_guardado
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
-		if instruccion.visible:
-			instruccion.ocultar()
 		if inventario_ui.visible:
 			cerrar_inventario()
 		else:
+			instruccion_visible_antes = instruccion.visible
+			instruccion_texto_guardado = instruccion.text
+			if instruccion.visible:
+				instruccion.ocultar()
 			inventario_ui.visible = true
 			inventario_abierto = true
 			raycast.enabled = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			_animar_blur(true)  # 👈
-
+			_animar_blur(true)
 
 	if event.is_action_pressed("interactuar"):
 		if inventario_abierto:
@@ -300,9 +303,12 @@ func cerrar_inventario() -> void:
 	inventario_abierto = false
 	raycast.enabled = true
 	animaciones.resetear_estado()
-	_animar_blur(false)  # 👈
+	_animar_blur(false)
 	if not get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if instruccion_visible_antes:
+		instruccion_visible_antes = false
+		instruccion.show_text(instruccion_texto_guardado, 3)  # ← el texto guardado
 func _animar_blur(activar: bool) -> void:
 	var material_bg = panel_blur.material as ShaderMaterial
 
@@ -382,7 +388,12 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# dentro de _physics_process:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
+	if not primer_movimiento and input_dir.length() > 0.1:
+		primer_movimiento = true
+		instruccion.ocultar()
 	var forward = -camera.global_transform.basis.z
 	forward.y = 0
 	forward = forward.normalized()
@@ -462,6 +473,9 @@ func _process(delta):
 	_actualizar_antorcha(delta)
 	var fov_objetivo = fov_zoom if Input.is_action_pressed("zoom") else fov_normal
 	camera.fov = lerp(camera.fov, fov_objetivo, zoom_velocidad * delta)
+	if not primer_zoom and Input.is_action_pressed("zoom"):
+		primer_zoom = true
+		instruccion.ocultar()
 # -------------------------
 # MUERTE
 # -------------------------
@@ -647,3 +661,24 @@ func _actualizar_velocidad(delta: float) -> void:
 				regen = STAMINA_REGEN
 			stamina += delta * regen
 			actualizar_estado_stamina()
+func pantalla_final():
+	muerto = true
+	velocity = Vector3.ZERO
+	stop_footstep()
+
+	var end_screen = jugador_ui.get_node("end_screen") # tu nodo de pantalla final
+	end_screen.visible = true
+	animaciones.stop()
+	await get_tree().create_timer(0.2).timeout
+	AudioManager.detener_todo()
+	AudioManager.fade_in(1, -20.0, 1)
+	var tween = create_tween()
+	tween.tween_property(end_screen, "modulate:a", 1.0, 4)
+	tween.tween_property(end_screen, "modulate:v", 0.0, 4)
+	tween.tween_callback(func():
+		var fade = AudioManager.fade_out(1, 2)
+		fade.tween_callback(func():
+			AudioManager.detener_todo()
+			get_tree().change_scene_to_file("res://escenas/escena_principal.tscn") # o credits
+		)
+	)

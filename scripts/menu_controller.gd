@@ -1,5 +1,7 @@
 extends Panel
 @onready var boton_salir: Button = $GridContainer/boton_salir
+@onready var boton_controles: Button = $GridContainer/boton_Controles
+@onready var button: Button = $GridContainer/Button
 @onready var reiniciar_escena: Button = $GridContainer/reiniciar_escena
 var mostrando_opciones: bool = false
 @onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
@@ -9,6 +11,7 @@ var inv_ui
 
 func _ready() -> void:
 	inv_ui = get_tree().get_first_node_in_group("inventario_ui")
+	button.pressed.connect(func(): OS.shell_open("https://www.instagram.com/pachystudio/?hl=es-la"))
 	boton_salir.pressed.connect(salir)
 	reiniciar_escena.pressed.connect(restart)
 	process_mode = Node.PROCESS_MODE_ALWAYS
