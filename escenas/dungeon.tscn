@@ -1014,7 +1014,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -17.186312, 0.38589478, -10.691994)
 
 [node name="hoja2" parent="." unique_id=2052109797 instance=ExtResource("73_ecl2q")]
-transform = Transform3D(-0.740828, 0, -0.6716948, 0, 1, 0, 0.6716948, 0, -0.740828, -5.3217797, 0.6317931, -47.580963)
+transform = Transform3D(-0.740828, 0, -0.6716948, 0, 1, 0, 0.6716948, 0, -0.740828, -5.3217797, 0.43322176, -47.580963)
 
 [node name="mesita-simple" parent="." unique_id=1502902183 instance=ExtResource("73_on58t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.310511, -0.39429817, -47.567432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.310511, -0.5900421, -47.567432)
