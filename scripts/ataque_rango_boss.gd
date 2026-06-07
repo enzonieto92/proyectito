@@ -4,9 +4,9 @@ extends Node3D
 @onready var tentaculos: AnimatedSprite3D = $tentaculos
 var ya_golpeo = false
 func _ready() -> void:
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.6).timeout
 	area_3d.monitoring = true
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	await tentaculos.animation_finished
 	queue_free()
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -15,6 +15,3 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			return
 		body.recibir_damage(damage, true)
 		ya_golpeo = true
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	pass # Replace with function body.

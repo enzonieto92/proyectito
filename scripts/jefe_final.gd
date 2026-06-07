@@ -52,7 +52,6 @@ func _ready() -> void:
 	var _precarga = SONIDO_ENEMIGO
 
 func lanzar_hechizo():
-	animation_player.play("attack_2")
 	var ataque = ATAQUE_RANGO_BOSS.instantiate()
 	get_tree().root.add_child(ataque)
 	ataque.global_position = player.global_position + Vector3(0,0.01,0)
@@ -134,12 +133,24 @@ func recibir_damage(_damage, _relentizacion) -> void:
 func attack_behavior() -> void:
 	if _atacando_cooldown:
 		return
-
+	
 	_atacando_cooldown = true
 	hit_applied = false
-
+	animation_player.play("attack_2")
 	lanzar_hechizo()
-	_on_attack_finished("idle")
+	if animation_player.animation_finished.is_connected(_on_attack_finished):
+		animation_player.animation_finished.disconnect(_on_attack_finished)
+	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
+	if _atacando_cooldown:
+		return
+	
+	_atacando_cooldown = true
+	hit_applied = false
+	animation_player.play("attack_2")
+	lanzar_hechizo()
+	if animation_player.animation_finished.is_connected(_on_attack_finished):
+		animation_player.animation_finished.disconnect(_on_attack_finished)
+		animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 func attack_behavior_2() -> void:
 	if _atacando_cooldown:
 		return
@@ -168,7 +179,7 @@ func _on_attack_finished(_anim: String) -> void:
 	animation_vector = Vector3.ZERO
 	_en_cooldown = true
 	animation_player.play("idle")
-	get_tree().create_timer(1.0).timeout.connect(_on_cooldown_finished, CONNECT_ONE_SHOT)
+	get_tree().create_timer(.6).timeout.connect(_on_cooldown_finished, CONNECT_ONE_SHOT)
 
 
 func _on_cooldown_finished() -> void:
