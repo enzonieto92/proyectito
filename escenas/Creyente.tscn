@@ -61,7 +61,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k2ggr")
 }],
-"loop": true,
+"loop": 1,
 "name": &"enemy2",
 "speed": 5.0
 }, {
@@ -75,7 +75,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p4thj")
 }],
-"loop": true,
+"loop": 1,
 "name": &"enemy2_attack",
 "speed": 5.0
 }, {
@@ -89,7 +89,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nssso")
 }],
-"loop": false,
+"loop": 0,
 "name": &"enemy2_dying",
 "speed": 5.0
 }]

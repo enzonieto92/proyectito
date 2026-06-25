@@ -189,7 +189,7 @@ data = PackedVector3Array(0, -1.2099999, -1, 0, -1.2099999, 1, 0, 1.2099999, -1,
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
-transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, 0.3119013, 0, -0.8350944)
+transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, -12.963716, 0, -14.983997)
 ritual_completo = false
 
 [node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_mnaqj")]

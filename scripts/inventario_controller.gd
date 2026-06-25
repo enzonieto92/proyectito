@@ -61,11 +61,13 @@ func agregar_item(item) -> bool:
 					if item is Arma:
 						texto_notificacion.show_text( "Arma añadida")
 					if item is Consumible:
-						texto_notificacion.show_text("Agarraste Comida")
+						texto_notificacion.show_text("Comida añadida")
 					if item is Antorcha:
-						texto_notificacion.show_text("Agarraste una Antorcha")
+						texto_notificacion.show_text("Antorcha añadida")
 					if item is Pechera or item is Casco:
-						texto_notificacion.show_text("Agarraste Equipo")
+						texto_notificacion.show_text("Equipo añadido")
+					if item is Llave:
+						texto_notificacion.show_text("Llave añadida")
 
 				if not era_visible:
 					inventario_ui.visible = false

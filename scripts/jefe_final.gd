@@ -23,7 +23,7 @@ const ATAQUE_RANGO_BOSS = preload("uid://dcvxkm2ads3i4")
 @export var max_damage: float
 @export var min_damage: float
 @export var salto = false
-
+var recibio_damage : bool = false
 var avistado = false
 var speed := 2.5
 var player_entered_area: bool = false
@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
 			attack_behavior_2()
 		else:
 			attack_behavior()
-	elif avistado and not _en_cooldown:
+	elif (avistado and not _en_cooldown) or recibio_damage:
 		look_at_target()
 		chequear_puerta_en_camino()
 		chase_behavior()
@@ -125,6 +125,7 @@ func chase_behavior() -> void:
 
 
 func recibir_damage(_damage, _relentizacion) -> void:
+	recibio_damage = true
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE
 	sonido_golpe.play()

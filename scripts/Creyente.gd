@@ -25,6 +25,7 @@ const PEZ = preload("uid://d4gw3nu3068wh")
 @export var min_damage: float
 @export var salto = false
 
+var recibio_damage: bool = false
 var _agregando := false  
 var item
 var speed := 2.5
@@ -62,7 +63,7 @@ func _physics_process(delta: float) -> void:
 			salto = false
 	elif dist < attack_range:
 		attack_behavior()  # ✅ damage movido adentro
-	elif player_entered and not _en_cooldown:
+	elif (player_entered and not _en_cooldown) or recibio_damage:
 		look_at_target()
 		chase_behavior()
 	else:
@@ -92,6 +93,7 @@ func chase_behavior() -> void:
 	velocity.z = dir.z * speed
 
 func recibir_damage(_damage, _relentizacion) -> void:
+	recibio_damage = true
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE  # ✅ reutiliza nodo fijo
 	sonido_golpe.play()

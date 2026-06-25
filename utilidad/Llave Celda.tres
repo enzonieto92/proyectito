@@ -11,5 +11,6 @@ id = "1"
 nombre = "Llave de la Celda"
 icono = ExtResource("1_41a3p")
 textura = ExtResource("1_eyo3u")
+descripcion = "Debería abrir algo..."
 size = Vector2i(1, 2)
 metadata/_custom_type_script = "uid://ds8stt1lbb72a"

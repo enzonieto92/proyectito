@@ -24,6 +24,7 @@ var _agregando := false
 @export var max_damage: float
 @export var min_damage: float
 @export var salto = false
+var recibio_damage : bool = false
 var item
 var avistado = false
 var speed := 2.5
@@ -89,7 +90,7 @@ func _physics_process(delta: float) -> void:
 			salto = false
 	elif dist < attack_range:
 		attack_behavior()
-	elif avistado and not _en_cooldown:
+	elif (avistado and not _en_cooldown) or recibio_damage:
 		look_at_target()
 		chequear_puerta_en_camino()
 		chase_behavior()
@@ -123,6 +124,7 @@ func chase_behavior() -> void:
 
 
 func recibir_damage(_damage, _reletizacion) -> void:
+	recibio_damage = true
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE
 	sonido_golpe.play()
