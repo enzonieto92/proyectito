@@ -186,10 +186,21 @@ orientation = 0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7pjiq"]
 data = PackedVector3Array(0, -1.2099999, -1, 0, -1.2099999, 1, 0, 1.2099999, -1, 0, -1.2099999, 1, 0, 1.2099999, 1, 0, 1.2099999, -1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecl2q"]
+render_priority = -1
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("40_f2k2h")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_on58t"]
+material = SubResource("StandardMaterial3D_ecl2q")
+size = Vector2(4, 4)
+
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
-transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, -12.963716, 0, -14.983997)
+transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, 0.3178394, 0.12070912, -0.80833364)
 ritual_completo = false
 
 [node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_mnaqj")]
@@ -222,7 +233,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="decoracion" type="Node3D" parent="NavigationRegion3D" unique_id=1009839208 groups=["navegable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
 
-[node name="caja" parent="NavigationRegion3D/decoracion" unique_id=124688216 instance=ExtResource("52_f75fg")]
+[node name="caja" parent="NavigationRegion3D/decoracion" unique_id=124688216 groups=["maderas"] instance=ExtResource("52_f75fg")]
 transform = Transform3D(0.98429453, 0, 0.17653507, 0, 1, 0, -0.17653507, 0, 0.98429453, -26.719276, -0.98632514, -28.723837)
 
 [node name="altar_secreto" parent="NavigationRegion3D/decoracion" unique_id=934175357 instance=ExtResource("13_hc4sh")]
@@ -988,6 +999,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2864017, -1.5367775, -32.3
 
 [node name="vegetacion" parent="." unique_id=465019817 instance=ExtResource("39_mtgmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.745758, 0.4280932, -1.1116793)
+mesh = SubResource("QuadMesh_on58t")
 
 [node name="vegetacion2" parent="." unique_id=2133885897 instance=ExtResource("39_mtgmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.073544, 0.4280932, -1.1116793)

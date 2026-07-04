@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 		return
 
 	var collider = get_collider()
-
+	print (collider)
 	# Primero procesás el hit, DESPUÉS desactivás
 	if collider.is_in_group("enemigos") and not golpeando_enemigo:
 		collider.recibir_damage(jugador.total_damage, false)
@@ -34,11 +34,13 @@ func _process(_delta: float) -> void:
 		jugador.arma.durabilidad -= 3
 
 	elif collider.is_in_group("paredes"):
+		print ("paredes")
 		jugador.arma.durabilidad -= 10
 		animaciones.sonido = HIT_METAL
 		jugador.rebotar_golpe = true
 
 	elif collider.is_in_group("maderas"):
+		print ("maderas")
 		animaciones.sonido = HIT_MADERA
 		jugador.arma.durabilidad -= 7
 		animaciones.sonido_arma.volume_db = -10

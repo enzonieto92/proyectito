@@ -9,7 +9,7 @@ albedo_color = Color(1, 0.6745098, 0.3254902, 1)
 albedo_texture = ExtResource("1_hv7ok")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rimiq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_g7pc6"]
 _surfaces = [{
 "aabb": AABB(-0.59555894, -0.59555894, -0.59555894, 1.1911179, 1.1911179, 1.1911179),
 "format": 34896613377,
@@ -23,7 +23,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ctt7x"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ntjdl"]
 resource_name = "caja_Cube_001"
 _surfaces = [{
 "aabb": AABB(-0.59555894, -0.59555894, -0.59555894, 1.1911179, 1.1911179, 1.1911179),
@@ -39,18 +39,21 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP///78AAP//AAD/vwAA//////+/AAAAAAAA/78AAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAP+//////////7//////AAD/v///AAD///+///8AAP//DYAAAP////8NgP///////x6AAAAAAP//AIAAAAAAAABG1f//AAD//0bV//8AAAAAO9UAAAAA//9S1f////8AAETVAAD/////RNUAAP//AABL1f///////z7V+3/3//t/9//nf87/IIDu/y+Azv8vgM7/iIB2/9d/1v/4fwMA+H8DADuAeAB5f0IA/3//f/9//3//f/9//////0RVXVVEVV1VN1VjVVJVVlVd1b0qXdW9KlnVtSpi1cUq")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_rimiq")
+shadow_mesh = SubResource("ArrayMesh_g7pc6")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rsqwh"]
-data = PackedVector3Array(-0.59555894, -0.59555894, 0.59555894, -0.59555894, 0.59555894, -0.59555894, -0.59555894, 0.59555894, 0.59555894, -0.59555894, -0.59555894, 0.59555894, -0.59555894, -0.59555894, -0.59555894, -0.59555894, 0.59555894, -0.59555894, -0.59555894, -0.59555894, -0.59555894, 0.59555894, 0.59555894, -0.59555894, -0.59555894, 0.59555894, -0.59555894, -0.59555894, -0.59555894, -0.59555894, 0.59555894, -0.59555894, -0.59555894, 0.59555894, 0.59555894, -0.59555894, 0.59555894, -0.59555894, -0.59555894, 0.59555894, 0.59555894, 0.59555894, 0.59555894, 0.59555894, -0.59555894, 0.59555894, -0.59555894, -0.59555894, 0.59555894, -0.59555894, 0.59555894, 0.59555894, 0.59555894, 0.59555894, 0.59555894, -0.59555894, 0.59555894, -0.59555894, 0.59555894, 0.59555894, 0.59555894, 0.59555894, 0.59555894, 0.59555894, -0.59555894, 0.59555894, -0.59555894, -0.59555894, 0.59555894, -0.59555894, 0.59555894, 0.59555894, -0.59555894, -0.59555894, -0.59555894, 0.59555894, -0.59555894, 0.59555894, 0.59555894, -0.59555894, -0.59555894, -0.59555894, -0.59555894, -0.59555894, -0.59555894, -0.59555894, 0.59555894, 0.59555894, -0.59555894, 0.59555894, 0.59555894, 0.59555894, -0.59555894, -0.59555894, 0.59555894, 0.59555894, -0.59555894, 0.59555894, -0.59555894, 0.59555894, 0.59555894, -0.59555894, 0.59555894, 0.59555894, 0.59555894, -0.59555894, 0.59555894, 0.59555894)
+[sub_resource type="BoxShape3D" id="BoxShape3D_opnld"]
+size = Vector3(1.0340538, 1.0237122, 1.0279713)
 
-[node name="caja" type="Node3D" unique_id=124688216]
+[node name="caja" type="Node3D" unique_id=1964371390]
 
-[node name="Caja" type="MeshInstance3D" parent="." unique_id=466621556]
+[node name="Caja" type="MeshInstance3D" parent="." unique_id=1741108331]
 transform = Transform3D(0.83954746, 0, 0, 0, 0.83954746, 0, 0, 0, 0.83954746, 0, 0, 0)
-mesh = SubResource("ArrayMesh_ctt7x")
+mesh = SubResource("ArrayMesh_ntjdl")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Caja" unique_id=2046711247]
+[node name="StaticBody3D" type="StaticBody3D" parent="Caja" unique_id=1917771819 groups=["maderas"]]
+transform = Transform3D(1.191118, 0, 0, 0, 1.191118, 0, 0, 0, 1.191118, 0, 0, 0)
+collision_layer = 9
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Caja/StaticBody3D" unique_id=357101683]
-shape = SubResource("ConcavePolygonShape3D_rsqwh")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Caja/StaticBody3D" unique_id=2021482879]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.010357975, -0.0019634047, -0.0022276675)
+shape = SubResource("BoxShape3D_opnld")

@@ -53,6 +53,7 @@ func _ready() -> void:
 
 func lanzar_hechizo():
 	var ataque = ATAQUE_RANGO_BOSS.instantiate()
+	await get_tree().create_timer(1.5).timeout
 	get_tree().root.add_child(ataque)
 	ataque.global_position = player.global_position + Vector3(0,0.01,0)
 func _physics_process(delta: float) -> void:

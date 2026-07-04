@@ -669,7 +669,7 @@ func pantalla_final():
 	var end_screen = jugador_ui.get_node("end_screen") # tu nodo de pantalla final
 	end_screen.visible = true
 	animaciones.stop()
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(3.2).timeout
 	AudioManager.detener_todo()
 	AudioManager.fade_in(1, -20.0, 1)
 	var tween = create_tween()

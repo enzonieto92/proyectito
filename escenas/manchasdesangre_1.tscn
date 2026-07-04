@@ -5,8 +5,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chwax"]
 transparency = 1
 albedo_texture = ExtResource("1_chwax")
-roughness = 0.55
-normal_enabled = true
+metallic_specular = 0.0
 normal_texture = ExtResource("1_chwax")
 texture_filter = 0
 
