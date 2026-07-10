@@ -7,6 +7,7 @@ extends Node
 @onready var slot_secundaria: SecundarySlot = $CanvasLayer/Inventario_UI/panel_equipo/slot_mano_secundaria
 @onready var slot_pecho: PecheraSlot = $CanvasLayer/Inventario_UI/panel_equipo/slot_pecho
 @onready var slot_cabeza: Control = $CanvasLayer/Inventario_UI/panel_equipo/slot_cabeza
+@onready var slot_pies: PiesSlot = $CanvasLayer/Inventario_UI/panel_equipo/slot_pies
 @onready var tooltip: Control = $CanvasLayer/Inventario_UI/tooltip
 @onready var tooltip_label: Label = $CanvasLayer/Inventario_UI/tooltip/tooltip_label
 var primer_item_agregado: bool = false

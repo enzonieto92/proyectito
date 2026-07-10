@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Botas" format=3 uid="uid://dl3vyv18gswbp"]
+
+[ext_resource type="Texture2D" uid="uid://d3ljhpc5ypdid" path="res://texturas/botascuero.png" id="1_tjkpa"]
+[ext_resource type="Script" uid="uid://f6sw5owm3hij" path="res://scripts/resources/Botas.gd" id="1_v00qy"]
+
+[resource]
+script = ExtResource("1_v00qy")
+velocidad = 0.6
+stamina = 60.0
+armadura = 5
+durabilidad = 100
+nombre = "Botas de Cuero"
+icono = ExtResource("1_tjkpa")
+textura = ExtResource("1_tjkpa")
+descripcion = "Hacen mis pies mas ligeros"
+size = Vector2i(2, 2)
+weight = 1.0
+metadata/_custom_type_script = "uid://f6sw5owm3hij"

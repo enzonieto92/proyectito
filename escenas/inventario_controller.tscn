@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://csxu6ypox2bvm" path="res://scripts/slot_pecho.gd" id="8_u2bl6"]
 [ext_resource type="Script" uid="uid://ggl31t0qxb3c" path="res://scripts/slot_casco.gd" id="9_jfcjk"]
 [ext_resource type="Texture2D" uid="uid://btdtqksvrj1fw" path="res://texturas/mochila-inventario.png" id="10_5ftgr"]
+[ext_resource type="Script" uid="uid://cgc826o71iqpi" path="res://scripts/slot_pies.gd" id="12_alnur"]
 [ext_resource type="Theme" uid="uid://baqqinsefei1k" path="res://otros/tema_fuente.tres" id="14_2anfp"]
 [ext_resource type="Script" uid="uid://c1aflxefdx4vg" path="res://scripts/slot_eliminar.gd" id="15_hogph"]
 [ext_resource type="Texture2D" uid="uid://cvuwoaokpl13b" path="res://texturas/cruz_imagen.png" id="16_jr5d1"]
@@ -350,6 +351,7 @@ offset_left = 253.00002
 offset_top = 271.0
 offset_right = 349.00003
 offset_bottom = 367.0
+script = ExtResource("12_alnur")
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventario_UI/panel_equipo/slot_pies" unique_id=663084407]
 visible = false

@@ -190,6 +190,11 @@ func _drop_data(_at_position: Vector2, data):
 		var casco_slot = data.get("casco_slot_ref")
 		if casco_slot:
 			casco_slot._drop_exitoso = true
+	elif data.get("desde_pies_slot", false):
+		inventario._colocar_en(data["item"], destino)
+		var pies_slot = data.get("pies_slot_ref")
+		if pies_slot:
+			pies_slot._drop_exitoso = true
 	else:
 		inventario.mover_item(data["origen"], destino, data["item"])
 
@@ -292,3 +297,5 @@ func _intentar_equipar():
 		inventario.slot_pecho.equipar(item)
 	elif item is Casco:
 		inventario.slot_cabeza.equipar(item)
+	elif item is Botas:
+		inventario.slot_pies.equipar(item)

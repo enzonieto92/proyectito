@@ -4,6 +4,8 @@ const HIT_METAL = preload("uid://n3w8dyh66sy4")
 const BLOCK = preload("uid://ck6u42udbwsfj")
 var primer_movimiento := false 
 var primer_zoom := false
+var stamina_base: float  # el máximo "de fábrica", sin bonos
+
 @onready var inventario_ui: Control = get_tree().get_first_node_in_group("inventario_ui")
 @onready var inventario_controller: Node = get_tree().get_first_node_in_group("inventario_controller")
 @onready var dialogo: RichTextLabel = get_tree().get_first_node_in_group("dialogo")
@@ -41,6 +43,7 @@ const HECHIZO_COOLDOWN = 3
 var gasto_stamina_salto :float = 50.0
 const mouse_sensitivity = 0.002
 const SPEED_NORMAL: float = 1.2
+var SPEED_BOTAS: float = 0.0
 const SPEED_CORRIENDO: float = 2.5
 const SPEED_RALENTIZADO: float = 0.5
 const STAMINA_AGOTAMIENTO: float = 15.0    # se agota al llegar aquí
@@ -91,6 +94,12 @@ var arma: Item = null
 var secundaria: Item = null
 var pechera: Pechera = null
 var casco: Casco = null
+var botas: Botas = null:
+	set(value):
+		botas = value
+		recalcular_armadura()
+		recalcular_velocidad()
+		recalcular_stamina()
 var CONSTANTE_ARMADURA: float = 100
 var damage: Vector2
 var armadura_total: float = 0:
@@ -118,13 +127,19 @@ func romper_arma():
 func recalcular_armadura() -> void:
 	var base = armadura
 	base += pechera.armadura if pechera != null else 0
+	base += botas.armadura if botas != null else 0
 	base += casco.armadura if casco != null else 0
 	base += secundaria.armadura if secundaria != null else 0
 	if bloqueando:
 		base += secundaria.armadura if secundaria != null else 0
 		base += arma.armadura if arma != null and secundaria == null else 0
 	armadura_total = base
-
+func recalcular_velocidad() -> void:
+	SPEED_BOTAS = botas.velocidad if botas != null else 0.0
+func recalcular_stamina() -> void:
+	var bono = botas.stamina if botas != null else 0.0
+	STAMINA_MAX_REGEN = stamina_base + bono
+	stamina = STAMINA_MAX_REGEN 
 # -------------------------
 # BLOQUEO
 # -------------------------
@@ -162,6 +177,8 @@ func _ready():
 	total_damage.x = damage.x + damage_arma.x
 	total_damage.y = damage.y + damage_arma.y
 	vida = vida_max
+	stamina_base = stamina
+	STAMINA_MAX_REGEN = stamina_base
 	animaciones.play_spawn()
 
 # -------------------------
@@ -373,6 +390,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("saltar") and is_on_floor() and not inventario_abierto and stamina > 30:
 		velocity.y = JUMP_VELOCITY
+
 		stamina -= gasto_stamina_salto
 		actualizar_estado_stamina()
 	if inventario_abierto:
@@ -430,6 +448,7 @@ func _empujar_rigidos():
 				direccion.y = 0  # ignorar eje Y
 				cuerpo.apply_central_impulse(direccion * fuerza)
 func _process(delta):
+	get_tree().get_first_node_in_group("test_ui").text = "velocidad: " + str(velocity) + "stamina: " + str(stamina)
 	if is_instance_valid(rb_muerte) and _vida_muerto:
 		global_transform = rb_muerte.global_transform
 	if not _vida_muerto and vida <= 0:
@@ -637,7 +656,7 @@ func _actualizar_velocidad(delta: float) -> void:
 	actualizar_estado_stamina()
 
 	if Input.is_action_pressed("correr") and not ralentizado and not stamina_agotada and puede_correr and not forzar_agachado:
-		SPEED = SPEED_CORRIENDO
+		SPEED = SPEED_CORRIENDO + SPEED_BOTAS
 		if moving:
 			stamina -= delta * SPEED * STAMINA_COSTO_CORRER
 			actualizar_estado_stamina()
@@ -646,9 +665,11 @@ func _actualizar_velocidad(delta: float) -> void:
 			corriendo = false
 			if stamina < STAMINA_MAX_REGEN:
 				stamina += delta * STAMINA_REGEN_QUIETO
-				
 	else:
-		SPEED = SPEED_RALENTIZADO if ralentizado else SPEED_NORMAL
+		if ralentizado:
+			SPEED = SPEED_RALENTIZADO
+		else:
+			SPEED = SPEED_NORMAL + SPEED_BOTAS
 		corriendo = false
 		if stamina < STAMINA_MAX_REGEN:
 			var en_piso = is_on_floor()
