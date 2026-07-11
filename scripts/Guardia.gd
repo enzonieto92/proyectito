@@ -1,4 +1,13 @@
 extends CharacterBody3D
+@export var knockback_force := 8.0
+@export var knockback_lift := 1.5
+@export var knockback_duration := 0.15
+@export var stun_duration := 0.3
+var _en_knockback := false
+var _knockback_timer := 0.0
+var knockback_velocity := Vector3.ZERO
+var _en_stun := false
+var _stun_timer := 0.0
 
 const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
 var  SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
@@ -68,8 +77,31 @@ func _physics_process(delta: float) -> void:
 		dying_behavior()
 		return
 
-	var dist = global_position.distance_to(player.global_position)
 	velocity += get_gravity() * delta
+
+	if _en_knockback:
+		_knockback_timer -= delta
+		var t = clamp(_knockback_timer / knockback_duration, 0.0, 1.0)
+		var ease_t = t * t
+		velocity.x = knockback_velocity.x * ease_t
+		velocity.z = knockback_velocity.z * ease_t
+		if _knockback_timer <= 0.0:
+			_en_knockback = false
+			velocity.x = 0
+			velocity.z = 0
+		move_and_slide()
+		return
+
+	if _en_stun:
+		_stun_timer -= delta
+		velocity.x = 0
+		velocity.z = 0
+		if _stun_timer <= 0.0:
+			_en_stun = false
+		move_and_slide()
+		return
+
+	var dist = global_position.distance_to(player.global_position)
 
 	if not avistado and player_entered_area:
 		vision_timer -= delta
@@ -100,7 +132,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
 func look_at_target() -> void:
 	var target_position = player.global_position
 	target_position.y = global_position.y
@@ -128,7 +159,40 @@ func recibir_damage(_damage, _reletizacion) -> void:
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE
 	sonido_golpe.play()
+	_interrumpir_y_knockback()
 
+func _interrumpir_y_knockback() -> void:
+	if vida <= 0.0:
+		return  # si ya murió con este golpe, dejá que dying_behavior tome el control
+
+	# Cortar la animación de ataque DE VERDAD, no solo el callback
+	if animation_player.animation_finished.is_connected(_on_attack_finished):
+		animation_player.animation_finished.disconnect(_on_attack_finished)
+	animation_player.stop()
+
+	_atacando_cooldown = false
+	_en_cooldown = false
+	atacando = false
+	hit_applied = false
+
+	# Dirección desde el jugador hacia el enemigo = "alejarse de donde vino el golpe"
+	var knock_dir = (global_position - player.global_position)
+	knock_dir.y = 0
+	if knock_dir.length() > 0.001:
+		knock_dir = knock_dir.normalized()
+	else:
+		knock_dir = -transform.basis.z  # fallback por si están superpuestos
+
+	knockback_velocity = knock_dir * knockback_force
+	_en_knockback = true
+	_knockback_timer = knockback_duration
+	velocity.y = knockback_lift
+
+	# Después del knockback, se queda "aturdido" un ratito antes de volver a atacar/perseguir
+	_en_stun = true
+	_stun_timer = knockback_duration + stun_duration
+
+	#animation_player.play("hit")
 
 func attack_behavior() -> void:
 	if _atacando_cooldown:

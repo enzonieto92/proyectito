@@ -1,5 +1,13 @@
 extends CharacterBody3D
-
+@export var knockback_force := 8
+@export var knockback_lift := 1.5  # cuánto se eleva al recibir el golpe
+@export var knockback_duration := 0.2
+var _en_knockback := false
+var _knockback_timer := 0.0
+var knockback_velocity := Vector3.ZERO
+@export var stun_duration := 0.3
+var _en_stun := false
+var _stun_timer := 0.0
 const ESPADA_GOLPE = preload("uid://1om5ecjw4tsm")
 const SONIDO_ENEMIGO_PASIVO = preload("uid://cjv6cjh0wdmoo")
 const SONIDO_ENEMIGO = preload("uid://dehsfh1pliac7")
@@ -47,8 +55,34 @@ func _physics_process(delta: float) -> void:
 	if vida <= 0.0:
 		dying_behavior()
 		return
-	var dist = global_position.distance_to(player.global_position)
+
 	velocity += get_gravity() * delta
+
+	if _en_knockback:
+		_knockback_timer -= delta
+		var t = clamp(_knockback_timer / knockback_duration, 0.0, 1.0)
+		var ease_t = t * t  # frena progresivamente, no de golpe
+		velocity.x = knockback_velocity.x * ease_t
+		velocity.z = knockback_velocity.z * ease_t
+		if _knockback_timer <= 0.0:
+			_en_knockback = false
+			velocity.x = 0
+			velocity.z = 0
+		move_and_slide()
+		_resolver_colision_jugador()
+		return
+
+	if _en_stun:
+		_stun_timer -= delta
+		velocity.x = 0
+		velocity.z = 0
+		if _stun_timer <= 0.0:
+			_en_stun = false
+		move_and_slide()
+		_resolver_colision_jugador()
+		return
+
+	var dist = global_position.distance_to(player.global_position)
 
 	repath_timer -= delta
 	if repath_timer <= 0.0:
@@ -62,7 +96,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = animation_vector.y
 			salto = false
 	elif dist < attack_range:
-		attack_behavior()  # ✅ damage movido adentro
+		attack_behavior()
 	elif (player_entered and not _en_cooldown) or recibio_damage:
 		look_at_target()
 		chase_behavior()
@@ -95,8 +129,34 @@ func chase_behavior() -> void:
 func recibir_damage(_damage, _relentizacion) -> void:
 	recibio_damage = true
 	vida -= int(randf_range(_damage.x, _damage.y))
-	sonido_golpe.stream = ESPADA_GOLPE  # ✅ reutiliza nodo fijo
+	sonido_golpe.stream = ESPADA_GOLPE
 	sonido_golpe.play()
+	_interrumpir_y_knockback()
+func _interrumpir_y_knockback() -> void:
+	if animation_player.animation_finished.is_connected(_on_attack_finished):
+		animation_player.animation_finished.disconnect(_on_attack_finished)
+	animation_player.stop()
+
+	_atacando_cooldown = false
+	_en_cooldown = false
+	atacando = false
+
+	var knock_dir = (global_position - player.global_position)
+	knock_dir.y = 0
+	if knock_dir.length() > 0.001:
+		knock_dir = knock_dir.normalized()
+	else:
+		knock_dir = -transform.basis.z
+
+	knockback_velocity = knock_dir * knockback_force
+	_en_knockback = true
+	_knockback_timer = knockback_duration
+	velocity.y = knockback_lift  # ← el "salto" del knockback
+
+	_en_stun = true
+	_stun_timer = knockback_duration + stun_duration
+
+	#animation_player.play("hit")
 func dropear_item():
 	if Calculos.chance(50):
 		item = PEZ.duplicate()
@@ -171,11 +231,13 @@ func attack_behavior() -> void:
 		return
 
 	_atacando_cooldown = true
-	damage = int(randf_range(min_damage, max_damage))  # ✅ movido acá
+	damage = int(randf_range(min_damage, max_damage))
 	attack_dir = (player.global_position - global_position).normalized()
 	attack_dir.y = 0
 	
 	animation_player.play("attack")
+	if animation_player.animation_finished.is_connected(_on_attack_finished):
+		animation_player.animation_finished.disconnect(_on_attack_finished)
 	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 func _on_attack_finished(anim: String) -> void:
 	if anim != "attack":
