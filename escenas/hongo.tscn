@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ttoctw14ebo7"]
+
+[ext_resource type="Script" uid="uid://d3x1bef47lfqt" path="res://scripts/hongo.gd" id="1_e2xq6"]
+[ext_resource type="Texture2D" uid="uid://bebv6qxmvn7p7" path="res://texturas/hongosraros.png" id="1_fcifi"]
+[ext_resource type="Resource" uid="uid://dpq7oxiy4fcqp" path="res://consumibles/hongo.tres" id="2_agvb6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e2xq6"]
+radius = 0.19314249
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_agvb6"]
+height = 0.9136963
+radius = 1.2182617
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51k0r"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_fcifi")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dv33x"]
+material = SubResource("StandardMaterial3D_51k0r")
+size = Vector2(0.6, 0.6)
+
+[node name="hongos" type="StaticBody3D" unique_id=1614809993]
+script = ExtResource("1_e2xq6")
+res = ExtResource("2_agvb6")
+
+[node name="colision_objeto" type="CollisionShape3D" parent="." unique_id=68821007]
+shape = SubResource("SphereShape3D_e2xq6")
+
+[node name="area_interaccion" type="Area3D" parent="." unique_id=2145718966]
+collision_layer = 3
+
+[node name="colision_area" type="CollisionShape3D" parent="area_interaccion" unique_id=225002635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31329346, 0)
+shape = SubResource("CylinderShape3D_agvb6")
+
+[node name="sprite" type="MeshInstance3D" parent="." unique_id=1318252640]
+transform = Transform3D(0.535, 0, 0, 0, -2.3385594e-08, -0.535, 0, 0.535, -2.3385594e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_dv33x")
+
+[connection signal="body_entered" from="area_interaccion" to="." method="_on_area_interaccion_body_entered"]
+[connection signal="body_exited" from="area_interaccion" to="." method="_on_area_interaccion_body_exited"]

@@ -287,9 +287,7 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhfrt"]
 resource_name = "Material.002"
 cull_mode = 2
-albedo_color = Color(0.84313726, 0.84313726, 0.84313726, 1)
 albedo_texture = ExtResource("2_22cer")
-metallic_specular = 0.0
 normal_texture = SubResource("CompressedTexture2D_ug35h")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_offset = Vector3(0.07, 0, 0)

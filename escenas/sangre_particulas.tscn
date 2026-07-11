@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://deu0cn35esxkm"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_41mbn"]
+velocity_pivot = Vector3(-10, -5.79, -10)
+radial_velocity_min = -0.20002235
+radial_velocity_max = 1.7999777
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iab8b"]
+cull_mode = 2
+depth_draw_mode = 2
+albedo_color = Color(0.41675407, 8.4830447e-07, 2.1658838e-07, 1)
+texture_filter = 0
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_plbxa"]
+material = SubResource("StandardMaterial3D_iab8b")
+size = Vector2(0.07, 0.07)
+
+[node name="sangre_particulas" type="GPUParticles3D" unique_id=321737567]
+emitting = false
+amount = 10
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.5
+randomness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_41mbn")
+draw_pass_1 = SubResource("QuadMesh_plbxa")

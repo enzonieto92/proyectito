@@ -1,6 +1,7 @@
 extends RayCast3D
 var golpeando_enemigo = false
 var sonido_reproducido := false
+const SANGRE = preload("res://escenas/sangre_particulas.tscn")
 @onready var jugador: CharacterBody3D = get_tree().get_first_node_in_group("jugador")
 @onready var sonido_swing: AudioStreamPlayer = $"../sonido_swing"
 @onready var animaciones: AnimationPlayer 
@@ -30,8 +31,15 @@ func _process(_delta: float) -> void:
 	# Primero procesás el hit, DESPUÉS desactivás
 	if collider.is_in_group("enemigos") and not golpeando_enemigo:
 		collider.recibir_damage(jugador.total_damage, false)
+
+		var sangre = SANGRE.instantiate()
+		get_tree().root.add_child(sangre)
+		sangre.global_position = get_collision_point()
+		sangre.emitting = true
 		golpeando_enemigo = true
-		jugador.arma.durabilidad -= 3
+		if jugador.arma != null and is_instance_valid(jugador.arma):
+			jugador.arma.durabilidad -= 3
+
 
 	elif collider.is_in_group("paredes"):
 		print ("paredes")

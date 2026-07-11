@@ -26,7 +26,7 @@ bg_color = Color(0.50980395, 0.4509804, 0.39607844, 1)
 corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_bt4of"]
-font_size = 12
+font_size = 9
 
 [sub_resource type="Theme" id="Theme_1god3"]
 default_font = ExtResource("4_6cur2")

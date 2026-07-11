@@ -448,7 +448,7 @@ func _empujar_rigidos():
 				direccion.y = 0  # ignorar eje Y
 				cuerpo.apply_central_impulse(direccion * fuerza)
 func _process(delta):
-	get_tree().get_first_node_in_group("test_ui").text = "velocidad: " + str(velocity) + "stamina: " + str(stamina)
+	get_tree().get_first_node_in_group("test_ui").text =  "stamina: " + str(int(stamina)) + "    corrupcion: " + str(corrupcion)
 	if is_instance_valid(rb_muerte) and _vida_muerto:
 		global_transform = rb_muerte.global_transform
 	if not _vida_muerto and vida <= 0:
@@ -468,7 +468,7 @@ func _process(delta):
 
 	if corrupcion < corrupcion_max and not efecto_activo:
 		_timer_corrupcion += delta
-		if _timer_corrupcion >= 3.0:
+		if _timer_corrupcion >= 10.0:
 			_timer_corrupcion = 0.0
 			corrupcion += 1
 			if corrupcion >= 2 and $sonido_latidos.playing:

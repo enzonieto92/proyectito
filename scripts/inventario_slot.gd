@@ -290,6 +290,9 @@ func _intentar_equipar():
 	elif item is Consumible:
 		var jugador = get_tree().get_first_node_in_group("jugador")
 		jugador.vida = min(jugador.vida + item.curacion, jugador.vida_max)
+		if item.purga != 0:
+			if jugador.corrupcion < 5:
+				jugador.corrupcion += item.purga
 		sfx_inventario.play()
 		_hover_item(item, item.grid_pos, false)
 		inventario.remover_item(item, item.grid_pos)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Consumible" format=3 uid="uid://dpq7oxiy4fcqp"]
+
+[ext_resource type="Script" uid="uid://pqhmtp55g28p" path="res://scripts/resources/Consumible.gd" id="1_ibv6e"]
+[ext_resource type="Texture2D" uid="uid://bebv6qxmvn7p7" path="res://texturas/hongosraros.png" id="1_ihmpc"]
+
+[resource]
+script = ExtResource("1_ibv6e")
+curacion = 8
+purga = 1
+nombre = "Hongo Raro"
+icono = ExtResource("1_ihmpc")
+textura = ExtResource("1_ihmpc")
+descripcion = "mmm..."
+metadata/_custom_type_script = "uid://pqhmtp55g28p"
