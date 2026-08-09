@@ -9,6 +9,8 @@ var spawning := false
 var instruccion : RichTextLabel
 var defendiendo: bool = false
 var esperando_soltar := false
+var boost_daño_activo := false
+const MULTIPLICADOR_BOOST: float = 1.7
 const ANIMACIONES_POR_TIPO = {
 	Arma.TipoArma.ESPADA: ["atacar", "atacar_horizontal"],
 	Arma.TipoArma.LANZA:  ["atacar_lanza_1", "atacar_lanza_2"],
@@ -57,8 +59,11 @@ func resetear_estado() -> void:
 
 	movimiento_sm.travel("idle")
 func _ataque_termino():
+	print(" scale actual: ", anim_tree["parameters/TimeScale_ataque/scale"])
+	anim_tree["parameters/TimeScale_ataque/scale"] = 1.0
 	animacion_en_curso = false
 	player.puede_correr = true
+
 	blend_objetivo = 0.0
 	if defendiendo:
 		_iniciar_bloqueo()
@@ -86,6 +91,8 @@ func on_block_hit():
 func on_anticipacion_completa():
 	if Input.is_action_pressed("atacar"):
 		esperando_soltar = true
+		boost_daño_activo = true  # ← se activa la carga
+		player.animacion_arma()
 		anim_tree["parameters/TimeScale_ataque/scale"] = 0.0
 	elif player.arma != null:
 		player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)
@@ -131,7 +138,7 @@ func _process(_delta: float) -> void:
 	if esperando_soltar:
 		if not Input.is_action_pressed("atacar"):
 			esperando_soltar = false
-			anim_tree["parameters/TimeScale_ataque/scale"] = 1.0
+			anim_tree["parameters/TimeScale_ataque/scale"] = 1.5
 			player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)  # ← gasto al soltar
 		return
 

@@ -471,7 +471,7 @@ theme_override_constants/v_separation = 0
 columns = 4
 script = ExtResource("1_is5u2")
 slot_scene = ExtResource("2_7flxi")
-bg_items_color = Color(0.21176471, 0.21176471, 0.21176471, 0)
+bg_items_color = Color(0.078431375, 0.078431375, 0.078431375, 0.41960785)
 metadata/_edit_use_anchors_ = true
 
 [node name="label_peso" type="Label" parent="CanvasLayer/Inventario_UI/panel_mochila" unique_id=538928641]

@@ -2,6 +2,9 @@ extends CharacterBody3D
 @onready var sonido_secundaria: AudioStreamPlayer = $pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria
 const HIT_METAL = preload("uid://n3w8dyh66sy4")
 const BLOCK = preload("uid://ck6u42udbwsfj")
+
+const ROMPER_ARMA = preload("uid://4pmoh7khh4al")
+
 var primer_movimiento := false 
 var primer_zoom := false
 var stamina_base: float  # el máximo "de fábrica", sin bonos
@@ -124,6 +127,12 @@ signal inventario_abierto_changed(abierto: bool)
 # -------------------------
 func romper_arma():
 	inventario_controller.slot_mano_derecha.romper_arma()
+	var stream = AudioStreamPlayer.new()
+	add_child(stream)
+	stream.stream = ROMPER_ARMA
+	stream.volume_db = -10.0
+	stream.play()
+	stream.finished.connect(stream.queue_free)
 func recalcular_armadura() -> void:
 	var base = armadura
 	base += pechera.armadura if pechera != null else 0
@@ -703,3 +712,22 @@ func pantalla_final():
 			get_tree().change_scene_to_file("res://escenas/escena_principal.tscn") # o credits
 		)
 	)
+func animacion_arma():
+	var sprite = get_tree().get_first_node_in_group("sprite_arma")
+	var sprite2 = get_tree().get_first_node_in_group("sprite_arma_2")
+	if sprite == null or sprite2 == null:
+		return
+
+	var color_original = Color("ffac54")
+	var color_flash = Color.WHITE
+
+	var tween = create_tween()
+
+	for i in 3:
+		tween.set_parallel(true)
+		tween.tween_property(sprite, "modulate", color_flash, 0.05)
+		tween.tween_property(sprite2, "modulate", color_flash, 0.05)
+
+		tween.chain().set_parallel(true)
+		tween.tween_property(sprite, "modulate", color_original, 0.05)
+		tween.tween_property(sprite2, "modulate", color_original, 0.05)
