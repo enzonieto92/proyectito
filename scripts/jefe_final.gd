@@ -293,7 +293,6 @@ func _confirmar_avistado() -> void:
 		if area:
 			area.queue_free()
 		sonido_enemigo.stream = SONIDO_ENEMIGO
-		sonido_enemigo.volume_db = -30.0
 		sonido_enemigo.play()
 
 

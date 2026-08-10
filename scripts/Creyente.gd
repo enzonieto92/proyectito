@@ -127,11 +127,11 @@ func chase_behavior() -> void:
 	velocity.z = dir.z * speed
 
 func recibir_damage(_damage, _relentizacion) -> void:
+	_interrumpir_y_knockback()
 	recibio_damage = true
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE
 	sonido_golpe.play()
-	_interrumpir_y_knockback()
 func _interrumpir_y_knockback() -> void:
 	if animation_player.animation_finished.is_connected(_on_attack_finished):
 		animation_player.animation_finished.disconnect(_on_attack_finished)

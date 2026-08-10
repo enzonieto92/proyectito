@@ -179,7 +179,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_scr45")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Ataque",
 "speed": 5.0
 }, {
@@ -196,7 +196,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tq2ca")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Ataque_2",
 "speed": 5.0
 }, {
@@ -222,7 +222,7 @@ animations = [{
 "duration": 0.6,
 "texture": SubResource("AtlasTexture_2fvu0")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Bloqueo",
 "speed": 5.0
 }, {
@@ -239,7 +239,7 @@ animations = [{
 "duration": 2.3,
 "texture": SubResource("AtlasTexture_v6u0b")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Carrera",
 "speed": 12.0
 }, {
@@ -268,7 +268,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y4gxn")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Dead",
 "speed": 5.0
 }, {
@@ -288,7 +288,7 @@ animations = [{
 "duration": 0.8,
 "texture": SubResource("AtlasTexture_l3kvh")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 5.0
 }]
@@ -614,7 +614,7 @@ stream = ExtResource("10_b5851")
 volume_db = 28.235
 unit_size = 37.91
 max_db = 6.0
-pitch_scale = 0.74
+pitch_scale = 0.59
 autoplay = true
 max_distance = 12.0
 bus = &"Ambientales"
