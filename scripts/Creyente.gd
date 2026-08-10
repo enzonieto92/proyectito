@@ -136,7 +136,6 @@ func _interrumpir_y_knockback() -> void:
 	if animation_player.animation_finished.is_connected(_on_attack_finished):
 		animation_player.animation_finished.disconnect(_on_attack_finished)
 	animation_player.stop()
-
 	_atacando_cooldown = false
 	_en_cooldown = false
 	atacando = false

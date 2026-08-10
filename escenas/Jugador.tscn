@@ -932,7 +932,7 @@ script = ExtResource("1_hqtel")
 fov_zoom = 45.0
 zoom_velocidad = 8.0
 corrupcion = 5
-stamina = 400.0
+stamina = 300.0
 vida_max = 75.0
 ritual_completo = true
 

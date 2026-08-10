@@ -94,7 +94,7 @@ func on_anticipacion_completa():
 		boost_daño_activo = true  # ← se activa la carga
 		player.animacion_arma()
 		anim_tree["parameters/TimeScale_ataque/scale"] = 0.0
-	elif player.arma != null:
+	elif is_instance_valid(player.arma):
 		player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)
 
 func _process(_delta: float) -> void:
@@ -138,8 +138,9 @@ func _process(_delta: float) -> void:
 	if esperando_soltar:
 		if not Input.is_action_pressed("atacar"):
 			esperando_soltar = false
-			anim_tree["parameters/TimeScale_ataque/scale"] = 1.5
-			player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)  # ← gasto al soltar
+			anim_tree["parameters/TimeScale_ataque/scale"] = 1.3
+			if is_instance_valid(player.arma):
+				player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)  # ← gasto al soltar
 		return
 
 	var bloqueando = Input.is_action_pressed("bloquear")
@@ -187,6 +188,8 @@ func _manejar_rebote(progreso: float) -> bool:
 
 	return false
 func play_attack_animation():
+	if not is_instance_valid(player.arma):
+		return
 	var tipo = player.arma.tipo
 
 	animaciones_arma = ANIMACIONES_POR_TIPO.get(tipo, ["atacar"])
