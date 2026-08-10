@@ -73,6 +73,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if _en_stun:
+		animation_player.stop()
 		_stun_timer -= delta
 		velocity.x = 0
 		velocity.z = 0
@@ -126,16 +127,20 @@ func chase_behavior() -> void:
 	velocity.x = dir.x * speed
 	velocity.z = dir.z * speed
 
-func recibir_damage(_damage, _relentizacion) -> void:
-	_interrumpir_y_knockback()
+func recibir_damage(_damage, _relentizacion, con_boost: bool = false) -> void:
+	if died or vida <= 0.0:
+		return
+	_interrumpir_y_knockback(con_boost)
 	recibio_damage = true
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE
 	sonido_golpe.play()
-func _interrumpir_y_knockback() -> void:
+
+func _interrumpir_y_knockback(con_boost: bool = false) -> void:
 	if animation_player.animation_finished.is_connected(_on_attack_finished):
 		animation_player.animation_finished.disconnect(_on_attack_finished)
 	animation_player.stop()
+	raycast_enemigo.enabled = false
 	_atacando_cooldown = false
 	_en_cooldown = false
 	atacando = false
@@ -148,6 +153,9 @@ func _interrumpir_y_knockback() -> void:
 		knock_dir = -transform.basis.z
 
 	knockback_velocity = knock_dir * knockback_force
+	if con_boost:
+		print("empujando con boost")
+		knockback_velocity *= 1.7
 	_en_knockback = true
 	_knockback_timer = knockback_duration
 	velocity.y = knockback_lift  # ← el "salto" del knockback
@@ -226,7 +234,7 @@ func _agregar(_player) -> void:
 	_agregando = false
 
 func attack_behavior() -> void:
-	if _atacando_cooldown:
+	if _atacando_cooldown or vida <= 0 or died:
 		return
 
 	_atacando_cooldown = true

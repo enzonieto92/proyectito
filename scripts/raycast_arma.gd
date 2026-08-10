@@ -25,16 +25,15 @@ func _process(_delta: float) -> void:
 		return
 	var collider = get_collider()
 	print(collider)
-
 	# Boost de daño por golpe cargado (anticipación completa + mantenido)
-	var multiplicador = 1.7 if animaciones.boost_daño_activo else 1.0
+	var boost_activo = animaciones.boost_daño_activo
+	var multiplicador = 1.7 if boost_activo else 1.0
 	
 	animaciones.boost_daño_activo = false  # se consume en el primer impacto, sea enemigo, pared o madera
-
 	# Primero procesás el hit, DESPUÉS desactivás
 	if collider.is_in_group("enemigos") and not golpeando_enemigo:
 		var daño_aplicado = jugador.total_damage * multiplicador
-		collider.recibir_damage(daño_aplicado, false)
+		collider.recibir_damage(daño_aplicado, false, boost_activo)
 		var sangre = SANGRE.instantiate()
 		get_tree().root.add_child(sangre)
 		sangre.global_position = get_collision_point()

@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://c52j8elh4bk6f" path="res://texturas/sangre.png" id="8_0ymqe"]
 [ext_resource type="AudioStream" uid="uid://cjv6cjh0wdmoo" path="res://sonido/jadeo.mp3" id="9_huxnx"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_u3e3u"]
-height = 1.626648
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4dgi"]
 radius = 0.3
+height = 1.8339844
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_522ny"]
 atlas = ExtResource("2_u3e3u")
@@ -78,7 +78,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ay6ho")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Ataque",
 "speed": 5.0
 }, {
@@ -95,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n81jx")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Carrera",
 "speed": 12.0
 }, {
@@ -109,7 +109,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qivbk")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Dead",
 "speed": 5.0
 }, {
@@ -123,7 +123,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y0xgi")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 5.0
 }]
@@ -365,8 +365,8 @@ max_damage = 19.0
 min_damage = 21.0
 
 [node name="coll_guardia" type="CollisionShape3D" parent="." unique_id=2015585413]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062083483, -0.03152466, 0)
-shape = SubResource("CylinderShape3D_u3e3u")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062083483, -0.11453247, 0)
+shape = SubResource("CapsuleShape3D_d4dgi")
 
 [node name="sprite_enemy" type="AnimatedSprite3D" parent="." unique_id=464011000]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.012036435, 0)

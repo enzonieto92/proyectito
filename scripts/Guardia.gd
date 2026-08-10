@@ -154,14 +154,14 @@ func chase_behavior() -> void:
 	velocity.z = dir.z * speed
 
 
-func recibir_damage(_damage, _reletizacion) -> void:
+func recibir_damage(_damage, _reletizacion, con_boost: bool = false) -> void:
 	recibio_damage = true
 	vida -= int(randf_range(_damage.x, _damage.y))
 	sonido_golpe.stream = ESPADA_GOLPE
 	sonido_golpe.play()
-	_interrumpir_y_knockback()
+	_interrumpir_y_knockback(con_boost)
 
-func _interrumpir_y_knockback() -> void:
+func _interrumpir_y_knockback(con_boost: bool = false) -> void:
 	if vida <= 0.0:
 		return  # si ya murió con este golpe, dejá que dying_behavior tome el control
 
@@ -184,6 +184,9 @@ func _interrumpir_y_knockback() -> void:
 		knock_dir = -transform.basis.z  # fallback por si están superpuestos
 
 	knockback_velocity = knock_dir * knockback_force
+	if con_boost:
+		print("empujando con boost")
+		knockback_velocity *= 1.7
 	_en_knockback = true
 	_knockback_timer = knockback_duration
 	velocity.y = knockback_lift
@@ -240,12 +243,13 @@ func _agregar(_player) -> void:
 		return
 
 	var item_a_agregar = item
-	item = null
 
 	if await _player.inventario_controller.agregar_item(item_a_agregar):
-		pass
-	var area = get_node_or_null("area_deteccion")
-	area.queue_free()
+		item = null
+		var area = get_node_or_null("area_deteccion")
+		if is_instance_valid(area):
+			area.queue_free()
+
 	_agregando = false
 func dying_behavior() -> void:
 	if dying_started:

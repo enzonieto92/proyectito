@@ -36,6 +36,8 @@ var _efecto_activo_anterior: bool = false
 @export var fov_zoom: float = 35.0
 @export var zoom_velocidad: float = 4.0
 @export var corrupcion : int
+@export var stick_sensitivity: float = 3.0  # rad/seg, ajustá a gusto
+@export var stick_deadzone: float = 0.2
 var instruccion : RichTextLabel
 var corrupcion_max: int
 var _timer_corrupcion: float = 0.0
@@ -125,6 +127,7 @@ signal inventario_abierto_changed(abierto: bool)
 # -------------------------
 # ARMADURA
 # -------------------------
+
 func romper_arma():
 	inventario_controller.slot_mano_derecha.romper_arma()
 	var stream = AudioStreamPlayer.new()
@@ -179,7 +182,7 @@ func cambiar_pitch_swing():
 
 func _ready():
 	instruccion = get_tree().get_first_node_in_group("texto_instruccion")
-	instruccion.show_text("Usa WASD para moverte", 4)
+	instruccion.show_text(TextosInput.obtener_texto_movimiento(), 4)
 	corrupcion_max = corrupcion 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	STAMINA_MAX_REGEN = stamina 
@@ -469,6 +472,22 @@ func _process(delta):
 	if muerto:
 		return
 
+	# --- Cámara con stick derecho del mando ---
+	if not inventario_abierto:
+		var stick_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+		var stick_y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+
+		if abs(stick_x) < stick_deadzone:
+			stick_x = 0.0
+		if abs(stick_y) < stick_deadzone:
+			stick_y = 0.0
+
+		if stick_x != 0.0 or stick_y != 0.0:
+			rotate_y(-stick_x * stick_sensitivity * delta)
+			pitch -= stick_y * stick_sensitivity * delta
+			pitch = clamp(pitch, deg_to_rad(-50), deg_to_rad(50))
+			camera.rotation.x = pitch
+
 	# regen corrupcion
 	var efecto_activo = is_instance_valid(efecto_magia) and efecto_magia._activo
 	if _efecto_activo_anterior and not efecto_activo:
@@ -604,23 +623,23 @@ func pantalla_muerte():
 # -------------------------
 
 func _calcular_texto_interaccion() -> String:
+	var tecla = TextosInput.obtener_texto_accion("interactuar")
 	if objeto_actual.is_in_group("puertas"):
-		return "(E) Cerrar" if objeto_actual.abierta else "(E) Abrir"
+		return "(%s) Cerrar" % tecla if objeto_actual.abierta else "(%s) Abrir" % tecla
 	elif objeto_actual.is_in_group("hoja_papel"):
-		return "(E) Leer"
+		return "(%s) Leer" % tecla
 	elif objeto_actual.is_in_group("silla"):
-		return "(E) Investigar"
+		return "(%s) Investigar" % tecla
 	elif objeto_actual.is_in_group("recogibles"):
-		return "(E) Agarrar"
+		return "(%s) Agarrar" % tecla
 	elif objeto_actual.is_in_group("estatua"):
 		if objeto_actual.daga_colocada:
-			return "(E) Cortarse"
+			return "(%s) Cortarse" % tecla
 		elif arma != null and arma.nombre == "Daga Ritual":
-			return "(E) Colocar"
+			return "(%s) Colocar" % tecla
 		else:
-			return "(E) Inspeccionar"
-	return "(E) Interactuar"
-
+			return "(%s) Inspeccionar" % tecla
+	return "(%s) Interactuar" % tecla
 # -------------------------
 # PASOS
 # -------------------------

@@ -140,7 +140,7 @@ func _process(_delta: float) -> void:
 			esperando_soltar = false
 			anim_tree["parameters/TimeScale_ataque/scale"] = 1.3
 			if is_instance_valid(player.arma):
-				player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)  # ← gasto al soltar
+				player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)
 		return
 
 	var bloqueando = Input.is_action_pressed("bloquear")
