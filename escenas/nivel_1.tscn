@@ -34,12 +34,18 @@ metadata/_snap_enabled = true
 [sub_resource type="Theme" id="Theme_78vvm"]
 default_font_size = 0
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nsmuk"]
+sky_curve = 6.333626
+ground_bottom_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_rvmkx"]
+sky_material = SubResource("ProceduralSkyMaterial_nsmuk")
+
 [sub_resource type="Environment" id="Environment_70khi"]
-ambient_light_source = 1
-fog_enabled = true
+background_color = Color(0.81, 0.024299977, 0.063585125, 1)
+sky = SubResource("Sky_rvmkx")
 fog_light_color = Color(0.107683234, 0.11902692, 0.14171797, 1)
 adjustment_enabled = true
-adjustment_brightness = 1.23
 
 [node name="escena principal" type="Node3D" unique_id=1018523294]
 script = ExtResource("1_hvxa3")

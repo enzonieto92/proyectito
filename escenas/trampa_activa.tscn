@@ -171,6 +171,7 @@ mesh = SubResource("BoxMesh_yk5qb")
 libraries/ = SubResource("AnimationLibrary_c2ax5")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=851402408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.047501817, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=61037018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17657498, 0.0056762695)

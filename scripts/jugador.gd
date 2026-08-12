@@ -3,7 +3,7 @@ extends CharacterBody3D
 const HIT_METAL = preload("uid://n3w8dyh66sy4")
 const BLOCK = preload("uid://ck6u42udbwsfj")
 const SONIDO_INVENTARIO = preload("uid://sv0vn5stawc6")
-
+var tiempo_transcurrido := 0.0  # en segundos
 const ROMPER_ARMA = preload("uid://4pmoh7khh4al")
 
 var primer_movimiento := false 
@@ -382,33 +382,33 @@ func _physics_process(delta):
 		shape.height = lerp(shape.height, 0.75, 25 * delta)
 		collision.position.y = lerp(collision.position.y, 1.28, 25 * delta)
 	else:
-		raycast_escaleras.position.y = .25
-		if forzar_agachado:
-			var puede_pararse = true
-			raycast_escaleras.disabled = false
-			var offsets = [
-				Vector3.ZERO,
-				Vector3(0.2, 0, 0),
-				Vector3(-0.2, 0, 0),
-				Vector3(0, 0, 0.2),
-				Vector3(0, 0, -0.2),
-			]
-			for offset in offsets:
-				var t = global_transform
-				t.origin += offset
-				if test_move(t, Vector3.UP * 1.0):
-					puede_pararse = false
-					break
-			if puede_pararse:
-				forzar_agachado = false
-
-		if forzar_agachado:
-			shape.height = 0.75
-			collision.position.y = 1.28
-		else:
-			if shape.height < 1.75:
-				shape.height = lerp(shape.height, 1.8, 15 * delta)
-				collision.position.y = lerp(collision.position.y, 0.881, 25 * delta)
+			if forzar_agachado:
+				var puede_pararse = true
+				raycast_escaleras.disabled = false
+				var offsets = [
+					Vector3.ZERO,
+					Vector3(0.2, 0, 0),
+					Vector3(-0.2, 0, 0),
+					Vector3(0, 0, 0.2),
+					Vector3(0, 0, -0.2),
+				]
+				for offset in offsets:
+					var t = global_transform
+					t.origin += offset
+					if test_move(t, Vector3.UP * 1.0):
+						puede_pararse = false
+						break
+				if puede_pararse:
+					forzar_agachado = false
+			if forzar_agachado:
+				raycast_escaleras.position.y = 1.28
+				shape.height = 0.75
+				collision.position.y = 1.28
+			else:
+				raycast_escaleras.position.y = .25
+				if shape.height < 1.75:
+					shape.height = lerp(shape.height, 1.8, 15 * delta)
+					collision.position.y = lerp(collision.position.y, 0.881, 25 * delta)
 	_actualizar_velocidad(delta)
 
 	if Input.is_action_just_pressed("saltar") and is_on_floor() and not inventario_abierto and stamina > 30:
@@ -471,7 +471,13 @@ func _empujar_rigidos():
 				direccion.y = 0  # ignorar eje Y
 				cuerpo.apply_central_impulse(direccion * fuerza)
 func _process(delta):
-	get_tree().get_first_node_in_group("test_ui").text =  "stamina: " + str(int(stamina)) + "    corrupcion: " + str(corrupcion)
+	tiempo_transcurrido += delta
+	
+	var horas = int(tiempo_transcurrido) / 3600
+	var minutos = (int(tiempo_transcurrido) % 3600) / 60
+	var segundos = int(tiempo_transcurrido) % 60
+	
+	get_tree().get_first_node_in_group("test_ui").text = "%02d:%02d:%02d hs" % [horas, minutos, segundos]
 	if is_instance_valid(rb_muerte) and _vida_muerto:
 		global_transform = rb_muerte.global_transform
 	if not _vida_muerto and vida <= 0:

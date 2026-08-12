@@ -10,7 +10,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esx3n"]
 resource_name = "paredes"
-cull_mode = 2
 albedo_texture = ExtResource("1_xhsgp")
 texture_filter = 2
 

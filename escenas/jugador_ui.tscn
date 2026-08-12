@@ -162,7 +162,6 @@ show_percentage = false
 script = ExtResource("3_bt4of")
 
 [node name="test_ui" type="Label" parent="." unique_id=303847167 groups=["test_ui"]]
-visible = false
 offset_left = 846.0
 offset_top = 44.0
 offset_right = 1084.0
