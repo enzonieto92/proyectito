@@ -9,6 +9,7 @@ var spawning := false
 var instruccion : RichTextLabel
 var defendiendo: bool = false
 var esperando_soltar := false
+
 var boost_daño_activo := false
 const MULTIPLICADOR_BOOST: float = 1.7
 const ANIMACIONES_POR_TIPO = {
@@ -114,6 +115,7 @@ func _process(_delta: float) -> void:
 			spawning = false
 			animacion_en_curso = false
 			player.puede_correr = true
+			player.puede_mirar = true
 		return  # ← no procesar nada más mientras spawna
 
 		# detectar fin de animación normal

@@ -2,12 +2,14 @@ extends CharacterBody3D
 @onready var sonido_secundaria: AudioStreamPlayer = $pivote_secundaria/posicion_secundaria/sprite_secundaria/sonido_secundaria
 const HIT_METAL = preload("uid://n3w8dyh66sy4")
 const BLOCK = preload("uid://ck6u42udbwsfj")
+const SONIDO_INVENTARIO = preload("uid://sv0vn5stawc6")
 
 const ROMPER_ARMA = preload("uid://4pmoh7khh4al")
 
 var primer_movimiento := false 
 var primer_zoom := false
 var stamina_base: float  # el máximo "de fábrica", sin bonos
+@onready var raycast_escaleras: CollisionShape3D = $raycast_escaleras
 
 @onready var inventario_ui: Control = get_tree().get_first_node_in_group("inventario_ui")
 @onready var inventario_controller: Node = get_tree().get_first_node_in_group("inventario_controller")
@@ -30,6 +32,8 @@ var stamina_base: float  # el máximo "de fábrica", sin bonos
 @onready var panel_blur: Control = get_tree().get_first_node_in_group("background_inventario")
 @onready var luz_antorcha: Node3D = $pivote_secundaria/posicion_secundaria/luz_antorcha
 @onready var sonido_stamina: AudioStreamPlayer3D = $sonido_stamina
+@onready var sfx_inventario: AudioStreamPlayer3D = $"SFX inventario"
+
 @onready var efecto_magia = get_tree().get_first_node_in_group("efecto_magia")
 var _efecto_activo_anterior: bool = false
 @export var fov_normal: float = 75.0
@@ -46,6 +50,7 @@ const VELOCIDAD_DESGASTE: float = 1.0
 const JUMP_VELOCITY = 3.5
 const HECHIZO_COOLDOWN = 3
 var gasto_stamina_salto :float = 50.0
+var puede_mirar : bool = false
 const mouse_sensitivity = 0.002
 const SPEED_NORMAL: float = 1.2
 var SPEED_BOTAS: float = 0.0
@@ -86,6 +91,7 @@ var rebotar_golpe = false
 var inventario_abierto: bool = false:
 	set(value):
 		inventario_abierto = value
+		
 		inventario_abierto_changed.emit(value)
 var moving = false
 var corriendo = false
@@ -255,6 +261,9 @@ var instruccion_visible_antes := false
 var instruccion_texto_guardado
 func _unhandled_input(event):
 	if event.is_action_pressed("Inventario"):
+		sfx_inventario.max_db = -5.0
+		sfx_inventario.stream = SONIDO_INVENTARIO
+		sfx_inventario.play()
 		if inventario_ui.visible:
 			cerrar_inventario()
 		else:
@@ -287,7 +296,7 @@ func _unhandled_input(event):
 				instruccion.ocultar()
 			lanzar_hechizo()
 
-	if event is InputEventMouseMotion and not inventario_abierto:
+	if event is InputEventMouseMotion and not inventario_abierto and puede_mirar:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		pitch -= event.relative.y * mouse_sensitivity
 		pitch = clamp(pitch, deg_to_rad(-50), deg_to_rad(50))
@@ -366,15 +375,17 @@ func _physics_process(delta):
 			obj = obj.get_parent()
 		if is_instance_valid(obj) and obj.has_method("puede_interactuar") and obj.puede_interactuar():
 			objeto_actual = obj
-
 	if Input.is_action_pressed("agacharse"):
+		raycast_escaleras.position.y = 1.28
 		puede_correr = false
 		forzar_agachado = true
 		shape.height = lerp(shape.height, 0.75, 25 * delta)
 		collision.position.y = lerp(collision.position.y, 1.28, 25 * delta)
 	else:
+		raycast_escaleras.position.y = .25
 		if forzar_agachado:
 			var puede_pararse = true
+			raycast_escaleras.disabled = false
 			var offsets = [
 				Vector3.ZERO,
 				Vector3(0.2, 0, 0),
@@ -473,7 +484,7 @@ func _process(delta):
 		return
 
 	# --- Cámara con stick derecho del mando ---
-	if not inventario_abierto:
+	if not inventario_abierto and puede_mirar:
 		var stick_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
 		var stick_y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
 

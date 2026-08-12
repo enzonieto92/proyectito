@@ -74,6 +74,7 @@ texto_plano=""
 textura_jugador=""
 texto_ritual=""
 test_ui=""
+escaleras=""
 
 [importer_defaults]
 

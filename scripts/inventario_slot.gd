@@ -289,10 +289,13 @@ func _intentar_equipar():
 		inventario.slot_secundaria.equipar(item)
 	elif item is Consumible:
 		var jugador = get_tree().get_first_node_in_group("jugador")
+		var SONIDO_COMIENDO = preload("res://sonido/comiendo.mp3")
 		jugador.vida = min(jugador.vida + item.curacion, jugador.vida_max)
 		if item.purga != 0:
 			if jugador.corrupcion < 5:
 				jugador.corrupcion += item.purga
+		sfx_inventario.stream  = SONIDO_COMIENDO
+		sfx_inventario.max_db = 3.0
 		sfx_inventario.play()
 		_hover_item(item, item.grid_pos, false)
 		inventario.remover_item(item, item.grid_pos)
