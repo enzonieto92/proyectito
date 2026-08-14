@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://2w1wkxecn551" path="res://scripts/raycast_arma.gd" id="9_w7fad"]
 [ext_resource type="AudioStream" uid="uid://ck6u42udbwsfj" path="res://sonido/block.mp3" id="10_meqng"]
 [ext_resource type="Script" uid="uid://dnnpg7wv7fkaj" path="res://scripts/rrotacion_fuego.gd" id="11_op6lh"]
+[ext_resource type="Texture2D" uid="uid://cj3fvxl3k6p0l" path="res://texturas/particulas_fuego.png" id="11_pvtpb"]
 [ext_resource type="AudioStream" uid="uid://b85yvwdf6vmsc" path="res://sonido/sonido_antorcha.mp3" id="12_ko7k4"]
 [ext_resource type="AudioStream" uid="uid://bieasjlwea40r" path="res://sonido/comiendo.mp3" id="13_ddw1h"]
 [ext_resource type="AudioStream" uid="uid://cjv6cjh0wdmoo" path="res://sonido/jadeo.mp3" id="16_ko7k4"]
@@ -712,6 +713,11 @@ _data = {
 &"spawn": SubResource("Animation_op6lh")
 }
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1pbyf"]
+auto_exposure_enabled = true
+auto_exposure_speed = 4.14
+auto_exposure_min_sensitivity = 46.83
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op6lh"]
 radius = 0.3
 height = 1.75
@@ -720,20 +726,20 @@ height = 1.75
 offsets = PackedFloat32Array(0.10743801, 1)
 colors = PackedColorArray(0.93333334, 0.6156863, 0, 1, 1, 0, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8mb8e"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pvtpb"]
 gradient = SubResource("Gradient_pvtpb")
 
 [sub_resource type="Curve" id="Curve_ooj51"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.3595506), -0.6404494, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_vd02i"]
+[sub_resource type="CurveTexture" id="CurveTexture_ooj51"]
 curve = SubResource("Curve_ooj51")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ghhxw"]
 emission_shape_scale = Vector3(0.075, 0.075, 0.075)
 emission_shape = 1
-emission_sphere_radius = 1.0
+emission_sphere_radius = 0.5
 angular_velocity_min = -720.0
 angular_velocity_max = -720.0
 orbit_velocity_min = 9.49949e-08
@@ -743,13 +749,15 @@ tangential_accel_min = -2.2351742e-06
 tangential_accel_max = -2.2351742e-06
 scale_min = 0.5
 scale_max = 2.0
-scale_curve = SubResource("CurveTexture_vd02i")
+scale_curve = SubResource("CurveTexture_ooj51")
 color = Color(0.5890956, 0.5890956, 0.5890956, 1)
-color_ramp = SubResource("GradientTexture1D_8mb8e")
+color_ramp = SubResource("GradientTexture1D_pvtpb")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njpig"]
-shading_mode = 0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghhxw"]
+transparency = 1
 vertex_color_use_as_albedo = true
+albedo_color = Color(1.753959, 1.753959, 1.753959, 1)
+albedo_texture = ExtResource("11_pvtpb")
 texture_filter = 0
 texture_repeat = false
 billboard_mode = 3
@@ -757,9 +765,10 @@ billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
+grow_amount = 0.85
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bxkub"]
-material = SubResource("StandardMaterial3D_njpig")
+material = SubResource("StandardMaterial3D_ghhxw")
 size = Vector2(0.05, 0.05)
 orientation = 2
 
@@ -951,6 +960,7 @@ script = ExtResource("5_lctvp")
 
 [node name="camara_player" type="Camera3D" parent="camara_controller" unique_id=219131178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47499, 0)
+attributes = SubResource("CameraAttributesPractical_1pbyf")
 near = 0.001
 far = 38.0
 
@@ -963,9 +973,8 @@ debug_shape_thickness = 1
 [node name="SpotLight3D" type="SpotLight3D" parent="camara_controller/camara_player" unique_id=2060468858]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022611976, 0.28595096)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.4
-light_volumetric_fog_energy = 9.0
-spot_range = 3.5
+light_energy = 0.1
+spot_range = 6.31
 spot_angle = 79.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050647144]
@@ -989,7 +998,7 @@ transform = Transform3D(0.8066225, -0.16035499, -0.5688986, 0.44194627, 0.802745
 transform = Transform3D(0.99999976, 0, 0, 0, 0.9999987, 5.9604645e-08, 0, -2.9802322e-08, 0.99999976, 0, 0, 0)
 layers = 2
 flip_h = true
-modulate = Color(1, 0.6745098, 0.32941177, 1)
+modulate = Color(0.36862746, 0.2509804, 0.12156863, 1)
 no_depth_test = true
 texture_filter = 0
 render_priority = 10
@@ -1034,15 +1043,15 @@ transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, -0.3
 visible = false
 
 [node name="GPUParticlesAttractorVectorField3D" type="GPUParticlesAttractorVectorField3D" parent="pivote_secundaria/posicion_secundaria/luz_antorcha" unique_id=1936681915]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.048659295, 0.55257356, 0.0040066615)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.048659295, 0.52106595, 0.004006654)
 strength = 0.8
 directionality = 1.0
 size = Vector3(0.21613282, 0.133125, 0.7390479)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="pivote_secundaria/posicion_secundaria/luz_antorcha" unique_id=627144010]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036951512, 0.20023945, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017871872, 0.18063402, 0.046623558)
 layers = 8
-amount = 5
+amount = 10
 lifetime = 0.5
 speed_scale = 2.0
 visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
@@ -1050,12 +1059,13 @@ process_material = SubResource("ParticleProcessMaterial_ghhxw")
 draw_pass_1 = SubResource("PlaneMesh_bxkub")
 
 [node name="empty" type="Node3D" parent="pivote_secundaria/posicion_secundaria/luz_antorcha" unique_id=1440645351]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.070538044, 0.2745093, 0.021003038)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09537858, 0.19301093, 0.030570582)
 script = ExtResource("11_op6lh")
 
 [node name="SpotLight3D" type="OmniLight3D" parent="pivote_secundaria/posicion_secundaria/luz_antorcha/empty" unique_id=1451255691]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.06910809, 0, 0.011)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.011, 0, 0.011)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
+light_energy = 0.2
 light_size = 0.2
 shadow_enabled = true
 shadow_blur = 0.0
@@ -1090,7 +1100,7 @@ bus = &"Ambientales"
 transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0, 0, 0)
 layers = 2
 flip_h = true
-modulate = Color(1, 0.6745098, 0.3254902, 1)
+modulate = Color(0.36862746, 0.2509804, 0.12156863, 1)
 no_depth_test = true
 texture_filter = 0
 render_priority = 10

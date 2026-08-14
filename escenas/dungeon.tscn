@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dq58nr6bqqdr3" path="res://objetos glb/wall-chunks_piso_mazmorra-normales.png" id="9_rqmer"]
 [ext_resource type="Texture2D" uid="uid://dhvonomjwrwk0" path="res://texturas/Bandera-simbolo.png" id="9_wd44k"]
 [ext_resource type="Texture2D" uid="uid://cbnowbj5nxo6t" path="res://objetos glb/wall-chunks_Jaulatortura_textura-antorcha.png" id="10_va0ka"]
+[ext_resource type="PackedScene" uid="uid://dpi27cop6bdm6" path="res://escenas/puertas.tscn" id="11_8n6pm"]
 [ext_resource type="PackedScene" uid="uid://bqvgrcqxl00ha" path="res://escenas/escudo.tscn" id="12_7pjiq"]
 [ext_resource type="Texture2D" uid="uid://c52j8elh4bk6f" path="res://texturas/sangre.png" id="13_61nbk"]
 [ext_resource type="PackedScene" uid="uid://bd06igfxy3273" path="res://escenas/altar_secreto.tscn" id="13_hc4sh"]
@@ -310,7 +311,7 @@ size = Vector2(4, 4)
 [node name="mazmorra" type="Node3D" unique_id=1761309701]
 
 [node name="player" parent="." unique_id=349492156 instance=ExtResource("21_ovxel")]
-transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, 0.79150677, -0.12472594, -0.46618062)
+transform = Transform3D(-0.9653635, 0, 0.26090887, 0, 1, 0, -0.26090887, 0, -0.9653635, 0, 0, 0)
 ritual_completo = false
 
 [node name="objeto" parent="." unique_id=86986954 instance=ExtResource("8_mnaqj")]
@@ -349,6 +350,9 @@ mesh = SubResource("ArrayMesh_oj3h6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Mapa/escaleras/StaticBody3D" unique_id=120530619]
 shape = SubResource("ConcavePolygonShape3D_l6mtd")
 
+[node name="puertas" parent="NavigationRegion3D/Mapa" unique_id=423622730 instance=ExtResource("11_8n6pm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -41, 7, -49)
+
 [node name="decoracion" type="Node3D" parent="NavigationRegion3D" unique_id=1009839208 groups=["navegable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
 
@@ -367,15 +371,15 @@ transform = Transform3D(0.0023208882, 0.99999726, -6.5683407e-06, -4.0013238e-05
 transform = Transform3D(1, 0, 0, 0, 0.056535915, -0.9984005, 0, 0.9984005, 0.056535915, 0.059606552, -0.074588776, -1.9364599)
 
 [node name="bandera_sala2" parent="NavigationRegion3D/decoracion/otros" unique_id=823847478 instance=ExtResource("22_01jbd")]
-transform = Transform3D(-1, -8.742277e-08, 3.8213705e-15, 0, -4.3711385e-08, -0.99999994, 8.742278e-08, -0.99999994, 4.3711385e-08, -8.677977, -0.09489989, -1.0821873)
+transform = Transform3D(-1, -8.742277e-08, 3.8213705e-15, 0, -4.3711385e-08, -0.99999994, 8.742278e-08, -0.99999994, 4.3711385e-08, -7.984556, -0.09489989, -1.0821873)
 mesh = SubResource("PlaneMesh_5d7mv")
 surface_material_override/0 = SubResource("StandardMaterial3D_i7cfy")
 
 [node name="bandera_sala3" parent="NavigationRegion3D/decoracion/otros" unique_id=1964462021 instance=ExtResource("22_01jbd")]
-transform = Transform3D(-1, -8.742277e-08, 3.8213705e-15, 0, -4.3711385e-08, -0.99999994, 8.742278e-08, -0.99999994, 4.3711385e-08, -12.022581, -0.09489989, -1.0000325)
+transform = Transform3D(-1, -8.742277e-08, 3.8213705e-15, 0, -4.3711385e-08, -0.99999994, 8.742278e-08, -0.99999994, 4.3711385e-08, -12.852732, -0.09489989, -1.0000324)
 
 [node name="camadepaja" parent="NavigationRegion3D/decoracion/otros" unique_id=1536594149 instance=ExtResource("22_jxelf")]
-transform = Transform3D(-0.26130915, 0, -1.5529045, 0, 1, 0, 1.0530634, 0, -0.38534063, 10.461296, -1.4457946, -0.57947814)
+transform = Transform3D(-0.26130915, 0, -1.5529045, 0, 1, 0, 1.0530634, 0, -0.38534063, 10.132248, -1.4457946, -0.015388191)
 
 [node name="camadepaja2" parent="NavigationRegion3D/decoracion/otros" unique_id=1082613343 instance=ExtResource("22_jxelf")]
 transform = Transform3D(0.99345076, 0, 0.18167493, 0, 1, 0, -0.11426096, 0, 1.5795867, 4.7653303, -1.4585595, -0.68987477)
@@ -549,13 +553,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.913607, 0.27105558, -10.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.913607, 0.27105558, -6.420098)
 
 [node name="antorcha39" parent="NavigationRegion3D/decoracion/antorchas" unique_id=1863593399 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.382851, 0.27100003, -1.082)
-
-[node name="antorcha40" parent="NavigationRegion3D/decoracion/antorchas" unique_id=474618248 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.428974, 0.27105558, -1.0821006)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.455799, 0.27100003, -1.082)
 
 [node name="antorcha41" parent="NavigationRegion3D/decoracion/antorchas" unique_id=500948143 instance=ExtResource("5_7wc3a")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.559774, 0.27105558, -1.0821006)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.475739, 0.27105558, -1.0821006)
 
 [node name="antorcha35" parent="NavigationRegion3D/decoracion/antorchas" unique_id=585630169 instance=ExtResource("5_7wc3a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.913607, 0.27105558, -14.507675)
@@ -1206,11 +1207,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8772306, -1.5195132, -35.35
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2864017, -1.5367775, -32.319786)
 
 [node name="vegetacion" parent="." unique_id=465019817 instance=ExtResource("39_mtgmj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.745758, 0.4280932, -1.1116793)
+transform = Transform3D(0.715, 0, 0, 0, 0.715, 0, 0, 0, 0.715, -20.462986, 0.7953074, -1.1116793)
 mesh = SubResource("QuadMesh_on58t")
 
 [node name="vegetacion2" parent="." unique_id=2133885897 instance=ExtResource("39_mtgmj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.073544, 0.4280932, -1.1116793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.92932, -0.0059767365, -1.1116793)
 
 [node name="vegetacion3" parent="." unique_id=173960785 instance=ExtResource("34_0r45r")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.121899, 0.18802202, -6.165378)
@@ -1240,5 +1241,5 @@ transform = Transform3D(-0.740828, 0, -0.6716948, 0, 1, 0, 0.6716948, 0, -0.7408
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.310511, -0.5900421, -47.567432)
 
 [node name="jefe_final" parent="." unique_id=1030991235 instance=ExtResource("79_o48re")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19.701525, 0.37581092, -49.188103)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16.38061, 0.37581092, -49.188103)
 vida = 400.0

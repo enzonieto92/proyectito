@@ -93,7 +93,7 @@ func on_anticipacion_completa():
 	if Input.is_action_pressed("atacar"):
 		esperando_soltar = true
 		boost_daño_activo = true  # ← se activa la carga
-		player.animacion_arma()
+
 		anim_tree["parameters/TimeScale_ataque/scale"] = 0.0
 	elif is_instance_valid(player.arma):
 		player.stamina = max(0.0, player.stamina - player.arma.gasto_stamina)

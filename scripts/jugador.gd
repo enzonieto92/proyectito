@@ -748,22 +748,3 @@ func pantalla_final():
 			get_tree().change_scene_to_file("res://escenas/escena_principal.tscn") # o credits
 		)
 	)
-func animacion_arma():
-	var sprite = get_tree().get_first_node_in_group("sprite_arma")
-	var sprite2 = get_tree().get_first_node_in_group("sprite_arma_2")
-	if sprite == null or sprite2 == null:
-		return
-
-	var color_original = Color("ffac54")
-	var color_flash = Color.WHITE
-
-	var tween = create_tween()
-
-	for i in 3:
-		tween.set_parallel(true)
-		tween.tween_property(sprite, "modulate", color_flash, 0.05)
-		tween.tween_property(sprite2, "modulate", color_flash, 0.05)
-
-		tween.chain().set_parallel(true)
-		tween.tween_property(sprite, "modulate", color_original, 0.05)
-		tween.tween_property(sprite2, "modulate", color_original, 0.05)

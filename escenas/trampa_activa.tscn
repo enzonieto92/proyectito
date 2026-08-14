@@ -51,7 +51,6 @@ shadow_mesh = SubResource("ArrayMesh_x120l")
 resource_name = "texturasuelotrampa"
 cull_mode = 2
 albedo_texture = ExtResource("3_uy8cs")
-metallic_specular = 0.0
 normal_enabled = true
 normal_texture = ExtResource("4_fdid8")
 uv1_scale = Vector3(-1, 1, 1)

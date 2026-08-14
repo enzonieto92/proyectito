@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://lleyrog7r1d6" path="res://texturas/walldungeon-completo.png" id="1_8wini"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uaae8"]
-transparency = 1
 albedo_texture = ExtResource("1_8wini")
 uv1_scale = Vector3(0.426, 0.426, 0.426)
 uv1_offset = Vector3(0, 0.623, 0)
