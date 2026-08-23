@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://brr4ygrpdrlm0"]
 
 [ext_resource type="Texture2D" uid="uid://byoem1lmtsgra" path="res://objetos glb/puerta_puerta_Puerta.png" id="1_d4dgi"]
+[ext_resource type="Script" uid="uid://dvb6ava5p3fu3" path="res://scripts/puerta_rota.gd" id="1_lcx6w"]
 [ext_resource type="Texture2D" uid="uid://tsj4ljtws7l2" path="res://objetos glb/puerta_Puerta-normal_map.png" id="2_lcx6w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qn1or"]
@@ -692,6 +693,7 @@ points = PackedVector3Array(-0.021122828, -0.056239247, 0.41405636, 0.021877151,
 [node name="puerta_destruida" type="Node3D" unique_id=1343007449]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=2118725137]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_002" type="MeshInstance3D" parent="RigidBody3D" unique_id=475319115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0120182, 0.29684806)
@@ -702,6 +704,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0120182, 0.29684806)
 shape = SubResource("ConvexPolygonShape3D_lcx6w")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=2083539728]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_003" type="MeshInstance3D" parent="RigidBody3D2" unique_id=429744784]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.68841136, -0.5196709)
@@ -712,6 +715,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.68841136, -0.5196709)
 shape = SubResource("ConvexPolygonShape3D_rr8n7")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="." unique_id=2041856369]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_004_cell" type="MeshInstance3D" parent="RigidBody3D3" unique_id=1633629718]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005296916, 0.58300865, 0.2915519)
@@ -722,6 +726,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005296916, 0.58300865, 0.2
 shape = SubResource("ConvexPolygonShape3D_s2kow")
 
 [node name="RigidBody3D4" type="RigidBody3D" parent="." unique_id=1948736899]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_004_cell_001" type="MeshInstance3D" parent="RigidBody3D4" unique_id=1980700285]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0034612156, 0.14658341, 0.13641223)
@@ -732,6 +737,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0034612156, 0.14658341, 0.
 shape = SubResource("ConvexPolygonShape3D_b47r1")
 
 [node name="RigidBody3D5" type="RigidBody3D" parent="." unique_id=1197498233]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_004_cell_003" type="MeshInstance3D" parent="RigidBody3D5" unique_id=1127381644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012647063, 0.15512866, 0.39919686)
@@ -742,6 +748,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012647063, 0.15512866, 0.3
 shape = SubResource("ConvexPolygonShape3D_ehxl3")
 
 [node name="RigidBody3D6" type="RigidBody3D" parent="." unique_id=954088729]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_004_cell_004" type="MeshInstance3D" parent="RigidBody3D6" unique_id=1395762620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7693747, 0.10593015)
@@ -752,6 +759,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7693747, 0.10593015)
 shape = SubResource("ConvexPolygonShape3D_2mau1")
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="." unique_id=1235935550]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_004_cell_005" type="MeshInstance3D" parent="RigidBody3D7" unique_id=1099287947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02858144, 0.22706307)
@@ -762,6 +770,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02858144, 0.22706307)
 shape = SubResource("ConvexPolygonShape3D_ngcur")
 
 [node name="RigidBody3D8" type="RigidBody3D" parent="." unique_id=990282246]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_001_cell" type="MeshInstance3D" parent="RigidBody3D8" unique_id=1178965358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3594219, 0.3793791)
@@ -772,6 +781,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3594219, 0.3793791)
 shape = SubResource("ConvexPolygonShape3D_60d2e")
 
 [node name="RigidBody3D9" type="RigidBody3D" parent="." unique_id=495974971]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_001_cell_001" type="MeshInstance3D" parent="RigidBody3D9" unique_id=1494774402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012647212, -0.7675943, 0.13584319)
@@ -782,6 +792,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012647212, -0.7675943, 0.1
 shape = SubResource("ConvexPolygonShape3D_qgjax")
 
 [node name="RigidBody3D10" type="RigidBody3D" parent="." unique_id=1232827490]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_001_cell_002" type="MeshInstance3D" parent="RigidBody3D10" unique_id=1071695222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93752205, 0.40468007)
@@ -792,6 +803,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93752205, 0.40468007)
 shape = SubResource("ConvexPolygonShape3D_byhod")
 
 [node name="RigidBody3D11" type="RigidBody3D" parent="." unique_id=2099676041]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_001_cell_003" type="MeshInstance3D" parent="RigidBody3D11" unique_id=2058420249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5586377e-05, -0.5157453, -0.16556154)
@@ -802,6 +814,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5586377e-05, -0.5157453, -
 shape = SubResource("ConvexPolygonShape3D_atrav")
 
 [node name="RigidBody3D12" type="RigidBody3D" parent="." unique_id=129175143]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_001_cell_004" type="MeshInstance3D" parent="RigidBody3D12" unique_id=364106678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00060976297, -0.9935802, -0.12494151)
@@ -812,6 +825,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00060976297, -0.9935802, -
 shape = SubResource("ConvexPolygonShape3D_jlhdn")
 
 [node name="RigidBody3D13" type="RigidBody3D" parent="." unique_id=147043004]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_001_cell_005" type="MeshInstance3D" parent="RigidBody3D13" unique_id=1273237152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0263973, 0.11653757)
@@ -822,6 +836,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0263973, 0.11653757)
 shape = SubResource("ConvexPolygonShape3D_pkqq2")
 
 [node name="RigidBody3D14" type="RigidBody3D" parent="." unique_id=400325455]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_cell" type="MeshInstance3D" parent="RigidBody3D14" unique_id=1406199149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001190722, 1.16818, -0.64347047)
@@ -832,6 +847,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001190722, 1.16818, -0.643
 shape = SubResource("ConvexPolygonShape3D_kv6i2")
 
 [node name="RigidBody3D15" type="RigidBody3D" parent="." unique_id=1950646317]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_cell_001" type="MeshInstance3D" parent="RigidBody3D15" unique_id=466973367]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001920525, 0.0038793683, -0.48337403)
@@ -842,6 +858,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001920525, 0.0038793683, -
 shape = SubResource("ConvexPolygonShape3D_53ay8")
 
 [node name="RigidBody3D16" type="RigidBody3D" parent="." unique_id=1597477616]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_cell_002" type="MeshInstance3D" parent="RigidBody3D16" unique_id=1049200366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6180035, -0.019486636)
@@ -852,6 +869,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6180035, -0.019486636)
 shape = SubResource("ConvexPolygonShape3D_r7wvl")
 
 [node name="RigidBody3D17" type="RigidBody3D" parent="." unique_id=1192496724]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_cell_004" type="MeshInstance3D" parent="RigidBody3D17" unique_id=1753667330]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005620718, 0.19492835, -0.18525511)
@@ -862,6 +880,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005620718, 0.19492835, -0.
 shape = SubResource("ConvexPolygonShape3D_4ld8x")
 
 [node name="RigidBody3D18" type="RigidBody3D" parent="." unique_id=1164083128]
+script = ExtResource("1_lcx6w")
 
 [node name="puerta-col_cell_cell_005" type="MeshInstance3D" parent="RigidBody3D18" unique_id=1524098626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0003771633, 0.79703677, -0.40698826)

@@ -233,7 +233,8 @@ func _on_dying_finished(_anim: String) -> void:
 	if colision:
 		colision.queue_free()
 	colision_muerto.disabled = false
-	player.pantalla_final()
+	
+	#ABRIR PUERTA ESCALERAS!!#ABRIR PUERTA ESCALERAS!!#ABRIR PUERTA ESCALERAS!!#ABRIR PUERTA ESCALERAS!!
 
 func rastrear() -> void:
 	raycast_vision.target_position = to_local(player.global_position + Vector3(0,2,0))

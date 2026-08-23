@@ -26,7 +26,6 @@ texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78vss"]
 resource_name = "techo"
-cull_mode = 2
 albedo_texture = ExtResource("3_223gu")
 texture_filter = 2
 

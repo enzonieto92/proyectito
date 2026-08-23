@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://6w2ulhsscmak" path="res://objetos glb/candelabro_textura-antorcha.png" id="1_snpdx"]
 [ext_resource type="Texture2D" uid="uid://cj3fvxl3k6p0l" path="res://texturas/particulas_fuego.png" id="2_2ua68"]
 [ext_resource type="Script" uid="uid://dnnpg7wv7fkaj" path="res://scripts/rrotacion_fuego.gd" id="2_wr4hb"]
-[ext_resource type="AudioStream" uid="uid://b85yvwdf6vmsc" path="res://sonido/sonido_antorcha.mp3" id="3_2ua68"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sud0"]
 resource_name = "textura-metal"
@@ -77,21 +76,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_apuli")
 
-[sub_resource type="Gradient" id="Gradient_2p0v2"]
+[sub_resource type="Gradient" id="Gradient_wr4hb"]
 offsets = PackedFloat32Array(0.10743801, 1)
 colors = PackedColorArray(0.93333334, 0.6156863, 0, 1, 1, 0, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8mb8e"]
-gradient = SubResource("Gradient_2p0v2")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_abggs"]
+gradient = SubResource("Gradient_wr4hb")
 
-[sub_resource type="Curve" id="Curve_mey8o"]
+[sub_resource type="Curve" id="Curve_2ua68"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.3595506), -0.6404494, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_vd02i"]
-curve = SubResource("Curve_mey8o")
+[sub_resource type="CurveTexture" id="CurveTexture_g0qsl"]
+curve = SubResource("Curve_2ua68")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_br7dp"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2p0v2"]
 emission_shape_scale = Vector3(0.075, 0.075, 0.075)
 emission_shape = 1
 emission_sphere_radius = 0.5
@@ -104,11 +103,11 @@ tangential_accel_min = -2.2351742e-06
 tangential_accel_max = -2.2351742e-06
 scale_min = 0.5
 scale_max = 2.0
-scale_curve = SubResource("CurveTexture_vd02i")
+scale_curve = SubResource("CurveTexture_g0qsl")
 color = Color(0.5890956, 0.5890956, 0.5890956, 1)
-color_ramp = SubResource("GradientTexture1D_8mb8e")
+color_ramp = SubResource("GradientTexture1D_abggs")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njpig"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u66cj"]
 transparency = 1
 vertex_color_use_as_albedo = true
 albedo_color = Color(1.437, 1.437, 1.437, 1)
@@ -122,9 +121,9 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 grow_amount = 0.85
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_osd6m"]
-material = SubResource("StandardMaterial3D_njpig")
-size = Vector2(0.05, 0.05)
+[sub_resource type="PlaneMesh" id="PlaneMesh_mey8o"]
+material = SubResource("StandardMaterial3D_u66cj")
+size = Vector2(0.07, 0.07)
 orientation = 2
 
 [node name="candelabro" type="Node3D" unique_id=2017836575]
@@ -135,178 +134,134 @@ mesh = SubResource("ArrayMesh_vmtsm")
 [node name="antorcha" type="MeshInstance3D" parent="." unique_id=391480059]
 mesh = SubResource("ArrayMesh_ofgx5")
 
-[node name="GPUParticlesAttractorVectorField3D" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=1664773656]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.33112407, 1.1191695, 0.33557975)
-strength = 0.8
-directionality = 1.0
-size = Vector3(0.21613282, 0.133125, 0.7390479)
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=275797027]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31941628, 0.7589235, 0.3315731)
-layers = 8
-amount = 10
-lifetime = 0.5
-speed_scale = 2.0
-visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
-process_material = SubResource("ParticleProcessMaterial_br7dp")
-draw_pass_1 = SubResource("PlaneMesh_osd6m")
-
-[node name="sonido_antorcha" type="AudioStreamPlayer3D" parent="." unique_id=2091358476]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32579404, 0.7387799, 0.34487826)
-stream = ExtResource("3_2ua68")
-volume_db = -22.55
-unit_size = 23.41
-pitch_scale = 0.36
-autoplay = true
-max_distance = 3.5
-bus = &"Ambientales"
-
-[node name="empty" type="Node3D" parent="." unique_id=1433108399]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28246477, 0.7974037, 0.3315731)
+[node name="empty" type="Node3D" parent="." unique_id=275750999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29755285, 0.7539743, -0.29819834)
 script = ExtResource("2_wr4hb")
 
-[node name="SpotLight3D" type="OmniLight3D" parent="empty" unique_id=1194571799]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.06910809, 0, 0.011)
+[node name="SpotLight3D" type="OmniLight3D" parent="empty" unique_id=813053401]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.005, 0, 0.005)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.04
+light_energy = 0.09
 light_size = 0.107
 shadow_enabled = true
 shadow_blur = 0.0
 shadow_caster_mask = 4294967287
 distance_fade_enabled = true
-distance_fade_begin = 19.35
 distance_fade_shadow = 0.5
 omni_range = 4.339
 omni_attenuation = 2.043
 
-[node name="GPUParticlesAttractorVectorField3D2" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=1949391505]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.33112407, 1.1191695, -0.3122275)
-strength = 0.8
+[node name="GPUParticlesAttractorVectorField3D" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=1024567517]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.29746974, 1.0955238, -0.2941917)
+strength = 1.3
 directionality = 1.0
 size = Vector3(0.21613282, 0.133125, 0.7390479)
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=922779065]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31941628, 0.7589235, -0.31623414)
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1228413568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30917752, 0.7352778, -0.29819834)
 layers = 8
 amount = 10
 lifetime = 0.5
 speed_scale = 2.0
 visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
-process_material = SubResource("ParticleProcessMaterial_br7dp")
-draw_pass_1 = SubResource("PlaneMesh_osd6m")
+process_material = SubResource("ParticleProcessMaterial_2p0v2")
+draw_pass_1 = SubResource("PlaneMesh_mey8o")
 
-[node name="sonido_antorcha2" type="AudioStreamPlayer3D" parent="." unique_id=382136483]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32579404, 0.7387799, -0.30292898)
-stream = ExtResource("3_2ua68")
-volume_db = -22.55
-unit_size = 23.41
-pitch_scale = 0.36
-autoplay = true
-max_distance = 3.5
-bus = &"Ambientales"
-
-[node name="empty2" type="Node3D" parent="." unique_id=1142656619]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28246477, 0.7974037, -0.31623414)
+[node name="empty2" type="Node3D" parent="." unique_id=1573010012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33341292, 0.7539743, -0.29819834)
 script = ExtResource("2_wr4hb")
 
-[node name="SpotLight3D" type="OmniLight3D" parent="empty2" unique_id=1453247889]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.06910809, 0, 0.011)
+[node name="SpotLight3D" type="OmniLight3D" parent="empty2" unique_id=1652709796]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.005, 0, 0.005)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.04
+light_energy = 0.09
 light_size = 0.107
 shadow_enabled = true
 shadow_blur = 0.0
 shadow_caster_mask = 4294967287
 distance_fade_enabled = true
-distance_fade_begin = 19.35
 distance_fade_shadow = 0.5
 omni_range = 4.339
 omni_attenuation = 2.043
 
-[node name="GPUParticlesAttractorVectorField3D3" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=1858661278]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.30128682, 1.1191695, -0.3122275)
-strength = 0.8
+[node name="GPUParticlesAttractorVectorField3D2" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=216065809]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.33349603, 1.0955238, -0.2941917)
+strength = 1.3
 directionality = 1.0
 size = Vector3(0.21613282, 0.133125, 0.7390479)
 
-[node name="GPUParticles3D3" type="GPUParticles3D" parent="." unique_id=239083920]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3129946, 0.7589235, -0.31623414)
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=976111602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32178825, 0.7352778, -0.29819834)
 layers = 8
 amount = 10
 lifetime = 0.5
 speed_scale = 2.0
 visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
-process_material = SubResource("ParticleProcessMaterial_br7dp")
-draw_pass_1 = SubResource("PlaneMesh_osd6m")
+process_material = SubResource("ParticleProcessMaterial_2p0v2")
+draw_pass_1 = SubResource("PlaneMesh_mey8o")
 
-[node name="sonido_antorcha3" type="AudioStreamPlayer3D" parent="." unique_id=263099007]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30661684, 0.7387799, -0.30292898)
-stream = ExtResource("3_2ua68")
-volume_db = -22.55
-unit_size = 23.41
-pitch_scale = 0.36
-autoplay = true
-max_distance = 3.5
-bus = &"Ambientales"
-
-[node name="empty3" type="Node3D" parent="." unique_id=1475342250]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3499461, 0.7974037, -0.31623414)
+[node name="empty3" type="Node3D" parent="." unique_id=659953819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29755285, 0.7539743, 0.33862633)
 script = ExtResource("2_wr4hb")
 
-[node name="SpotLight3D" type="OmniLight3D" parent="empty3" unique_id=1048628152]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.06910809, 0, 0.011)
+[node name="SpotLight3D" type="OmniLight3D" parent="empty3" unique_id=36232012]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.005, 0, 0.005)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.04
+light_energy = 0.09
 light_size = 0.107
 shadow_enabled = true
 shadow_blur = 0.0
 shadow_caster_mask = 4294967287
 distance_fade_enabled = true
-distance_fade_begin = 19.35
 distance_fade_shadow = 0.5
 omni_range = 4.339
 omni_attenuation = 2.043
 
-[node name="GPUParticlesAttractorVectorField3D4" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=867467927]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.30128682, 1.1191695, 0.3374126)
-strength = 0.8
+[node name="GPUParticlesAttractorVectorField3D3" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=1937907219]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.29746974, 1.0955238, 0.34263298)
+strength = 1.3
 directionality = 1.0
 size = Vector3(0.21613282, 0.133125, 0.7390479)
 
-[node name="GPUParticles3D4" type="GPUParticles3D" parent="." unique_id=371399230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3129946, 0.7589235, 0.33340594)
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="." unique_id=1298424446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30917752, 0.7352778, 0.33862633)
 layers = 8
 amount = 10
 lifetime = 0.5
 speed_scale = 2.0
 visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
-process_material = SubResource("ParticleProcessMaterial_br7dp")
-draw_pass_1 = SubResource("PlaneMesh_osd6m")
+process_material = SubResource("ParticleProcessMaterial_2p0v2")
+draw_pass_1 = SubResource("PlaneMesh_mey8o")
 
-[node name="sonido_antorcha4" type="AudioStreamPlayer3D" parent="." unique_id=183249718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30661684, 0.7387799, 0.3467111)
-stream = ExtResource("3_2ua68")
-volume_db = -22.55
-unit_size = 23.41
-pitch_scale = 0.36
-autoplay = true
-max_distance = 3.5
-bus = &"Ambientales"
-
-[node name="empty4" type="Node3D" parent="." unique_id=1898128018]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3499461, 0.7974037, 0.33340594)
+[node name="empty4" type="Node3D" parent="." unique_id=1669087834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33341292, 0.7539743, 0.33862633)
 script = ExtResource("2_wr4hb")
 
-[node name="SpotLight3D" type="OmniLight3D" parent="empty4" unique_id=1827641206]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.06910809, 0, 0.011)
+[node name="SpotLight3D" type="OmniLight3D" parent="empty4" unique_id=365743159]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.005, 0, 0.005)
 light_color = Color(1, 0.6745098, 0.3254902, 1)
-light_energy = 0.04
+light_energy = 0.09
 light_size = 0.107
 shadow_enabled = true
 shadow_blur = 0.0
 shadow_caster_mask = 4294967287
 distance_fade_enabled = true
-distance_fade_begin = 19.35
 distance_fade_shadow = 0.5
 omni_range = 4.339
 omni_attenuation = 2.043
+
+[node name="GPUParticlesAttractorVectorField3D4" type="GPUParticlesAttractorVectorField3D" parent="." unique_id=1062084309]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.33349603, 1.0955238, 0.34263298)
+strength = 1.3
+directionality = 1.0
+size = Vector3(0.21613282, 0.133125, 0.7390479)
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="." unique_id=1901055623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32178825, 0.7352778, 0.33862633)
+layers = 8
+amount = 10
+lifetime = 0.5
+speed_scale = 2.0
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_2p0v2")
+draw_pass_1 = SubResource("PlaneMesh_mey8o")

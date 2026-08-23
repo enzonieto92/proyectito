@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://c52j8elh4bk6f" path="res://texturas/sangre.png" id="9_scr45"]
 [ext_resource type="AudioStream" uid="uid://cjv6cjh0wdmoo" path="res://sonido/jadeo.mp3" id="10_b5851"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_u3e3u"]
-height = 2.317334
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ff7om"]
+radius = 0.43310547
+height = 2.3304687
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ui0lo"]
 atlas = ExtResource("2_mscpk")
@@ -455,6 +456,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_5oyv7"]
 resource_name = "dying"
+length = 2.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -474,10 +476,10 @@ tracks/1/path = NodePath("sprite_enemy:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.025185794, 0.2912107, 0.6516824, 0.9161333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.025185794, 0.23333333, 0.46666667, 0.7, 0.93333334, 1.1666666, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 2]
+"values": [0, 1, 2, 3, 5, 6, 7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -570,8 +572,8 @@ max_damage = 25.0
 min_damage = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2015585413]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46540666, 0)
-shape = SubResource("CylinderShape3D_u3e3u")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012458116, 0.3451159, 0.0023761988)
+shape = SubResource("CapsuleShape3D_ff7om")
 
 [node name="sprite_enemy" type="AnimatedSprite3D" parent="." unique_id=464011000]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.46237487, 0)
@@ -594,7 +596,7 @@ script = ExtResource("8_a0cb3")
 libraries/ = SubResource("AnimationLibrary_mj5ly")
 
 [node name="sangre" type="Sprite3D" parent="." unique_id=1725185734]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.8009243, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.8009243, 0)
 sorting_offset = -1.0
 modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
 pixel_size = 0.015
